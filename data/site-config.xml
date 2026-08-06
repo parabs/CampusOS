@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <institution>
+        <name>Akbar Peerbhoy College of Commerce & Economics</name>
+        <shortName>APCCE</shortName>
+        <established>1969</established>
+        <accreditation>NAAC A+ Accredited</accreditation>
+        <address>Maulana Shaukat Ali Road, Do Taki, Mumbai 400004</address>
+        <phone>022-23074122</phone>
+        <email>apcce_college@yahoo.co.in</email>
+    </institution>
+    <platform>
+        <systemName>Campus OS</systemName>
+        <version>3.2 Enterprise</version>
+    </platform>
+</config>

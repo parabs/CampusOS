@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<homeContent>
+    <heroSlides>
+        <slide>
+            <badge>Est. 1969 • Mumbai</badge>
+            <title>Where Leaders Are Made</title>
+            <description>Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai.</description>
+            <image>images/1-Campus/hero-campus-aerial-evening.png</image>
+        </slide>
+        <slide>
+            <badge>Collaborative Student Life</badge>
+            <title>Collaborate. Create. Lead.</title>
+            <description>Engage in student projects, lively discussions, and vibrant campus interactions that shape future executives.</description>
+            <image>images/2-Student Life/students-collaborating-steps.png</image>
+        </slide>
+    </heroSlides>
+
+    <principalMessage>
+        <name>Dr. Shaikh Mehmood Hasan</name>
+        <designation>Principal, APCCE</designation>
+        <quote>Empowering students through academic rigor and digital leadership.</quote>
+        <photo>images/4-Faculty & Leadership/principal-portrait.png</photo>
+    </principalMessage>
+
+    <notices>
+        <notice type="Admit">Admissions Open 2026-27 Academic Cycle</notice>
+        <notice type="Exam">Sem IV Examination Schedules Announced</notice>
+        <notice type="Event">Annual Cultural Fest 'Melange' Registration Live</notice>
+    </notices>
+</homeContent>

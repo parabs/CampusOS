@@ -1,8 +1,0 @@
-PAYMENT SCHEDULE - ,,,
-Milestone,Amount (₹),Due Date,Notes
-Pilot Fee (paid),25000,=Calculator!B6,Already paid
-Conversion Deposit (50% of Net Setup),=Calculator!B16/2,=EDATE(Calculator!B6,1),Due at contract signing
-Final Setup (50% of Net Setup),=Calculator!B16/2,=EDATE(Calculator!B6,2),30 days after conversion
-Monthly SaaS (Months 2-12),=Calculator!B19,1st of each month,Starting month 2
-Annual AI Fee,=Calculator!B20,=EDATE(Calculator!B6,1),Upfront at conversion
-TOTAL REMAINING AFTER PILOT,=SUM(B3:B7),,,
