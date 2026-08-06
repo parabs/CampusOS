@@ -184,7 +184,7 @@
 
         async function loadProgramsRepository() {
             try {
-                const response = await fetch('data/programs.xml');
+                const response = await fetch('data/programs.xml?v=' + new Date().getTime());
                 if (!response.ok) throw new Error('Network response was not ok');
                 
                 const xmlText = await response.text();
