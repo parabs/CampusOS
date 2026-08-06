@@ -196,7 +196,7 @@
                 const programNodes = xmlDoc.querySelectorAll('program');
                 allPrograms = Array.from(programNodes).map(node => ({
                     id: node.getAttribute('id') || '',
-                    title: node.querySelector('title')?.textContent || 'Untitled Program',
+                    title: node.querySelector('title')?.textContent || node.querySelector('name')?.textContent || node.getElementsByTagName('title')[0]?.textContent || 'Untitled Program',
                     level: node.querySelector('level')?.textContent || 'Undergraduate',
                     rating: node.querySelector('rating')?.textContent || '4.5 Rating',
                     duration: node.querySelector('duration')?.textContent || '3 Years',
