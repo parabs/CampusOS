@@ -1,0 +1,5 @@
+COMPARISON: PILOT CONVERSION VS DIRECT PURCHASE,,,,
+Scenario,Total Year 1,Monthly Equivalent,Savings vs Direct
+Pilot Only (no conversion),25000,N/A,-
+Direct Bundle (no pilot),,"=Calculator!B14+Calculator!B17*12+Calculator!B20","=B5/12",-
+Pilot → Bundle Conversion,,"=Calculator!B21","=Calculator!B22","=B5-B6"

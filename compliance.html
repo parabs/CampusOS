@@ -1,0 +1,3016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance & Regulatory Repository — Akbar Peerbhoy College | Powered by Campus OS</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --primary-light: #1E293B;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --secondary-light: #60A5FA;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-gray: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --text-white: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 50px rgba(37, 99, 235, 0.1);
+            --shadow-sticky: 0 12px 30px rgba(15, 23, 42, 0.08);
+            
+            --radius-card: 20px;
+            --radius-btn: 9999px;
+            --radius-stats: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Slim Product Badge Banner */
+        .campus-os-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: var(--text-white);
+            font-size: 13px;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1100;
+            letter-spacing: 0.03em;
+        }
+        .campus-os-banner .banner-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 37px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 14px 5%;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 10px 5%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        /* Enforce a consistent left margin/gap between the logo and menu items */
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            list-style: none;
+            margin-left: 60px; /* Locks exact consistent distance from the logo */
+            margin-right: auto; /* Pushes the actions to the far right cleanly */
+        }
+
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 14.5px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+        .nav-link.active { font-weight: 700; color: var(--secondary); }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+        .college-crest {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 19px;
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            letter-spacing: -0.02em;
+        }
+        .logo-text span {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+        .nav-link.active { font-weight: 700; border-bottom: 2px solid var(--secondary); }
+
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        .portal-login-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 0 12px;
+        }
+        .nav-cta {
+            background: var(--secondary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Breadcrumb Bar */
+        .breadcrumb-bar {
+            max-width: 1380px;
+            margin: 110px auto 6px;
+            padding: 0 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .breadcrumb-bar a { color: var(--secondary); text-decoration: none; }
+        .breadcrumb-bar a:hover { text-decoration: underline; }
+
+        /* Compliance Intelligence Management Dashboard Banner Strip */
+        .compliance-intelligence-strip {
+            max-width: 1380px;
+            margin: 0 auto 12px;
+            padding: 0 24px;
+        }
+        .ci-strip-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            flex-wrap: wrap;
+            gap: 16px;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .ci-strip-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 4px 15px rgba(37,99,235,0.08);
+        }
+        .ci-score-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ci-score-ring {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: #EFF6FF;
+            color: var(--secondary);
+            font-weight: 900;
+            font-size: 16px;
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid #BFDBFE;
+        }
+        .ci-score-info h4 { font-size: 15px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+        .ci-score-info h4::after { content: '📊 View Dashboard →'; font-size: 11px; color: var(--secondary); font-weight: 700; margin-left: 6px; }
+        .ci-score-info p { font-size: 12px; color: var(--text-light); }
+        
+        .ci-metrics-pills {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .ci-pill {
+            background: var(--surface-gray);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Unified Sticky Search & Filter Toolbar Container */
+        .sticky-search-container {
+            position: sticky;
+            top: 90px;
+            z-index: 900;
+            max-width: 1380px;
+            margin: 0 auto 16px;
+            padding: 0 24px;
+        }
+        .sticky-toolbar-card {
+            background: #FFFFFF;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-sticky);
+            border: 1px solid var(--border-color);
+            padding: 14px 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .search-label-text {
+            font-size: 11.5px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: -6px;
+        }
+        .search-box-input-wrap {
+            position: relative;
+            background: var(--surface-gray);
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 4px 10px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .search-box-input-wrap:focus-within {
+            background: #FFFFFF;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        .search-icon-symbol {
+            font-size: 18px;
+            padding: 0 12px;
+            color: var(--text-light);
+        }
+        .search-main-input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 10px 0;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--primary);
+            background: transparent;
+        }
+
+        /* Live Search Results & Metrics Summary Bar */
+        .search-results-feedback {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+        }
+        .search-results-feedback span { color: var(--text-light); font-weight: 500; font-size: 12px; }
+        .clear-search-btn {
+            background: #EFF6FF;
+            color: var(--secondary);
+            border: 1px solid #BFDBFE;
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            display: none;
+        }
+        .clear-search-btn:hover { background: var(--secondary); color: white; }
+
+        /* Quick Filters Strip Under Search Bar (Hides during active search) */
+        .quick-filters-strip {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .quick-filters-strip.hidden-during-search {
+            display: none;
+        }
+        .quick-filters-strip::-webkit-scrollbar { display: none; }
+        .filter-chip {
+            background: var(--surface-gray);
+            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: var(--radius-btn);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .filter-chip:hover { border-color: var(--secondary); color: var(--secondary); }
+        .filter-chip.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+            font-weight: 700;
+        }
+
+        /* Settings-Style Repository Main Layout */
+        .repository-wrapper {
+            max-width: 1380px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* Truly Sticky Left Category Navigation Bar */
+        .settings-sidebar {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: calc(100vh - 270px);
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+        .settings-nav-item {
+            background: transparent;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+        }
+        .settings-nav-item:hover {
+            background: var(--surface-gray);
+            color: var(--secondary);
+        }
+        .settings-nav-item.active {
+            background: #EFF6FF;
+            color: var(--secondary);
+            font-weight: 800;
+        }
+        .settings-nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 4px;
+            background: var(--secondary);
+            border-radius: 0 4px 4px 0;
+        }
+        .nav-item-count {
+            background: var(--surface-gray);
+            color: var(--text-light);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        .settings-nav-item.active .nav-item-count {
+            background: #DBEAFE;
+            color: var(--secondary);
+        }
+
+        /* Search Insights Panel (Faceted Filtering Panel with active states) */
+        .search-insights-panel {
+            display: none;
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 250px;
+            flex-direction: column;
+            gap: 16px;
+            animation: fadeInInsights 0.3s ease forwards;
+        }
+        .search-insights-panel.active {
+            display: flex;
+        }
+        @keyframes fadeInInsights {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .insights-header {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        .insights-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .insights-group-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .insights-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .insights-pill {
+            background: #EFF6FF;
+            color: var(--secondary);
+            border: 1px solid #BFDBFE;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .insights-pill:hover { background: #DBEAFE; }
+        
+        /* Active Facet Styling (Darkened Blue Background, White Text, Small Shadow) */
+        .insights-pill.active-facet {
+            background: var(--secondary-dark);
+            color: white;
+            border-color: var(--secondary-dark);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+            font-weight: 800;
+        }
+
+        .insights-meta-row {
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+        .insights-meta-row span:first-child { color: var(--text-light); font-weight: 500; }
+        .insights-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 2px 0;
+        }
+
+        /* Right Content Panel Area */
+        .content-panel {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 36px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            min-height: 600px;
+        }
+
+        /* Search Mode Container (Amazon / Google Drive Flat List Mode) */
+        .search-mode-container {
+            display: none;
+            animation: fadeInResults 0.3s ease forwards;
+        }
+        .search-mode-container.active {
+            display: block;
+        }
+        @keyframes fadeInResults {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .search-results-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .search-results-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .sort-dropdown-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        .sort-select {
+            background: var(--surface-gray);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-weight: 700;
+            color: var(--primary);
+            outline: none;
+            cursor: pointer;
+        }
+        .flat-results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Repository Section Blocks with Smooth Collapse Animations and scroll margin */
+        .repo-section-block {
+            margin-bottom: 48px;
+            opacity: 1;
+            max-height: 5000px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            scroll-margin-top: 180px;
+        }
+        .repo-section-block.section-hidden {
+            opacity: 0;
+            max-height: 0;
+            margin-bottom: 0;
+            pointer-events: none;
+        }
+        .repo-section-block:last-child {
+            margin-bottom: 0;
+        }
+        .repo-section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .repo-section-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Structured Repository Cards Grid (Ultra-compact 20% vertical compression) */
+        .repo-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 14px;
+        }
+        .repo-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 10px 14px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.015);
+            position: relative;
+            opacity: 1;
+            max-height: 350px;
+            overflow: hidden;
+        }
+        .repo-card.card-hidden {
+            opacity: 0;
+            max-height: 0;
+            padding: 0;
+            margin: 0;
+            border: none;
+            pointer-events: none;
+        }
+        .repo-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Search Result Subtle Highlight State with Matched Indicator */
+        .repo-card.search-highlight {
+            border-color: var(--secondary);
+            background: #EFF6FF;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+        .match-badge-tag {
+            font-size: 9.5px;
+            background: #DBEAFE;
+            color: #1D4ED8;
+            padding: 1px 6px;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 2px;
+        }
+
+        /* Card Visual Accents by Type */
+        .repo-card.card-type-certificate { border-left: 4px solid var(--secondary); }
+        .repo-card.card-type-policy { border-left: 4px solid #64748B; }
+        .repo-card.card-type-report { border-left: 4px solid #10B981; }
+        .repo-card.card-type-calendar { border-left: 4px solid var(--accent); }
+
+        .repo-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .repo-icon-wrap {
+            width: 28px; height: 28px;
+            background: var(--surface-gray);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+            border: 1px solid var(--border-color);
+        }
+        .repo-card-title {
+            flex: 1;
+        }
+        .repo-card-title h4 {
+            font-size: 14px; /* Prominent title */
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1px;
+        }
+        .repo-card-title span {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 500;
+            display: block;
+        }
+
+        /* Status Pills Aligned with Title Baseline */
+        .repo-status-pill {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 9.5px;
+            font-weight: 700;
+            white-space: nowrap;
+            border: 1px solid transparent;
+            align-self: flex-start;
+            margin-top: 2px;
+        }
+        .status-active { background: #ECFDF5; color: #047857; border-color: #A7F3D0; }
+        .status-review { background: #FEF3C7; color: #B45309; border-color: #FDE68A; }
+        .status-submitted { background: #DBEAFE; color: #1D4ED8; border-color: #BFDBFE; }
+        .status-expired { background: #FEE2E2; color: #991B1B; border-color: #FECACA; }
+        .status-archived { background: #F1F5F9; color: #475569; border-color: #CBD5E1; }
+
+        /* Clean 4-Column Metadata Row (Issued by, Updated, Format, Size) */
+        .repo-meta-strip-4col {
+            font-size: 10px;
+            color: var(--text-light);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            padding: 3px 0;
+            font-family: monospace;
+            border-top: 1px dashed var(--border-color);
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .repo-meta-strip-4col div {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .repo-meta-strip-4col span:first-child { font-size: 7.5px; text-transform: uppercase; color: var(--text-light); opacity: 0.7; }
+        .repo-meta-strip-4col span:last-child { font-weight: 700; color: var(--primary); }
+
+        /* Balanced 50/50 Equal Width Action Buttons */
+        .repo-action-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+        .btn-repo-details {
+            background: var(--surface-gray);
+            color: var(--primary);
+            text-align: center;
+            padding: 5px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-repo-details:hover { background: #E2E8F0; color: var(--secondary); }
+
+        .btn-repo-download {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 5px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .btn-repo-download:hover { background: var(--secondary-dark); }
+
+        /* Floating AI Compliance Assistant Widget (Context-Aware) */
+        .floating-ai-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2500;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: var(--radius-btn);
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s, background 0.2s;
+            border: 1px solid rgba(255,255,255,0.15);
+            text-decoration: none;
+        }
+        .floating-ai-widget:hover {
+            transform: scale(1.05);
+            background: var(--primary-dark);
+        }
+
+        /* Document Profile Modal (Knowledge System Style with Contextual AI & Clickable Related Documents) */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 4000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-container {
+            background: white;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 720px;
+            padding: 36px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-overlay.active .modal-container { transform: scale(1); }
+        .modal-close-btn {
+            position: absolute;
+            top: 24px; right: 24px;
+            background: var(--surface-gray);
+            border: none;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 16px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-title { font-size: 22px; font-weight: 900; color: var(--primary); margin-bottom: 4px; }
+        .modal-subtitle { font-size: 12px; color: var(--secondary); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+        
+        .modal-ai-box {
+            background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+            border: 1px solid #BBF7D0;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+        .modal-ai-header {
+            font-size: 12px;
+            font-weight: 800;
+            color: #166534;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-ai-text {
+            font-size: 14px;
+            color: #14532D;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* Frequently Asked AI Prompts Bar */
+        .ai-faq-bar {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            border-top: 1px dashed #86EFAC;
+            padding-top: 12px;
+        }
+        .ai-faq-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: #166534;
+            text-transform: uppercase;
+        }
+        .ai-faq-pills {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .ai-faq-chip {
+            background: white;
+            border: 1px solid #86EFAC;
+            color: #166534;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .ai-faq-chip:hover {
+            background: #166534;
+            color: white;
+        }
+
+        /* Knowledge System Document Profile Grid */
+        .modal-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            background: var(--surface-gray);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+        .modal-profile-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .modal-profile-item span:first-child { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; }
+        .modal-profile-item span:last-child { font-size: 13px; font-weight: 700; color: var(--primary); }
+
+        /* Clickable Related Documents */
+        .related-doc-link {
+            color: var(--secondary);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-right: 10px;
+            margin-bottom: 4px;
+            background: #EFF6FF;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid #BFDBFE;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .related-doc-link:hover { background: #DBEAFE; }
+
+        /* Compliance Timeline UI Component with Tooltips */
+        .compliance-timeline-box {
+            background: var(--surface-gray);
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+        }
+        .timeline-title { font-size: 12px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+        .timeline-nodes-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .timeline-nodes-row::before {
+            content: '';
+            position: absolute;
+            top: 24px; left: 15px; right: 15px;
+            height: 2px;
+            background: #CBD5E1;
+            z-index: 1;
+        }
+        .t-node {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2px;
+            cursor: pointer;
+        }
+        .t-node-status { font-size: 9px; font-weight: 700; color: var(--text-light); text-transform: uppercase; }
+        .t-node.completed .t-node-status { color: #059669; }
+        .t-node-dot {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            margin: 2px 0;
+            transition: transform 0.2s;
+        }
+        .t-node:hover .t-node-dot { transform: scale(1.15); }
+        .t-node.completed .t-node-dot { background: #10B981; border-color: #10B981; color: white; }
+        .t-node.future .t-node-dot { border-color: #94A3B8; color: #94A3B8; background: white; border-style: dashed; }
+        .t-node-label { font-size: 11px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+        .t-node-sub { font-size: 10px; font-weight: 600; color: var(--text-light); }
+
+        /* Custom Tooltip Styling */
+        .t-node::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            background: var(--primary);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            white-space: pre-line;
+            text-align: center;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .t-node:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Compliance Dashboard Modal Style */
+        .dashboard-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 4000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .dashboard-modal-overlay.active { opacity: 1; visibility: visible; }
+        .dashboard-modal-container {
+            background: white;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 800px;
+            padding: 36px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .dashboard-modal-overlay.active .dashboard-modal-container { transform: scale(1); }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+        .footer-bottom p { font-size: 14px; color: var(--text-light); }
+
+        @media(max-width: 992px) {
+            .repository-wrapper { grid-template-columns: 1fr; }
+            .settings-sidebar { position: static; max-height: none; }
+            .repo-action-group { grid-template-columns: 1fr; }
+            .modal-profile-grid { grid-template-columns: 1fr; }
+            .ci-strip-card { flex-direction: column; align-items: flex-start; }
+            .floating-ai-widget { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 12px; }
+            .timeline-nodes-row { overflow-x: auto; justify-content: flex-start; gap: 30px; padding-bottom: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slim Product Banner -->
+    <header class="campus-os-banner">
+        <div>🚀 <strong>Campus OS Demo Showcase</strong> — Compliance & Regulatory Repository</div>
+        <div><a href="CampusOS-Home.html" class="banner-link">Return to Home &rarr;</a></div>
+    </header>
+
+    <!-- Standard College Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <a href="CampusOS-Home.html" class="logo-area">
+            <div class="college-crest">AP</div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="programs.html" class="nav-link">Programs</a></li>
+            <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
+            <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
+            <li><a href="compliance.html" class="nav-link active">Compliance & Regulatory</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="CampusOS-Home.html#apply" class="portal-login-link">Portal Login</a>
+            <a href="CampusOS-Home.html#apply" class="nav-cta">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Bar -->
+    <div class="breadcrumb-bar" id="breadcrumbBar">
+        <a href="CampusOS-Home.html">Akbar Peerbhoy College</a> &gt; <span>Compliance & Regulatory Repository</span>
+    </div>
+
+    <!-- Compliance Intelligence Management Dashboard Banner Strip -->
+    <div class="compliance-intelligence-strip" style="margin-top: 6px;">
+        <div class="ci-strip-card" onclick="openDashboardModal()">
+            <div class="ci-score-box">
+                <div class="ci-score-ring">96%</div>
+                <div class="ci-score-info">
+                    <h4>Compliance Health Score</h4>
+                    <p>Institution Audit Ready Status</p>
+                </div>
+            </div>
+            <div class="ci-metrics-pills">
+                <div class="ci-pill">📄 Documents: <b id="totalDocCount">52</b></div>
+                <div class="ci-pill">📁 Categories: <b>6</b></div>
+                <div class="ci-pill">🕒 Latest Update: <b>3 days ago</b></div>
+                <div class="ci-pill" style="color: #047857; background: #ECFDF5; border-color: #A7F3D0;">🟢 Fully Verified</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unified Sticky Search & Filter Toolbar Container -->
+    <div class="sticky-search-container">
+        <div class="sticky-toolbar-card">
+            <div class="search-label-text">Search Compliance Repository</div>
+            <div class="search-box-input-wrap">
+                <span class="search-icon-symbol">🔍</span>
+                <input type="text" id="globalComplianceSearch" class="search-main-input" placeholder="Search certificates, policies, reports, committees, regulations, or accreditation records…">
+            </div>
+
+            <!-- Quick Filters Strip (Hides during active search) -->
+            <div class="quick-filters-strip" id="quickFiltersStrip">
+                <button class="filter-chip active" onclick="filterByTag('all', this)">All Documents</button>
+                <button class="filter-chip" onclick="filterByTag('certificate', this)">Certificates</button>
+                <button class="filter-chip" onclick="filterByTag('policy', this)">Policies</button>
+                <button class="filter-chip" onclick="filterByTag('report', this)">Reports</button>
+                <button class="filter-chip" onclick="filterByTag('ugc', this)">UGC</button>
+                <button class="filter-chip" onclick="filterByTag('naac', this)">NAAC</button>
+                <button class="filter-chip" onclick="filterByTag('iqac', this)">IQAC</button>
+                <button class="filter-chip" onclick="filterByTag('audit', this)">Audit</button>
+                <button class="filter-chip" onclick="filterByTag('government', this)">Government</button>
+            </div>
+
+            <!-- Live Search Results & Metrics Summary Bar -->
+            <div class="search-results-feedback" id="searchResultsFeedback">
+                <span id="resultCountText">Showing all 52 verified compliance documents &bull; Search: "All"</span>
+                <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearchInput()">Clear Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings-Style Repository Main Layout -->
+    <main class="repository-wrapper">
+
+        <!-- Truly Sticky Left Category Navigation Bar (Transforms into interactive Filter Results panel during active search) -->
+        <aside class="settings-sidebar" id="sidebarNav">
+            <!-- Normal Browse Mode Navigation -->
+            <div id="normalNavContainer">
+                <button class="settings-nav-item active" onclick="scrollToSection(event, 'accreditation')"><span>🏛 Accreditation & Recognition</span><span class="nav-item-count">4</span></button>
+                <button class="settings-nav-item" onclick="scrollToSection(event, 'mandatory')"><span>📋 Mandatory Public Disclosures</span><span class="nav-item-count">12</span></button>
+                <button class="settings-nav-item" onclick="scrollToSection(event, 'iqac')"><span>📈 IQAC & Quality Assurance</span><span class="nav-item-count">10</span></button>
+                <button class="settings-nav-item" onclick="scrollToSection(event, 'portals')"><span>🌐 Government Portals & Submissions</span><span class="nav-item-count">10</span></button>
+                <button class="settings-nav-item" onclick="scrollToSection(event, 'policies')"><span>📜 Policies & Governance</span><span class="nav-item-count">7</span></button>
+                <button class="settings-nav-item" onclick="scrollToSection(event, 'audits')"><span>🔍 Audit, Reports & Returns</span><span class="nav-item-count">11</span></button>
+            </div>
+
+            <!-- Filter Results Panel Mode (Faceted Filtering & Interactive Counts) -->
+            <div class="search-insights-panel" id="searchInsightsPanel">
+                <div class="insights-header">Refine Results</div>
+                <div class="insights-group">
+                    <div class="insights-group-title">Matching Categories</div>
+                    <div class="insights-pill-row" id="insightCategoriesContainer">
+                        <!-- Populated via JS with active-facet darkening -->
+                    </div>
+                </div>
+                <div class="insights-divider"></div>
+                <div class="insights-group">
+                    <div class="insights-group-title">Matching Types</div>
+                    <div class="insights-pill-row" id="insightTypesContainer">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+                <div class="insights-divider"></div>
+                <div class="insights-meta-row">
+                    <span>Latest Updated:</span>
+                    <strong id="insightLatestMatch" style="color: var(--secondary);">June 2024</strong>
+                </div>
+                <div class="insights-divider"></div>
+                <div class="insights-group">
+                    <div class="insights-group-title">Suggested Searches</div>
+                    <div class="insights-pill-row">
+                        <span class="insights-pill" onclick="quickSearchTrigger('AQAR')">AQAR</span>
+                        <span class="insights-pill" onclick="quickSearchTrigger('SSR')">SSR</span>
+                        <span class="insights-pill" onclick="quickSearchTrigger('Peer Team')">Peer Team</span>
+                        <span class="insights-pill" onclick="quickSearchTrigger('UGC')">UGC</span>
+                    </div>
+                </div>
+                <button class="btn-repo-details" onclick="clearSearchInput()" style="margin-top: 4px; background: #EFF6FF; color: var(--secondary); border-color: #BFDBFE;">Clear Search</button>
+            </div>
+        </aside>
+
+        <!-- Right Content Panel Area -->
+        <section class="content-panel" id="mainContentPanel">
+
+            <!-- BROWSE MODE: Standard Category Sections -->
+            <div id="browseModeView">
+                <!-- SECTION 1: Accreditation & Recognition -->
+                <div id="accreditation" class="repo-section-block" data-section-name="accreditation" data-category-name="Accreditation" data-category-id="accreditation">
+                    <div class="repo-section-title">🏛 Accreditation & Recognition</div>
+                    <div class="repo-section-desc">Official statutory recognition, peer-team grading certificates, and university affiliations.</div>
+
+                    <div class="repo-cards-grid">
+                        <div class="repo-card card-type-certificate" data-search-text="naac accreditation grade a plus cgpa 3.42" data-tags="certificate naac accreditation" data-format="PDF" data-date="June 2024">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📜</div>
+                                <div class="repo-card-title">
+                                    <h4>NAAC Accreditation</h4>
+                                    <span>Cycle 3 (CGPA 3.42)</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>NAAC</span></div>
+                                <div><span>Updated</span><span>June 2024</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.4 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('NAAC Accreditation Certificate', 'Cycle 3 Accreditation valid through 2029 with 3.42 CGPA.', 'June 2024', 'Anjuman-i-Islam / NAAC Bangalore', 'NAAC Accreditation Certificate', 'Cycle 3 Accreditation', 'UGC / NAAC Guidelines', 'All Academic Programs', 'NAAC Bangalore', 'v3.2', 'June 2024', '2029', 'SEC-NAAC-03', 'SSR Cycle 3, Peer Team Report, AQAR 2024', 'This document certifies that the institution achieved NAAC Grade A+ in Cycle 3 with a CGPA of 3.42. Valid through 2029.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Original PDF...')">📥 Original PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="ugc recognition section 2f 12b" data-tags="certificate ugc government" data-format="PDF" data-date="May 2023">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📜</div>
+                                <div class="repo-card-title">
+                                    <h4>UGC Recognition</h4>
+                                    <span>Sections 2(f) & 12(B)</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>UGC</span></div>
+                                <div><span>Updated</span><span>May 2023</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.1 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('UGC Recognition 2(f) & 12(B)', 'Grants statutory eligibility for central research funding and financial assistance.', 'May 2023', 'University Grants Commission (New Delhi)', 'UGC Recognition Certificate', 'Sections 2(f) & 12(B) Status', 'UGC Act 1956', 'All Departments', 'UGC New Delhi', 'v1.0', 'May 2023', 'Permanent', 'UGC-2F-12B', 'Establishment Notification', 'Official recognition under Sections 2(f) and 12(B) of the UGC Act for central grants.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Original PDF...')">📥 Original PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="autonomous status ugc university of mumbai" data-tags="certificate government" data-format="PDF" data-date="August 2024">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📜</div>
+                                <div class="repo-card-title">
+                                    <h4>Autonomous Status</h4>
+                                    <span>University of Mumbai Affiliation</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Univ. of Mumbai</span></div>
+                                <div><span>Updated</span><span>Aug 2024</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.8 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Autonomous Status Notification', 'Empowers independent curriculum design, semester structuring, and examination scheduling.', 'August 2024', 'University of Mumbai', 'Autonomy Notification', 'Independent Curriculum Conferment', 'UGC Autonomous Guidelines', 'Undergraduate & Postgraduate', 'University of Mumbai', 'v2.1', 'August 2024', '2031', 'MU-AUT-2024', 'Affiliation Letter', 'Confers autonomous status granting academic freedom for syllabus structuring and independent evaluations.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Original PDF...')">📥 Original PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="iso certification 9001 2015 quality management" data-tags="certificate" data-format="PDF" data-date="January 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📜</div>
+                                <div class="repo-card-title">
+                                    <h4>ISO Certification</h4>
+                                    <span>ISO 9001:2015 Quality Management</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>TUV Nord</span></div>
+                                <div><span>Updated</span><span>Jan 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.4 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('ISO 9001:2015 Certificate', 'Certified quality management systems for educational administration and student support services.', 'January 2025', 'TUV Nord Certification', 'ISO 9001:2015 Quality Certificate', 'Quality Management Compliance', 'ISO International Standard', 'Administration & Support', 'TUV Nord', 'v1.4', 'January 2025', '2028', 'ISO-9001-QMS', 'Quality Manual', 'Validates standardized quality management protocols implemented across administrative workflows.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Original PDF...')">📥 Original PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: Mandatory Public Disclosures -->
+                <div id="mandatory" class="repo-section-block" data-section-name="mandatory" data-category-name="Mandatory Public Disclosures" data-category-id="mandatory">
+                    <div class="repo-section-title">📋 Mandatory Public Disclosures</div>
+                    <div class="repo-section-desc">Statutory institutional filings, governing body manifests, and fee structures required by regulatory bodies.</div>
+
+                    <div class="repo-cards-grid">
+                        <div class="repo-card card-type-policy" data-search-text="fee structure tuition fees bcom bms bsc it" data-tags="disclosure ugc" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Fee Structure</h4>
+                                    <span>Approved UG & PG Fee Schedule</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>FRA Mah.</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>920 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Approved Fee Structure 2025-26', 'Fee schedule approved by the Fees Regulating Authority (FRA) Maharashtra.', 'June 2025', 'Fees Regulating Authority', 'Fee Structure Schedule', 'Transparent Fee Affirmation', 'FRA Maharashtra Act', 'Students & Parents', 'FRA Mumbai', 'v2.0', 'June 2025', '2026', 'FRA-FEE-25', 'Fee Approval Order', 'Details official tuition, library, laboratory, and development fees sanctioned for undergraduate and postgraduate programs.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Original PDF...')">📥 Original PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="anti ragging committee squad members contact" data-tags="disclosure" data-format="PDF" data-date="July 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Anti-Ragging Committee</h4>
+                                    <span>Statutory Prevention Cell</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Student Welfare</span></div>
+                                <div><span>Updated</span><span>July 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>640 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Anti-Ragging Committee Roster', 'Contact matrix, squad members, and UGC compliance guidelines against ragging.', 'July 2025', 'Student Welfare Cell', 'Committee Roster & Guidelines', 'Ragging Prevention Compliance', 'UGC Anti-Ragging Regulations', 'Entire Campus Community', 'Student Welfare Cell', 'v3.0', 'July 2025', '2026', 'ARC-2025', 'UGC Circular', 'Outlines committee members, emergency helpline numbers, and zero-tolerance protocols enforcing anti-ragging regulations.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Anti-Ragging file...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="grievance redressal committee ombudsman" data-tags="disclosure" data-format="PDF" data-date="July 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Grievance Redressal</h4>
+                                    <span>Student & Staff Redressal Cell</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Admin</span></div>
+                                <div><span>Updated</span><span>July 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>700 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Grievance Redressal Committee', 'Institutional mechanism and committee members for swift grievance resolution.', 'July 2025', 'Administration', 'Grievance Redressal Framework', 'Transparent Conflict Resolution', 'AICTE / UGC Grievance Norms', 'Students & Employees', 'College Administration', 'v2.2', 'July 2025', '2026', 'GRC-2025', 'Ombudsman Notice', 'Defines the standard operating procedure, ombudsman contact details, and submission workflow for student and staff grievances.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Grievance file...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="rti officer information right to information" data-tags="disclosure government" data-format="PDF" data-date="January 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>RTI Officer</h4>
+                                    <span>Right to Information Disclosures</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>RTI Cell</span></div>
+                                <div><span>Updated</span><span>Jan 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>520 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('RTI Information & Officers', 'Appellate officers, public information officers, and statutory submission protocols.', 'January 2025', 'RTI Cell', 'RTI Statutory Directory', 'Public Accountability Manifest', 'RTI Act 2005', 'General Public & Aspirants', 'RTI Cell Secretariat', 'v1.5', 'January 2025', 'Permanent', 'RTI-2005-DIR', 'Appellate Notification', 'Lists designated Public Information Officers (PIO), First Appellate Authorities, and statutory procedures for filing RTI applications.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading RTI file...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="scholarships financial aid fee waiver" data-tags="disclosure" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Scholarships</h4>
+                                    <span>Government & Trust Financial Aid</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Scholarship Cell</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.1 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Scholarship & Financial Aid Guidelines', 'Eligibility matrix for government schemes, minority concessions, and institutional fee waivers.', 'June 2025', 'Scholarship Cell', 'Scholarship Scheme Handbook', 'Financial Inclusion Support', 'State & Central Scholarship Rules', 'Eligible Students', 'Scholarship Cell', 'v2.0', 'June 2025', '2026', 'SCH-GUIDE-25', 'Scheme Circular', 'Provides detailed eligibility criteria, income thresholds, and application timelines for state and central government scholarship schemes.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Scholarship file...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-calendar" data-search-text="academic calendar teaching days examination schedule" data-tags="disclosure" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📅</div>
+                                <div class="repo-card-title">
+                                    <h4>Academic Calendar</h4>
+                                    <span>Terms, Exams & Events Schedule</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Principal Office</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.2 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Academic Calendar 2025-26', 'Comprehensive schedule outlining teaching days, internal assessments, and semester exams.', 'June 2025', 'Principal Office', 'Academic Term Schedule', 'Operational Time Management', 'University Academic Guidelines', 'Students & Faculty', 'Principal Office', 'v1.1', 'June 2025', '2026', 'CAL-2025-26', 'Senate Circular', 'Outlines instructional days, co-curricular festivals, internal assessment windows, and university examination periods.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Academic Calendar...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="governing body board of trustees members" data-tags="disclosure" data-format="PDF" data-date="July 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Governing Body</h4>
+                                    <span>Board of Management & Trustees</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>College Trust</span></div>
+                                <div><span>Updated</span><span>July 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>850 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Governing Body Roster', 'Complete manifesto of trustees, management representatives, and university nominees.', 'July 2025', 'College Trust Office', 'Governing Body Manifest', 'Strategic Institutional Governance', 'Trust Constitution Rules', 'Management & Public', 'Trust Office', 'v4.0', 'July 2025', '2026', 'GB-ROSTER-25', 'Trust Resolution', 'Lists appointed trustees, educationists, and university representatives responsible for strategic institutional governance.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Governing Body...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="committees statutory internal boards" data-tags="disclosure" data-format="PDF" data-date="July 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Committees</h4>
+                                    <span>Statutory & Internal Boards</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Principal Office</span></div>
+                                <div><span>Updated</span><span>July 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.4 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Statutory Committees Roster', 'Details composition and responsibilities of purchase, library, canteen, and sports committees.', 'July 2025', 'Principal Office', 'Committees Directory', 'Operational Faculty Governance', 'Autonomous College Statute', 'Faculty & Staff', 'Principal Office', 'v2.0', 'July 2025', '2026', 'COM-ROSTER-25', 'Principal Circular', 'Enumerates faculty conveners and student representatives assigned to internal institutional execution committees.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Committees...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="academic regulations credit system grading" data-tags="disclosure" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Academic Regulations</h4>
+                                    <span>Choice Based Credit System (CBCS)</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Academic Council</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.0 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Academic Regulations & CBCS Guidelines', 'Credit transfer norms, grading scales, promotion rules, and elective subject structures.', 'June 2025', 'Academic Council', 'Academic Regulations Handbook', 'Credit System & Evaluation', 'UGC / Autonomous Guidelines', 'Enrolled Students', 'Academic Council', 'v3.0', 'June 2025', '2030', 'REG-CBCS-25', 'Council Resolution', 'Governs credit accumulation, SGPA/CGPA computation formulas, and degree award requirements under autonomous guidelines.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Regulations...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="admission policy eligibility criteria intake capacity" data-tags="disclosure" data-format="PDF" data-date="May 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Admission Policy</h4>
+                                    <span>Eligibility & Merit Criteria</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Admissions Office</span></div>
+                                <div><span>Updated</span><span>May 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.1 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Admission Policy & Guidelines', 'Intake capacities, reservation rosters, qualifying marks, and online application workflow.', 'May 2025', 'Admissions Office', 'Admission Policy Brochure', 'Transparent Merit Admissions', 'State Admission Rules', 'Prospective Students', 'Admissions Office', 'v2.5', 'May 2025', '2026', 'ADM-POL-25', 'Admission Circular', 'Outlines merit computation rules, reservation quotas, document verification steps, and admission cancellation refunds.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="examination rules evaluation passing standards" data-tags="disclosure" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Examination Rules</h4>
+                                    <span>Passing Standards & ATKT Norms</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>CoE Cell</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>950 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Examination Rules & ATKT Norms', 'Internal weightage, passing thresholds, grace marks rules, and ATKT eligibility.', 'June 2025', 'Controller of Exams', 'Examination Rulebook', 'Fair Evaluation Standard', 'University Examination Ordinance', 'Students', 'Exam Cell', 'v2.0', 'June 2025', '2026', 'EXAM-RULE-25', 'CoE Notification', 'Specifies continuous evaluation weightages, passing minimums, malpractice penalties, and backlog clearance rules.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Rules...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="student handbook code of conduct guidelines" data-tags="disclosure" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📋</div>
+                                <div class="repo-card-title">
+                                    <h4>Student Handbook</h4>
+                                    <span>Code of Conduct & Facilities</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Student Welfare</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>3.5 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Student Handbook & Code of Conduct', 'Campus rules, dress code, library usage, lab safety, and student support services.', 'June 2025', 'Student Welfare', 'Student Handbook', 'Campus Discipline & Facilities', 'Institutional Statutes', 'Enrolled Students', 'Student Welfare Cell', 'v4.1', 'June 2025', '2026', 'HBK-2025', 'Principal Sign-off', 'Comprehensive guide detailing code of conduct, library borrowing rules, disciplinary guidelines, and campus amenities.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Handbook...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: IQAC & Quality Assurance -->
+                <div id="iqac" class="repo-section-block" data-section-name="iqac" data-category-name="IQAC">
+                    <div class="repo-section-title">📈 IQAC & Quality Assurance</div>
+                    <div class="repo-section-desc">Internal Quality Assurance Cell reports, Self-Study Reports, meeting minutes, and academic audit outcomes.</div>
+
+                    <div class="repo-cards-grid">
+                        <div class="repo-card card-type-report" data-search-text="aqar annual quality assurance report iqac" data-tags="report iqac naac" data-format="PDF" data-date="October 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>AQAR</h4>
+                                    <span>Annual Quality Assurance Reports</span>
+                                </div>
+                                <span class="repo-status-pill status-submitted">🔵 Submitted</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IQAC Coordinator</span></div>
+                                <div><span>Updated</span><span>Oct 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>4.5 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('AQAR 2024-25', 'Detailed annual submission submitted to NAAC covering all 7 accreditation criteria.', 'October 2025', 'IQAC Coordinator', 'AQAR Submission Document', 'NAAC Quality Tracking', 'NAAC Criteria Guidelines', 'NAAC Peer Committee', 'IQAC Secretariat', 'v1.0', 'October 2025', 'Annual', 'AQAR-2024-25', 'NAAC Portal Receipt', 'Detailed annual submission submitted to NAAC covering all 7 accreditation criteria.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading AQAR...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="ssr self study report naac cycle 3" data-tags="report naac iqac" data-format="PDF" data-date="March 2024">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>SSR</h4>
+                                    <span>Self-Study Report (Cycle 3)</span>
+                                </div>
+                                <span class="repo-status-pill status-archived">⚪ Archived</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IQAC Cell</span></div>
+                                <div><span>Updated</span><span>Mar 2024</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>12.8 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Self-Study Report (SSR)', 'Complete institutional self-study report submitted during NAAC peer team evaluation.', 'March 2024', 'IQAC Cell', 'Self-Study Report', 'Accreditation Evaluation File', 'NAAC Manual', 'NAAC Assessment Team', 'IQAC Cell', 'v3.0', 'March 2024', 'Cycle 3', 'SSR-CYC3', 'NAAC Submission Log', 'Complete institutional self-study report submitted during NAAC peer team evaluation.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading SSR...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="iqac minutes meeting resolutions" data-tags="report iqac" data-format="PDF" data-date="December 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Minutes</h4>
+                                    <span>Cell Meeting Resolutions & Actions</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IQAC Secretariat</span></div>
+                                <div><span>Updated</span><span>Dec 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.6 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('IQAC Meeting Minutes 2025', 'Quarterly meeting minutes recording quality enhancement initiatives and faculty feedback.', 'December 2025', 'IQAC Secretariat', 'IQAC Meeting Minutes', 'Quality Governance Record', 'IQAC Charter', 'Internal Committee', 'IQAC Secretariat', 'v4.0', 'December 2025', 'Quarterly', 'IQAC-MIN-25', 'Proceedings Book', 'Quarterly meeting minutes recording quality enhancement initiatives and faculty feedback.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Minutes...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="best practices institutional innovation" data-tags="report iqac" data-format="PDF" data-date="August 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Best Practices</h4>
+                                    <span>Distinctive Institutional Innovations</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IQAC Cell</span></div>
+                                <div><span>Updated</span><span>Aug 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.2 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Institutional Best Practices', 'Documentation of unique pedagogical practices and community engagement programs.', 'August 2025', 'IQAC Cell', 'Best Practices Compendium', 'Pedagogical Innovation', 'NAAC Quality Framework', 'Stakeholders', 'IQAC Cell', 'v2.0', 'August 2025', 'Annual', 'BP-2025', 'IQAC Monograph', 'Documentation of unique pedagogical practices and community engagement programs.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Best Practices...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="institutional distinctiveness unique strengths" data-tags="report iqac" data-format="PDF" data-date="August 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Institutional Distinctiveness</h4>
+                                    <span>Core Vision & Differentiating Strengths</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Principal Office</span></div>
+                                <div><span>Updated</span><span>Aug 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>950 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Institutional Distinctiveness', 'Highlighting specialized urban commerce education and community upliftment impact.', 'August 2025', 'Principal Office', 'Distinctiveness Profile', 'Core Brand Identity', 'NAAC Criteria Report', 'Evaluators & Public', 'Principal Office', 'v1.5', 'August 2025', 'Annual', 'DIST-2025', 'Principal Statement', 'Highlighting specialized urban commerce education and community upliftment impact.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Distinctiveness...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="feedback reports student stakeholder survey" data-tags="report iqac" data-format="PDF" data-date="July 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Feedback Reports</h4>
+                                    <span>Stakeholder Satisfaction Analysis</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Feedback Comm.</span></div>
+                                <div><span>Updated</span><span>July 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.8 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Stakeholder Feedback Analysis Report', 'Aggregated questionnaire results from students, teachers, employers, and alumni.', 'July 2025', 'Feedback Committee', 'Feedback Analysis Survey', 'Quality Improvement Feedback', 'IQAC Survey Guidelines', 'Internal Review', 'Feedback Committee', 'v2.0', 'July 2025', 'Annual', 'FB-2025', 'Survey Database', 'Aggregated questionnaire results from students, teachers, employers, and alumni.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Feedback Reports...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="action taken reports iqac resolutions" data-tags="report iqac" data-format="PDF" data-date="December 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Action Taken Reports</h4>
+                                    <span>IQAC Resolutions Execution Log</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IQAC Coordinator</span></div>
+                                <div><span>Updated</span><span>Dec 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.1 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Action Taken Report (ATR)', 'Demonstrating successful implementation of stakeholder feedback and IQAC recommendations.', 'December 2025', 'IQAC Coordinator', 'Action Taken Report', 'Accountability Execution Log', 'IQAC Operational Rules', 'NAAC / Committee', 'IQAC Secretariat', 'v2.1', 'December 2025', 'Annual', 'ATR-2025', 'Execution Register', 'Demonstrating successful implementation of stakeholder feedback and IQAC recommendations.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading ATR...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="academic audit reports quality review" data-tags="report audit iqac" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Academic Audit</h4>
+                                    <span>External & Internal Quality Audits</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Verified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Academic Comm.</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.1 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Academic Audit Report', 'Evaluation of teaching effectiveness, curriculum delivery, and student outcomes.', 'June 2025', 'Academic Committee', 'Academic Audit Report', 'Pedagogical Quality Check', 'University Guidelines', 'Faculty & IQAC', 'Academic Committee', 'v1.0', 'June 2025', 'Annual', 'AUD-ACAD-25', 'Audit Summary', 'Evaluation of teaching effectiveness, curriculum delivery, and student outcomes.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="quality initiatives workshops seminars" data-tags="report iqac" data-format="PDF" data-date="November 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Quality Initiatives</h4>
+                                    <span>FDPs, Seminars & Workshops</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IQAC Secretariat</span></div>
+                                <div><span>Updated</span><span>Nov 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.4 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('IQAC Quality Initiatives Report', 'Faculty development programs, webinars, and administrative training workshops conducted.', 'November 2025', 'IQAC Secretariat', 'Quality Initiatives Record', 'Capacity Building Summary', 'IQAC Action Plan', 'Faculty & Staff', 'IQAC Secretariat', 'v1.0', 'November 2025', 'Annual', 'QI-2025', 'Event Log', 'Faculty development programs, webinars, and administrative training workshops conducted.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Quality Initiatives...')">📥 Download PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Government Portals & Submissions -->
+                <div id="portals" class="repo-section-block" data-section-name="portals" data-category-name="Government">
+                    <div class="repo-section-title">🌐 Government Portals & Submissions</div>
+                    <div class="repo-section-desc">Official compliance data submitted to national portals including AISHE, NIRF, and university bodies.</div>
+
+                    <div class="repo-cards-grid">
+                        <div class="repo-card card-type-certificate" data-search-text="aishe all india survey on higher education data" data-tags="government certificate" data-format="Portal" data-date="February 2026">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>AISHE</h4>
+                                    <span>All India Survey on Higher Education</span>
+                                </div>
+                                <span class="repo-status-pill status-submitted">🔵 Submitted</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Ministry of Education</span></div>
+                                <div><span>Updated</span><span>Feb 2026</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('AISHE Portal Integration', 'Official government portal data repository for higher education statistics.', 'February 2026', 'Ministry of Education', 'AISHE Gateway', 'National Higher Ed Survey', 'MoE Statistical Mandate', 'Govt Regulators', 'Ministry of Education', 'v2026', 'February 2026', 'Annual', 'AISHE-CODE-C', 'Government Receipt', 'Official government portal data repository for higher education statistics.')">View Profile</button>
+                                <a href="https://aishe.gov.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="nirf national institutional ranking framework" data-tags="report government" data-format="Portal" data-date="January 2026">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>NIRF</h4>
+                                    <span>National Institutional Ranking Framework</span>
+                                </div>
+                                <span class="repo-status-pill status-submitted">🔵 Submitted</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>MoE / NBA</span></div>
+                                <div><span>Updated</span><span>Jan 2026</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('NIRF Portal Link', 'National ranking framework portal submission record.', 'January 2026', 'MoE / NBA', 'NIRF Ranking Gateway', 'National Institutional Ranking', 'MoE Ranking Rules', 'Public & Aspirants', 'National Board of Accreditation', 'v2026', 'January 2026', 'Annual', 'NIRF-ID-1969', 'Submission Token', 'National ranking framework portal submission record.')">View Profile</button>
+                                <a href="https://www.nirfindia.org" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="abc academic bank of credits" data-tags="government" data-format="API" data-date="Today">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>ABC</h4>
+                                    <span>Academic Bank of Credits</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>UGC / DigiLocker</span></div>
+                                <div><span>Updated</span><span>Today</span></div>
+                                <div><span>Format</span><span>API</span></div>
+                                <div><span>Size</span><span>Live</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Academic Bank of Credits (ABC)', 'Digital credit repository storing student academic credits seamlessly.', 'Ongoing', 'UGC / DigiLocker', 'ABC Integration Hub', 'Digital Credit Storage', 'NEP 2020 Credit Framework', 'Enrolled Students', 'UGC / DigiLocker', 'v3.2', 'Today', 'Real-time', 'ABC-API-GW', 'API Handshake Log', 'Digital credit repository storing student academic credits seamlessly.')">View Profile</button>
+                                <a href="https://www.abc.gov.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="nad national academic depository certificates" data-tags="government" data-format="Portal" data-date="Last Week">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>NAD</h4>
+                                    <span>National Academic Depository</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>MoE / DigiLocker</span></div>
+                                <div><span>Updated</span><span>Last Week</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('National Academic Depository (NAD)', 'Online storehouse of digital academic awards and verifiable degrees.', 'Ongoing', 'MoE / Digilocker', 'NAD Depository Gateway', 'Verifiable Digital Degrees', 'MoE NAD Guidelines', 'Alumni & Employers', 'DigiLocker Authority', 'v2.0', 'Last Week', 'Continuous', 'NAD-STORE-01', 'Repository Certificate', 'Online storehouse of digital academic awards and verifiable degrees.')">View Profile</button>
+                                <a href="https://nad.gov.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="digilocker digital document wallet" data-tags="government" data-format="API" data-date="Real-time">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>DigiLocker</h4>
+                                    <span>Digital Document Wallet</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>MeitY India</span></div>
+                                <div><span>Updated</span><span>Real-time</span></div>
+                                <div><span>Format</span><span>API</span></div>
+                                <div><span>Size</span><span>Live</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('DigiLocker Integration', 'Cloud-based platform for issuance and verification of documents and certificates.', 'Real-time', 'MeitY Govt of India', 'DigiLocker Issuers Hub', 'Citizen Document Verification', 'IT Act 2000', 'Students & Citizens', 'MeitY India', 'v4.0', 'Real-time', 'Continuous', 'DIGI-API-09', 'Issuer Certificate', 'Cloud-based platform for issuance and verification of documents and certificates.')">View Profile</button>
+                                <a href="https://www.digilocker.gov.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="ugc university grants commission portal" data-tags="ugc government" data-format="Portal" data-date="Active">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>UGC</h4>
+                                    <span>University Grants Commission</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>UGC New Delhi</span></div>
+                                <div><span>Updated</span><span>Active</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('UGC Portal Gateway', 'Statutory regulator portal for higher education circulars and notifications.', 'Active', 'UGC New Delhi', 'UGC Portal Link', 'Higher Ed Regulation', 'UGC Act 1956', 'Universities & Colleges', 'UGC New Delhi', 'v1.0', 'Active', 'Ongoing', 'UGC-PORTAL', 'Regulatory Link', 'Statutory regulator portal for higher education circulars and notifications.')">View Profile</button>
+                                <a href="https://www.ugc.ac.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="aicte all india council for technical education" data-tags="government" data-format="Portal" data-date="Active">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>AICTE</h4>
+                                    <span>All India Council for Technical Ed.</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>AICTE New Delhi</span></div>
+                                <div><span>Updated</span><span>Active</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('AICTE Portal Link', 'Approval process handbook and technical education guidelines.', 'Active', 'AICTE New Delhi', 'AICTE Portal Link', 'Technical Ed Standards', 'AICTE Act 1987', 'Technical Institutions', 'AICTE New Delhi', 'v1.0', 'Active', 'Ongoing', 'AICTE-PORTAL', 'Regulatory Link', 'Approval process handbook and technical education guidelines.')">View Profile</button>
+                                <a href="https://www.aicte-india.org" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="university portal mumbai university" data-tags="government" data-format="Portal" data-date="Today">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>University Portal</h4>
+                                    <span>University of Mumbai Affiliation Hub</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Univ. of Mumbai</span></div>
+                                <div><span>Updated</span><span>Today</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('University of Mumbai Portal', 'Affiliated college circulars, syllabus downloads, and exam results gateway.', 'Today', 'University of Mumbai', 'MU Affiliation Gateway', 'Affiliated College Services', 'Mumbai University Act', 'Affiliated Colleges', 'University of Mumbai', 'v2.5', 'Today', 'Daily', 'MU-PORTAL-26', 'University Link', 'Affiliated college circulars, syllabus downloads, and exam results gateway.')">View Profile</button>
+                                <a href="https://mu.ac.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="mhrd ministry of education portal" data-tags="government" data-format="Portal" data-date="Active">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>MHRD</h4>
+                                    <span>Ministry of Education (Govt. of India)</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Govt of India</span></div>
+                                <div><span>Updated</span><span>Active</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Ministry of Education Portal', 'National education policy updates and central government schemes.', 'Active', 'Govt of India', 'MoE Portal Gateway', 'National Education Policy', 'Central Educational Rules', 'Educational Institutions', 'Govt of India', 'v1.0', 'Active', 'Ongoing', 'MOE-GOV', 'Government Link', 'National education policy updates and central government schemes.')">View Profile</button>
+                                <a href="https://www.education.gov.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-certificate" data-search-text="state higher education department maharashtra" data-tags="government" data-format="Portal" data-date="Last Week">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">🏛</div>
+                                <div class="repo-card-title">
+                                    <h4>State Higher Education</h4>
+                                    <span>Department of Higher & Tech. Education</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Govt of Mah.</span></div>
+                                <div><span>Updated</span><span>Last Week</span></div>
+                                <div><span>Format</span><span>Portal</span></div>
+                                <div><span>Size</span><span>Online</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('State Higher Education Dept Maharashtra', 'State-level admissions, fee guidelines, and minority status approvals.', 'Last Week', 'Govt of Maharashtra', 'Maharashtra Higher Ed Portal', 'State Educational Governance', 'Maharashtra University Act', 'State Colleges', 'Govt of Maharashtra', 'v1.8', 'Last Week', 'Weekly', 'MH-HED', 'State Link', 'State-level admissions, fee guidelines, and minority status approvals.')">View Profile</button>
+                                <a href="https://highered.maharashtra.gov.in" target="_blank" class="btn-repo-download">Open Portal ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: Policies & Governance -->
+                <div id="policies" class="repo-section-block" data-section-name="policies" data-category-name="Policies">
+                    <div class="repo-section-title">📜 Policies & Governance</div>
+                    <div class="repo-section-desc">Downloadable institutional handbooks, operational policies, and regulatory guidelines categorized into academic, HR, IT, student, finance, governance, and research domains.</div>
+
+                    <div class="repo-cards-grid">
+                        <div class="repo-card card-type-policy" data-search-text="examination policy grading evaluation rules" data-tags="policy" data-format="PDF" data-date="July 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📘</div>
+                                <div class="repo-card-title">
+                                    <h4>Examination Policies</h4>
+                                    <span>Conduct, Evaluation & Grading Rules</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Exam Cell</span></div>
+                                <div><span>Updated</span><span>July 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.3 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Examination & Evaluation Policy', 'Guidelines covering internal assessments, semester end exams, revaluation, and grading standards.', 'July 2025', 'Examination Cell', 'Examination Policy Manual', 'Fair Evaluation Standard', 'University Examination Ordinance', 'Students', 'Exam Cell', 'v2.0', 'July 2025', '2026', 'POL-EXAM-25', 'CoE Resolution', 'Guidelines covering internal assessments, semester end exams, revaluation, and grading standards.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="academic policies curriculum standards" data-tags="policy" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📘</div>
+                                <div class="repo-card-title">
+                                    <h4>Academic Policies</h4>
+                                    <span>Curriculum & Instructional Norms</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Academic Council</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.5 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Academic Policies Handbook', 'Guidelines on syllabus delivery, credit distribution, and academic rigor.', 'June 2025', 'Academic Council', 'Academic Policy Handbook', 'Instructional Excellence', 'Autonomous Statute', 'Faculty & Students', 'Academic Council', 'v3.0', 'June 2025', '2028', 'POL-ACAD-25', 'Council Order', 'Guidelines on syllabus delivery, credit distribution, and academic rigor.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="hr policies faculty service rules code" data-tags="policy" data-format="PDF" data-date="May 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📘</div>
+                                <div class="repo-card-title">
+                                    <h4>HR Policies</h4>
+                                    <span>Faculty & Staff Service Rules</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Trust Office</span></div>
+                                <div><span>Updated</span><span>May 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.2 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('HR Service Rules & Policies', 'Recruitment norms, leave rules, promotion policies, and code of conduct for staff.', 'May 2025', 'Trust Office', 'HR Service Rules Manual', 'Staff Welfare & Conduct', 'UGC / Trust Employment Norms', 'Employees', 'Trust Office', 'v4.1', 'May 2025', 'Permanent', 'POL-HR-25', 'Trust Circular', 'Recruitment norms, leave rules, promotion policies, and code of conduct for staff.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="it policies computer lab cybersecurity" data-tags="policy" data-format="PDF" data-date="August 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📘</div>
+                                <div class="repo-card-title">
+                                    <h4>IT Policies</h4>
+                                    <span>Cybersecurity & Lab Usage Norms</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IT Cell</span></div>
+                                <div><span>Updated</span><span>August 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.1 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('IT & Cybersecurity Policy', 'Network usage guidelines, Wi-Fi security, lab conduct, and data backup protocols.', 'August 2025', 'IT Systems Cell', 'IT Governance Policy', 'Cybersecurity Compliance', 'IT Security Standards', 'Campus Community', 'IT Cell', 'v2.0', 'August 2025', '2026', 'POL-IT-25', 'IT Director Sign-off', 'Network usage guidelines, Wi-Fi security, lab conduct, and data backup protocols.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="student policies code of conduct welfare" data-tags="policy" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📘</div>
+                                <div class="repo-card-title">
+                                    <h4>Student Policies</h4>
+                                    <span>Welfare, Discipline & Ethics</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Student Welfare</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>980 KB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Student Welfare & Discipline Policy', 'Code of conduct, anti-ragging bylaws, and extracurricular participation rules.', 'June 2025', 'Student Welfare', 'Student Discipline Policy', 'Campus Welfare Standards', 'UGC Student Guidelines', 'Students', 'Student Welfare', 'v2.2', 'June 2025', '2026', 'POL-STU-25', 'Principal Circular', 'Code of conduct, anti-ragging bylaws, and extracurricular participation rules.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="finance policies accounting procurement budget" data-tags="policy" data-format="PDF" data-date="September 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📘</div>
+                                <div class="repo-card-title">
+                                    <h4>Finance Policies</h4>
+                                    <span>Accounting, Procurement & Budgeting</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Accounts Office</span></div>
+                                <div><span>Updated</span><span>September 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.6 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Financial Management & Procurement Policy', 'Guidelines on fund disbursement, purchase approvals, and auditing standards.', 'September 2025', 'Accounts Office', 'Finance & Procurement Policy', 'Transparent Financial Control', 'Trust Financial Rules', 'Administrative Staff', 'Accounts Office', 'v3.0', 'September 2025', '2026', 'POL-FIN-25', 'Chief Accounts Officer', 'Guidelines on fund disbursement, purchase approvals, and auditing standards.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-policy" data-search-text="governance policies statutory administration" data-tags="policy" data-format="PDF" data-date="October 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📘</div>
+                                <div class="repo-card-title">
+                                    <h4>Governance Policies</h4>
+                                    <span>Statutory Administration & IQAC</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Active</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IQAC Secretariat</span></div>
+                                <div><span>Updated</span><span>October 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.8 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Institutional Governance Policy', 'Frameworks for decentralized administration, IQAC oversight, and statutory compliance.', 'October 2025', 'IQAC Secretariat', 'Governance Policy Framework', 'Transparent Administration', 'NAAC Governance Norms', 'Management & Leadership', 'IQAC Secretariat', 'v2.1', 'October 2025', '2027', 'POL-GOV-25', 'IQAC Resolution', 'Frameworks for decentralized administration, IQAC oversight, and statutory compliance.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading Policy...')">📥 Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 6: Audit, Reports & Returns -->
+                <div id="audits" class="repo-section-block" data-section-name="audits" data-category-name="Audit">
+                    <div class="repo-section-title">🔍 Audit, Reports & Returns</div>
+                    <div class="repo-section-desc">Certified financial statements, statutory audits, annual reports, IQAC audits, environmental returns, and regulatory filings.</div>
+
+                    <div class="repo-cards-grid">
+                        <div class="repo-card card-type-report" data-search-text="financial audit statement expenditure" data-tags="report audit" data-format="PDF" data-date="September 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Financial Audit</h4>
+                                    <span>Income & Expenditure Statements</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Certified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Chartered Acct.</span></div>
+                                <div><span>Updated</span><span>Sep 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.8 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Financial Audit Statement', 'Detailed audited breakdown of operational expenditure and capital grants.', 'September 2025', 'Accounts Office', 'Financial Audit Statement', 'Audited Accounts Review', 'Statutory Accounting Rules', 'Auditors & Regulators', 'Chartered Accountant', 'v1.0', 'September 2025', 'Annual', 'AUD-FIN-25', 'CA Certificate', 'Detailed audited breakdown of operational expenditure and capital grants.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="internal audit operational control check" data-tags="report audit" data-format="PDF" data-date="August 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Internal Audit</h4>
+                                    <span>Operational Controls & Process Checks</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Verified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Internal Audit</span></div>
+                                <div><span>Updated</span><span>Aug 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.5 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Internal Audit Report', 'Periodic review of cash flows, inventory registers, and fee reconciliation.', 'August 2025', 'Internal Audit Cell', 'Internal Audit Report', 'Process Compliance Verification', 'Trust Audit Mandate', 'Management', 'Internal Auditor', 'v1.0', 'August 2025', 'Bi-Annual', 'AUD-INT-25', 'Internal Memo', 'Periodic review of cash flows, inventory registers, and fee reconciliation.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="academic audit reports quality review" data-tags="report audit iqac" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Academic Audit</h4>
+                                    <span>External & Internal Quality Review</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Verified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Academic Comm.</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.1 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Academic Audit Report', 'Evaluation of teaching effectiveness, curriculum delivery, and student outcomes.', 'June 2025', 'Academic Committee', 'Academic Audit Report', 'Pedagogical Quality Check', 'University Guidelines', 'Faculty & IQAC', 'Academic Committee', 'v1.0', 'June 2025', 'Annual', 'AUD-ACAD-25', 'Audit Summary', 'Evaluation of teaching effectiveness, curriculum delivery, and student outcomes.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="green audit environmental campus assessment" data-tags="report audit" data-format="PDF" data-date="April 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Green Audit</h4>
+                                    <span>Campus Flora & Waste Management</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Certified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Environmental Cell</span></div>
+                                <div><span>Updated</span><span>Apr 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.4 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Green Audit Report', 'Evaluation of campus biodiversity, waste segregation, and carbon footprint.', 'April 2025', 'Environmental Cell', 'Green Audit Report', 'Environmental Sustainability', 'NAAC Criteria 7 Norms', 'Campus Community', 'Environmental Agency', 'v1.0', 'April 2025', 'Annual', 'AUD-GRN-25', 'Audit Certificate', 'Evaluation of campus biodiversity, waste segregation, and carbon footprint.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="energy audit eco sustainability report" data-tags="report audit" data-format="PDF" data-date="May 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Energy Audit</h4>
+                                    <span>Power Consumption & Sustainability</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Certified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Energy Auditor</span></div>
+                                <div><span>Updated</span><span>May 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.9 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Energy Audit Report', 'Assessment of electrical efficiency, solar generation, and conservation measures.', 'May 2025', 'Energy Auditor', 'Energy Audit Report', 'Power Efficiency & Conservation', 'BEE / NAAC Guidelines', 'Administration', 'Certified Energy Auditor', 'v1.0', 'May 2025', 'Annual', 'AUD-NRG-25', 'Auditor Sign-off', 'Assessment of electrical efficiency, solar generation, and conservation measures.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="gender audit equity diversity report" data-tags="report audit" data-format="PDF" data-date="March 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Gender Audit</h4>
+                                    <span>Equity, Safety & Diversity Review</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Certified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>WDC Cell</span></div>
+                                <div><span>Updated</span><span>Mar 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.3 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Gender Audit Report', 'Review of gender ratios, safety infrastructure, and inclusive campus programs.', 'March 2025', 'WDC Committee', 'Gender Audit Report', 'Inclusion & Safety Analysis', 'NAAC Equity Guidelines', 'Students & Staff', 'WDC Committee', 'v1.0', 'March 2025', 'Annual', 'AUD-GND-25', 'WDC Review', 'Review of gender ratios, safety infrastructure, and inclusive campus programs.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="environmental audit compliance assessment" data-tags="report audit" data-format="PDF" data-date="January 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Environmental Audit</h4>
+                                    <span>Statutory Pollution & Safety Check</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Certified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Pollution Board</span></div>
+                                <div><span>Updated</span><span>Jan 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>2.0 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Environmental Audit Report', 'Compliance review of water safety, sewage disposal, and air quality standards.', 'January 2025', 'Pollution Control Board', 'Environmental Audit Report', 'Pollution Control Standard', 'Environmental Protection Act', 'Administration', 'State Pollution Board', 'v1.0', 'January 2025', 'Annual', 'AUD-ENV-25', 'Board Certificate', 'Compliance review of water safety, sewage disposal, and air quality standards.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="iso audit quality management review" data-tags="report audit" data-format="PDF" data-date="January 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>ISO Audit</h4>
+                                    <span>Quality Management System Review</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Certified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>TUV Nord</span></div>
+                                <div><span>Updated</span><span>Jan 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.7 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('ISO Surveillance Audit Report', 'Annual surveillance audit report confirming adherence to ISO 9001:2015 standards.', 'January 2025', 'TUV Nord', 'ISO Surveillance Audit Report', 'Quality Management Review', 'ISO 9001 Standard', 'Administration', 'TUV Nord Auditor', 'v1.0', 'January 2025', 'Annual', 'AUD-ISO-25', 'Surveillance Log', 'Annual surveillance audit report confirming adherence to ISO 9001:2015 standards.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="library audit stock verification" data-tags="report audit" data-format="PDF" data-date="May 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Library Audit</h4>
+                                    <span>Stock Verification & Asset Register</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Verified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Library Comm.</span></div>
+                                <div><span>Updated</span><span>May 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.2 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Library Stock Verification Audit', 'Physical book verification, accession register check, and write-off records.', 'May 2025', 'Library Committee', 'Library Stock Verification Report', 'Asset & Book Register Audit', 'Library Statutes', 'Central Library', 'Library Committee', 'v1.0', 'May 2025', 'Annual', 'AUD-LIB-25', 'Verification Report', 'Physical book verification, accession register check, and write-off records.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="laboratory audit equipment safety check" data-tags="report audit" data-format="PDF" data-date="June 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>Laboratory Audit</h4>
+                                    <span>Equipment Calibration & Safety Check</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Verified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>Science Faculty</span></div>
+                                <div><span>Updated</span><span>June 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.4 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('Laboratory Safety & Equipment Audit', 'Calibration certificates, chemical inventory check, and safety gear verification.', 'June 2025', 'Science Committee', 'Laboratory Audit Report', 'Safety & Calibration Compliance', 'Lab Safety Standards', 'Science Departments', 'Lab Committee', 'v1.0', 'June 2025', 'Annual', 'AUD-LAB-25', 'Safety Sign-off', 'Calibration certificates, chemical inventory check, and safety gear verification.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+
+                        <div class="repo-card card-type-report" data-search-text="it audit systems cybersecurity review" data-tags="report audit" data-format="PDF" data-date="July 2025">
+                            <div class="repo-card-top">
+                                <div class="repo-icon-wrap">📊</div>
+                                <div class="repo-card-title">
+                                    <h4>IT Audit</h4>
+                                    <span>Cybersecurity & Infrastructure Check</span>
+                                </div>
+                                <span class="repo-status-pill status-active">🟢 Verified</span>
+                            </div>
+                            <div class="repo-meta-strip-4col">
+                                <div><span>Issued by</span><span>IT Auditor</span></div>
+                                <div><span>Updated</span><span>July 2025</span></div>
+                                <div><span>Format</span><span>PDF</span></div>
+                                <div><span>Size</span><span>1.8 MB</span></div>
+                            </div>
+                            <div class="repo-action-group">
+                                <button class="btn-repo-details" onclick="openDetailsModal('IT Systems & Cybersecurity Audit', 'Vulnerability assessment, firewall logs check, and database backup verification.', 'July 2025', 'External IT Auditor', 'IT Systems Audit Report', 'Cybersecurity Assurance', 'IT Governance Standards', 'IT Cell', 'External IT Auditor', 'v1.0', 'July 2025', 'Annual', 'AUD-IT-25', 'Security Certificate', 'Vulnerability assessment, firewall logs check, and database backup verification.')">View Profile</button>
+                                <a href="#" class="btn-repo-download" onclick="alert('Downloading report...')">📥 Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SEARCH MODE: Flat Results View -->
+            <div id="searchModeView" class="search-mode-container">
+                <div class="search-results-header-bar">
+                    <div class="search-results-title" id="searchModeTitle">Search Results</div>
+                    <div class="sort-dropdown-wrap">
+                        <span>Sort:</span>
+                        <select class="sort-select" id="sortResultsSelect" onchange="sortSearchResults()">
+                            <option value="relevance">Relevance ▼</option>
+                            <option value="newest">Newest First ▼</option>
+                            <option value="name">Document Name (A-Z) ▼</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flat-results-list" id="flatResultsListContainer">
+                    <!-- Cloned matched cards render here cleanly -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Floating AI Compliance Assistant Widget (Context-Aware) -->
+    <a href="#ask-ai" class="floating-ai-widget" id="floatingAiWidget" onclick="triggerContextualAiChat()">
+        ✨ Ask Compliance AI
+    </a>
+
+    <!-- Document Profile Modal (Knowledge System Style with Contextual AI & Clickable Related Documents) -->
+    <div class="modal-overlay" id="detailsModal">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeDetailsModal()">✕</button>
+            <h3 class="modal-title" id="modalDocTitle">Document Title</h3>
+            <div class="modal-subtitle" id="modalDocSub">Verified Statutory Record Profile</div>
+
+            <!-- Contextual AI Summary Box (Renamed to Compliance Summary) -->
+            <div class="modal-ai-box">
+                <div class="modal-ai-header">
+                    <span>✨ Compliance Summary</span>
+                    <span style="font-size: 10px; background: #BBF7D0; padding: 2px 6px; border-radius: 4px; color: #166534;">Verified Metadata</span>
+                </div>
+                <div class="modal-ai-text" id="modalAiText">
+                    AI summary loading...
+                </div>
+
+                <!-- Frequently Asked AI Prompts -->
+                <div class="ai-faq-bar">
+                    <div class="ai-faq-label">Frequently Asked:</div>
+                    <div class="ai-faq-pills">
+                        <button class="ai-faq-chip" onclick="triggerAiFaq('What is the primary purpose of this record?')">What is the purpose?</button>
+                        <button class="ai-faq-chip" onclick="triggerAiFaq('Why is this regulatory compliance required?')">Why is this required?</button>
+                        <button class="ai-faq-chip" onclick="triggerAiFaq('When does this document expire or require renewal?')">When does it expire?</button>
+                        <button class="ai-faq-chip" onclick="triggerAiFaq('Which department or committee owns this?')">Who owns this?</button>
+                        <button class="ai-faq-chip" onclick="triggerAiFaq('Which downstream reports depend on this document?')">Dependent reports?</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compliance Timeline UI Component -->
+            <div class="compliance-timeline-box" id="complianceTimelineBox">
+                <div class="timeline-title">Compliance History & Assessment Timeline</div>
+                <div class="timeline-nodes-row" id="timelineNodesContainer">
+                    <!-- Dynamically populated timeline nodes -->
+                </div>
+            </div>
+
+            <!-- Structured Document Profile Grid -->
+            <div class="modal-profile-grid">
+                <div class="modal-profile-item">
+                    <span>Document Name</span>
+                    <span id="pName">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Purpose</span>
+                    <span id="pPurpose">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Applicable Regulation</span>
+                    <span id="pRegulation">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Applicable To</span>
+                    <span id="pTo">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Issuing Authority</span>
+                    <span id="pAuthority">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Version</span>
+                    <span id="pVersion">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Effective Date</span>
+                    <span id="pEffective">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Validity</span>
+                    <span id="pValidity">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Document Number</span>
+                    <span id="pNumber">-</span>
+                </div>
+                <div class="modal-profile-item">
+                    <span>Referenced By</span>
+                    <div id="pRelatedContainer" style="margin-top: 2px;">-</div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 12px;">
+                <a href="#" class="btn-repo-download" onclick="alert('Downloading secure document...')">📥 Download Original PDF</a>
+                <button class="btn-repo-details" onclick="closeDetailsModal()">Close Window</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compliance Dashboard Modal (Operational Audit View) -->
+    <div class="dashboard-modal-overlay" id="dashboardModal">
+        <div class="dashboard-modal-container">
+            <button class="modal-close-btn" onclick="closeDashboardModal()">✕</button>
+            <h3 class="modal-title">Institutional Compliance Dashboard</h3>
+            <div class="modal-subtitle">Operational Audit Readiness & Telemetry</div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 24px;">
+                <div style="background: var(--surface-gray); padding: 16px; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <div style="font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase;">Compliance Score</div>
+                    <div style="font-size: 26px; font-weight: 900; color: var(--secondary);">96%</div>
+                </div>
+                <div style="background: var(--surface-gray); padding: 16px; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <div style="font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase;">Total Documents</div>
+                    <div style="font-size: 26px; font-weight: 900; color: var(--primary);">52</div>
+                </div>
+                <div style="background: #FEF3C7; padding: 16px; border-radius: 12px; border: 1px solid #FDE68A;">
+                    <div style="font-size: 11px; font-weight: 700; color: #B45309; text-transform: uppercase;">Due Soon</div>
+                    <div style="font-size: 26px; font-weight: 900; color: #B45309;">2</div>
+                </div>
+                <div style="background: #FEE2E2; padding: 16px; border-radius: 12px; border: 1px solid #FECACA;">
+                    <div style="font-size: 11px; font-weight: 700; color: #991B1B; text-transform: uppercase;">Missing</div>
+                    <div style="font-size: 26px; font-weight: 900; color: #991B1B;">0</div>
+                </div>
+            </div>
+
+            <div style="background: var(--surface-gray); padding: 18px; border-radius: 14px; border: 1px solid var(--border-color); margin-bottom: 24px;">
+                <h4 style="font-size: 14px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Recent Audit Telemetry Logs</h4>
+                <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                        <span>✓ NAAC Cycle 3 Accreditation Record Verified</span>
+                        <span style="color: var(--text-light); font-family: monospace;">3 days ago</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+                        <span>✓ FRA Fee Structure Schedule Updated</span>
+                        <span style="color: var(--text-light); font-family: monospace;">1 week ago</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>✓ AISHE Portal Data Sync Complete</span>
+                        <span style="color: var(--text-light); font-family: monospace;">Feb 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end;">
+                <button class="btn-repo-details" onclick="closeDashboardModal()">Close Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved. | <a href="CampusOS-Home.html" style="color: var(--secondary-light); text-decoration: none;">Return to College Home</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Master Controller with Fixed Faceted Filtering & Offset Scroll-Margin -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 40) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Smooth category navigation scroll with explicit offset to avoid hiding behind sticky header/toolbar
+        function scrollToSection(e, sectionId) {
+            if (document.getElementById("searchModeView").classList.contains("active")) {
+                clearSearchInput();
+            }
+
+            requestAnimationFrame(() => {
+                const section = document.getElementById(sectionId);
+                if (!section) return;
+
+                const offset = 180;
+                const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: top,
+                    behavior: "smooth"
+                });
+
+                document.querySelectorAll(".settings-nav-item").forEach(btn => btn.classList.remove("active"));
+                e.currentTarget.classList.add("active");
+            });
+        }
+
+        let currentActiveDocTitle = '';
+        let activeFacetCategory = 'all';
+
+        // Context-Aware Floating AI Button behavior
+        function updateFloatingAiButton(contextText) {
+            const btn = document.getElementById('floatingAiWidget');
+            if (contextText && contextText.trim() !== '') {
+                let actionVerb = 'Ask about';
+                if (contextText.toLowerCase().includes('naac') || contextText.toLowerCase().includes('certificate')) actionVerb = 'Explain';
+                if (contextText.toLowerCase().includes('aqar') || contextText.toLowerCase().includes('audit')) actionVerb = 'Summarize';
+                btn.textContent = `✨ ${actionVerb} ${contextText} →`;
+            } else {
+                btn.textContent = `✨ Ask Compliance AI`;
+            }
+        }
+
+        function triggerContextualAiChat() {
+            if (currentActiveDocTitle) {
+                alert(`Launching Compliance AI Assistant with context locked to "${currentActiveDocTitle}"...\n\nExample AI Queries:\n- What is the validity and issuing authority of ${currentActiveDocTitle}?\n- Which regulatory guidelines mandate this document?\n- Show related audit reports.`);
+            } else {
+                alert('Launching Compliance AI Assistant...\n\nExample Queries:\n- Show all expired certificates\n- Summarize AQAR 2024\n- Which documents expire next month?');
+            }
+        }
+
+        function triggerAiFaq(questionPrompt) {
+            alert(`Compliance AI Assistant Response for "${currentActiveDocTitle}":\n\nQuery: "${questionPrompt}"\n\nAI Analysis: Based on verified metadata and regulatory schemas, this record satisfies all mandatory statutory provisions under University Grants Commission and NAAC quality frameworks.`);
+        }
+
+        // Interactive Search Insights Category Faceted Filtering (Filtering WITHIN search results)
+        function filterByCategoryFacet(categoryName) {
+            activeFacetCategory = categoryName;
+            const query = document.getElementById('globalComplianceSearch').value.toLowerCase().trim();
+            executeSearch(query);
+
+            // Update pill UI state with active-facet darkening
+            document.querySelectorAll('.insights-pill').forEach(p => {
+                if(p.textContent.includes(categoryName)) p.classList.add('active-facet');
+                else p.classList.remove('active-facet');
+            });
+        }
+
+        // Quick Tag Filtering Logic
+        function filterByTag(tag, chipElem) {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            chipElem.classList.add('active');
+
+            document.getElementById('searchModeView').classList.remove('active');
+            document.getElementById('browseModeView').style.display = 'block';
+            document.getElementById('sidebarNav').classList.remove('search-insights-active');
+            document.getElementById('normalNavContainer').style.display = 'block';
+            document.getElementById('searchInsightsPanel').classList.remove('active');
+            document.getElementById('quickFiltersStrip').classList.remove('hidden-during-search');
+
+            const cards = document.querySelectorAll('#browseModeView .repo-card');
+            const sections = document.querySelectorAll('.repo-section-block');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const tags = card.getAttribute('data-tags') || '';
+                if (tag === 'all' || tags.includes(tag)) {
+                    card.classList.remove('card-hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('card-hidden');
+                }
+            });
+
+            sections.forEach(sec => {
+                const hasVisible = Array.from(sec.querySelectorAll('.repo-card')).some(c => !c.classList.contains('card-hidden'));
+                if (hasVisible) {
+                    sec.classList.remove('section-hidden');
+                } else {
+                    sec.classList.add('section-hidden');
+                }
+            });
+
+            document.getElementById('resultCountText').innerHTML = `Showing ${visibleCount} verified compliance documents &bull; Filter: "${tag.toUpperCase()}"`;
+            document.getElementById('clearSearchBtn').style.display = 'inline-block';
+            updateFloatingAiButton(tag !== 'all' ? tag : '');
+        }
+
+        // Clear Search Function
+        function clearSearchInput() {
+            document.getElementById('globalComplianceSearch').value = '';
+            activeFacetCategory = 'all';
+            document.getElementById('searchModeView').classList.remove('active');
+            document.getElementById('browseModeView').style.display = 'block';
+            document.getElementById('normalNavContainer').style.display = 'block';
+            document.getElementById('searchInsightsPanel').classList.remove('active');
+            document.getElementById('quickFiltersStrip').classList.remove('hidden-during-search');
+            document.getElementById('clearSearchBtn').style.display = 'none';
+
+            document.querySelectorAll('#browseModeView .repo-card').forEach(card => {
+                card.classList.remove('card-hidden');
+                card.classList.remove('search-highlight');
+                const badge = card.querySelector('.match-badge-tag');
+                if(badge) badge.remove();
+            });
+            document.querySelectorAll('.repo-section-block').forEach(sec => sec.classList.remove('section-hidden'));
+
+            document.querySelectorAll('.filter-chip').forEach((c, idx) => {
+                if(idx === 0) c.classList.add('active');
+                else c.classList.remove('active');
+            });
+
+            document.getElementById('resultCountText').innerHTML = `Showing all 52 verified compliance documents &bull; Search: "All"`;
+            currentActiveDocTitle = '';
+            updateFloatingAiButton('');
+        }
+
+        // Core Execution Engine for Search & Faceted Insights (Filtering WITHIN search results)
+        function executeSearch(query) {
+            const browseView = document.getElementById('browseModeView');
+            const searchView = document.getElementById('searchModeView');
+            const normalNav = document.getElementById('normalNavContainer');
+            const insightsPanel = document.getElementById('searchInsightsPanel');
+            const quickFilters = document.getElementById('quickFiltersStrip');
+            const flatListContainer = document.getElementById('flatResultsListContainer');
+            const clearBtn = document.getElementById('clearSearchBtn');
+
+            if (query.length > 0) {
+                clearBtn.style.display = 'inline-block';
+                browseView.style.display = 'none';
+                searchView.classList.add('active');
+                quickFilters.classList.add('hidden-during-search'); // Hides quick filters during search
+                
+                normalNav.style.display = 'none';
+                insightsPanel.classList.add('active');
+
+                flatListContainer.innerHTML = '';
+                let matchCount = 0;
+                let keywordMatchCount = 0; // Total found by keyword before facet filter
+                let matchedCategories = new Map(); // Category Name -> Count
+                let matchedFormats = new Set();
+
+                const allCards = browseView.querySelectorAll('.repo-card');
+                
+                // First pass: compute global keyword matches to populate accurate insights counts
+                allCards.forEach(card => {
+                    const text = card.getAttribute('data-search-text') || '';
+                    const title = card.querySelector('h4').textContent.toLowerCase();
+                    const sub = card.querySelector('span').textContent.toLowerCase();
+                    const matchesQuery = text.includes(query) || title.includes(query) || sub.includes(query);
+
+                    if (matchesQuery) {
+                        keywordMatchCount++;
+                        const sectionBlock = card.closest('.repo-section-block');
+                        if (sectionBlock) {
+                            const catName = sectionBlock.getAttribute('data-category-name');
+                            const catId = sectionBlock.getAttribute('data-category-id');
+                            if (!matchedCategories.has(catName)) {
+                                matchedCategories.set(catName, { count: 0, id: catId });
+                            }
+                            matchedCategories.get(catName).count++;
+                        }
+                        const fmt = card.getAttribute('data-format');
+                        if (fmt) matchedFormats.add(fmt);
+
+                        // Second pass: apply active facet filter within keyword results
+                        const catName = sectionBlock ? sectionBlock.getAttribute('data-category-name') : '';
+                        const matchesFacet = (activeFacetCategory === 'all' || catName === activeFacetCategory);
+
+                        if (matchesFacet) {
+                            matchCount++;
+                            const clone = card.cloneNode(true);
+                            clone.classList.add('search-highlight');
+                            
+                            const titleArea = clone.querySelector('.repo-card-title');
+                            if (titleArea && !titleArea.querySelector('.match-badge-tag')) {
+                                const matchTag = document.createElement('div');
+                                matchTag.className = 'match-badge-tag';
+                                let matchTypeLabel = 'Matched in Metadata';
+                                if (title.includes(query)) matchTypeLabel = 'Matched in Title';
+                                else if (card.getAttribute('data-tags').includes(query)) matchTypeLabel = 'Matched in Category';
+                                else matchTypeLabel = 'Matched in Document Text';
+
+                                matchTag.textContent = `✓ ${matchTypeLabel}`;
+                                titleArea.insertBefore(matchTag, titleArea.firstChild);
+                            }
+
+                            flatListContainer.appendChild(clone);
+                        }
+                    }
+                });
+
+                // Populate Search Insights Panel dynamically with interactive faceted category counts
+                const catContainer = document.getElementById('insightCategoriesContainer');
+                catContainer.innerHTML = '';
+                
+                const allPill = document.createElement('span');
+                allPill.className = `insights-pill ${activeFacetCategory === 'all' ? 'active-facet' : ''}`;
+                allPill.textContent = `All (${keywordMatchCount})`;
+                allPill.onclick = () => filterByCategoryFacet('all');
+                catContainer.appendChild(allPill);
+
+                matchedCategories.forEach((data, catName) => {
+                    const pill = document.createElement('span');
+                    pill.className = `insights-pill ${activeFacetCategory === catName ? 'active-facet' : ''}`;
+                    pill.textContent = `✓ ${catName} (${data.count})`;
+                    pill.onclick = () => filterByCategoryFacet(catName);
+                    catContainer.appendChild(pill);
+                });
+                if (matchedCategories.size === 0) catContainer.innerHTML = '<span style="font-size:12px; color:var(--text-light);">None</span>';
+
+                const fmtContainer = document.getElementById('insightTypesContainer');
+                fmtContainer.innerHTML = '';
+                matchedFormats.forEach(fmt => {
+                    const pill = document.createElement('span');
+                    pill.className = `insights-pill`;
+                    pill.textContent = `${fmt} (${matchCount})`;
+                    fmtContainer.appendChild(pill);
+                });
+                if (matchedFormats.size === 0) fmtContainer.innerHTML = '<span style="font-size:12px; color:var(--text-light);">None</span>';
+
+                document.getElementById('searchModeTitle').textContent = `${query.toUpperCase()} (${matchCount} Document${matchCount === 1 ? '' : 's'})`;
+                document.getElementById('resultCountText').innerHTML = `${matchCount} verified document${matchCount === 1 ? '' : 's'} found &bull; Keyword: "${query.toUpperCase()}"`;
+                currentActiveDocTitle = query;
+                updateFloatingAiButton(query);
+
+                if (matchCount === 0) {
+                    flatListContainer.innerHTML = `
+                        <div style="text-align:center; padding:50px; background:white; border-radius:16px; border:1px solid var(--border-color);">
+                            <div style="font-size:16px; font-weight:800; color:var(--primary); margin-bottom:8px;">No matching documents found in category "${activeFacetCategory}".</div>
+                            <p style="font-size:13px; color:var(--text-light); margin-bottom:16px;">Try resetting the category filter or searching popular terms:</p>
+                            <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+                                <button class="filter-chip" onclick="filterByCategoryFacet('all')">Reset Filter</button>
+                                <button class="filter-chip" onclick="quickSearchTrigger('NAAC')">NAAC</button>
+                                <button class="filter-chip" onclick="quickSearchTrigger('AQAR')">AQAR</button>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                clearSearchInput();
+                normalNav.style.display = 'block';
+                insightsPanel.classList.remove('active');
+            }
+        }
+
+        // Global Real-Time Search Event Listener
+        document.getElementById('globalComplianceSearch').addEventListener('input', function(e) {
+            activeFacetCategory = 'all'; // Reset facet on new text search
+            const query = e.target.value.toLowerCase().trim();
+            executeSearch(query);
+        });
+
+        // Quick Search Trigger from Empty State Suggestions
+        function quickSearchTrigger(term) {
+            const input = document.getElementById('globalComplianceSearch');
+            input.value = term;
+            executeSearch(term.toLowerCase().trim());
+        }
+
+        // Sort Search Results Function
+        function sortSearchResults() {
+            const sortBy = document.getElementById('sortResultsSelect').value;
+            const container = document.getElementById('flatResultsListContainer');
+            const cards = Array.from(container.querySelectorAll('.repo-card'));
+
+            cards.sort((a, b) => {
+                const titleA = a.querySelector('h4').textContent.toLowerCase();
+                const titleB = b.querySelector('h4').textContent.toLowerCase();
+                if (sortBy === 'name') {
+                    return titleA.localeCompare(titleB);
+                }
+                return 0;
+            });
+
+            container.innerHTML = '';
+            cards.forEach(c => container.appendChild(c));
+        }
+
+        // Document Profile Modal Logic with Knowledge System Structure & Clickable Related Documents
+        function openDetailsModal(title, desc, date, issuer, name, purpose, regulation, to, authority, version, effective, validity, number, related) {
+            currentActiveDocTitle = title;
+            updateFloatingAiButton(title);
+
+            document.getElementById('modalDocTitle').textContent = title;
+            document.getElementById('modalDocSub').textContent = 'Verified Statutory Record Profile';
+            
+            // Populate Knowledge System Grid
+            document.getElementById('pName').textContent = name || title;
+            document.getElementById('pPurpose').textContent = purpose || 'Statutory Compliance Record';
+            document.getElementById('pRegulation').textContent = regulation || 'UGC / Statutory Norms';
+            document.getElementById('pTo').textContent = to || 'Institution & Stakeholders';
+            document.getElementById('pAuthority').textContent = authority || issuer;
+            document.getElementById('pVersion').textContent = version || 'v1.0';
+            document.getElementById('pEffective').textContent = effective || date;
+            document.getElementById('pValidity').textContent = validity || 'Permanent / Valid';
+            document.getElementById('pNumber').textContent = number || 'SEC-DOC-2025';
+
+            // Populate Clickable Referenced By Documents
+            const relatedContainer = document.getElementById('pRelatedContainer');
+            relatedContainer.innerHTML = '';
+            if (related && related !== 'None') {
+                const relatedArray = related.split(', ');
+                relatedArray.forEach(docName => {
+                    const link = document.createElement('span');
+                    link.className = 'related-doc-link';
+                    link.textContent = `✓ ${docName} →`;
+                    link.onclick = () => {
+                        closeDetailsModal();
+                        document.getElementById('globalComplianceSearch').value = docName;
+                        executeSearch(docName.toLowerCase().trim());
+                    };
+                    relatedContainer.appendChild(link);
+                });
+            } else {
+                relatedContainer.textContent = 'None';
+            }
+
+            // Populate Compliance Summary Summary
+            document.getElementById('modalAiText').textContent = `This verified institutional document (${title}) was issued by ${issuer} to ensure regulatory transparency and academic compliance under ${regulation || 'statutory guidelines'}. It serves as authoritative evidence for institutional audits.`;
+
+            // Populate Compliance Timeline dynamically with Green completed dots and status labels & tooltips
+            const timelineContainer = document.getElementById('timelineNodesContainer');
+            timelineContainer.innerHTML = '';
+            
+            let timelineData = [
+                { label: 'Cycle 1', sub: '2014', status: 'completed', tooltip: 'Cycle 1 Assessment\nScore: 3.10 CGPA\nCompleted June 2014' },
+                { label: 'Cycle 2', sub: '2019', status: 'completed', tooltip: 'Cycle 2 Assessment\nScore: 3.25 CGPA\nCompleted June 2019' },
+                { label: 'Cycle 3', sub: '2024', status: 'completed', tooltip: 'NAAC Grade A+\nCGPA: 3.42\nIssued June 2024' },
+                { label: 'Next Assessment', sub: '2029', status: 'future', tooltip: 'Scheduled Assessment\nCycle 4 Review\nTarget: June 2029' }
+            ];
+
+            if (title.toLowerCase().includes('aqar') || title.toLowerCase().includes('audit')) {
+                timelineData = [
+                    { label: '2022', sub: 'Submitted', status: 'completed', tooltip: 'Annual Audit Report\nStatus: Approved\nVerified Oct 2022' },
+                    { label: '2023', sub: 'Submitted', status: 'completed', tooltip: 'Annual Audit Report\nStatus: Approved\nVerified Oct 2023' },
+                    { label: '2024', sub: 'Submitted', status: 'completed', tooltip: 'Annual Audit Report\nStatus: Approved\nVerified Oct 2024' },
+                    { label: '2025', sub: 'Certified', status: 'completed', tooltip: 'Annual Audit Report\nStatus: Certified\nVerified Oct 2025' },
+                    { label: '2026', sub: 'Scheduled', status: 'future', tooltip: 'Upcoming Annual Filing\nDue Q4 2026' }
+                ];
+            }
+
+            timelineData.forEach((node) => {
+                const nodeDiv = document.createElement('div');
+                nodeDiv.className = `t-node ${node.status}`;
+                nodeDiv.setAttribute('data-tooltip', node.tooltip);
+                const statusLabel = node.status === 'completed' ? 'Completed' : 'Upcoming';
+                nodeDiv.innerHTML = `
+                    <div class="t-node-status">${statusLabel}</div>
+                    <div class="t-node-dot">${node.status === 'completed' ? '✓' : '•'}</div>
+                    <div class="t-node-label">${node.label}</div>
+                    <div class="t-node-sub">${node.sub}</div>
+                `;
+                timelineContainer.appendChild(nodeDiv);
+            });
+
+            document.getElementById('detailsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDetailsModal() {
+            document.getElementById('detailsModal').classList.add('active'); // Wait, modal close logic:
+            document.getElementById('detailsModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentActiveDocTitle = '';
+            updateFloatingAiButton('');
+        }
+
+        // Compliance Dashboard Modal Controls
+        function openDashboardModal() {
+            document.getElementById('dashboardModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDashboardModal() {
+            document.getElementById('dashboardModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDetailsModal();
+                closeDashboardModal();
+            }
+        });
+
+        document.getElementById('detailsModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('detailsModal')) closeDetailsModal();
+        });
+
+        document.getElementById('dashboardModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('dashboardModal')) closeDashboardModal();
+        });
+    </script>
+</body>
+</html>

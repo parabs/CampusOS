@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Services & Industry Partnerships — Akbar Peerbhoy College | Powered by Campus OS</title>
+
+    <!-- SEO & OpenGraph Meta Tags -->
+    <meta name="description" content="Career Success & Industry Partnerships at Akbar Peerbhoy College. 96% career outcome record with 220+ top corporate recruiters.">
+    <meta property="og:title" content="Career Services — Akbar Peerbhoy College | Powered by Campus OS">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --primary-light: #1E293B;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --secondary-light: #60A5FA;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface-gray: #F1F5F9;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --text-white: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.1);
+            
+            --radius-hero: 40px;
+            --radius-card: 24px;
+            --radius-btn: 9999px;
+            --radius-stats: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* SVG Icon Helper */
+        .icon-svg {
+            width: 20px; height: 20px;
+            stroke: currentColor; stroke-width: 2;
+            stroke-linecap: round; stroke-linejoin: round;
+            fill: none; display: inline-block; vertical-align: middle;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Slim Campus OS Clickable Product Badge Banner */
+        .campus-os-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: var(--text-white);
+            font-size: 13px;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1100;
+            letter-spacing: 0.03em;
+        }
+        .campus-os-banner .banner-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: opacity 0.2s;
+        }
+        .campus-os-banner .banner-link:hover { opacity: 0.8; }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 37px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 14px 5%;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 10px 5%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        /* Enforce a consistent left margin/gap between the logo and menu items */
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            list-style: none;
+            margin-left: 60px; /* Locks exact consistent distance from the logo */
+            margin-right: auto; /* Pushes the actions to the far right cleanly */
+        }
+
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 14.5px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+        .nav-link.active { font-weight: 700; color: var(--secondary); }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+        .college-crest {
+            width: 42px; height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 900; font-size: 18px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800; font-size: 19px; color: var(--primary);
+            display: flex; flex-direction: column; letter-spacing: -0.02em;
+        }
+        .logo-text span { font-size: 10px; font-weight: 600; color: var(--secondary); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
+        .nav-link { color: var(--text); font-weight: 500; text-decoration: none; padding: 6px 0; font-size: 14px; transition: color 0.2s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+        .nav-link.active { font-weight: 700; border-bottom: 2px solid var(--secondary); }
+
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        .portal-login-link { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 13px; padding: 0 12px; }
+        .nav-cta {
+            background: var(--secondary); color: white !important;
+            padding: 10px 24px; border-radius: var(--radius-btn);
+            text-decoration: none; font-weight: 600; font-size: 15px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Breadcrumb Bar */
+        .breadcrumb-bar {
+            max-width: 1320px;
+            margin: 110px auto 20px;
+            padding: 0 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .breadcrumb-bar a { color: var(--secondary); text-decoration: none; }
+        .breadcrumb-bar a:hover { text-decoration: underline; }
+
+        /* =========================================================
+           CAREER SUCCESS & INDUSTRY PARTNERSHIPS ECOSYSTEM SECTION
+           ========================================================= */
+        .career-success-section {
+            background: #F8FAFC;
+            padding: 40px 20px 100px;
+        }
+        .career-container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+        .career-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 60px;
+        }
+        .career-header h2 {
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        .career-header p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .experience-block {
+            margin-bottom: 80px;
+        }
+        .experience-header {
+            margin-bottom: 30px;
+        }
+        .experience-header span {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .experience-header h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        /* Graduate Outcomes Strip */
+        .career-outcomes-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .career-stat-card {
+            background: white;
+            border-radius: var(--radius-stats);
+            padding: 26px;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform 0.3s;
+        }
+        .career-stat-card:hover { transform: translateY(-4px); }
+        .career-stat-card .lbl { font-size: 12px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; }
+        .career-stat-card .val { font-size: 32px; font-weight: 900; color: var(--secondary); }
+        .career-stat-card .sub { font-size: 12px; color: var(--text-light); font-weight: 500; }
+
+        /* Industry Ready Talent */
+        .talent-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .talent-panel {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 36px;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow);
+        }
+        .talent-panel h4 { font-size: 18px; color: var(--primary); font-weight: 800; margin-bottom: 20px; }
+        .stream-count-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .stream-count-row span:first-child { font-weight: 700; color: var(--primary); }
+        .stream-count-row span:last-child { font-weight: 800; color: var(--secondary); background: #EFF6FF; padding: 4px 12px; border-radius: 20px; font-size: 13px; }
+        
+        .certified-skills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .certified-skill-pill {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 10px 18px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .certified-skill-pill span { color: #10B981; }
+
+        /* Why Companies Recruit Every Year */
+        .why-companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .company-benefit-card {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+        }
+        .company-benefit-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--secondary); }
+        .comp-feat-icon { font-size: 20px; background: #EFF6FF; width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--secondary); }
+        .comp-feat-text h5 { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .comp-feat-text p { font-size: 13px; color: var(--text-light); line-height: 1.4; }
+
+        /* Industry Partnerships Story */
+        .partnerships-story-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+        .partnerships-stats-col {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 36px;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .part-stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #F1F5F9;
+            padding-bottom: 12px;
+        }
+        .part-stat-row span:first-child { font-size: 14px; color: var(--text-light); font-weight: 600; }
+        .part-stat-row span:last-child { font-size: 22px; color: var(--primary); font-weight: 900; }
+
+        .partnerships-tiers-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .partner-tier-card {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 24px 30px;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .partner-tier-card h5 { font-size: 16px; font-weight: 800; color: var(--primary); min-width: 120px; }
+        .partner-logos-inline {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .partner-logo-txt {
+            font-size: 16px;
+            font-weight: 800;
+            color: #64748B;
+            letter-spacing: -0.01em;
+        }
+
+        /* Career Preparation Ecosystem */
+        .mckinsey-ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+        .mckinsey-pill {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            transition: all 0.2s;
+        }
+        .mckinsey-pill:hover { border-color: var(--secondary); transform: translateY(-2px); box-shadow: var(--shadow); }
+        .mckinsey-pill span { color: #10B981; font-size: 18px; }
+
+        /* Success Stories */
+        .success-stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .success-story-card {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 28px;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .story-student-header { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; }
+        .story-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .story-info h5 { font-size: 16px; font-weight: 700; color: var(--primary); }
+        .story-info p { font-size: 13px; color: var(--text-light); }
+        .story-quote { font-size: 14px; color: var(--text); font-style: italic; margin-bottom: 16px; line-height: 1.5; }
+        .story-meta-badge { background: #EFF6FF; color: var(--secondary); padding: 8px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; display: flex; justify-content: space-between; }
+
+        /* Recruiter Testimonials */
+        .recruiter-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        .recruiter-testimonial-card {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 32px;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .recruiter-testimonial-card::before {
+            content: '“';
+            position: absolute;
+            top: 10px; right: 24px;
+            font-size: 80px; color: #F1F5F9;
+            font-family: serif; z-index: 0; pointer-events: none;
+        }
+        .recruiter-quote-text {
+            font-size: 15px; color: var(--text); font-style: italic;
+            line-height: 1.6; margin-bottom: 24px; position: relative; z-index: 1;
+        }
+        .recruiter-meta-box {
+            border-top: 1px solid #F1F5F9; padding-top: 16px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .recruiter-meta-box h5 { font-size: 15px; font-weight: 800; color: var(--primary); }
+        .recruiter-meta-box p { font-size: 12px; color: var(--text-light); font-weight: 600; }
+        .recruiter-org-tag { background: #F8FAFC; border: 1px solid #E2E8F0; padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; color: var(--secondary); }
+
+        /* Dual Equal CTAs Banner */
+        .dual-cta-banner {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            border-radius: var(--radius-hero);
+            padding: 60px 40px; color: white; margin: 60px auto 0; max-width: 1320px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+        }
+        .dual-cta-column {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-card); padding: 36px;
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .dual-cta-column h3 { font-size: 24px; font-weight: 800; color: white; }
+        .dual-cta-column p { font-size: 14px; color: #94A3B8; line-height: 1.5; }
+        .dual-cta-btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+        .cinematic-btn-primary {
+            background: var(--secondary); color: white; padding: 10px 20px; border-radius: var(--radius-btn);
+            font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); display: inline-flex; align-items: center; gap: 6px;
+        }
+        .cinematic-btn-primary:hover { background: var(--secondary-dark); }
+        .cinematic-btn-secondary {
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); color: white;
+            padding: 10px 20px; border-radius: var(--radius-btn); font-size: 13px; font-weight: 600;
+            text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;
+        }
+        .cinematic-btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
+
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h3 { font-size: 32px; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .section-header p { font-size: 16px; color: var(--text-light); }
+
+        /* Floating AI Assistant */
+        .floating-ai-widget {
+            position: fixed; bottom: 30px; right: 30px; z-index: 2500;
+            background: var(--primary); color: white; padding: 12px 20px;
+            border-radius: var(--radius-btn); font-size: 13px; font-weight: 700;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.4); cursor: pointer; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .floating-ai-widget:hover { background: var(--primary-dark); }
+
+        footer { background: var(--primary-dark); color: white; padding: 60px 20px 40px; text-align: center; margin-top: 60px; }
+        .footer-bottom p { font-size: 14px; color: var(--text-light); }
+
+        @media (max-width: 992px) {
+            .talent-grid { grid-template-columns: 1fr; }
+            .partnerships-story-grid { grid-template-columns: 1fr; }
+            .dual-cta-banner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slim Product Banner -->
+    <header class="campus-os-banner">
+        <div>🚀 <strong>Campus OS Demo Showcase</strong> — Career Services Workspace</div>
+        <div><a href="CampusOS-Home.html" class="banner-link">Return to Home &rarr;</a></div>
+    </header>
+
+    <!-- Global Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <a href="CampusOS-Home.html" class="logo-area">
+            <div class="college-crest">AP</div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="programs.html" class="nav-link">Programs</a></li>
+            <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+            <li><a href="career-services.html" class="nav-link active">Career Services</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
+            <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance & Regulatory</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="CampusOS-Home.html#apply" class="portal-login-link">Portal Login</a>
+            <a href="CampusOS-Home.html#apply" class="nav-cta">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Bar -->
+    <div class="breadcrumb-bar" id="breadcrumbBar">
+        <a href="CampusOS-Home.html">Akbar Peerbhoy College</a> &gt; <span>Career Services Workspace</span>
+    </div>
+
+    <!-- Career Success & Industry Partnerships Ecosystem Section -->
+    <section class="career-success-section">
+        <div class="career-container">
+            
+            <div class="career-header reveal">
+                <span class="step-pill-tag" style="margin-bottom: 12px; display: inline-block; background: #DBEAFE; color: #1D4ED8; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase;">Institutional Ecosystem</span>
+                <h2>Career Success & Industry Partnerships</h2>
+                <p>Connecting academic excellence directly with top corporate recruiters through verified student talent, robust transformation frameworks, and enduring partnerships.</p>
+            </div>
+
+            <!-- EXPERIENCE 1: Graduate Outcomes -->
+            <div class="experience-block reveal">
+                <div class="experience-header">
+                    <span>Experience 01</span>
+                    <h3>Graduate Outcomes</h3>
+                </div>
+                <div class="career-outcomes-strip">
+                    <div class="career-stat-card">
+                        <span class="lbl">🎯 Success Rate</span>
+                        <span class="val">96%</span>
+                        <span class="sub">Employed or Admitted</span>
+                    </div>
+                    <div class="career-stat-card">
+                        <span class="lbl">💼 Campus Placements</span>
+                        <span class="val">70%</span>
+                        <span class="sub">Top Corporate Partners</span>
+                    </div>
+                    <div class="career-stat-card">
+                        <span class="lbl">🎓 Higher Education</span>
+                        <span class="val">15%</span>
+                        <span class="sub">MBA, MS, CA & M.Tech</span>
+                    </div>
+                    <div class="career-stat-card">
+                        <span class="lbl">🚀 Entrepreneurship</span>
+                        <span class="val">8%</span>
+                        <span class="sub">Incubated Startups</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE 2: Industry Ready Talent -->
+            <div class="experience-block reveal">
+                <div class="experience-header">
+                    <span>Experience 02</span>
+                    <h3>Industry Ready Talent</h3>
+                </div>
+                <div class="talent-grid">
+                    <div class="talent-panel">
+                        <h4>Industry Ready Graduates by Stream</h4>
+                        <div class="stream-count-row"><span>Commerce</span><span>620 Students</span></div>
+                        <div class="stream-count-row"><span>Management</span><span>480 Students</span></div>
+                        <div class="stream-count-row" style="border-bottom:none;"><span>Computer Science</span><span>520 Students</span></div>
+                    </div>
+                    <div class="talent-panel">
+                        <h4>Certified Technical & Functional Skills</h4>
+                        <div class="certified-skills-wrap">
+                            <div class="certified-skill-pill"><span>✓</span> Power BI</div>
+                            <div class="certified-skill-pill"><span>✓</span> SAP</div>
+                            <div class="certified-skill-pill"><span>✓</span> Tally Prime</div>
+                            <div class="certified-skill-pill"><span>✓</span> Python</div>
+                            <div class="certified-skill-pill"><span>✓</span> Data Analytics</div>
+                            <div class="certified-skill-pill"><span>✓</span> Digital Marketing</div>
+                            <div class="certified-skill-pill"><span>✓</span> Financial Modelling</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE 3: Why Companies Recruit Every Year -->
+            <div class="experience-block reveal">
+                <div class="experience-header">
+                    <span>Experience 03</span>
+                    <h3>Why Companies Recruit Every Year</h3>
+                </div>
+                <div class="why-companies-grid">
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">👥</div>
+                        <div class="comp-feat-text">
+                            <h5>Dedicated Placement Office</h5>
+                            <p>End-to-end coordinator support throughout the entire recruitment cycle.</p>
+                        </div>
+                    </div>
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">🎯</div>
+                        <div class="comp-feat-text">
+                            <h5>Single Point of Contact</h5>
+                            <p>Streamlined communication for interview schedules and offers.</p>
+                        </div>
+                    </div>
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">📅</div>
+                        <div class="comp-feat-text">
+                            <h5>Digital Interview Scheduling</h5>
+                            <p>Automated slot booking and calendar synchronization.</p>
+                        </div>
+                    </div>
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">🔍</div>
+                        <div class="comp-feat-text">
+                            <h5>Pre-screened Candidates</h5>
+                            <p>Verified transcripts and skill-matched student profiles.</p>
+                        </div>
+                    </div>
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">🏛️</div>
+                        <div class="comp-feat-text">
+                            <h5>Interview Infrastructure</h5>
+                            <p>Fully equipped smart auditoriums and hybrid interview suites.</p>
+                        </div>
+                    </div>
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">📂</div>
+                        <div class="comp-feat-text">
+                            <h5>Resume Database</h5>
+                            <p>Instant access to structured candidate CV repositories.</p>
+                        </div>
+                    </div>
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">📊</div>
+                        <div class="comp-feat-text">
+                            <h5>Skill Reports</h5>
+                            <p>Detailed analytical breakdowns of technical proficiency.</p>
+                        </div>
+                    </div>
+                    <div class="company-benefit-card">
+                        <div class="comp-feat-icon">🤝</div>
+                        <div class="comp-feat-text">
+                            <h5 style="margin-bottom:2px;">Post Offer Coordination</h5>
+                            <p>Seamless onboarding and joining support for candidates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE 4: Industry Partnerships Story -->
+            <div class="experience-block reveal">
+                <div class="experience-header">
+                    <span>Experience 04</span>
+                    <h3>Industry Partnerships</h3>
+                </div>
+                <div class="partnerships-story-grid">
+                    <div class="partnerships-stats-col">
+                        <h4 style="font-size: 18px; color: var(--primary); font-weight: 800;">Partnership Metrics</h4>
+                        <div class="part-stat-row"><span>Corporate Recruiters</span><span>220+</span></div>
+                        <div class="part-stat-row"><span>Repeat Recruiters</span><span>48</span></div>
+                        <div class="part-stat-row"><span>Internship Partners</span><span>32</span></div>
+                        <div class="part-stat-row"><span>Strategic Partners</span><span>18</span></div>
+                        <div class="part-stat-row" style="border-bottom:none;"><span>MoUs Signed</span><span>12</span></div>
+                    </div>
+                    <div class="partnerships-tiers-col">
+                        <div class="partner-tier-card">
+                            <h5>Technology</h5>
+                            <div class="partner-logos-inline">
+                                <span class="partner-logo-txt">TCS</span>
+                                <span class="partner-logo-txt">INFOSYS</span>
+                                <span class="partner-logo-txt">MICROSOFT</span>
+                                <span class="partner-logo-txt">IBM</span>
+                            </div>
+                        </div>
+                        <div class="partner-tier-card">
+                            <h5>Consulting</h5>
+                            <div class="partner-logos-inline">
+                                <span class="partner-logo-txt">DELOITTE</span>
+                                <span class="partner-logo-txt">EY</span>
+                                <span class="partner-logo-txt">PwC</span>
+                                <span class="partner-logo-txt">KPMG</span>
+                            </div>
+                        </div>
+                        <div class="partner-tier-card">
+                            <h5>BFSI</h5>
+                            <div class="partner-logos-inline">
+                                <span class="partner-logo-txt">HDFC</span>
+                                <span class="partner-logo-txt">ICICI</span>
+                                <span class="partner-logo-txt">AXIS</span>
+                                <span class="partner-logo-txt">KOTAK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Preparation Ecosystem -->
+            <div class="section-header" style="margin: 60px 0 20px;">
+                <h3 style="font-size: 26px; font-weight: 800; color: var(--primary);">Career Preparation Ecosystem</h3>
+                <p style="font-size: 15px; color: var(--text-light);">We don't just sell placement. We sell transformation.</p>
+            </div>
+            <div class="mckinsey-ecosystem-grid reveal">
+                <div class="mckinsey-pill"><span>✔</span> Career Counseling</div>
+                <div class="mckinsey-pill"><span>✔</span> Resume Clinics</div>
+                <div class="mckinsey-pill"><span>✔</span> Mock Interviews</div>
+                <div class="mckinsey-pill"><span>✔</span> LinkedIn Branding</div>
+                <div class="mckinsey-pill"><span>✔</span> Leadership Development</div>
+                <div class="mckinsey-pill"><span>✔</span> Corporate Mentoring</div>
+                <div class="mckinsey-pill"><span>✔</span> Internship Readiness</div>
+                <div class="mckinsey-pill"><span>✔</span> Assessment Center</div>
+            </div>
+
+            <!-- Diverse Success Stories -->
+            <div class="section-header" style="margin: 60px 0 20px;">
+                <h3 style="font-size: 26px; font-weight: 800; color: var(--primary);">Diverse Success Stories</h3>
+                <p style="font-size: 15px; color: var(--text-light);">Real outcomes across corporate careers, higher education, startups, and public service.</p>
+            </div>
+            <div class="success-stories-grid reveal">
+                <div class="success-story-card">
+                    <div>
+                        <div class="story-student-header">
+                            <img src="images/2-Student Life/student-portrait-female.png" alt="Sachin Patil" class="story-avatar">
+                            <div class="story-info">
+                                <h5>Sachin Patil</h5>
+                                <p>B.Com Graduate (2025)</p>
+                            </div>
+                        </div>
+                        <p class="story-quote">"The placement cell and resume workshops prepared me thoroughly for every round at Deloitte."</p>
+                    </div>
+                    <div class="story-meta-badge">
+                        <span>Placed at Deloitte</span>
+                        <span>₹8.2 LPA</span>
+                    </div>
+                </div>
+
+                <div class="success-story-card">
+                    <div>
+                        <div class="story-student-header">
+                            <img src="images/3-Academics/student-presentation-auditorium.png" alt="Aarav Mehta" class="story-avatar">
+                            <div class="story-info">
+                                <h5>Aarav Mehta</h5>
+                                <p>B.Sc IT Graduate (2025)</p>
+                            </div>
+                        </div>
+                        <p class="story-quote">"Secured admission into a premier UK master's program with direct guidance from faculty."</p>
+                    </div>
+                    <div class="story-meta-badge">
+                        <span>Higher Studies (UK)</span>
+                        <span>M.Sc Data Science</span>
+                    </div>
+                </div>
+
+                <div class="success-story-card">
+                    <div>
+                        <div class="story-student-header">
+                            <img src="images/2-Student Life/students-collaborating-steps.png" alt="Rahul Deshmukh" class="story-avatar">
+                            <div class="story-info">
+                                <h5>Rahul Deshmukh</h5>
+                                <p>BMS Graduate (2024)</p>
+                            </div>
+                        </div>
+                        <p class="story-quote">"The on-campus incubation cell provided seed funding and legal advisory to scale our FinTech startup."</p>
+                    </div>
+                    <div class="story-meta-badge">
+                        <span>Startup Founder</span>
+                        <span>Raised ₹50 Lakhs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recruiter Testimonials -->
+            <div class="section-header" style="margin: 60px 0 20px;">
+                <h3 style="font-size: 26px; font-weight: 800; color: var(--primary);">Recruiter Testimonials</h3>
+                <p style="font-size: 15px; color: var(--text-light);">What hiring leaders say about our graduates.</p>
+            </div>
+            <div class="recruiter-testimonials-grid reveal">
+                <div class="recruiter-testimonial-card">
+                    <p class="recruiter-quote-text">"We've recruited from AP College for six consecutive years. Their graduates consistently demonstrate exceptional professional discipline and readiness."</p>
+                    <div class="recruiter-meta-box">
+                        <div>
+                            <h5>HR Director</h5>
+                            <p>Infosys</p>
+                        </div>
+                        <span class="recruiter-org-tag">Partner Since 2020</span>
+                    </div>
+                </div>
+                <div class="recruiter-testimonial-card">
+                    <p class="recruiter-quote-text">"The graduates are truly industry ready. The pre-screened candidate pools and digital interview workflow save our recruitment team weeks of effort."</p>
+                    <div class="recruiter-meta-box">
+                        <div>
+                            <h5>Talent Acquisition Head</h5>
+                            <p>Deloitte</p>
+                        </div>
+                        <span class="recruiter-org-tag">Partner Since 2021</span>
+                    </div>
+                </div>
+                <div class="recruiter-testimonial-card">
+                    <p class="recruiter-quote-text">"Excellent campus hiring support. The dedicated placement coordinators and smart infrastructure make campus recruitment seamless."</p>
+                    <div class="recruiter-meta-box">
+                        <div>
+                            <h5>Campus Relations</h5>
+                            <p>HDFC Bank</p>
+                        </div>
+                        <span class="recruiter-org-tag">Partner Since 2019</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dual Equal CTAs Banner -->
+            <div class="dual-cta-banner reveal">
+                <div class="dual-cta-column">
+                    <h3>Students</h3>
+                    <p>Explore career services, build your professional profile, and download our latest placement brochure.</p>
+                    <div class="dual-cta-btn-group">
+                        <a href="#" class="cinematic-btn-primary" style="padding: 10px 20px; font-size: 13px;">Explore Career Services</a>
+                        <a href="#" class="cinematic-btn-secondary" style="padding: 10px 20px; font-size: 13px;">Download Placement Brochure</a>
+                    </div>
+                </div>
+                <div class="dual-cta-column">
+                    <h3>Recruiters</h3>
+                    <p>Contact our placement cell directly or register as an official industry partner to engage with our cohorts.</p>
+                    <div class="dual-cta-btn-group">
+                        <a href="#" class="cinematic-btn-primary" style="padding: 10px 20px; font-size: 13px; background: var(--accent); color: var(--primary);">Contact Placement Cell</a>
+                        <a href="#" class="cinematic-btn-secondary" style="padding: 10px 20px; font-size: 13px;">Become an Industry Partner</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Context-Aware Floating AI Assistant -->
+    <a href="#ask-ai" class="floating-ai-widget" onclick="alert('Launching Career AI Assistant...')">
+        ✨ Ask Career AI
+    </a>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved. | <a href="CampusOS-Home.html" style="color: var(--secondary-light); text-decoration: none;">Return to College Home</a></p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 40) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

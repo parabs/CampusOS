@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institution Explorer — Akbar Peerbhoy College | Powered by Campus OS</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --primary-light: #1E293B;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --secondary-light: #60A5FA;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-gray: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --text-white: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 50px rgba(37, 99, 235, 0.1);
+            
+            --radius-card: 20px;
+            --radius-btn: 9999px;
+            --radius-stats: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Slim Product Badge Banner */
+        .campus-os-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: var(--text-white);
+            font-size: 13px;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1100;
+            letter-spacing: 0.03em;
+        }
+        .campus-os-banner .banner-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 37px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 14px 5%;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 10px 5%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        /* Enforce a consistent left margin/gap between the logo and menu items */
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            list-style: none;
+            margin-left: 60px; /* Locks exact consistent distance from the logo */
+            margin-right: auto; /* Pushes the actions to the far right cleanly */
+        }
+
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 14.5px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+        .nav-link.active { font-weight: 700; color: var(--secondary); }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+        .college-crest {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 19px;
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            letter-spacing: -0.02em;
+        }
+        .logo-text span {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+        .nav-link.active { font-weight: 700; border-bottom: 2px solid var(--secondary); }
+
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        .portal-login-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 0 12px;
+        }
+        .nav-cta {
+            background: var(--secondary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Breadcrumb Bar */
+        .breadcrumb-bar {
+            max-width: 1380px;
+            margin: 110px auto 16px;
+            padding: 0 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .breadcrumb-bar a { color: var(--secondary); text-decoration: none; }
+        .breadcrumb-bar a:hover { text-decoration: underline; }
+
+        /* Page Title Header Section */
+        .page-title-section {
+            max-width: 1380px;
+            margin: 0 auto 24px;
+            padding: 0 24px;
+        }
+        .page-title-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 28px;
+            padding: 40px;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .page-title-card h1 {
+            font-size: clamp(32px, 4vw, 44px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+        .page-title-card p {
+            font-size: 16px;
+            color: #94A3B8;
+            max-width: 750px;
+        }
+
+        /* Sticky Master Search Bar */
+        .sticky-search-container {
+            position: sticky;
+            top: 100px;
+            z-index: 900;
+            max-width: 1380px;
+            margin: 0 auto 30px;
+            padding: 0 24px;
+        }
+        .search-box-input-wrap {
+            position: relative;
+            background: white;
+            border-radius: var(--radius-card);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            backdrop-filter: blur(10px);
+        }
+        .search-icon-symbol {
+            font-size: 20px;
+            padding: 0 16px;
+            color: var(--text-light);
+        }
+        .search-main-input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 14px 0;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--primary);
+        }
+
+        /* Settings-Style Explorer Main Layout */
+        .explorer-wrapper {
+            max-width: 1380px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* Truly Sticky Left Settings Navigation Bar */
+        .settings-sidebar {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 175px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+        .settings-nav-item {
+            background: transparent;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+        }
+        .settings-nav-item:hover {
+            background: var(--surface-gray);
+            color: var(--secondary);
+        }
+        .settings-nav-item.active {
+            background: #EFF6FF;
+            color: var(--secondary);
+            font-weight: 800;
+        }
+        .settings-nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 4px;
+            background: var(--secondary);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Right Content Panel Area */
+        .content-panel {
+            background: white;
+            border-radius: var(--radius-card);
+            padding: 36px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            min-height: 600px;
+        }
+        .panel-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .panel-header-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+        .panel-header-sub {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Dashboard Executive Grid (Overview Tab) */
+        .dashboard-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .dash-metric-card {
+            background: var(--surface-gray);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .dash-metric-card .lbl { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
+        .dash-metric-card .val { font-size: 28px; font-weight: 900; color: var(--primary); }
+
+        /* Legacy Timeline */
+        .legacy-timeline {
+            border-left: 3px solid var(--secondary);
+            margin-left: 12px;
+            padding-left: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 10px;
+        }
+        .timeline-node {
+            position: relative;
+        }
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 2px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--secondary-light);
+        }
+        .timeline-year {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 4px;
+        }
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        /* Cards Layout Grids */
+        .grid-cards-executive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .card-profile-executive {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .card-profile-executive:hover {
+            border-color: var(--secondary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .card-avatar-wrap {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 3px solid var(--surface-gray);
+        }
+        .card-avatar-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-profile-executive h4 {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+        .card-designation {
+            font-size: 13px;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .leadership-meta-list {
+            list-style: none;
+            margin: 12px 0 16px;
+            font-size: 12px;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .leadership-meta-list li {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .leadership-meta-list li strong { color: var(--primary); }
+        .card-message-snippet {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            background: var(--surface-gray);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border-left: 3px solid var(--secondary);
+        }
+        .btn-view-profile {
+            background: var(--surface-gray);
+            color: var(--primary);
+            text-align: center;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+        .btn-view-profile:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Redesigned Operational Administration Units Cards */
+        .admin-unit-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .admin-unit-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow-hover);
+        }
+        .unit-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .unit-card-header h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .unit-staff-badge {
+            background: #ECFDF5;
+            color: #047857;
+            border: 1px solid #A7F3D0;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+        .unit-meta-row {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        .unit-services-wrap {
+            margin-top: 8px;
+        }
+        .unit-services-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .unit-services-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .unit-service-pill {
+            background: var(--surface-gray);
+            color: var(--text);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .btn-view-team {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .btn-view-team:hover {
+            background: var(--secondary);
+        }
+
+        /* Detailed Team Expansion View Container */
+        .team-detailed-view {
+            display: none;
+            animation: fadeInTeam 0.3s ease forwards;
+        }
+        @keyframes fadeInTeam {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .team-back-btn {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        .team-back-btn:hover { text-decoration: underline; }
+        
+        .role-filter-strip {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            background: var(--surface-gray);
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            align-items: center;
+        }
+        .role-filter-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            margin-right: 8px;
+        }
+        .role-filter-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .role-filter-btn:hover { border-color: var(--secondary); }
+        .role-filter-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            box-shadow: 0 4px 10px rgba(37,99,235,0.2);
+        }
+
+        .staff-hierarchy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .staff-hierarchy-item {
+            background: var(--surface-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+        .staff-hierarchy-item:hover {
+            border-color: var(--secondary-light);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .staff-info-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .staff-avatar-initials {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: #DBEAFE;
+            color: #1D4ED8;
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .staff-details h5 {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .staff-details span {
+            font-size: 13px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        .staff-type-pill {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* 3-Column Action Tiles for Support */
+        .support-tiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .support-action-tile {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .support-action-tile:hover {
+            transform: translateY(-4px);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow-hover);
+        }
+        .tile-icon-header { font-size: 28px; margin-bottom: 4px; }
+        .tile-info h4 { font-size: 17px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .tile-info p { font-size: 13px; color: var(--text-light); }
+        .tile-link-action {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: none; border: none; cursor: pointer; padding: 0;
+        }
+        .tile-link-action:hover { text-decoration: underline; }
+
+        /* Nested Drill-Down Hierarchy (Knowledge Graph Style) */
+        .drilldown-path-container {
+            background: var(--surface-gray);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .drilldown-level {
+            margin-bottom: 16px;
+        }
+        .drilldown-level:last-child { margin-bottom: 0; }
+        .drill-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .drill-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .drill-pill {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .drill-pill:hover { border-color: var(--secondary); }
+        .drill-pill.active { background: var(--secondary); color: white; border-color: var(--secondary); font-weight: 700; box-shadow: 0 4px 10px rgba(37,99,235,0.2); }
+        .drill-arrow {
+            color: #CBD5E1;
+            font-size: 16px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+        }
+
+        /* LinkedIn-Style Slide-In Side Drawer */
+        .linkedin-drawer-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 4000;
+            display: flex;
+            justify-content: flex-end;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .linkedin-drawer-overlay.active { opacity: 1; visibility: visible; }
+        .linkedin-drawer-panel {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 40px;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.2);
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .linkedin-drawer-overlay.active .linkedin-drawer-panel { transform: translateX(0); }
+        .drawer-close-btn {
+            background: var(--surface-gray);
+            border: none;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 16px;
+            align-self: flex-end;
+        }
+        .drawer-avatar-wrap {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 16px;
+            border: 4px solid var(--surface-gray);
+        }
+        .drawer-avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .drawer-profile-info { text-align: center; margin-bottom: 24px; }
+        .drawer-profile-info h3 { font-size: 22px; font-weight: 900; color: var(--primary); }
+        .drawer-profile-info p { font-size: 14px; font-weight: 700; color: var(--secondary); }
+
+        .drawer-section-block {
+            margin-bottom: 20px;
+            background: var(--surface-gray);
+            padding: 16px;
+            border-radius: 14px;
+        }
+        .drawer-section-block h5 {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+        .drawer-section-block p {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+        .footer-bottom p { font-size: 14px; color: var(--text-light); }
+
+        @media(max-width: 992px) {
+            .explorer-wrapper { grid-template-columns: 1fr; }
+            .settings-sidebar { position: static; max-height: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slim Product Banner -->
+    <header class="campus-os-banner">
+        <div>🚀 <strong>Campus OS Demo Showcase</strong> — Institution Explorer</div>
+        <div><a href="CampusOS-Home.html" class="banner-link">Return to Home &rarr;</a></div>
+    </header>
+
+    <!-- Standard College Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <a href="CampusOS-Home.html" class="logo-area">
+            <div class="college-crest">AP</div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="programs.html" class="nav-link">Programs</a></li>
+            <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
+            <li><a href="institution-explorer.html" class="nav-link active">Institution Explorer</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance & Regulatory</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="CampusOS-Home.html#apply" class="portal-login-link">Portal Login</a>
+            <a href="CampusOS-Home.html#apply" class="nav-cta">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Bar -->
+    <div class="breadcrumb-bar" id="breadcrumbBar">
+        <a href="CampusOS-Home.html">Akbar Peerbhoy College</a> &gt; <span>Institution Explorer</span>
+    </div>
+
+    <!-- Page Title Header Section -->
+    <header class="page-title-section">
+        <div class="page-title-card">
+            <h1>Institution Explorer</h1>
+            <p>Explore the people, legacy, achievements, governance, academic excellence, and institutional ecosystem that define our college.</p>
+        </div>
+    </header>
+
+    <!-- Sticky Master Search Bar -->
+    <div class="sticky-search-container">
+        <div class="search-box-input-wrap">
+            <span class="search-icon-symbol">🔍</span>
+            <input type="text" id="globalInstitutionSearch" class="search-main-input" placeholder="Search faculty, departments, committees, awards, alumni, subjects, offices or achievements…">
+        </div>
+    </div>
+
+    <!-- Settings-Style Explorer Main Layout -->
+    <main class="explorer-wrapper">
+
+        <!-- Sticky Left Settings Navigation Bar -->
+        <aside class="settings-sidebar">
+            <button class="settings-nav-item active" onclick="switchTab('overview')"><span>🏛 Institution Overview</span></button>
+            <button class="settings-nav-item" onclick="switchTab('leadership')"><span>👑 Leadership</span></button>
+            <button class="settings-nav-item" onclick="switchTab('legacy')"><span>🏆 Legacy & Achievements</span></button>
+            <button class="settings-nav-item" onclick="switchTab('academics')"><span>🎓 Academic Excellence</span></button>
+            <button class="settings-nav-item" onclick="switchTab('faculty')"><span>👨‍🏫 Faculty Directory</span></button>
+            <button class="settings-nav-item" onclick="switchTab('admin')"><span>🏢 Administration</span></button>
+            <button class="settings-nav-item" onclick="switchTab('services')"><span>❤️ Student Service Offices</span></button>
+            <button class="settings-nav-item" onclick="switchTab('community')"><span>🌍 Community Impact</span></button>
+            <button class="settings-nav-item" onclick="switchTab('halloffame')"><span>⭐ Hall of Fame</span></button>
+        </aside>
+
+        <!-- Right Content Active Panel -->
+        <section class="content-panel" id="mainContentPanel">
+
+            <!-- TAB 1: Institution Overview (Dashboard) -->
+            <div id="tab-overview" class="tab-panel-block">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Institution Overview</h3>
+                        <p class="panel-header-sub">The executive summary and institutional footprint establishing trust and credibility[cite: 3].</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-metrics-grid">
+                    <div class="dash-metric-card">
+                        <span class="lbl">Founded</span>
+                        <span class="val">1969[cite: 1]</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Legacy</span>
+                        <span class="val">57 Years</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Alumni Base</span>
+                        <span class="val">35,000+[cite: 1]</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Faculty</span>
+                        <span class="val">120[cite: 1]</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Programs Offered</span>
+                        <span class="val">42</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Accreditation</span>
+                        <span class="val" style="color: var(--secondary-light);">NAAC A+[cite: 1]</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Corporate Recruiters</span>
+                        <span class="val">220+[cite: 1]</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Placement Rate</span>
+                        <span class="val" style="color: #10B981;">96%[cite: 1]</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Scholarships Disbursed</span>
+                        <span class="val">1,200</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Research Funding</span>
+                        <span class="val">₹4.2 Cr</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">International MoUs</span>
+                        <span class="val">22</span>
+                    </div>
+                    <div class="dash-metric-card">
+                        <span class="lbl">Status</span>
+                        <span class="val">Autonomous</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Leadership -->
+            <div id="tab-leadership" class="tab-panel-block" style="display: none;">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Leadership & Governance</h3>
+                        <p class="panel-header-sub">Founder, Trust, Governing Board, and Academic Council.</p>
+                    </div>
+                </div>
+
+                <div class="grid-cards-executive">
+                    <div class="card-profile-executive">
+                        <div>
+                            <div class="card-avatar-wrap">
+                                <img src="images/4-Faculty & Leadership/principal-portrait.png" alt="Principal">
+                            </div>
+                            <h4>Dr. Shaikh Mehmood Hasan</h4>
+                            <div class="card-designation">Principal</div>
+                            <ul class="leadership-meta-list">
+                                <li><strong>🎓 Qualification:</strong> Ph.D. in Economics</li>
+                                <li><strong>⏳ Experience:</strong> 24 Years</li>
+                                <li><strong>📄 Research:</strong> 42 Published Papers</li>
+                                <li><strong>🏛 Member:</strong> University Senate</li>
+                            </ul>
+                            <p class="card-message-snippet">"Empowering students through academic rigor, research mentorship, and digital leadership."</p>
+                        </div>
+                        <button class="btn-view-profile" onclick="openDrawer('Dr. Shaikh Mehmood Hasan', 'Principal', 'images/4-Faculty & Leadership/principal-portrait.png', 'Ph.D. in Financial Economics with 24 years of teaching and administrative guidance. Holds a permanent seat on the University Senate and has published 42 peer-reviewed papers.', 'principal@apcollege.edu', 'Principal Cabin', 'Best Educator Award 2024')">View Profile</button>
+                    </div>
+
+                    <div class="card-profile-executive">
+                        <div>
+                            <div class="card-avatar-wrap">
+                                <img src="images/4-Faculty & Leadership/professor-teaching-class.png" alt="Vice Principal">
+                            </div>
+                            <h4>Prof. M. H. Lakdawala</h4>
+                            <div class="card-designation">Vice Principal & IQAC Head</div>
+                            <ul class="leadership-meta-list">
+                                <li><strong>🎓 Qualification:</strong> M.Com, M.Phil</li>
+                                <li><strong>⏳ Experience:</strong> 20 Years</li>
+                                <li><strong>📄 Research:</strong> 15 Published Papers</li>
+                                <li><strong>🏛 Member:</strong> Academic Council</li>
+                            </ul>
+                            <p class="card-message-snippet">"Spearheading NAAC Grade A+ quality audits and digital campus OS implementation."</p>
+                        </div>
+                        <button class="btn-view-profile" onclick="openDrawer('Prof. M. H. Lakdawala', 'Vice Principal', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Specializes in Commerce governance and IQAC compliance. Driving force behind our recent NAAC A+ accreditation.', 'lakdawala@apcollege.edu', 'Administrative Block', 'NAAC Accreditation Lead')">View Profile</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Legacy & Achievements -->
+            <div id="tab-legacy" class="tab-panel-block" style="display: none;">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Legacy & Achievements</h3>
+                        <p class="panel-header-sub">Historical milestones and institutional growth.</p>
+                    </div>
+                </div>
+
+                <div class="legacy-timeline">
+                    <div class="timeline-node">
+                        <div class="timeline-year">1969[cite: 1]</div>
+                        <div class="timeline-title">College Established</div>
+                        <p style="font-size: 14px; color: var(--text-light);">Founded by Barrister Akbar Peerbhoy under Anjuman-i-Islam.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-year">1984</div>
+                        <div class="timeline-title">Commerce Faculty Introduced</div>
+                        <p style="font-size: 14px; color: var(--text-light);">Expansion into full-time commerce and economic degree programs.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-year">1998</div>
+                        <div class="timeline-title">First NAAC Accreditation</div>
+                        <p style="font-size: 14px; color: var(--text-light);">Recognized nationally for educational quality standards.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-year">2010</div>
+                        <div class="timeline-title">Autonomous Status Granted</div>
+                        <p style="font-size: 14px; color: var(--text-light);">UGC grants autonomy to design independent industry-ready curriculum.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-title">Research Centre Established</div>
+                        <p style="font-size: 14px; color: var(--text-light);">Launch of Ph.D. programs and the central innovation lab.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-year">2023</div>
+                        <div class="timeline-title">NAAC A+ Grade Achieved</div>
+                        <p style="font-size: 14px; color: var(--text-light);">Scored 3.42 CGPA in Cycle 3 accreditation.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-year">2026</div>
+                        <div class="timeline-title">Campus OS Implemented</div>
+                        <p style="font-size: 14px; color: var(--text-light);">Complete digital transformation of the institutional ecosystem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Academic Excellence -->
+            <div id="tab-academics" class="tab-panel-block" style="display: none;">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Academic Excellence</h3>
+                        <p class="panel-header-sub">Departments, faculty strength, and research output.</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-metrics-grid" style="margin-bottom: 30px;">
+                    <div class="dash-metric-card"><span class="lbl">Departments</span><span class="val">18</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Faculty</span><span class="val">120[cite: 1]</span></div>
+                    <div class="dash-metric-card"><span class="lbl">PhDs</span><span class="val">58</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Industry Mentors</span><span class="val">12</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Research Papers</span><span class="val">480</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Patents</span><span class="val">14</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Laboratories</span><span class="val">32</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Centers of Excellence</span><span class="val">8</span></div>
+                </div>
+
+                <div class="grid-cards-executive">
+                    <div class="card-profile-executive">
+                        <div>
+                            <h4>Center for Financial Analytics</h4>
+                            <div class="card-designation">Excellence Hub</div>
+                            <p class="card-message-snippet">Equipped with real-time stock ticker terminals and Bloomberg simulation lab software.</p>
+                        </div>
+                    </div>
+                    <div class="card-profile-executive">
+                        <div>
+                            <h4>Incubation & Innovation Center</h4>
+                            <div class="card-designation">Entrepreneurship Hub</div>
+                            <p class="card-message-snippet">Providing seed funding, legal advisory, and prototyping workstations for student startups.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Faculty Directory (Knowledge Graph Style) -->
+            <div id="tab-faculty" class="tab-panel-block" style="display: none;">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Faculty Directory</h3>
+                        <p class="panel-header-sub">Navigate the academic hierarchy to discover specific subject faculty.</p>
+                    </div>
+                </div>
+
+                <div class="drilldown-path-container">
+                    <div class="drilldown-level">
+                        <span class="drill-label">1. Select Department</span>
+                        <div class="drill-pills">
+                            <span class="drill-pill active">Commerce</span>
+                            <span class="drill-pill">Management</span>
+                            <span class="drill-pill">IT</span>
+                            <span class="drill-pill">Science</span>
+                        </div>
+                    </div>
+                    <div class="drill-arrow">↓</div>
+                    <div class="drilldown-level">
+                        <span class="drill-label">2. Select Program</span>
+                        <div class="drill-pills">
+                            <span class="drill-pill active">B.Com</span>
+                            <span class="drill-pill">M.Com</span>
+                            <span class="drill-pill">Ph.D.</span>
+                        </div>
+                    </div>
+                    <div class="drill-arrow">↓</div>
+                    <div class="drilldown-level">
+                        <span class="drill-label">3. Select Semester</span>
+                        <div class="drill-pills">
+                            <span class="drill-pill">Semester 1</span>
+                            <span class="drill-pill">Semester 2</span>
+                            <span class="drill-pill active">Semester 3</span>
+                        </div>
+                    </div>
+                    <div class="drill-arrow">↓</div>
+                    <div class="drilldown-level">
+                        <span class="drill-label">4. Select Subject</span>
+                        <div class="drill-pills">
+                            <span class="drill-pill active">Financial Accounting</span>
+                            <span class="drill-pill">Business Economics</span>
+                            <span class="drill-pill">Corporate Law</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="font-size: 14px; font-weight: 800; color: var(--text-light); text-transform: uppercase; margin-bottom: 16px;">Faculty for Financial Accounting (Sem 3)</h4>
+                <div class="grid-cards-executive">
+                    <div class="card-profile-executive">
+                        <div>
+                            <div class="card-avatar-wrap">
+                                <img src="images/4-Faculty & Leadership/professor-teaching-class.png" alt="Faculty">
+                            </div>
+                            <h4>Prof. Rajesh Sharma</h4>
+                            <div class="card-designation">Professor</div>
+                            <ul class="leadership-meta-list">
+                                <li><strong>🎓 Qual:</strong> MBA Finance</li>
+                                <li><strong>⏳ Exp:</strong> 15 Years</li>
+                                <li><strong>📚 Subject:</strong> Financial Accounting</li>
+                            </ul>
+                        </div>
+                        <button class="btn-view-profile" onclick="openDrawer('Prof. Rajesh Sharma', 'Professor', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Handles Financial Accounting for B.Com cohorts. Former corporate auditor.', 'sharma.r@apcollege.edu', 'Commerce Staff Room', 'Top Rated Educator (4.9/5)')">View Profile</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: Administration (Redesigned as Operational Units) -->
+            <div id="tab-admin" class="tab-panel-block" style="display: none;">
+                
+                <!-- Main Grid View of Operational Units -->
+                <div id="adminMainGridView">
+                    <div class="panel-header-row">
+                        <div>
+                            <h3 class="panel-header-title">Administrative Operational Units</h3>
+                            <p class="panel-header-sub">Explore full department rosters, services, and operational locations.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid-cards-executive">
+                        
+                        <!-- Admissions Office -->
+                        <div class="admin-unit-card">
+                            <div>
+                                <div class="unit-card-header">
+                                    <h4>Admissions Office</h4>
+                                    <span class="unit-staff-badge">👥 8 Staff</span>
+                                </div>
+                                <div style="margin: 12px 0;">
+                                    <div class="unit-meta-row">📍 Ground Floor, Main Block</div>
+                                    <div class="unit-meta-row">🕘 9:00 AM – 5:00 PM</div>
+                                </div>
+                                <div class="unit-services-wrap">
+                                    <div class="unit-services-title">Key Services</div>
+                                    <div class="unit-services-pills">
+                                        <span class="unit-service-pill">• New Admissions</span>
+                                        <span class="unit-service-pill">• Scholarships</span>
+                                        <span class="unit-service-pill">• Certificates</span>
+                                        <span class="unit-service-pill">• Migration</span>
+                                        <span class="unit-service-pill">• Verification</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-team" onclick="openAdminTeam('admissions')">
+                                View Team & Staff Directory →
+                            </button>
+                        </div>
+
+                        <!-- Accounts & Finance -->
+                        <div class="admin-unit-card">
+                            <div>
+                                <div class="unit-card-header">
+                                    <h4>Accounts & Finance</h4>
+                                    <span class="unit-staff-badge">👥 6 Staff</span>
+                                </div>
+                                <div style="margin: 12px 0;">
+                                    <div class="unit-meta-row">📍 First Floor, Admin Block</div>
+                                    <div class="unit-meta-row">🕘 9:30 AM – 4:30 PM</div>
+                                </div>
+                                <div class="unit-services-wrap">
+                                    <div class="unit-services-title">Key Services</div>
+                                    <div class="unit-services-pills">
+                                        <span class="unit-service-pill">• Fee Collection</span>
+                                        <span class="unit-service-pill">• Refunds</span>
+                                        <span class="unit-service-pill">• Scholarships</span>
+                                        <span class="unit-service-pill">• Online Payments</span>
+                                        <span class="unit-service-pill">• GST Receipts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-team" onclick="openAdminTeam('accounts')">
+                                View Team & Staff Directory →
+                            </button>
+                        </div>
+
+                        <!-- Examination Cell -->
+                        <div class="admin-unit-card">
+                            <div>
+                                <div class="unit-card-header">
+                                    <h4>Examination Cell</h4>
+                                    <span class="unit-staff-badge">👥 9 Staff</span>
+                                </div>
+                                <div style="margin: 12px 0;">
+                                    <div class="unit-meta-row">📍 Second Floor, Academic Block</div>
+                                    <div class="unit-meta-row">🕘 10:00 AM – 5:00 PM</div>
+                                </div>
+                                <div class="unit-services-wrap">
+                                    <div class="unit-services-title">Key Services</div>
+                                    <div class="unit-services-pills">
+                                        <span class="unit-service-pill">• Hall Tickets</span>
+                                        <span class="unit-service-pill">• Results</span>
+                                        <span class="unit-service-pill">• Revaluation</span>
+                                        <span class="unit-service-pill">• Transcripts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-team" onclick="openAdminTeam('examination')">
+                                View Team & Staff Directory →
+                            </button>
+                        </div>
+
+                        <!-- Central Library -->
+                        <div class="admin-unit-card">
+                            <div>
+                                <div class="unit-card-header">
+                                    <h4>Central Library</h4>
+                                    <span class="unit-staff-badge">👥 12 Staff</span>
+                                </div>
+                                <div style="margin: 12px 0;">
+                                    <div class="unit-meta-row">📍 Library Building (Wings A & B)</div>
+                                    <div class="unit-meta-row">🕘 8:00 AM – 8:00 PM</div>
+                                </div>
+                                <div class="unit-services-wrap">
+                                    <div class="unit-services-title">Key Services</div>
+                                    <div class="unit-services-pills">
+                                        <span class="unit-service-pill">• 80,000+ Books</span>
+                                        <span class="unit-service-pill">• Digital Library</span>
+                                        <span class="unit-service-pill">• Reading Halls</span>
+                                        <span class="unit-service-pill">• Research Journals</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-team" onclick="openAdminTeam('library')">
+                                View Team & Staff Directory →
+                            </button>
+                        </div>
+
+                        <!-- Placement & Training Cell -->
+                        <div class="admin-unit-card">
+                            <div>
+                                <div class="unit-card-header">
+                                    <h4>Placement & Training Cell</h4>
+                                    <span class="unit-staff-badge">👥 7 Staff</span>
+                                </div>
+                                <div style="margin: 12px 0;">
+                                    <div class="unit-meta-row">📍 Ground Floor, Placement Block</div>
+                                    <div class="unit-meta-row">🕘 9:30 AM – 5:30 PM</div>
+                                </div>
+                                <div class="unit-services-wrap">
+                                    <div class="unit-services-title">Key Services</div>
+                                    <div class="unit-services-pills">
+                                        <span class="unit-service-pill">• Campus Drives</span>
+                                        <span class="unit-service-pill">• Internships</span>
+                                        <span class="unit-service-pill">• Soft Skills</span>
+                                        <span class="unit-service-pill">• Industry Connect</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-team" onclick="openAdminTeam('placement')">
+                                View Team & Staff Directory →
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Detailed Staff Directory Explorer View (Hidden by default) -->
+                <div id="adminTeamDetailView" class="team-detailed-view">
+                    <button class="team-back-btn" onclick="closeAdminTeam()">← Back to Administration Units</button>
+                    
+                    <div class="panel-header-row" style="margin-bottom: 16px;">
+                        <div>
+                            <h3 class="panel-header-title" id="detailOfficeTitle">Admissions Office Team</h3>
+                            <p class="panel-header-sub" id="detailOfficeMeta">Location & Timings</p>
+                        </div>
+                    </div>
+
+                    <div class="role-filter-strip">
+                        <span class="role-filter-label">Filter Role:</span>
+                        <button class="role-filter-btn active" onclick="filterStaffRole('All', this)">All</button>
+                        <button class="role-filter-btn" onclick="filterStaffRole('Leadership', this)">Leadership</button>
+                        <button class="role-filter-btn" onclick="filterStaffRole('Administration', this)">Administration</button>
+                        <button class="role-filter-btn" onclick="filterStaffRole('Operations', this)">Operations</button>
+                        <button class="role-filter-btn" onclick="filterStaffRole('Support', this)">Support</button>
+                        <button class="role-filter-btn" onclick="filterStaffRole('Front Desk', this)">Front Desk</button>
+                    </div>
+
+                    <div class="staff-hierarchy-list" id="staffHierarchyListContainer">
+                        <!-- Dynamically populated staff members -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 7: Student Service Offices -->
+            <div id="tab-services" class="tab-panel-block" style="display: none;">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Student Service Offices</h3>
+                        <p class="panel-header-sub">Operational organizational units supporting student development and welfare.</p>
+                    </div>
+                </div>
+
+                <div class="support-tiles-grid">
+                    <div class="support-action-tile">
+                        <div>
+                            <div class="tile-icon-header">💼</div>
+                            <div class="tile-info">
+                                <h4>Career Cell</h4>
+                                <p>Coordinator: Prof. Rajesh Sharma<br>3 Active Programs</p>
+                            </div>
+                        </div>
+                        <button class="tile-link-action" onclick="openDrawer('Career Cell', 'Prof. Rajesh Sharma', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Dedicated to placements, internships, and corporate mock interviews.', 'careers@apcollege.edu', 'Placement Office', '97% Placement Rate')">View Details →</button>
+                    </div>
+
+                    <div class="support-action-tile">
+                        <div>
+                            <div class="tile-icon-header">📚</div>
+                            <div class="tile-info">
+                                <h4>Library Services</h4>
+                                <p>Librarian: Mr. Anil Gupta<br>Digital & Print Archives</p>
+                            </div>
+                        </div>
+                        <button class="tile-link-action" onclick="alert('Opening Library Details...')">View Details →</button>
+                    </div>
+
+                    <div class="support-action-tile">
+                        <div>
+                            <div class="tile-icon-header">🧠</div>
+                            <div class="tile-info">
+                                <h4>Counselling Cell</h4>
+                                <p>Counselor: Ms. Ritu Desai<br>Daily Sessions</p>
+                            </div>
+                        </div>
+                        <button class="tile-link-action" onclick="alert('Opening Counselling Details...')">View Details →</button>
+                    </div>
+
+                    <div class="support-action-tile">
+                        <div>
+                            <div class="tile-icon-header">❤️</div>
+                            <div class="tile-info">
+                                <h4>NSS Unit</h4>
+                                <p>Officer: Prof. A. R. Khan<br>Community Outreach</p>
+                            </div>
+                        </div>
+                        <button class="tile-link-action" onclick="alert('Opening NSS Details...')">View Details →</button>
+                    </div>
+
+                    <div class="support-action-tile">
+                        <div>
+                            <div class="tile-icon-header">👩</div>
+                            <div class="tile-info">
+                                <h4>Women's Cell</h4>
+                                <p>Coordinator: Dr. Ayesha Khan<br>Empowerment Programs</p>
+                            </div>
+                        </div>
+                        <button class="tile-link-action" onclick="alert('Opening WDC Details...')">View Details →</button>
+                    </div>
+
+                    <div class="support-action-tile">
+                        <div>
+                            <div class="tile-icon-header">🛡️</div>
+                            <div class="tile-info">
+                                <h4>Anti-Ragging Cell</h4>
+                                <p>Committee Head: Principal<br>Zero Tolerance Campus</p>
+                            </div>
+                        </div>
+                        <button class="tile-link-action" onclick="alert('Opening Anti-Ragging Details...')">View Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 8: Community & Social Impact -->
+            <div id="tab-community" class="tab-panel-block" style="display: none;">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Community & Social Impact</h3>
+                        <p class="panel-header-sub">Corporate social responsibility, village adoption, and outreach metrics.</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-metrics-grid" style="margin-bottom: 30px;">
+                    <div class="dash-metric-card"><span class="lbl">Blood Donated (Liters)</span><span class="val">450+</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Trees Planted</span><span class="val">2,500</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Scholarships Sponsored</span><span class="val">840</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Villages Adopted</span><span class="val">3</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Women Benefited</span><span class="val">1,200+</span></div>
+                    <div class="dash-metric-card"><span class="lbl">CSR Projects Active</span><span class="val">12</span></div>
+                </div>
+
+                <div class="grid-cards-executive">
+                    <div class="card-profile-executive">
+                        <div>
+                            <h4>Village Adoption Initiative</h4>
+                            <div class="card-designation">Rural Outreach</div>
+                            <p class="card-message-snippet">Providing digital literacy, financial inclusion workshops, and health camps in adopted districts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 9: Hall of Fame -->
+            <div id="tab-halloffame" class="tab-panel-block" style="display: none;">
+                <div class="panel-header-row">
+                    <div>
+                        <h3 class="panel-header-title">Hall of Fame</h3>
+                        <p class="panel-header-sub">Celebrating distinguished alumni, gold medalists, entrepreneurs, and civil servants.</p>
+                    </div>
+                </div>
+
+                <div class="grid-cards-executive">
+                    <div class="card-profile-executive">
+                        <div>
+                            <div class="card-avatar-wrap">
+                                <img src="images/2-Student Life/students-collaborating-steps.png" alt="Alumni">
+                            </div>
+                            <h4>Rahul Deshmukh</h4>
+                            <div class="card-designation">FinTech Founder (Class of 2024)</div>
+                            <p class="card-message-snippet">Raised ₹50 Lakhs in seed funding for digital supply chain automation platforms.</p>
+                        </div>
+                    </div>
+                    <div class="card-profile-executive">
+                        <div>
+                            <div class="card-avatar-wrap">
+                                <img src="images/2-Student Life/student-portrait-female.png" alt="Alumni">
+                            </div>
+                            <h4>Ananya Desai</h4>
+                            <div class="card-designation">Product Manager at TCS (Class of 2024)</div>
+                            <p class="card-message-snippet">Leading enterprise cloud transformation initiatives across multinational client accounts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- LinkedIn-Style Slide-In Side Drawer -->
+    <div class="linkedin-drawer-overlay" id="linkedinDrawer">
+        <div class="linkedin-drawer-panel">
+            <div>
+                <button class="drawer-close-btn" onclick="closeDrawer()">✕</button>
+                <div class="drawer-avatar-wrap" style="margin-top: 16px;">
+                    <img id="drawerImg" src="images/4-Faculty & Leadership/principal-portrait.png" alt="Profile">
+                </div>
+                <div class="drawer-profile-info">
+                    <h3 id="drawerName">Dr. Ayesha Khan</h3>
+                    <p id="drawerRole">Dean of Commerce & Finance</p>
+                </div>
+
+                <div class="drawer-section-block">
+                    <h5>Overview</h5>
+                    <p id="drawerBio">Ph.D. in Corporate Economics with over 18 years of academic teaching, advisory, and corporate auditing experience.</p>
+                </div>
+                <div class="drawer-section-block">
+                    <h5>Office & Availability</h5>
+                    <p id="drawerOffice">📍 Commerce Staff Room • Mon–Sat (10 AM - 1 PM)</p>
+                </div>
+                <div class="drawer-section-block">
+                    <h5>Email Contact</h5>
+                    <p id="drawerEmail">✉️ ayesha.khan@apcollege.edu</p>
+                </div>
+                <div class="drawer-section-block">
+                    <h5>Key Details / Achievements</h5>
+                    <p id="drawerAchievements">12+ Papers published in UGC Care listed journals.</p>
+                </div>
+            </div>
+
+            <button class="cinematic-btn-primary" style="width: 100%; justify-content: center; margin-top: 20px; border: none; cursor: pointer;" onclick="alert('Opening communication gateway...')">Contact / Send Message</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved. | <a href="CampusOS-Home.html" style="color: var(--secondary-light); text-decoration: none;">Return to College Home</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Master Controller -->
+    <script>
+        // Operational Offices Database for Team Expansion & Role Filtering
+        const officesData = {
+            'admissions': {
+                name: 'Admissions Office',
+                meta: '📍 Ground Floor, Main Block | 🕘 9:00 AM – 5:00 PM',
+                team: [
+                    { role: 'Head of Admissions', name: 'Dr. Ramesh Kumar', type: 'Leadership' },
+                    { role: 'Senior Clerk', name: 'Mr. Salim Merchant', type: 'Administration' },
+                    { role: 'Admissions Executive', name: 'Ms. Priya Sharma', type: 'Operations' },
+                    { role: 'Counsellor', name: 'Mr. Amit Desai', type: 'Support' },
+                    { role: 'Documentation Officer', name: 'Ms. Sneha Patil', type: 'Operations' },
+                    { role: 'Reception Desk', name: 'Ms. Pooja Nair', type: 'Front Desk' },
+                    { role: 'Verification Officer', name: 'Mr. Rajesh Verma', type: 'Operations' },
+                    { role: 'Assistant', name: 'Mr. Kiran Mane', type: 'Support' }
+                ]
+            },
+            'accounts': {
+                name: 'Accounts & Finance',
+                meta: '📍 First Floor, Admin Block | 🕘 9:30 AM – 4:30 PM',
+                team: [
+                    { role: 'Chief Accounts Officer', name: 'Mr. Suresh Joshi', type: 'Leadership' },
+                    { role: 'Senior Accountant', name: 'Ms. Anjali Mehta', type: 'Administration' },
+                    { role: 'Fee Desk Executive', name: 'Mr. Rohan Kulkarni', type: 'Operations' },
+                    { role: 'Audit Assistant', name: 'Ms. Deepa Rane', type: 'Operations' },
+                    { role: 'Scholarship Coordinator', name: 'Mr. Vinod Sawant', type: 'Support' },
+                    { role: 'Cashier', name: 'Mr. Manoj Gawde', type: 'Front Desk' }
+                ]
+            },
+            'examination': {
+                name: 'Examination Cell',
+                meta: '📍 Second Floor, Academic Block | 🕘 10:00 AM – 5:00 PM',
+                team: [
+                    { role: 'Controller of Examinations', name: 'Dr. Arvind Deshmukh', type: 'Leadership' },
+                    { role: 'Deputy Registrar (Exam)', name: 'Mr. Nitin Joshi', type: 'Administration' },
+                    { role: 'Results Coordinator', name: 'Ms. Swati Kadam', type: 'Operations' },
+                    { role: 'Revaluation Desk Lead', name: 'Mr. Prakash Shinde', type: 'Operations' },
+                    { role: 'Dispatch Executive', name: 'Ms. Rekha Parab', type: 'Support' },
+                    { role: 'Technical Assistant', name: 'Mr. Sameer Kulkarni', type: 'Operations' },
+                    { role: 'Confidential Section Clerk', name: 'Ms. Snehal More', type: 'Administration' },
+                    { role: 'Record Keeper', name: 'Mr. Datta Tavte', type: 'Support' },
+                    { role: 'Helpdesk Assistant', name: 'Ms. Aarti Shirsat', type: 'Front Desk' }
+                ]
+            },
+            'library': {
+                name: 'Central Library',
+                meta: '📍 Library Building (Wings A & B) | 🕘 8:00 AM – 8:00 PM',
+                team: [
+                    { role: 'Chief Librarian', name: 'Dr. Vijayalakshmi Iyer', type: 'Leadership' },
+                    { role: 'Assistant Librarian', name: 'Mr. Subhash Rao', type: 'Administration' },
+                    { role: 'Digital Resource Manager', name: 'Ms. Neha Kulkarni', type: 'Operations' },
+                    { role: 'Circulation Desk Lead', name: 'Mr. Ganesh More', type: 'Front Desk' },
+                    { role: 'Periodical Section Incharge', name: 'Ms. Jyoti Pawar', type: 'Operations' },
+                    { role: 'Reference Archivist', name: 'Mr. Anand Tendulkar', type: 'Operations' },
+                    { role: 'Cataloging Assistant', name: 'Ms. Manisha Shinde', type: 'Support' },
+                    { role: 'Stack Maintenance Lead', name: 'Mr. Santosh Jadhav', type: 'Support' },
+                    { role: 'Reading Hall Monitor', name: 'Mr. Rahul Kamble', type: 'Support' },
+                    { role: 'Technical Support Specialist', name: 'Ms. Tanvi Dalvi', type: 'Operations' },
+                    { role: 'Binding Assistant', name: 'Mr. Ashok Kadam', type: 'Support' },
+                    { role: 'Night Shift Supervisor', name: 'Mr. Kiran Shirsat', type: 'Operations' }
+                ]
+            },
+            'placement': {
+                name: 'Placement & Training Cell',
+                meta: '📍 Ground Floor, Placement Block | 🕘 9:30 AM – 5:30 PM',
+                team: [
+                    { role: 'Director of Placements', name: 'Prof. Milind Kher', type: 'Leadership' },
+                    { role: 'Training Head', name: 'Ms. Radhika Menon', type: 'Administration' },
+                    { role: 'Corporate Relations Officer', name: 'Mr. Vivek Sundaram', type: 'Operations' },
+                    { role: 'Placement Coordinator', name: 'Ms. Shruti Deshmukh', type: 'Operations' },
+                    { role: 'Internship Lead', name: 'Mr. Nikhil Warrier', type: 'Operations' },
+                    { role: 'Resume & Assessment Expert', name: 'Ms. Amruta Joshi', type: 'Support' },
+                    { role: 'Administrative Assistant', name: 'Mr. Bharat Patil', type: 'Front Desk' }
+                ]
+            }
+        };
+
+        let currentActiveOfficeKey = null;
+        let currentRoleFilter = 'All';
+
+        function openAdminTeam(officeKey) {
+            currentActiveOfficeKey = officeKey;
+            currentRoleFilter = 'All';
+
+            const office = officesData[officeKey];
+            document.getElementById('detailOfficeTitle').textContent = `${office.name} Team`;
+            document.getElementById('detailOfficeMeta').textContent = office.meta;
+
+            document.querySelectorAll('.role-filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.role-filter-btn').classList.add('active');
+
+            renderStaffList();
+
+            document.getElementById('adminMainGridView').style.display = 'none';
+            document.getElementById('adminTeamDetailView').style.display = 'block';
+        }
+
+        function closeAdminTeam() {
+            document.getElementById('adminTeamDetailView').style.display = 'none';
+            document.getElementById('adminMainGridView').style.display = 'block';
+        }
+
+        function filterStaffRole(role, btnElem) {
+            currentRoleFilter = role;
+            document.querySelectorAll('.role-filter-btn').forEach(b => b.classList.remove('active'));
+            btnElem.classList.add('active');
+            renderStaffList();
+        }
+
+        function renderStaffList() {
+            const office = officesData[currentActiveOfficeKey];
+            const container = document.getElementById('staffHierarchyListContainer');
+            container.innerHTML = '';
+
+            const filteredTeam = office.team.filter(m => currentRoleFilter === 'All' || m.type === currentRoleFilter);
+
+            if (filteredTeam.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding:30px; color:var(--text-light);">No staff members found for role: ${currentRoleFilter}</div>`;
+                return;
+            }
+
+            filteredTeam.forEach(member => {
+                const initials = member.name.split(' ').map(n => n[0]).join('').substring(0, 2);
+                const item = document.createElement('div');
+                item.className = 'staff-hierarchy-item';
+                item.innerHTML = `
+                    <div class="staff-info-group">
+                        <div class="staff-avatar-initials">${initials}</div>
+                        <div class="staff-details">
+                            <h5>${member.name}</h5>
+                            <span>${member.role}</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <span class="staff-type-pill">${member.type}</span>
+                        <button class="btn-view-profile" style="padding:6px 14px; font-size:12px;" onclick="openDrawer('${member.name}', '${member.role}', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Operational team member contributing to ${office.name}.', 'staff@apcollege.edu', '${office.name}', 'Verified Department Staff')">View Profile</button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 40) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Tab Switching Logic with vertical strip active indicator
+        function switchTab(tabId) {
+            const panels = document.querySelectorAll('.tab-panel-block');
+            panels.forEach(p => p.style.display = 'none');
+
+            const btns = document.querySelectorAll('.settings-nav-item');
+            btns.forEach(b => b.classList.remove('active'));
+
+            const activePanel = document.getElementById(`tab-${tabId}`);
+            if (activePanel) activePanel.style.display = 'block';
+
+            event.currentTarget.classList.add('active');
+
+            // Update Breadcrumb
+            let tabName = event.currentTarget.textContent.replace('→', '').trim();
+            tabName = tabName.substring(tabName.indexOf(' ') + 1);
+            
+            document.getElementById('breadcrumbBar').innerHTML = `<a href="CampusOS-Home.html">Akbar Peerbhoy College</a> &gt; <a href="institution-explorer.html">Institution Explorer</a> &gt; <span>${tabName}</span>`;
+
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+
+        // Global Real-Time Search Filter
+        document.getElementById('globalInstitutionSearch').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            if (query.length > 1) {
+                document.querySelectorAll('.tab-panel-block').forEach(p => p.style.display = 'block');
+                
+                document.querySelectorAll('.card-profile-executive, .admin-unit-card, .support-action-tile, .dash-metric-card, .timeline-node').forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            } else {
+                switchTab('overview');
+                document.querySelectorAll('.card-profile-executive, .admin-unit-card, .support-action-tile, .dash-metric-card, .timeline-node').forEach(card => {
+                    card.style.display = '';
+                });
+            }
+        });
+
+        // LinkedIn Side Drawer Logic
+        function openDrawer(name, role, img, bio, email, office, achievements) {
+            document.getElementById('drawerName').textContent = name;
+            document.getElementById('drawerRole').textContent = role;
+            document.getElementById('drawerImg').src = img;
+            document.getElementById('drawerBio').textContent = bio;
+            document.getElementById('drawerEmail').textContent = `✉️ ${email}`;
+            document.getElementById('drawerOffice').textContent = `📍 ${office}`;
+            document.getElementById('drawerAchievements').textContent = achievements;
+
+            document.getElementById('linkedinDrawer').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDrawer() {
+            document.getElementById('linkedinDrawer').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDrawer();
+        });
+
+        document.getElementById('linkedinDrawer').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('linkedinDrawer')) closeDrawer();
+        });
+    </script>
+</body>
+</html>

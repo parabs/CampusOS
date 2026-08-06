@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Explorer — Akbar Peerbhoy College | Campus OS</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --secondary-light: #60A5FA;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-gray: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.1);
+            --radius-card: 24px;
+            --radius-btn: 9999px;
+            --radius-stats: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--background); color: var(--text); line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* Slim Product Badge Banner */
+        .campus-os-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: white; font-size: 13px; padding: 8px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
+        }
+        .campus-os-banner a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+        /* Navigation */
+        .navbar {
+            position: fixed; top: 37px; left: 0; right: 0; z-index: 1000;
+            padding: 16px 5%; display: flex; align-items: center;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .college-crest { width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 18px; }
+        .logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px; color: var(--primary); display: flex; flex-direction: column; }
+        .logo-text span { font-size: 10px; font-weight: 600; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.1em; }
+        
+        .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; margin-left: 60px; margin-right: auto; }
+        .nav-link { color: var(--text); font-weight: 500; text-decoration: none; font-size: 14px; }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); font-weight: 700; }
+        .nav-cta { background: var(--secondary); color: white !important; padding: 10px 24px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 600; font-size: 15px; }
+
+        /* Academic Explorer Section */
+        .academic-explorer-section { padding: 120px 20px 80px; max-width: 1380px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: clamp(32px, 5vw, 46px); font-weight: 900; color: var(--primary); margin-bottom: 12px; }
+        .section-header p { font-size: 16px; color: var(--text-light); }
+
+        .explorer-layout { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; }
+        .explorer-sidebar { background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-card); padding: 24px; position: sticky; top: 110px; box-shadow: var(--shadow); }
+        .explorer-sidebar h3 { font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .filter-group { margin-bottom: 24px; }
+        .filter-group label { font-size: 12px; font-weight: 700; color: var(--text-light); text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .filter-options { display: flex; flex-direction: column; gap: 6px; }
+        .filter-btn { background: transparent; border: 1px solid transparent; padding: 10px 14px; border-radius: 10px; text-align: left; font-size: 14px; font-weight: 600; color: var(--text); cursor: pointer; transition: all 0.2s; }
+        .filter-btn:hover { background: rgba(37, 99, 235, 0.06); color: var(--secondary); }
+        .filter-btn.active { background: var(--secondary); color: white; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+
+        .explorer-content-area { display: flex; flex-direction: column; gap: 30px; }
+        .explorer-top-bar { display: flex; justify-content: space-between; align-items: center; background: #FFFFFF; padding: 16px 24px; border-radius: var(--radius-stats); border: 1px solid var(--border-color); box-shadow: var(--shadow); }
+        .explorer-search-input { border: none; background: transparent; font-size: 15px; outline: none; width: 100%; font-family: inherit; color: var(--text); }
+        
+        .programs-explorer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .program-explorer-card {
+            background: #FFFFFF; border-radius: var(--radius-card); padding: 28px; box-shadow: var(--shadow);
+            border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;
+            position: relative; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .program-explorer-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--secondary); }
+        
+        .prog-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .prog-ribbon { font-size: 11px; font-weight: 700; background: #FEF3C7; color: #B45309; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
+        .prog-rating { font-size: 13px; font-weight: 700; color: #F59E0B; }
+        
+        .program-explorer-card h4 { font-size: 20px; color: var(--primary); margin-bottom: 8px; font-weight: 800; }
+        .program-explorer-card p { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.4; }
+        
+        .prog-metrics-list { display: flex; flex-direction: column; gap: 8px; background: #F8FAFC; padding: 14px; border-radius: 12px; margin-bottom: 20px; font-size: 13px; font-weight: 600; color: var(--text); }
+        .prog-metric-row { display: flex; align-items: center; gap: 8px; }
+        .prog-metric-row span { color: var(--secondary); font-weight: 700; }
+
+        .prog-card-actions { display: flex; gap: 10px; }
+        .btn-prog-details { flex: 1; background: var(--secondary); color: white; padding: 12px; border-radius: 10px; text-align: center; font-size: 13.5px; font-weight: 700; text-decoration: none; transition: background 0.2s; display: inline-block; }
+        .btn-prog-details:hover { background: var(--secondary-dark); }
+
+        footer { background: var(--primary-dark); color: white; padding: 60px 20px 40px; text-align: center; margin-top: 60px; }
+        footer p { font-size: 14px; color: var(--text-light); }
+
+        @media(max-width: 992px) { .explorer-layout { grid-template-columns: 1fr; } .explorer-sidebar { position: static; } }
+    </style>
+</head>
+<body>
+
+    <!-- Slim Product Banner -->
+    <header class="campus-os-banner">
+        <div>🚀 <strong>Campus OS Academic Decision Platform</strong> — Program Discovery Explorer</div>
+        <div><a href="CampusOS-Home.html">&larr; Back to Home</a></div>
+    </header>
+
+    <!-- Global Navigation -->
+    <nav class="navbar">
+        <a href="CampusOS-Home.html" class="logo-area">
+            <div class="college-crest">AP</div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="programs.html" class="nav-link active">Programs</a></li>
+            <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
+            <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="admissions.html" class="nav-cta">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Academic Explorer Workspace -->
+    <main class="academic-explorer-section">
+        <div class="section-header">
+            <h2>Academic Explorer & Course Screener</h2>
+            <p>Filter programs dynamically from the institutional repository to find your ideal path.</p>
+        </div>
+
+        <div class="explorer-layout">
+            <!-- Left Sidebar Filters -->
+            <div class="explorer-sidebar">
+                <h3>Program Filters</h3>
+                
+                <div class="filter-group">
+                    <label>1. Academic Level</label>
+                    <div class="filter-options" id="levelFilters">
+                        <button class="filter-btn active" data-level="all">All Levels</button>
+                        <button class="filter-btn" data-level="Undergraduate">🎓 Undergraduate (UG)</button>
+                        <button class="filter-btn" data-level="Postgraduate">🎯 Postgraduate (PG)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content Area -->
+            <div class="explorer-content-area">
+                <div class="explorer-top-bar">
+                    <input type="text" class="explorer-search-input" id="programSearch" placeholder="🔍 Search courses by title or keyword...">
+                    <span id="programCount" style="font-size: 13px; font-weight: 700; color: var(--text-light); white-space: nowrap;">Loading programs...</span>
+                </div>
+
+                <!-- Dynamic Grid container -->
+                <div class="programs-explorer-grid" id="programsGrid">
+                    <!-- Cards will be injected dynamically via JavaScript from data/programs.xml -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Akbar Peerbhoy College. Academic Explorer Workspace Powered by Campus OS.</p>
+    </footer>
+
+    <!-- Dynamic XML Repository Reader Script -->
+    <script>
+        let allProgramsData = [];
+
+        async function fetchAndRenderPrograms() {
+            try {
+                const response = await fetch('data/programs.xml');
+                if (!response.ok) throw new Error('Failed to load data/programs.xml repository.');
+                
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+                
+                const programNodes = xmlDoc.querySelectorAll('program');
+                allProgramsData = Array.from(programNodes).map(node => {
+                    const getVal = (tag) => node.querySelector(tag)?.textContent || '';
+                    return {
+                        id: node.getAttribute('id'),
+                        title: getVal('title'),
+                        level: getVal('level').includes('Postgraduate') ? 'Postgraduate' : 'Undergraduate',
+                        levelFull: getVal('level'),
+                        rating: getVal('rating'),
+                        nep: getVal('nep'),
+                        description: getVal('description'),
+                        duration: getVal('duration'),
+                        eligibility: getVal('eligibility'),
+                        placement: getVal('placementRate'),
+                        salary: getVal('avgSalary')
+                    };
+                });
+
+                renderGrid(allProgramsData);
+            } catch (err) {
+                console.error("XML Load Error:", err);
+                document.getElementById('programsGrid').innerHTML = `<p style="color:red; font-weight:700;">Error: Could not parse XML repository from data folder.</p>`;
+            }
+        }
+
+        function renderGrid(data) {
+            const grid = document.getElementById('programsGrid');
+            document.getElementById('programCount').textContent = `Showing ${data.length} programs`;
+
+            if (data.length === 0) {
+                grid.innerHTML = `<p style="color:var(--text-light); font-weight:600; grid-column:1/-1;">No programs match your search or filter criteria.</p>`;
+                return;
+            }
+
+            grid.innerHTML = data.map(prog => `
+                <div class="program-explorer-card" data-level="${prog.level}">
+                    <div>
+                        <div class="prog-card-top">
+                            <span class="prog-ribbon">${prog.nep}</span>
+                            <span class="prog-rating">${prog.rating}</span>
+                        </div>
+                        <span style="font-size:12px; color:var(--text-light); font-weight:600;">${prog.levelFull}</span>
+                        <h4>${prog.title}</h4>
+                        <p>${prog.description}</p>
+                        
+                        <div class="prog-metrics-list">
+                            <div class="prog-metric-row">✓ Duration: <span>${prog.duration}</span></div>
+                            <div class="prog-metric-row">✓ Eligibility: <span>${prog.eligibility}</span></div>
+                            <div class="prog-metric-row">✓ Placement: <span>${prog.placement}</span></div>
+                            <div class="prog-metric-row">✓ Avg Salary: <span>${prog.salary}</span></div>
+                        </div>
+                    </div>
+                    <div class="prog-card-actions">
+                        <a href="program-detail.html?course=${prog.id}" class="btn-prog-details">View Program & Details &rarr;</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filtering logic
+        const levelBtns = document.querySelectorAll('#levelFilters .filter-btn');
+        const searchInput = document.getElementById('programSearch');
+
+        let activeLevel = 'all';
+
+        function filterPrograms() {
+            const query = searchInput.value.toLowerCase();
+            const filtered = allProgramsData.filter(prog => {
+                const matchLevel = (activeLevel === 'all' || prog.level === activeLevel);
+                const matchQuery = prog.title.toLowerCase().includes(query) || prog.description.toLowerCase().includes(query);
+                return matchLevel && matchQuery;
+            });
+            renderGrid(filtered);
+        }
+
+        levelBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                levelBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeLevel = btn.getAttribute('data-level');
+                filterPrograms();
+            });
+        });
+
+        searchInput.addEventListener('input', filterPrograms);
+
+        document.addEventListener("DOMContentLoaded", fetchAndRenderPrograms);
+    </script>
+</body>
+</html>

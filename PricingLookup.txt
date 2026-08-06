@@ -1,0 +1,5 @@
+Bundle,Setup Fee,Monthly SaaS,Annual AI Fee
+Lite,50000,2500,5000
+Pro,75000,4000,15000
+Enterprise,225000,7500,45000
+Schools,100000,6000,6000
