@@ -1,0 +1,82 @@
+<?xml5 version="1.0" encoding="UTF-8"?>
+<programs>
+    <program id="bms">
+        <title>Bachelor of Management Studies (BMS)</title>
+        <level>Undergraduate • 3 Years</level>
+        <rating>⭐ 4.75 Rating</rating>
+        <nep>NEP 2020 Compliant</nep>
+        <description>Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills designed for top global corporations.</description>
+        <duration>3 Years</duration>
+        <credits>120 ECTS</credits>
+        <intake>120 Seats</intake>
+        <placementRate>98% Success</placementRate>
+        <avgSalary>₹6.2 LPA</avgSalary>
+        <highSalary>₹11.0 LPA</highSalary>
+        <eligibility>10+2 Any Stream (45%+)</eligibility>
+        <overview>The Bachelor of Management Studies (BMS) is a premier 3-year undergraduate degree structured under NEP guidelines, bridging foundational business theory with real-world corporate case studies and internships.</overview>
+        <tuitionFee>₹28,500</tuitionFee>
+        <devFee>₹4,500</devFee>
+        <libFee>₹2,000</libFee>
+        <totalFee>₹35,000</totalFee>
+    </program>
+
+    <program id="bcom">
+        <title>Bachelor of Commerce (B.Com)</title>
+        <level>Undergraduate • 3 Years</level>
+        <rating>⭐ 4.9 Rating</rating>
+        <nep>NEP 2020 Compliant</nep>
+        <description>Comprehensive foundation in accounting, taxation, auditing, and global corporate finance principles.</description>
+        <duration>3 Years</duration>
+        <credits>120 ECTS</credits>
+        <intake>240 Seats</intake>
+        <placementRate>94% Success</placementRate>
+        <avgSalary>₹4.5 LPA</avgSalary>
+        <highSalary>₹8.5 LPA</highSalary>
+        <eligibility>10+2 Commerce (45%+)</eligibility>
+        <overview>The Bachelor of Commerce (B.Com) program equips students with rigorous accounting skills, tax planning frameworks, and deep financial literacy required for modern corporate auditing and banking careers.</overview>
+        <tuitionFee>₹12,400</tuitionFee>
+        <devFee>₹2,500</devFee>
+        <libFee>₹1,500</libFee>
+        <totalFee>₹16,400</totalFee>
+    </program>
+
+    <program id="bsit">
+        <title>Bachelor of Science in IT (B.Sc IT)</title>
+        <level>Undergraduate • 3 Years</level>
+        <rating>⭐ 4.85 Rating</rating>
+        <nep>AI Integrated</nep>
+        <description>Cutting-edge technical curriculum covering software engineering, cloud workflows, and data structures.</description>
+        <duration>3 Years</duration>
+        <credits>120 ECTS</credits>
+        <intake>120 Seats</intake>
+        <placementRate>97% Success</placementRate>
+        <avgSalary>₹7.5 LPA</avgSalary>
+        <highSalary>₹14.0 LPA</highSalary>
+        <eligibility>10+2 with Math (45%+)</eligibility>
+        <overview>The B.Sc IT program provides immersive training in full-stack software development, database architecture, cybersecurity protocols, and cloud computing infrastructure.</overview>
+        <tuitionFee>₹34,000</tuitionFee>
+        <devFee>₹6,000</devFee>
+        <libFee>₹2,500</libFee>
+        <totalFee>₹42,500</totalFee>
+    </program>
+
+    <program id="mcom">
+        <title>Master of Commerce (M.Com)</title>
+        <level>Postgraduate • 2 Years</level>
+        <rating>⭐ 4.85 Rating</rating>
+        <nep>Industry Partner</nep>
+        <description>Advanced specialization focusing on financial analytics, corporate research, and strategic auditing frameworks.</description>
+        <duration>2 Years</duration>
+        <credits>80 ECTS</credits>
+        <intake>60 Seats</intake>
+        <placementRate>95% Success</placementRate>
+        <avgSalary>₹8.0 LPA</avgSalary>
+        <highSalary>₹18.0 LPA</highSalary>
+        <eligibility>Graduate in Commerce</eligibility>
+        <overview>Advanced postgraduate study specializing in financial analytics, strategic auditing, and empirical corporate research.</overview>
+        <tuitionFee>₹32,000</tuitionFee>
+        <devFee>₹5,000</devFee>
+        <libFee>₹2,000</libFee>
+        <totalFee>₹39,000</totalFee>
+    </program>
+</programs>
