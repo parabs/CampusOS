@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Catalog — CampusOS Configuration Studio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-gray: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.08);
+            --radius-card: 20px;
+            --radius-btn: 9999px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--background); color: var(--text); line-height: 1.5; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* Top Mission Control Banner */
+        .mission-control-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: #FFFFFF; font-size: 13px; padding: 8px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
+        }
+        .mission-control-banner a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+        /* Navigation Bar */
+        .studio-navbar {
+            position: fixed; top: 37px; left: 0; right: 0; z-index: 1000;
+            padding: 14px 4%; display: flex; align-items: center; justify-content: space-between;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .studio-logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .studio-crest { width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+        .studio-logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 17px; color: var(--primary); display: flex; flex-direction: column; }
+        .studio-logo-text span { font-size: 9.5px; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+        
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .btn-back-studio { background: var(--surface-gray); color: var(--primary); padding: 8px 16px; border-radius: var(--radius-btn); font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid var(--border-color); transition: all 0.2s; }
+        .btn-back-studio:hover { background: #E2E8F0; }
+
+        /* Main Workspace Container */
+        .workspace-container { max-width: 1280px; margin: 110px auto 60px; padding: 0 24px; }
+        
+        /* Clean Repository Header */
+        .repository-header-strip {
+            display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
+            background: white; border: 1px solid var(--border-color); border-radius: 20px; padding: 26px 30px; box-shadow: var(--shadow);
+        }
+        .repository-titles h1 { font-size: 26px; font-weight: 900; color: var(--primary); letter-spacing: -0.03em; margin-bottom: 4px; }
+        .repository-titles p { font-size: 14px; color: var(--text-light); }
+        .repository-subtitle-count { font-size: 12px; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; display: inline-block; }
+
+        .toolbar-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .btn-toolbar { background: white; color: var(--primary); border: 1px solid var(--border-color); padding: 9px 16px; border-radius: var(--radius-btn); font-size: 13px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s; }
+        .btn-toolbar:hover { background: #F8FAFC; border-color: var(--secondary); color: var(--secondary); }
+        .btn-toolbar.primary { background: var(--secondary); color: white; border: none; box-shadow: 0 4px 12px rgba(37,99,235,0.25); }
+        .btn-toolbar.primary:hover { background: var(--secondary-dark); }
+
+        /* Filter Tabs Bar */
+        .filter-tabs-bar {
+            background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 12px 20px;
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; box-shadow: var(--shadow); gap: 16px; flex-wrap: wrap;
+        }
+        .filter-tab-group { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-tab { background: var(--surface-gray); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 10px; font-size: 12.5px; font-weight: 700; cursor: pointer; color: var(--text-light); transition: all 0.2s; }
+        .filter-tab.active, .filter-tab:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+
+        .search-input-wrapper { position: relative; flex: 1; max-width: 320px; }
+        .search-input-wrapper input { width: 100%; padding: 8px 14px 8px 36px; border: 1px solid var(--border-color); border-radius: 9999px; font-size: 13px; outline: none; }
+        .search-input-wrapper input:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--text-light); }
+
+        /* Programs List */
+        .programs-list-container { display: flex; flex-direction: column; gap: 14px; }
+        .program-row-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); transition: all 0.2s; gap: 20px; }
+        .program-row-card:hover { border-color: var(--secondary); box-shadow: var(--shadow-hover); }
+        
+        .prog-info-main { display: flex; align-items: flex-start; gap: 16px; }
+        .prog-details h3 { font-size: 17px; font-weight: 800; color: var(--primary); margin-bottom: 6px; display: flex; align-items: center; gap: 12px; }
+        
+        .prog-audit-meta { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-light); font-family: monospace; flex-wrap: wrap; }
+        .audit-item { display: flex; align-items: center; gap: 4px; }
+        .audit-item strong { color: var(--text); font-weight: 700; }
+
+        .pill { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 8px; background: var(--surface-gray); color: var(--text-light); border: 1px solid var(--border-color); }
+        .pill.published { background: #ECFDF5; color: #047857; border-color: #A7F3D0; }
+        .pill.draft { background: #FEF3C7; color: #B45309; border-color: #FDE68A; }
+
+        .prog-row-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; position: relative; }
+        .btn-action { background: var(--surface-gray); border: 1px solid var(--border-color); color: var(--primary); padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+        .btn-action:hover { background: #E2E8F0; color: var(--secondary); }
+        .btn-action.configure { background: var(--secondary); color: white; border: none; text-decoration: none; }
+        .btn-action.configure:hover { background: var(--secondary-dark); }
+        
+        .dropdown-wrapper { position: relative; display: inline-block; }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 6px; background: white; border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 100; min-width: 150px; overflow: hidden; }
+        .dropdown-menu.active { display: block; }
+        .dropdown-item { width: 100%; padding: 10px 14px; text-align: left; background: none; border: none; font-size: 12.5px; font-weight: 700; color: var(--text); cursor: pointer; display: block; text-decoration: none; }
+        .dropdown-item:hover { background: #F8FAFC; color: var(--secondary); }
+        .dropdown-item.danger:hover { background: #FEE2E2; color: #991B1B; }
+
+        /* Modal Overlay & Editor Styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-container { background: white; border-radius: 24px; width: 100%; max-width: 960px; padding: 36px; box-shadow: 0 25px 60px rgba(0,0,0,0.3); max-height: 92vh; display: flex; flex-direction: column; }
+        
+        .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 14px; flex-shrink: 0; }
+        .modal-title-area h2 { font-size: 20px; font-weight: 900; color: var(--primary); margin-bottom: 2px; }
+        .modal-title-area p { font-size: 12.5px; color: var(--text-light); font-family: monospace; }
+        .btn-close-modal { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-light); }
+
+        /* Draft Status Banner */
+        .draft-status-banner {
+            background: #FEF3C7; border: 1px solid #FDE68A; color: #92400E; padding: 7px 14px; border-radius: 10px;
+            font-size: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; font-weight: 600;
+        }
+
+        /* Editor Navigation Tabs */
+        .editor-tabs-container { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; overflow-x: auto; flex-shrink: 0; align-items: center; }
+        .tab-btn { background: var(--surface-gray); border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; color: var(--text-light); white-space: nowrap; transition: all 0.2s; }
+        .tab-btn.active { background: var(--secondary); color: white; border-color: var(--secondary); }
+        .tab-separator { width: 1px; height: 24px; background: var(--border-color); margin: 0 4px; }
+        .tab-btn.utility { background: #EFF6FF; color: var(--secondary); border-color: #BFDBFE; }
+        .tab-btn.utility.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* Modal Body Scrollable Area */
+        .modal-body-scrollable { overflow-y: auto; flex-grow: 1; padding-right: 4px; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full { grid-column: span 2; }
+        .form-group label { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
+        .form-group input, .form-group textarea, .form-group select { padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 13.5px; font-family: inherit; outline: none; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+        .modal-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 18px; margin-top: 20px; flex-shrink: 0; }
+        .modal-footer-metadata { font-size: 12px; font-family: monospace; color: var(--text-light); display: flex; gap: 16px; align-items: center; }
+        .modal-footer-actions { display: flex; gap: 12px; }
+        .btn-modal { padding: 10px 22px; border-radius: var(--radius-btn); font-size: 13.5px; font-weight: 700; cursor: pointer; border: none; }
+        .btn-modal.secondary { background: var(--surface-gray); color: var(--primary); border: 1px solid var(--border-color); }
+        .btn-modal.primary { background: var(--secondary); color: white; box-shadow: 0 4px 12px rgba(37,99,235,0.25); }
+        .btn-modal.primary:hover { background: var(--secondary-dark); }
+
+        /* Dual Target Preview Sub-Navbar */
+        .preview-target-subbar {
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--surface-gray); padding: 8px 14px; border-radius: 12px; border: 1px solid var(--border-color);
+            margin-bottom: 16px; gap: 12px; flex-wrap: wrap;
+        }
+        .preview-target-buttons { display: flex; gap: 6px; }
+        .btn-target { background: white; border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--text-light); }
+        .btn-target.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .preview-viewport-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; background: #E2E8F0; padding: 6px 12px; border-radius: 10px; }
+        .device-toggle-group { display: flex; gap: 6px; }
+        .btn-device { background: white; border: 1px solid var(--border-color); padding: 3px 10px; border-radius: 6px; font-size: 11.5px; font-weight: 700; cursor: pointer; }
+        .btn-device.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .preview-iframe-container { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); margin: 0 auto; transition: width 0.3s ease; }
+        .preview-iframe-container.desktop { width: 100%; }
+        .preview-iframe-container.tablet { width: 768px; }
+        .preview-iframe-container.mobile { width: 375px; }
+
+        .delete-dialog { max-width: 440px; text-align: center; padding: 40px; }
+        .delete-dialog h3 { font-size: 20px; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
+        .delete-dialog p { font-size: 14px; color: var(--text-light); margin-bottom: 24px; }
+
+        footer { background: var(--primary-dark); color: white; padding: 40px 20px; text-align: center; margin-top: 80px; }
+        footer p { font-size: 13px; color: var(--text-light); }
+
+        @media(max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+            .program-row-card { flex-direction: column; align-items: flex-start; }
+            .prog-row-actions { width: 100%; justify-content: flex-end; border-top: 1px solid var(--border-color); padding-top: 12px; }
+            .preview-iframe-container.tablet, .preview-iframe-container.mobile { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Mission Control Banner -->
+    <header class="mission-control-banner">
+        <div>🚀 <strong>CampusOS Mission Control Center</strong> — Institutional Digital Experience Studio</div>
+        <div><a href="studio.html">&larr; Return to Studio Mission Control</a></div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="studio-navbar">
+        <a href="studio.html" class="studio-logo-area">
+            <div class="studio-crest">OS</div>
+            <div class="studio-logo-text">CampusOS Studio <span>Programs Repository</span></div>
+        </a>
+        <div class="nav-actions">
+            <a href="studio.html" class="btn-back-studio">&larr; Back to Studio Mission Control</a>
+        </div>
+    </nav>
+
+    <!-- Main Workspace Container -->
+    <main class="workspace-container">
+
+        <!-- Clean Repository Header -->
+        <div class="repository-header-strip">
+            <div class="repository-titles">
+                <span class="repository-subtitle-count">Showing 4 Programs</span>
+                <h1>Programs Repository</h1>
+                <p>Manage academic programs, eligibility, fees, curriculum and intake information.</p>
+            </div>
+            <div class="toolbar-group">
+                <button class="btn-toolbar primary" onclick="openAddModal()"><span>+</span> New Program</button>
+                <button class="btn-toolbar" onclick="alert('Generating and downloading secure repository backup snapshot (.bak)...')">Backup Repository</button>
+                <button class="btn-toolbar" onclick="alert('Exporting verified program catalog as plain text (.txt)...')">Export Programs</button>
+            </div>
+        </div>
+
+        <!-- Filter Tabs Bar -->
+        <div class="filter-tabs-bar">
+            <div class="filter-tab-group">
+                <button class="filter-tab active" onclick="filterTab('all', event)">All (4)</button>
+                <button class="filter-tab" onclick="filterTab('published', event)">Published (4)</button>
+                <button class="filter-tab" onclick="filterTab('draft', event)">Draft (0)</button>
+                <button class="filter-tab" onclick="filterTab('ug', event)">UG (3)</button>
+                <button class="filter-tab" onclick="filterTab('pg', event)">PG (1)</button>
+            </div>
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="programSearchInput" placeholder="Search by program name or code..." onkeyup="filterPrograms()">
+            </div>
+        </div>
+
+        <!-- Programs List -->
+        <div class="programs-list-container" id="programsListContainer">
+            
+            <!-- Program 1: BMS -->
+            <div class="program-row-card" data-title="Bachelor of Management Studies (BMS)" data-level="ug" data-status="published">
+                <div class="prog-info-main">
+                    <div class="prog-details">
+                        <h3>
+                            Bachelor of Management Studies (BMS) 
+                            <span class="pill published">🟢 Published</span>
+                        </h3>
+                        <div class="prog-audit-meta">
+                            <span class="audit-item">Code: <strong>bms</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Updated: <strong>Today • 11:40 AM</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">By: <strong>Dr. Shaikh</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Ver: <strong style="color: var(--secondary);">v3.1</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="prog-row-actions">
+                    <a href="program-detail-workspace.html?course=bms" class="btn-action configure">Configure</a>
+                    <a href="program-detail-workspace.html?course=bms" target="_blank" class="btn-action">Preview Website</a>
+                    <button class="btn-action" onclick="duplicateProgram('bms')">Duplicate</button>
+                    
+                    <div class="dropdown-wrapper">
+                        <button class="btn-action" onclick="toggleDropdown(event, 'drop-bms')">⋮</button>
+                        <div class="dropdown-menu" id="drop-bms">
+                            <button class="dropdown-item" onclick="alert('Viewing revision history for BMS...')">History / Versions</button>
+                            <button class="dropdown-item danger" onclick="openDeleteModal('bms', 'Bachelor of Management Studies (BMS)')">Delete Program</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 2: B.Com -->
+            <div class="program-row-card" data-title="Bachelor of Commerce (B.Com)" data-level="ug" data-status="published">
+                <div class="prog-info-main">
+                    <div class="prog-details">
+                        <h3>
+                            Bachelor of Commerce (B.Com) 
+                            <span class="pill published">🟢 Published</span>
+                        </h3>
+                        <div class="prog-audit-meta">
+                            <span class="audit-item">Code: <strong>bcom</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Updated: <strong>Yesterday • 4:15 PM</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">By: <strong>Administrator</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Ver: <strong style="color: var(--secondary);">v2.4</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="prog-row-actions">
+                    <a href="program-detail-workspace.html?course=bcom" class="btn-action configure">Configure</a>
+                    <a href="program-detail-workspace.html?course=bcom" target="_blank" class="btn-action">Preview Website</a>
+                    <button class="btn-action" onclick="duplicateProgram('bcom')">Duplicate</button>
+                    
+                    <div class="dropdown-wrapper">
+                        <button class="btn-action" onclick="toggleDropdown(event, 'drop-bcom')">⋮</button>
+                        <div class="dropdown-menu" id="drop-bcom">
+                            <button class="dropdown-item" onclick="alert('Viewing revision history for B.Com...')">History / Versions</button>
+                            <button class="dropdown-item danger" onclick="openDeleteModal('bcom', 'Bachelor of Commerce (B.Com)')">Delete Program</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 3: BSc IT -->
+            <div class="program-row-card" data-title="Bachelor of Science IT" data-level="ug" data-status="published">
+                <div class="prog-info-main">
+                    <div class="prog-details">
+                        <h3>
+                            Bachelor of Science IT 
+                            <span class="pill published">🟢 Published</span>
+                        </h3>
+                        <div class="prog-audit-meta">
+                            <span class="audit-item">Code: <strong>bscit</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Updated: <strong>28 Jul • 2:30 PM</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">By: <strong>Prof. Khan</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Ver: <strong style="color: var(--secondary);">v1.9</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="prog-row-actions">
+                    <a href="program-detail-workspace.html?course=bscit" class="btn-action configure">Configure</a>
+                    <a href="program-detail-workspace.html?course=bscit" target="_blank" class="btn-action">Preview Website</a>
+                    <button class="btn-action" onclick="duplicateProgram('bscit')">Duplicate</button>
+                    
+                    <div class="dropdown-wrapper">
+                        <button class="btn-action" onclick="toggleDropdown(event, 'drop-bscit')">⋮</button>
+                        <div class="dropdown-menu" id="drop-bscit">
+                            <button class="dropdown-item" onclick="alert('Viewing revision history for BSc IT...')">History / Versions</button>
+                            <button class="dropdown-item danger" onclick="openDeleteModal('bscit', 'Bachelor of Science IT')">Delete Program</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 4: M.Com -->
+            <div class="program-row-card" data-title="Master of Commerce" data-level="pg" data-status="published">
+                <div class="prog-info-main">
+                    <div class="prog-details">
+                        <h3>
+                            Master of Commerce 
+                            <span class="pill published">🟢 Published</span>
+                        </h3>
+                        <div class="prog-audit-meta">
+                            <span class="audit-item">Code: <strong>mcom</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Updated: <strong>20 Jul • 10:00 AM</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">By: <strong>Dr. Shaikh</strong></span>
+                            <span>&bull;</span>
+                            <span class="audit-item">Ver: <strong style="color: var(--secondary);">v2.0</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="prog-row-actions">
+                    <a href="program-detail-workspace.html?course=mcom" class="btn-action configure">Configure</a>
+                    <a href="program-detail-workspace.html?course=mcom" target="_blank" class="btn-action">Preview Website</a>
+                    <button class="btn-action" onclick="duplicateProgram('mcom')">Duplicate</button>
+                    
+                    <div class="dropdown-wrapper">
+                        <button class="btn-action" onclick="toggleDropdown(event, 'drop-mcom')">⋮</button>
+                        <div class="dropdown-menu" id="drop-mcom">
+                            <button class="dropdown-item" onclick="alert('Viewing revision history for M.Com...')">History / Versions</button>
+                            <button class="dropdown-item danger" onclick="openDeleteModal('mcom', 'Master of Commerce')">Delete Program</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Program Editor Modal -->
+    <div class="modal-overlay" id="programEditorModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <h2 id="modalTitle">Editing Program: Bachelor of Management Studies</h2>
+                    <p id="modalRepoId">Program Code : bms</p>
+                </div>
+                <button class="btn-close-modal" onclick="closeEditorModal()">&times;</button>
+            </div>
+
+            <!-- Draft Status Banner -->
+            <div class="draft-status-banner">
+                <span>● <strong>Editing Draft</strong> • Last Published: 03 Aug 2026 by Administrator</span>
+                <span style="font-size: 11.5px; font-family: monospace;">Unpublished Changes Pending</span>
+            </div>
+
+            <!-- Editor Navigation Tabs -->
+            <div class="editor-tabs-container">
+                <button class="tab-btn active" onclick="switchTab('general')">General</button>
+                <button class="tab-btn" onclick="switchTab('fees')">Fees</button>
+                <button class="tab-btn" onclick="switchTab('eligibility')">Eligibility</button>
+                <button class="tab-btn" onclick="switchTab('placements')">Placements</button>
+                <button class="tab-btn" onclick="switchTab('seo')">SEO</button>
+                
+                <div class="tab-separator"></div>
+                
+                <button class="tab-btn utility" onclick="switchTab('preview')">👁 Website Preview</button>
+                <button class="tab-btn utility" onclick="switchTab('history')">🕒 Version History</button>
+            </div>
+
+            <!-- Modal Body Scrollable Area -->
+            <div class="modal-body-scrollable">
+                <!-- Tab Content: General -->
+                <div class="tab-content" id="tab-general">
+                    <form id="programForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Program Code</label>
+                                <input type="text" id="editProgId" value="bms" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Academic Level</label>
+                                <select id="editProgLevel">
+                                    <option value="UG">Undergraduate</option>
+                                    <option value="PG">Postgraduate</option>
+                                </select>
+                            </div>
+                            <div class="form-group full">
+                                <label>Program Title</label>
+                                <input type="text" id="editProgTitle" value="Bachelor of Management Studies" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <input type="text" id="editProgDuration" value="3 Years">
+                            </div>
+                            <div class="form-group">
+                                <label>Intake Seats</label>
+                                <input type="number" id="editProgIntake" value="120">
+                            </div>
+                            <div class="form-group full">
+                                <label>Short Description</label>
+                                <textarea id="editProgDesc" rows="2">Comprehensive management program focused on leadership, corporate strategy, and marketing finance.</textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Tab Content: Fees -->
+                <div class="tab-content" id="tab-fees" style="display: none;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Tuition Fee (Annual)</label>
+                            <input type="text" value="₹28,500">
+                        </div>
+                        <div class="form-group">
+                            <label>Development Fund</label>
+                            <input type="text" value="₹4,500">
+                        </div>
+                        <div class="form-group">
+                            <label>Library Fee</label>
+                            <input type="text" value="₹2,000">
+                        </div>
+                        <div class="form-group">
+                            <label>Total Annual Fee</label>
+                            <input type="text" value="₹35,000" style="font-weight: 800; color: var(--secondary);">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Eligibility -->
+                <div class="tab-content" id="tab-eligibility" style="display: none;">
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label>Qualifying Examination</label>
+                            <input type="text" value="10+2 Higher Secondary Certificate (HSC) Examination or equivalent from any recognized stream.">
+                        </div>
+                        <div class="form-group">
+                            <label>Minimum Aggregate %</label>
+                            <input type="text" value="45% for Open Category, 40% for Reserved">
+                        </div>
+                        <div class="form-group">
+                            <label>Entrance Requirement</label>
+                            <input type="text" value="Merit-based admission as per university guidelines">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Placements -->
+                <div class="tab-content" id="tab-placements" style="display: none;">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Placement Rate (%)</label>
+                            <input type="text" value="98%">
+                        </div>
+                        <div class="form-group">
+                            <label>Average Salary Package</label>
+                            <input type="text" value="₹6.2 LPA">
+                        </div>
+                        <div class="form-group">
+                            <label>Highest Salary Package</label>
+                            <input type="text" value="₹11.0 LPA">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: SEO -->
+                <div class="tab-content" id="tab-seo" style="display: none;">
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label>Meta Page Title</label>
+                            <input type="text" value="Bachelor of Management Studies (BMS) | Akbar Peerbhoy College">
+                        </div>
+                        <div class="form-group full">
+                            <label>Meta Description</label>
+                            <textarea rows="2">Explore top-ranked BMS degree at Akbar Peerbhoy College, Mumbai. NAAC A+ accredited course with 98% placement support.</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Website Preview -->
+                <div class="tab-content" id="tab-preview" style="display: none;">
+                    <div class="preview-target-subbar">
+                        <div class="preview-target-buttons">
+                            <button class="btn-target active" id="btnTargetCard" onclick="switchPreviewTarget('card', event)">Programs Page (programs.html)</button>
+                            <button class="btn-target" id="btnTargetDetail" onclick="switchPreviewTarget('detail', event)">Program Page (program-detail-workspace.html)</button>
+                        </div>
+                        <span style="font-size: 11.5px; font-family: monospace; color: var(--text-light);" id="targetCodeLabel">TARGET: PROGRAMS.HTML (CARD COMPONENT)</span>
+                    </div>
+
+                    <div class="preview-viewport-toolbar">
+                        <span style="font-size: 11.5px; font-weight: 700; color: var(--text-light); text-transform: uppercase;" id="viewportLabel">Viewport Mode</span>
+                        <div class="device-toggle-group">
+                            <button class="btn-device active" onclick="setDeviceView('desktop', event)">Desktop</button>
+                            <button class="btn-device" onclick="setDeviceView('tablet', event)">Tablet</button>
+                            <button class="btn-device" onclick="setDeviceView('mobile', event)">Mobile</button>
+                        </div>
+                    </div>
+
+                    <div class="preview-iframe-container desktop" id="previewViewportBox" style="pointer-events: none;">
+                        <div id="previewCardView">
+                            <div style="background: white; border-radius: 24px; padding: 36px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.06); max-width: 520px; margin: 0 auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                                <div style="display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center;">
+                                    <span style="background: #FEF3C7; color: #B45309; font-size: 11.5px; font-weight: 700; padding: 6px 14px; border-radius: 99px;">NEP 2020 COMPLIANT</span>
+                                    <span style="background: #FEF3C7; color: #B45309; font-size: 11.5px; font-weight: 700; padding: 6px 14px; border-radius: 99px;">⭐ 4.75 Rating</span>
+                                </div>
+
+                                <h2 style="font-size: 28px; font-weight: 900; color: #0F172A; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 14px;" id="iframeTitle">Bachelor of Management Studies (BMS)</h2>
+                                <p style="font-size: 14.5px; color: #64748B; line-height: 1.6; margin-bottom: 24px;" id="iframeDesc">Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills designed for top global corporations.</p>
+
+                                <div style="background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13.5px;">
+                                        <span style="color: #64748B; display: flex; align-items: center; gap: 6px;">✓ Duration:</span>
+                                        <strong style="color: #1E293B; font-weight: 800;">3 Years</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13.5px;">
+                                        <span style="color: #64748B; display: flex; align-items: center; gap: 6px;">✓ Eligibility:</span>
+                                        <strong style="color: #1E293B; font-weight: 800;">10+2 Any Stream (45%+)</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13.5px;">
+                                        <span style="color: #64748B; display: flex; align-items: center; gap: 6px;">✓ Placement:</span>
+                                        <strong style="color: #1E293B; font-weight: 800;">98% Success</strong>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13.5px;">
+                                        <span style="color: #64748B; display: flex; align-items: center; gap: 6px;">✓ Avg Salary:</span>
+                                        <strong style="color: #1E293B; font-weight: 800;">₹6.2 LPA</strong>
+                                    </div>
+                                </div>
+
+                                <button style="width: 100%; background: #4F46E5; color: white; border: none; padding: 14px 24px; border-radius: 99px; font-weight: 800; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);">
+                                    View Program & Details →
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="previewDetailView" style="display: none;">
+                            <div style="background: #090D16; border-radius: 20px; padding: 36px; color: white; font-family: 'Plus Jakarta Sans', sans-serif; margin-bottom: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                                <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
+                                    <span style="background: #1E293B; border: 1px solid #334155; color: #93C5FD; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 99px;">UNDERGRADUATE • 3 YEARS</span>
+                                    <span style="background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); color: #FCD34D; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 99px;">⭐ 4.75 Rating</span>
+                                    <span style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34D399; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 99px;">NEP 2020 COMPLIANT</span>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: start;">
+                                    <div>
+                                        <h1 style="font-size: 30px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 12px; line-height: 1.15;" id="iframeDetailTitle">Bachelor of Management Studies (BMS)</h1>
+                                        <p style="font-size: 14px; color: #94A3B8; line-height: 1.6; margin-bottom: 24px;" id="iframeDetailDesc">Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills designed for top global corporations.</p>
+                                        
+                                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                            <button style="background: #2563EB; color: white; border: none; padding: 10px 20px; border-radius: 99px; font-weight: 700; font-size: 13px; cursor: pointer;">Start Admission</button>
+                                            <button style="background: #1E293B; color: white; border: 1px solid #334155; padding: 10px 16px; border-radius: 99px; font-weight: 700; font-size: 13px; cursor: pointer;">View Fees</button>
+                                            <button style="background: #1E293B; color: white; border: 1px solid #334155; padding: 10px 16px; border-radius: 99px; font-weight: 700; font-size: 13px; cursor: pointer;">Download Brochure</button>
+                                            <button style="background: #1E293B; color: white; border: 1px solid #334155; padding: 10px 16px; border-radius: 99px; font-weight: 700; font-size: 13px; cursor: pointer;">Talk to Counselor</button>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 12.5px; border-bottom: 1px solid #1F2937; padding-bottom: 8px;">
+                                            <span style="color: #9CA3AF;">Placement Rate:</span>
+                                            <strong style="color: #34D399;">98% Success</strong>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 12.5px; border-bottom: 1px solid #1F2937; padding-bottom: 8px;">
+                                            <span style="color: #9CA3AF;">Average Salary:</span>
+                                            <strong style="color: white;">₹6.2 LPA</strong>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 12.5px; border-bottom: 1px solid #1F2937; padding-bottom: 8px;">
+                                            <span style="color: #9CA3AF;">Highest Package:</span>
+                                            <strong style="color: white;">₹11.0 LPA</strong>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 12.5px; border-bottom: 1px solid #1F2937; padding-bottom: 8px;">
+                                            <span style="color: #9CA3AF;">Intake Capacity:</span>
+                                            <strong style="color: white;">120 Seats</strong>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 12.5px;">
+                                            <span style="color: #9CA3AF;">Eligibility:</span>
+                                            <strong style="color: white;">10+2 Any Stream (45%+)</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Version History -->
+                <div class="tab-content" id="tab-history" style="display: none;">
+                    <div style="display: flex; flex-direction: column; gap: 12px; padding: 10px 0;">
+                        <p style="font-size: 13.5px; color: var(--text-light);">Automatic repository backups (`programs.xml.bak`) are securely generated prior to every save action with instant rollback support.</p>
+                        
+                        <div style="background: var(--surface-gray); padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 10.5px; font-weight: 800; color: var(--secondary); background: #EFF6FF; padding: 2px 8px; border-radius: 6px;">Version 3.2 (Current Draft)</span>
+                                <strong style="font-size: 14px; color: var(--primary); display: block; margin-top: 6px;">Active Editing Session</strong>
+                                <p style="font-size: 12px; color: var(--text-light);">Today • 11:40 AM by Dr. Shaikh</p>
+                            </div>
+                            <span class="pill published">🟢 Active</span>
+                        </div>
+
+                        <div style="background: white; padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 10.5px; font-weight: 800; color: var(--text-light); background: var(--surface-gray); padding: 2px 8px; border-radius: 6px;">Version 3.1 (Published Snapshot)</span>
+                                <strong style="font-size: 14px; color: var(--primary); display: block; margin-top: 6px;">programs.xml.bak</strong>
+                                <p style="font-size: 12px; color: var(--text-light);">03 Aug 2026 • 04:15 PM by Administrator</p>
+                            </div>
+                            <button class="btn-action" onclick="alert('Restoring repository state from Version 3.1 (.bak)...')">Restore Version</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <div class="modal-footer-metadata">
+                    <span>Schema : <strong style="color: var(--primary);" id="footerSchemaId">bms</strong></span>
+                    <span>&bull;</span>
+                    <span>Version : <strong style="color: var(--secondary);">v3.1</strong></span>
+                </div>
+                <div class="modal-footer-actions">
+                    <button class="btn-modal secondary" onclick="closeEditorModal()">Cancel</button>
+                    <button class="btn-modal primary" onclick="executeSaveWorkflow()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteConfirmModal">
+        <div class="modal-container delete-dialog">
+            <h3>Delete Program Node?</h3>
+            <p id="deleteItemName">This action will remove the program from the catalog and generate an automatic backup snapshot (.bak).</p>
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button class="btn-modal secondary" onclick="closeDeleteModal()">Cancel</button>
+                <button class="btn-modal" style="background: #EF4444; color: white;" onclick="confirmDeleteProgram()">Delete Permanently</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Akbar Peerbhoy College &bull; CampusOS Program Catalog Manager</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let currentEditingId = null;
+        let programToDeleteId = null;
+
+        function toggleDropdown(event, dropdownId) {
+            event.stopPropagation();
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu.id !== dropdownId) menu.classList.remove('active');
+            });
+            document.getElementById(dropdownId).classList.toggle('active');
+        }
+
+        window.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('active'));
+        });
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(`tab-${tabName}`).style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function switchPreviewTarget(targetType, event) {
+            document.querySelectorAll('.btn-target').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cardView = document.getElementById('previewCardView');
+            const detailView = document.getElementById('previewDetailView');
+            const targetLabel = document.getElementById('targetCodeLabel');
+
+            if (targetType === 'card') {
+                cardView.style.display = 'block';
+                detailView.style.display = 'none';
+                targetLabel.textContent = 'TARGET: PROGRAMS.HTML (CARD COMPONENT)';
+            } else {
+                cardView.style.display = 'none';
+                detailView.style.display = 'block';
+                targetLabel.textContent = 'TARGET: PROGRAM-DETAIL-WORKSPACE.HTML (FULL TEMPLATE COMPONENT)';
+            }
+        }
+
+        function setDeviceView(mode, event) {
+            document.querySelectorAll('.btn-device').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const viewportBox = document.getElementById('previewViewportBox');
+            viewportBox.className = `preview-iframe-container ${mode}`;
+        }
+
+        function filterTab(category, event) {
+            document.querySelectorAll('.filter-tab').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.program-row-card');
+            cards.forEach(card => {
+                const status = card.getAttribute('data-status');
+                const level = card.getAttribute('data-level');
+                if (category === 'all') {
+                    card.style.display = 'flex';
+                } else if (category === status || category === level) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'Editing Program: New Program Entry';
+            document.getElementById('modalRepoId').textContent = 'Program Code : new-program';
+            document.getElementById('footerSchemaId').textContent = 'new-program';
+            document.getElementById('editProgId').value = '';
+            document.getElementById('editProgTitle').value = '';
+            document.getElementById('editProgDesc').value = '';
+            document.getElementById('iframeTitle').textContent = 'New Program Entry';
+            document.getElementById('iframeDetailTitle').textContent = 'New Program Entry';
+            document.getElementById('iframeDesc').textContent = 'Program description overview...';
+            document.getElementById('iframeDetailDesc').textContent = 'Program description overview...';
+            currentEditingId = null;
+            document.getElementById('programEditorModal').classList.add('active');
+        }
+
+        function openEditModal(id, title = "Program Node", repoId = "bms") {
+            document.getElementById('modalTitle').textContent = `Editing Program: ${title}`;
+            document.getElementById('modalRepoId').textContent = `Program Code : ${repoId}`;
+            document.getElementById('footerSchemaId').textContent = repoId;
+            document.getElementById('editProgId').value = repoId;
+            document.getElementById('editProgTitle').value = title;
+            document.getElementById('iframeTitle').textContent = title;
+            document.getElementById('iframeDetailTitle').textContent = title;
+            currentEditingId = id;
+            document.getElementById('programEditorModal').classList.add('active');
+        }
+
+        function closeEditorModal() {
+            document.getElementById('programEditorModal').classList.remove('active');
+        }
+
+        function duplicateProgram(id) {
+            alert(`Duplicating program node "${id}"...\nA new duplicate entry has been generated in the catalog with an automatic backup snapshot.`);
+        }
+
+        function openDeleteModal(id, title) {
+            programToDeleteId = id;
+            document.getElementById('deleteItemName').textContent = `Are you sure you want to delete "${title}" (Code: ${id})? This action cannot be undone.`;
+            document.getElementById('deleteConfirmModal').classList.add('active');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteConfirmModal').classList.remove('active');
+            programToDeleteId = null;
+        }
+
+        function confirmDeleteProgram() {
+            alert(`Program node "${programToDeleteId}" successfully deleted from the catalog. Backup snapshot created.`);
+            closeDeleteModal();
+        }
+
+        function executeSaveWorkflow() {
+            alert('Validating schema integrity automatically...\nCreating backup snapshot (programs.xml.bak)...\n\nChanges saved successfully!');
+            closeEditorModal();
+        }
+
+        function filterPrograms() {
+            const query = document.getElementById('programSearchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.program-row-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

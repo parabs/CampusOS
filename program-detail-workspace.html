@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Detail Workspace — CampusOS Configuration Studio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-gray: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.08);
+            --radius-btn: 9999px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--background); color: var(--text); line-height: 1.5; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* Top Mission Control Banner */
+        .mission-control-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: #FFFFFF; font-size: 13px; padding: 8px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
+        }
+        .mission-control-banner a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+        /* Navigation Bar */
+        .studio-navbar {
+            position: fixed; top: 37px; left: 0; right: 0; z-index: 1000;
+            padding: 14px 4%; display: flex; align-items: center; justify-content: space-between;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .studio-logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .studio-crest { width: 38px; height: 38px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+        .studio-logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 17px; color: var(--primary); display: flex; flex-direction: column; }
+        .studio-logo-text span { font-size: 9.5px; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+        
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .btn-back-studio { background: var(--surface-gray); color: var(--primary); padding: 8px 16px; border-radius: var(--radius-btn); font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid var(--border-color); transition: all 0.2s; }
+        .btn-back-studio:hover { background: #E2E8F0; }
+
+        /* Workspace Container */
+        .workspace-container { max-width: 1720px; margin: 110px auto 40px; padding: 0 24px; }
+
+        /* Rich Workspace Header Strip */
+        .workspace-header-strip {
+            background: white; border: 1px solid var(--border-color); border-radius: 20px; padding: 22px 28px; box-shadow: var(--shadow);
+            margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+        .breadcrumb-trail { font-size: 12px; font-weight: 700; color: var(--text-light); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .breadcrumb-trail a { color: var(--secondary); text-decoration: none; }
+        .workspace-titles h1 { font-size: 24px; font-weight: 900; color: var(--primary); letter-spacing: -0.02em; margin-bottom: 2px; }
+        .workspace-titles p { font-size: 13.5px; color: var(--text-light); }
+
+        .workspace-status-group { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .status-badge { font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 99px; display: inline-flex; align-items: center; gap: 6px; }
+        .status-badge.published { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+        .audit-meta-text { font-size: 12px; color: var(--text-light); font-family: monospace; }
+        
+        .autosave-status { font-size: 12px; font-weight: 700; color: #10B981; background: #ECFDF5; padding: 5px 12px; border-radius: 99px; border: 1px solid #A7F3D0; }
+        .btn-global-history { background: var(--surface-gray); border: 1px solid var(--border-color); color: var(--primary); padding: 6px 14px; border-radius: var(--radius-btn); font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-global-history:hover { background: #E2E8F0; color: var(--secondary); }
+
+        /* Modern 3-Panel Layout with 18% / 47% / 35% Width Distribution */
+        .workspace-layout-3col { display: grid; grid-template-columns: 250px 1fr 500px; gap: 20px; align-items: start; }
+
+        /* Left Navigation Panel */
+        .nav-panel {
+            background: white; border: 1px solid var(--border-color); border-radius: 20px; padding: 16px; box-shadow: var(--shadow);
+            position: sticky; top: 115px; max-height: calc(100vh - 145px); overflow-y: auto; display: flex; flex-direction: column; gap: 6px;
+        }
+        .nav-item {
+            display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; color: var(--text-light); cursor: pointer; transition: all 0.2s; border: 1px solid transparent; text-decoration: none;
+        }
+        .nav-item:hover { background: var(--surface-gray); color: var(--primary); }
+        .nav-item.active { background: #EFF6FF; color: var(--secondary); border-color: #BFDBFE; }
+        .nav-item-left { display: flex; align-items: center; gap: 10px; }
+        
+        /* Colored Status Pills */
+        .completion-pill { font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+        .completion-pill.green { background: #ECFDF5; color: #047857; }
+        .completion-pill.orange { background: #FEF3C7; color: #B45309; }
+        .completion-pill.red { background: #FEE2E2; color: #991B1B; }
+        .completion-pill.grey { background: #F1F5F9; color: #64748B; }
+
+        /* Navigation Footer Progress Bar */
+        .nav-progress-footer {
+            margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 14px; display: flex; flex-direction: column; gap: 8px;
+        }
+        .progress-title-row { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 800; color: var(--primary); }
+        .progress-bar-track { width: 100%; height: 8px; background: var(--surface-gray); border-radius: 99px; overflow: hidden; border: 1px solid var(--border-color); }
+        .progress-bar-fill { width: 84%; height: 100%; background: #10B981; border-radius: 99px; }
+        .progress-status-desc { font-size: 11px; font-weight: 700; color: #047857; background: #ECFDF5; padding: 4px 8px; border-radius: 6px; text-align: center; }
+
+        /* Center Editing Workspace */
+        .editor-workspace-card {
+            background: white; border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; box-shadow: var(--shadow);
+            display: flex; flex-direction: column; gap: 24px;
+        }
+        .editor-section-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
+        .editor-section-header h2 { font-size: 20px; font-weight: 900; color: var(--primary); margin-bottom: 2px; }
+        .editor-section-header p { font-size: 13px; color: var(--text-light); font-family: monospace; }
+
+        /* Form Components */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full { grid-column: span 2; }
+        .form-group label { font-size: 12px; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; display: flex; justify-content: space-between; }
+        .form-group input, .form-group textarea, .form-group select { padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 10px; font-size: 13.5px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .char-counter { font-size: 11px; font-weight: 600; color: var(--text-light); }
+
+        .section-subtitle-title { font-size: 14px; font-weight: 800; color: var(--primary); margin: 12px 0 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* Developer Information Collapsible */
+        .dev-info-accordion { background: var(--surface-gray); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; margin-top: 10px; }
+        .dev-info-summary { padding: 10px 14px; font-size: 12px; font-weight: 700; color: var(--text-light); cursor: pointer; user-select: none; }
+        .dev-info-content { padding: 12px 14px; background: white; border-top: 1px solid var(--border-color); font-size: 12px; font-family: monospace; color: var(--text-light); }
+
+        /* Right Panel Action Bar */
+        .editor-action-bar {
+            display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 20px; margin-top: 10px;
+        }
+        .btn-action-primary { background: var(--secondary); color: white; border: none; padding: 10px 24px; border-radius: var(--radius-btn); font-size: 13.5px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.25); transition: background 0.2s; }
+        .btn-action-primary:hover { background: var(--secondary-dark); }
+        .btn-action-secondary { background: var(--surface-gray); color: var(--primary); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: var(--radius-btn); font-size: 13.5px; font-weight: 700; cursor: pointer; }
+        .btn-action-secondary:hover { background: #E2E8F0; }
+
+        /* Editor Sections Container */
+        .workspace-editor-section { display: none; }
+        .workspace-editor-section.active { display: flex; flex-direction: column; gap: 24px; }
+
+        /* Persistent Live Preview Panel (Rightmost Column) */
+        .preview-persistent-panel {
+            background: #090D16; border: 1px solid #1F2937; border-radius: 20px; padding: 24px; box-shadow: var(--shadow);
+            position: sticky; top: 115px; max-height: calc(100vh - 145px); overflow-y: auto; color: white; display: flex; flex-direction: column; gap: 16px;
+        }
+        .preview-panel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1F2937; padding-bottom: 12px; }
+        .preview-panel-header h3 { font-size: 14px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #93C5FD; display: flex; align-items: center; gap: 8px; }
+        
+        .device-toggle-mini { display: flex; gap: 4px; background: #111827; padding: 3px; border-radius: 8px; border: 1px solid #1F2937; }
+        .btn-mini-device { background: none; border: none; color: #9CA3AF; padding: 4px 8px; font-size: 11px; font-weight: 700; border-radius: 6px; cursor: pointer; }
+        .btn-mini-device.active { background: var(--secondary); color: white; }
+
+        .live-preview-card-box {
+            background: white; color: var(--text); border-radius: 16px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.3s ease;
+        }
+
+        /* Footer */
+        footer { background: var(--primary-dark); color: white; padding: 30px 20px; text-align: center; margin-top: 60px; }
+        footer p { font-size: 13px; color: var(--text-light); }
+
+        @media(max-width: 1400px) {
+            .workspace-layout-3col { grid-template-columns: 260px 1fr; }
+            .preview-persistent-panel { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Mission Control Banner -->
+    <header class="mission-control-banner">
+        <div>🚀 <strong>CampusOS Configuration Studio</strong> — Program Detail Workspace</div>
+        <div><a href="programs-manager.html">&larr; Return to Program Catalog</a></div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="studio-navbar">
+        <a href="programs-manager.html" class="studio-logo-area">
+            <div class="studio-crest">OS</div>
+            <div class="studio-logo-text">CampusOS Studio <span>Program Detail Workspace</span></div>
+        </a>
+        <div class="nav-actions">
+            <a href="programs-manager.html" class="btn-back-studio">&larr; Back to Program Catalog</a>
+        </div>
+    </nav>
+
+    <!-- Workspace Container -->
+    <main class="workspace-container">
+
+        <!-- Rich Workspace Header Strip -->
+        <div class="workspace-header-strip">
+            <div>
+                <div class="breadcrumb-trail">
+                    <a href="studio.html">Studio</a> &gt; 
+                    <a href="programs-manager.html">Programs Repository</a> &gt; 
+                    <span style="color: var(--primary);">Bachelor of Management Studies (BMS)</span>
+                </div>
+                <div class="workspace-titles">
+                    <h1>Bachelor of Management Studies (BMS)</h1>
+                    <p>Configure every section displayed on the public Program Detail page (stored in program-detail.xml).</p>
+                </div>
+            </div>
+            <div class="workspace-status-group">
+                <span class="autosave-status" id="autoSaveIndicator">💾 All changes saved</span>
+                <span class="status-badge published">🟢 Published</span>
+                <span class="audit-meta-text">Version 3.1 &bull; Updated Today 11:40 &bull; XML: program-detail.xml</span>
+                <button class="btn-global-history" onclick="switchSection('history', event)">🕒 Version History</button>
+            </div>
+        </div>
+
+        <!-- Modern Three-Panel Layout -->
+        <div class="workspace-layout-3col">
+
+            <!-- LEFT NAVIGATION PANEL -->
+            <aside class="nav-panel">
+                <a class="nav-item active" onclick="switchSection('identity', event)">
+                    <div class="nav-item-left"><span>🏷️</span> Program Information</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('hero', event)">
+                    <div class="nav-item-left"><span>🦸</span> Hero Banner</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('overview', event)">
+                    <div class="nav-item-left"><span>📖</span> Overview</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('admissions', event)">
+                    <div class="nav-item-left"><span>📝</span> Admissions</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('fees', event)">
+                    <div class="nav-item-left"><span>💰</span> Fees</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('eligibility', event)">
+                    <div class="nav-item-left"><span>🎓</span> Eligibility</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('curriculum', event)">
+                    <div class="nav-item-left"><span>📚</span> Curriculum</div>
+                    <span class="completion-pill orange">65%</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('placements', event)">
+                    <div class="nav-item-left"><span>💼</span> Placements</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('career', event)">
+                    <div class="nav-item-left"><span>🚀</span> Career Opportunities</div>
+                    <span class="completion-pill orange">80%</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('scholarships', event)">
+                    <div class="nav-item-left"><span>🏆</span> Scholarships</div>
+                    <span class="completion-pill green">✓ Completed</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('gallery', event)">
+                    <div class="nav-item-left"><span>🖼️</span> Gallery</div>
+                    <span class="completion-pill orange">60%</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('downloads', event)">
+                    <div class="nav-item-left"><span>📥</span> Downloads</div>
+                    <span class="completion-pill red">Missing</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('faq', event)">
+                    <div class="nav-item-left"><span>❓</span> FAQ</div>
+                    <span class="completion-pill red">Missing</span>
+                </a>
+                <a class="nav-item" onclick="switchSection('seo', event)">
+                    <div class="nav-item-left"><span>🔍</span> SEO</div>
+                    <span class="completion-pill grey">Needs Review</span>
+                </a>
+
+                <!-- Overall Completion Footer Block -->
+                <div class="nav-progress-footer">
+                    <div class="progress-title-row">
+                        <span>Overall Completion</span>
+                        <span>84%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-status-desc">Ready to Publish</div>
+                </div>
+            </aside>
+
+            <!-- CENTER EDITING WORKSPACE -->
+            <div class="editor-workspace-card">
+
+                <!-- 1. PROGRAM INFORMATION SECTION -->
+                <div class="workspace-editor-section active" id="sec-identity">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Program Information</h2>
+                            <p>Core metadata attributes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="section-subtitle-title">🪪 Identity</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Program ID / Code</label>
+                            <input type="text" id="inputId" value="bms" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Program Name</label>
+                            <input type="text" id="inputName" value="Bachelor of Management Studies" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Short Name</label>
+                            <input type="text" id="inputShortName" value="BMS" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Academic Level</label>
+                            <select onchange="liveUpdate()">
+                                <option value="Undergraduate" selected>Undergraduate</option>
+                                <option value="Postgraduate">Postgraduate</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="section-subtitle-title">🎓 Academic</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Duration</label>
+                            <input type="text" id="inputDuration" value="3 Years" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Credits</label>
+                            <input type="text" value="120 Credits" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Mode</label>
+                            <input type="text" value="Full Time" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Language</label>
+                            <input type="text" value="English" oninput="liveUpdate()">
+                        </div>
+                    </div>
+
+                    <div class="section-subtitle-title">⚙ Administration & Publishing</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Campus</label>
+                            <input type="text" value="Main Mumbai Campus" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Intake Capacity</label>
+                            <input type="number" value="120" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Program Status</label>
+                            <select onchange="liveUpdate()">
+                                <option value="Published" selected>Published</option>
+                                <option value="Draft">Draft</option>
+                                <option value="Archived">Archived</option>
+                                <option value="Coming Soon">Coming Soon</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Online Admissions</label>
+                            <select onchange="liveUpdate()">
+                                <option value="Admissions Open" selected>Admissions Open</option>
+                                <option value="Closed">Closed</option>
+                                <option value="Coming Soon">Coming Soon</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Display Order (Sorting)</label>
+                            <input type="number" value="12" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label style="flex-direction: row; align-items: center; gap: 8px; cursor: pointer; margin-top: 24px;">
+                                <input type="checkbox" checked style="width: 16px; height: 16px;"> Featured Program (Homepage Highlight)
+                            </label>
+                        </div>
+                        <div class="form-group full">
+                            <label>Program Icon (SVG / PNG Upload or Library)</label>
+                            <input type="file" style="padding: 6px;">
+                        </div>
+                    </div>
+
+                    <!-- Collapsed Developer Information -->
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">
+                            XML Node Mapping: &lt;programInformation&gt; &bull; maps directly to repository node /root/program-detail.xml
+                        </div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('identity')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('identity')">Save Program Information</button>
+                    </div>
+                </div>
+
+                <!-- 2. HERO SECTION -->
+                <div class="workspace-editor-section" id="sec-hero">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Hero Banner Configuration</h2>
+                            <p>Header display settings</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label>Hero Title</label>
+                            <input type="text" id="inputHeroTitle" value="Bachelor of Management Studies (BMS)" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group full">
+                            <label>Hero Subtitle / Description <span class="char-counter">142/250 chars</span></label>
+                            <textarea id="inputHeroDesc" rows="2" oninput="liveUpdate()">Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills designed for top global corporations.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Rating Badge</label>
+                            <input type="text" value="⭐ 4.75 Rating" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>NEP Compliance Badge</label>
+                            <input type="text" value="NEP 2020 COMPLIANT" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Placement Success %</label>
+                            <input type="text" id="inputPlacement" value="98% Success" oninput="liveUpdate()">
+                        </div>
+                        <div class="form-group">
+                            <label>Average Salary Package</label>
+                            <input type="text" id="inputSalary" value="₹6.2 LPA" oninput="liveUpdate()">
+                        </div>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;heroBanner&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('hero')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('hero')">Save Hero Banner</button>
+                    </div>
+                </div>
+
+                <!-- 3. OVERVIEW SECTION -->
+                <div class="workspace-editor-section" id="sec-overview">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Overview Rich Text Editor</h2>
+                            <p>Editorial content settings</p>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>Main Overview Paragraphs</label>
+                        <textarea rows="6" oninput="liveUpdate()">The Bachelor of Management Studies (BMS) is a premier 3-year undergraduate degree structured under NEP guidelines, bridging foundational business theory with real-world corporate case studies and internships.</textarea>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;overview&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('overview')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('overview')">Save Overview</button>
+                    </div>
+                </div>
+
+                <!-- 4. ADMISSIONS SECTION -->
+                <div class="workspace-editor-section" id="sec-admissions">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Admissions Workflow Setup</h2>
+                            <p>Timeline & steps configuration</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label>Admission Process Overview</label>
+                            <textarea rows="2">Step-by-step guidance through our digital admission workflow from online form submission to merit list verification.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Application Start Date</label>
+                            <input type="date" value="2026-06-01">
+                        </div>
+                        <div class="form-group">
+                            <label>Application Deadline</label>
+                            <input type="date" value="2026-07-15">
+                        </div>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;admissions&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('admissions')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('admissions')">Save Admissions</button>
+                    </div>
+                </div>
+
+                <!-- 5. FEES SECTION -->
+                <div class="workspace-editor-section" id="sec-fees">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Editable Fee Table</h2>
+                            <p>Financial schedule settings</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Annual Tuition Fee</label>
+                            <input type="text" value="₹28,500">
+                        </div>
+                        <div class="form-group">
+                            <label>Development & Lab Fee</label>
+                            <input type="text" value="₹4,500">
+                        </div>
+                        <div class="form-group">
+                            <label>Library & Exam Fee</label>
+                            <input type="text" value="₹2,000">
+                        </div>
+                        <div class="form-group">
+                            <label>Total Annual Investment</label>
+                            <input type="text" value="₹35,000" style="font-weight: 800; color: var(--secondary);">
+                        </div>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;fees&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('fees')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('fees')">Save Fees</button>
+                    </div>
+                </div>
+
+                <!-- 6. ELIGIBILITY SECTION -->
+                <div class="workspace-editor-section" id="sec-eligibility">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Eligibility Criteria Configuration</h2>
+                            <p>Entry thresholds</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label>Qualifying Examination</label>
+                            <input type="text" value="10+2 Higher Secondary Certificate (HSC) Examination or equivalent from any recognized stream.">
+                        </div>
+                        <div class="form-group">
+                            <label>Minimum Aggregate %</label>
+                            <input type="text" value="45% for Open Category, 40% for Reserved">
+                        </div>
+                        <div class="form-group">
+                            <label>Reservation Quota</label>
+                            <input type="text" value="As per Maharashtra State Government Norms">
+                        </div>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;eligibility&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('eligibility')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('eligibility')">Save Eligibility</button>
+                    </div>
+                </div>
+
+                <!-- 7. CURRICULUM SECTION -->
+                <div class="workspace-editor-section" id="sec-curriculum">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Curriculum & Semester Structure</h2>
+                            <p>Semesters & subjects settings</p>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>Semester Summary Configuration</label>
+                        <textarea rows="3">6 Semesters over 3 Years. Core modules include Principles of Management, Business Economics, Financial Accounting, and Strategic Marketing.</textarea>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;curriculum&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('curriculum')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('curriculum')">Save Curriculum</button>
+                    </div>
+                </div>
+
+                <!-- 8. PLACEMENTS SECTION -->
+                <div class="workspace-editor-section" id="sec-placements">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Placement Metrics & Recruiters</h2>
+                            <p>Corporate success settings</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Placement Success Rate (%)</label>
+                            <input type="text" value="98%">
+                        </div>
+                        <div class="form-group">
+                            <label>Average Package</label>
+                            <input type="text" value="₹6.2 LPA">
+                        </div>
+                        <div class="form-group">
+                            <label>Highest Package</label>
+                            <input type="text" value="₹11.0 LPA">
+                        </div>
+                        <div class="form-group">
+                            <label>Top Corporate Partners</label>
+                            <input type="text" value="Deloitte, KPMG, TCS, HDFC Bank, ICICI">
+                        </div>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;placements&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('placements')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('placements')">Save Placements</button>
+                    </div>
+                </div>
+
+                <!-- 9. CAREER OPPORTUNITIES SECTION -->
+                <div class="workspace-editor-section" id="sec-career">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Career Opportunities Editor</h2>
+                            <p>Target roles settings</p>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>Target Job Roles</label>
+                        <textarea rows="3">Management Trainee, Business Development Manager, Financial Analyst, Marketing Executive, Human Resources Generalist.</textarea>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;careerOpportunities&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('career')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('career')">Save Career Opportunities</button>
+                    </div>
+                </div>
+
+                <!-- 10. SCHOLARSHIPS SECTION -->
+                <div class="workspace-editor-section" id="sec-scholarships">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Scholarships & Financial Assistance</h2>
+                            <p>Grants configuration</p>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>Scholarship Programs Description</label>
+                        <textarea rows="3">Merit Scholarships (up to 100% tuition waiver for top board scorers), Government Reserve Category Grants, and Sports Quota Concessions.</textarea>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;scholarships&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('scholarships')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('scholarships')">Save Scholarships</button>
+                    </div>
+                </div>
+
+                <!-- 11. GALLERY SECTION -->
+                <div class="workspace-editor-section" id="sec-gallery">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Campus & Program Gallery Manager</h2>
+                            <p>Image assets settings</p>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>Image Repository URLs (Comma Separated)</label>
+                        <textarea rows="2">/assets/bms-seminar-hall.jpg, /assets/campus-library.jpg, /assets/corporate-workshop.jpg</textarea>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;gallery&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('gallery')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('gallery')">Save Gallery</button>
+                    </div>
+                </div>
+
+                <!-- 12. DOWNLOADS SECTION -->
+                <div class="workspace-editor-section" id="sec-downloads">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Downloads & Resources Manager</h2>
+                            <p>PDF resources settings</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Brochure PDF URL</label>
+                            <input type="text" value="/downloads/bms-brochure-2026.pdf">
+                        </div>
+                        <div class="form-group">
+                            <label>Syllabus PDF URL</label>
+                            <input type="text" value="/downloads/bms-syllabus-nep.pdf">
+                        </div>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;downloads&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('downloads')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('downloads')">Save Downloads</button>
+                    </div>
+                </div>
+
+                <!-- 13. FAQ SECTION -->
+                <div class="workspace-editor-section" id="sec-faq">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Frequently Asked Questions</h2>
+                            <p>Accordion items settings</p>
+                        </div>
+                    </div>
+                    <div class="form-group full">
+                        <label>FAQ Items (JSON Format)</label>
+                        <textarea rows="4">[{"q": "What is the eligibility criteria?", "a": "10+2 HSC in any stream with 45% minimum aggregate."}]</textarea>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;faq&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('faq')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('faq')">Save FAQ</button>
+                    </div>
+                </div>
+
+                <!-- 14. SEO SECTION -->
+                <div class="workspace-editor-section" id="sec-seo">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>SEO & Meta Metadata</h2>
+                            <p>Search indexing settings</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label>Meta Page Title</label>
+                            <input type="text" value="Bachelor of Management Studies (BMS) | Akbar Peerbhoy College">
+                        </div>
+                        <div class="form-group full">
+                            <label>Meta Description</label>
+                            <textarea rows="2">Explore top-ranked BMS degree at Akbar Peerbhoy College, Mumbai. NAAC A+ accredited course with 98% placement support.</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>URL Slug</label>
+                            <input type="text" value="bachelor-of-management-studies-bms">
+                        </div>
+                        <div class="form-group">
+                            <label>Canonical URL</label>
+                            <input type="text" value="https://apcollege.edu.in/programs/bms">
+                        </div>
+                    </div>
+
+                    <details class="dev-info-accordion">
+                        <summary class="dev-info-summary">Developer Information ▼</summary>
+                        <div class="dev-info-content">XML Node Mapping: &lt;seo&gt;</div>
+                    </details>
+
+                    <div class="editor-action-bar">
+                        <button class="btn-action-secondary" onclick="discardChanges('seo')">Discard</button>
+                        <button class="btn-action-primary" onclick="saveSection('seo')">Save SEO</button>
+                    </div>
+                </div>
+
+                <!-- 15. VERSION HISTORY SECTION -->
+                <div class="workspace-editor-section" id="sec-history">
+                    <div class="editor-section-header">
+                        <div>
+                            <h2>Repository Version History</h2>
+                            <p>XML Snapshots &bull; instant rollback support</p>
+                        </div>
+                        <span class="pill published">program-detail.xml.bak</span>
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                        <thead>
+                            <tr style="background: var(--surface-gray); text-align: left;">
+                                <th style="padding: 10px;">Version</th>
+                                <th style="padding: 10px;">Editor</th>
+                                <th style="padding: 10px;">Timestamp</th>
+                                <th style="padding: 10px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 10px;"><strong>v3.2</strong> (Current Draft)</td>
+                                <td style="padding: 10px;">Dr. Shaikh</td>
+                                <td style="padding: 10px;">Today • 11:40 AM</td>
+                                <td style="padding: 10px;"><button class="btn-action-secondary" style="padding: 4px 10px; font-size: 12px;">View Diff</button></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 10px;"><strong>v3.1</strong> (Published)</td>
+                                <td style="padding: 10px;">Administrator</td>
+                                <td style="padding: 10px;">03 Aug 2026 • 04:15 PM</td>
+                                <td style="padding: 10px;"><button class="btn-action-secondary" style="padding: 4px 10px; font-size: 12px;">Restore</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- RIGHT WIDER PERSISTENT PREVIEW PANEL (35% Width Distribution) -->
+            <aside class="preview-persistent-panel">
+                <div class="preview-panel-header">
+                    <h3 id="previewHeaderTitle">⚡ Program Card Preview</h3>
+                    <div class="device-toggle-mini">
+                        <button class="btn-mini-device active" onclick="setMiniDevice('desktop', event)">Desktop</button>
+                        <button class="btn-mini-device" onclick="setMiniDevice('mobile', event)">Mobile</button>
+                    </div>
+                </div>
+
+                <div class="live-preview-card-box" id="livePreviewContainer">
+                    <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+                        <span style="background: #FEF3C7; color: #B45309; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 99px;">NEP 2020 COMPLIANT</span>
+                        <span style="background: #FEF3C7; color: #B45309; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 99px;">⭐ 4.75 Rating</span>
+                    </div>
+
+                    <h2 id="prevTitle" style="font-size: 20px; font-weight: 900; color: #0F172A; margin-bottom: 8px; line-height: 1.2;">Bachelor of Management Studies (BMS)</h2>
+                    <p id="prevDesc" style="font-size: 12.5px; color: #64748B; line-height: 1.5; margin-bottom: 16px;">Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills designed for top global corporations.</p>
+
+                    <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 12px;" id="prevDynamicBody">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #64748B;">Duration:</span>
+                            <strong id="prevDuration" style="color: #1E293B;">3 Years</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #64748B;">Placement:</span>
+                            <strong id="prevPlacement" style="color: #1E293B;">98% Success</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #64748B;">Avg Salary:</span>
+                            <strong id="prevSalary" style="color: #1E293B;">₹6.2 LPA</strong>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Akbar Peerbhoy College &bull; CampusOS Program Detail Workspace (program-detail.xml)</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let currentActiveSection = 'identity';
+
+        function switchSection(sectionId, event) {
+            currentActiveSection = sectionId;
+            document.querySelectorAll('.workspace-editor-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+            document.getElementById(`sec-${sectionId}`).classList.add('active');
+            if (event) event.currentTarget.classList.add('active');
+
+            updatePreviewContext(sectionId);
+        }
+
+        function updatePreviewContext(sectionId) {
+            const headerTitle = document.getElementById('previewHeaderTitle');
+            const body = document.getElementById('prevDynamicBody');
+
+            if (sectionId === 'hero' || sectionId === 'identity') {
+                headerTitle.textContent = '⚡ Program Card Preview';
+                body.innerHTML = `
+                    <div style="display: flex; justify-content: space-between;"><span style="color: #64748B;">Duration:</span><strong style="color: #1E293B;">3 Years</strong></div>
+                    <div style="display: flex; justify-content: space-between;"><span style="color: #64748B;">Placement:</span><strong style="color: #1E293B;">98% Success</strong></div>
+                    <div style="display: flex; justify-content: space-between;"><span style="color: #64748B;">Avg Salary:</span><strong style="color: #1E293B;">₹6.2 LPA</strong></div>
+                `;
+            } else if (sectionId === 'fees') {
+                headerTitle.textContent = '⚡ Fee Summary Preview';
+                body.innerHTML = `
+                    <div style="display: flex; justify-content: space-between;"><span style="color: #64748B;">Tuition Fee:</span><strong style="color: #1E293B;">₹28,500</strong></div>
+                    <div style="display: flex; justify-content: space-between;"><span style="color: #64748B;">Development:</span><strong style="color: #1E293B;">₹4,500</strong></div>
+                    <div style="display: flex; justify-content: space-between; border-top: 1px solid #E2E8F0; padding-top: 6px;"><span style="color: #0F172A; font-weight: 700;">Total Investment:</span><strong style="color: #2563EB;">₹35,000</strong></div>
+                `;
+            } else if (sectionId === 'gallery') {
+                headerTitle.textContent = '⚡ Gallery Preview';
+                body.innerHTML = `<div style="text-align: center; color: #64748B; font-weight: 700; padding: 20px;">🖼️ [ Active Image Asset Carousel Preview ]</div>`;
+            } else if (sectionId === 'downloads') {
+                headerTitle.textContent = '⚡ Downloads Section Preview';
+                body.innerHTML = `<div style="display: flex; flex-direction: column; gap: 6px;"><button style="background: #F1F5F9; border: 1px solid #E2E8F0; padding: 8px; border-radius: 8px; font-weight: 700; text-align: left;">📥 Download Brochure PDF</button><button style="background: #F1F5F9; border: 1px solid #E2E8F0; padding: 8px; border-radius: 8px; font-weight: 700; text-align: left;">📥 Download Syllabus PDF</button></div>`;
+            } else {
+                headerTitle.textContent = `⚡ Live Preview (${sectionId.toUpperCase()})`;
+                body.innerHTML = `<div style="text-align: center; color: #64748B; font-weight: 600; padding: 15px;">Rendering live XML schema node for &lt;${sectionId}&gt;</div>`;
+            }
+        }
+
+        function liveUpdate() {
+            const title = document.getElementById('inputHeroTitle')?.value || document.getElementById('inputName')?.value;
+            const desc = document.getElementById('inputHeroDesc')?.value;
+            if (title) document.getElementById('prevTitle').textContent = title;
+            if (desc) document.getElementById('prevDesc').textContent = desc;
+        }
+
+        function setMiniDevice(mode, event) {
+            document.querySelectorAll('.btn-mini-device').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            const box = document.getElementById('livePreviewContainer');
+            if (mode === 'mobile') {
+                box.style.maxWidth = '280px';
+                box.style.margin = '0 auto';
+            } else {
+                box.style.maxWidth = '100%';
+            }
+        }
+
+        function saveSection(sectionKey) {
+            document.getElementById('autoSaveIndicator').textContent = '💾 Saving to program-detail.xml...';
+            setTimeout(() => {
+                document.getElementById('autoSaveIndicator').textContent = '💾 All changes saved';
+                alert('Changes successfully committed to program-detail.xml!');
+            }, 500);
+        }
+
+        function discardChanges(sectionKey) {
+            if (confirm('Discard changes and revert?')) {
+                alert('Reverted.');
+            }
+        }
+    </script>
+</body>
+</html>
