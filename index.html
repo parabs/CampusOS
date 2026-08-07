@@ -6,9 +6,9 @@
     <title>Akbar Peerbhoy College — Powered by Campus OS</title>
 
     <!-- SEO & OpenGraph Meta Tags -->
-    <meta name="description" content="Akbar Peerbhoy College of Commerce & Economics — NAAC A+ Accredited[cite: 1]. Powered by Campus OS Digital Operating System. Offering B.Com, BMS, B.Sc IT, M.Com & Ph.D. programs.">
+    <meta name="description" content="Akbar Peerbhoy College of Commerce & Economics — NAAC A+ Accredited. Powered by Campus OS Digital Operating System. Offering B.Com, BMS, B.Sc IT, M.Com & Ph.D. programs.">
     <meta property="og:title" content="Akbar Peerbhoy College — Powered by Campus OS | NAAC A+">
-    <meta property="og:description" content="Join 5,000+ students at one of Mumbai's leading commerce colleges[cite: 1]. Powered by the Campus OS Digital Operating System. Apply now for 2026.">
+    <meta property="og:description" content="Join 5,000+ students at one of Mumbai's leading commerce colleges. Powered by the Campus OS Digital Operating System. Apply now for 2026.">
     <meta property="og:type" content="website">
 
     <!-- Google Fonts -->
@@ -75,17 +75,6 @@
             fill: none;
             display: inline-block;
             vertical-align: middle;
-        }
-
-        /* Scroll Reveal Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Skip Link */
@@ -170,6 +159,7 @@
             padding: 16px 5%;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -337,31 +327,32 @@
         }
         .search-item:hover { background: rgba(37, 99, 235, 0.08); color: var(--secondary); }
 
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
+        /* Hamburger Toggle Button */
+        .hamburger { 
+            display: none; 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            flex-direction: column; 
+            gap: 5px; 
+            padding: 8px; 
+            z-index: 1200; 
+            margin-left: auto;
         }
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-            border-radius: 3px;
+        .hamburger span { 
+            display: block; 
+            width: 26px; 
+            height: 3px; 
+            background: var(--primary); 
+            border-radius: 2px; 
+            transition: all 0.3s; 
         }
-
-        /* =========================================================
-           COMPACT CINEMATIC HERO (Optimized Height: 460px with 6-Slide Auto Rotation)
-           ========================================================= */
+        /* Cinematic Hero Wrapper */
         .cinematic-hero-wrapper {
-            width: 96vw;
+            width: 100%;
+            max-width: 1320px;
             margin: 95px auto 20px;
+            padding: 0 20px;
         }
 
         .cinematic-hero {
@@ -556,9 +547,7 @@
         }
         .cinematic-ctrl-btn:hover { background: rgba(255, 255, 255, 0.4); }
 
-        /* =========================================================
-           UNIFIED CAMPUS SNAPSHOT BLOCK
-           ========================================================= */
+        /* Unified Campus Snapshot Block */
         .campus-snapshot-section {
             max-width: 1320px;
             margin: -50px auto 40px;
@@ -694,9 +683,7 @@
             border-color: var(--secondary);
         }
 
-        /* =========================================================
-           TRUSTED PARTNER LOGOS BAR (Corporate Logo Badges)
-           ========================================================= */
+        /* Trusted Partner Logos Bar */
         .trusted-by-section {
             max-width: 1320px;
             margin: 0 auto 60px;
@@ -738,9 +725,7 @@
             box-shadow: var(--shadow);
         }
 
-        /* =========================================================
-           MERGED ADVANTAGE & STATISTICS SECTION
-           ========================================================= */
+        /* Merged Advantage & Statistics Section */
         .advantage-section {
             max-width: 1320px;
             margin: 0 auto 80px;
@@ -826,9 +811,7 @@
         }
         .advantage-image-wrap:hover img { transform: scale(1.04); }
 
-        /* =========================================================
-           INTELLIGENT CAMPUS OS BENEFITS SECTION
-           ========================================================= */
+        /* Intelligent Campus OS Benefits Section */
         .platform-benefits-section {
             background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
             border-radius: var(--radius-hero);
@@ -866,9 +849,7 @@
             font-size: 11px; background: rgba(37, 99, 235, 0.2); color: #93C5FD; padding: 3px 10px; border-radius: 20px; font-weight: 600;
         }
 
-        /* =========================================================
-           INTERACTIVE CAMPUS AI SECTION
-           ========================================================= */
+        /* Interactive Campus AI Section */
         .ai-section {
             background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
             border-radius: var(--radius-hero);
@@ -950,65 +931,7 @@
             color: white;
         }
 
-        /* =========================================================
-           FINAL CONVERSION SECTION (Board-Level CTA)
-           ========================================================= */
-        .final-conversion-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: var(--radius-hero);
-            padding: 60px 40px;
-            color: white;
-            margin: 0 auto;
-            max-width: 1320px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
-        }
-        .final-conversion-section h2 {
-            font-size: clamp(28px, 3.5vw, 38px);
-            font-weight: 900;
-            margin-bottom: 10px;
-            color: #FFFFFF;
-        }
-        .final-conversion-section p {
-            font-size: 15px;
-            color: #94A3B8;
-            max-width: 600px;
-            margin: 0 auto 24px;
-            line-height: 1.5;
-        }
-        .final-conversion-btns {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn-conversion-primary {
-            background: var(--secondary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: var(--radius-btn);
-            font-size: 13.5px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-            transition: all 0.3s;
-        }
-        .btn-conversion-primary:hover { background: var(--secondary-dark); transform: translateY(-2px); }
-        .btn-conversion-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 12px 24px;
-            border-radius: var(--radius-btn);
-            font-size: 13.5px;
-            font-weight: 700;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            transition: all 0.3s;
-        }
-        .btn-conversion-secondary:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
-
-        /* Stripe-Style Platform Footer with Increased Padding */
+        /* Stripe-Style Platform Footer */
         footer { 
             background: var(--primary-dark); 
             color: var(--text-white); 
@@ -1037,24 +960,45 @@
         .social-icon-link { color: var(--text-light); text-decoration: none; font-size: 16px; transition: color 0.2s; }
         .social-icon-link:hover { color: white; }
 
-        @media (max-width: 992px) {
-            .snapshot-container-unified { grid-template-columns: 1fr; gap: 24px; }
-            .snapshot-column + .snapshot-column { border-left: none; padding-left: 0; border-top: 1px solid #E2E8F0; padding-top: 20px; }
-            .advantage-content-grid { grid-template-columns: 1fr; }
-            .ai-section { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 900px) {
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
+        /* Responsive Breakpoints & Fixed Mobile Navigation Drawer */
+        @media(max-width: 992px) {
             .hamburger { display: flex; }
+            .nav-actions { display: none; }
+            
             .nav-links {
-                display: none; position: absolute; top: 65px; left: 0; right: 0; background: white;
-                flex-direction: column; padding: 20px; box-shadow: var(--shadow);
-                border-radius: 0 0 var(--radius-card) var(--radius-card);
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                left: auto;
+                width: 280px;
+                height: calc(100vh - 85px);
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 30px;
+                gap: 20px;
+                transition: right 0.3s ease-in-out;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                z-index: 1500;
+                margin-left: 0;
             }
-            .nav-links.active { display: flex; }
-            .cinematic-hero-wrapper { width: 100vw; padding: 0 10px; margin-top: 85px; }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                font-size: 16px;
+                font-weight: 600;
+                width: 100%;
+                padding-bottom: 8px;
+                border-bottom: 1px solid #F1F5F9;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cinematic-hero-wrapper { width: 100%; padding: 0 12px; margin-top: 85px; }
             .cinematic-hero { height: 380px; padding: 0 24px; background-position: center center; }
             .whatsapp-float { bottom: 80px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .footer-grid { grid-template-columns: 1fr; }
@@ -1077,7 +1021,7 @@
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="Search courses, faculty, documents, notices..." autofocus>
             <div class="search-suggestions">
-                <a href="programs.html" class="search-item">Bachelor of Commerce (B.Com)</a>
+                <a href="programs.html" class="search-item">Bachelor of Commerce (B.Com)[cite: 1]</a>
                 <a href="programs.html" class="search-item">Bachelor of Management Studies (BMS)</a>
                 <a href="institution-explorer.html" class="search-item">Faculty & Leadership Directory</a>
                 <a href="compliance.html" class="search-item">Download NAAC SSR Report 2024-25</a>
@@ -1096,7 +1040,7 @@
     <nav class="navbar" id="navbar" aria-label="Main Navigation">
         <a href="index.html" class="logo-area">
             <div class="college-crest">AP</div>
-            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+[cite: 1]</span></div>
         </a>
 
         <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -1123,9 +1067,7 @@
         </div>
     </nav>
 
-    <!-- =========================================================
-       EDGE-TO-EDGE COMPACT CINEMATIC HERO (6 Slides with 4s Interval)
-       ========================================================= -->
+    <!-- Cinematic Hero Section -->
     <div class="cinematic-hero-wrapper">
         <header class="cinematic-hero" id="cinematicHero">
             <div class="cinematic-particles"></div>
@@ -1141,9 +1083,9 @@
             </div>
 
             <div class="cinematic-hero-content" id="cinematicContent">
-                <div class="cinematic-tag" id="heroBadge">Est. 1969 • Mumbai</div>
+                <div class="cinematic-tag" id="heroBadge">Est. 1969 • Mumbai[cite: 1]</div>
                 <h1 id="heroTitle">Where Leaders Are Made</h1>
-                <p id="heroDesc">Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai.</p>
+                <p id="heroDesc">Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai[cite: 1].</p>
                 <div class="cinematic-buttons">
                     <a href="admissions.html" class="cinematic-btn-primary">
                         <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
@@ -1164,12 +1106,9 @@
         </header>
     </div>
 
-    <!-- =========================================================
-       UNIFIED CAMPUS SNAPSHOT BLOCK
-       ========================================================= -->
+    <!-- Unified Campus Snapshot Block -->
     <div class="campus-snapshot-section">
         <div class="snapshot-container-unified">
-            <!-- Column 1: Message from the Principal -->
             <div class="snapshot-column">
                 <div class="snapshot-col-header">
                     <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -1185,7 +1124,6 @@
                 </div>
             </div>
 
-            <!-- Column 2: Latest Updates / Notices -->
             <div class="snapshot-column">
                 <div class="snapshot-col-header">
                     <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
@@ -1213,7 +1151,6 @@
                 </div>
             </div>
 
-            <!-- Column 3: Start Here / Quick Actions -->
             <div class="snapshot-column">
                 <div class="snapshot-col-header">🚀 Start Here</div>
                 <div class="quick-actions-snap-list">
@@ -1225,9 +1162,7 @@
         </div>
     </div>
 
-    <!-- =========================================================
-       TRUSTED PARTNER LOGOS BAR (Corporate Logo Badges)
-       ========================================================= -->
+    <!-- Trusted Partner Logos Bar -->
     <div class="trusted-by-section">
         <div class="trusted-label">Trusted by Industry Leaders & Partners</div>
         <div class="trusted-logos-flex">
@@ -1241,16 +1176,13 @@
     </div>
 
     <main id="main-content">
-        <!-- =========================================================
-           MERGED ADVANTAGE & STATISTICS SECTION
-           ========================================================= -->
+        <!-- Merged Advantage & Statistics Section -->
         <section class="advantage-section">
             <div class="advantage-header">
                 <h2>Why Akbar Peerbhoy College?</h2>
-                <p>Preparing Future-Ready Graduates Since 1969 through accredited academic excellence and digital student systems.</p>
+                <p>Preparing Future-Ready Graduates Since 1969[cite: 1] through accredited academic excellence and digital student systems.</p>
             </div>
 
-            <!-- Top Row: Animated Counters -->
             <div class="advantage-metrics-strip">
                 <div class="stats-card-apple">
                     <h3 class="counter" data-target="57">0</h3>
@@ -1274,11 +1206,10 @@
                 </div>
             </div>
 
-            <!-- Bottom Row: Strengths List & Classroom Preview -->
             <div class="advantage-content-grid">
                 <div>
                     <ul class="advantage-list">
-                        <li><span class="check">✓</span> NAAC A+ Accredited Quality Standards</li>
+                        <li><span class="check">✓</span> NAAC A+ Accredited Quality Standards[cite: 1]</li>
                         <li><span class="check">✓</span> Modern Smart Campus & Advanced Labs</li>
                         <li><span class="check">✓</span> Industry-Designed Curriculum & Skill Certifications</li>
                         <li><span class="check">✓</span> Experienced Faculty & Corporate Mentorship</li>
@@ -1292,9 +1223,9 @@
         </section>
 
         <!-- Intelligent Campus Platform Experience Section -->
-        <section class="section-rhythm-gray spacing-platform" style="background: #F1F5F9; padding: 10px 20px 60px 20px;">
+        <section style="background: #F1F5F9; padding: 10px 20px 60px 20px;">
             <div class="platform-benefits-section" style="margin-bottom: 0;">
-                <span class="badge badge-accent" style="margin-bottom:12px; display:inline-block; background:rgba(245,158,11,0.2); color:#FCD34D; padding:4px 14px; border-radius:var(--radius-btn); font-size:12px; font-weight:700;">Intelligent Digital Campus</span>
+                <span style="margin-bottom:12px; display:inline-block; background:rgba(245,158,11,0.2); color:#FCD34D; padding:4px 14px; border-radius:var(--radius-btn); font-size:12px; font-weight:700;">Intelligent Digital Campus</span>
                 <h2>An Intelligent Campus Experience</h2>
                 <p style="color: #94A3B8; max-width: 700px; margin: 8px auto 0;">Every interaction—from admissions to graduation—is powered by a secure digital ecosystem designed to make learning simpler, faster, and smarter.</p>
                 
@@ -1342,9 +1273,7 @@
             </div>
         </section>
 
-        <!-- =========================================================
-           INTERACTIVE CAMPUS AI ASSISTANT SECTION
-           ========================================================= -->
+        <!-- Interactive Campus AI Assistant Section -->
         <section style="padding: 60px 20px; background: #FFFFFF;">
             <div class="ai-section" style="margin-bottom: 0;">
                 <div>
@@ -1375,19 +1304,18 @@
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Redesigned Stripe-Style Premium Footer with Increased Padding -->
+    <!-- Redesigned Stripe-Style Premium Footer -->
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Akbar Peerbhoy College</h4>
-                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px; line-height: 1.6;">Maulana Shaukat Ali Road, Do Taki, Mumbai 400004. NAAC A+ Accredited institution powered by Campus OS.</p>
+                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px; line-height: 1.6;">Maulana Shaukat Ali Road, Do Taki, Mumbai 400004. NAAC A+ Accredited institution powered by Campus OS[cite: 1].</p>
                 <div class="footer-badges">
-                    <span class="footer-badge">NAAC A+</span>
+                    <span class="footer-badge">NAAC A+[cite: 1]</span>
                     <span class="footer-badge">UGC Approved</span>
-                    <span class="footer-badge">Est. 1969</span>
+                    <span class="footer-badge">Est. 1969[cite: 1]</span>
                 </div>
             </div>
             <div class="footer-col">
@@ -1418,7 +1346,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved.</p>
+            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved[cite: 1].</p>
             <p style="font-size: 13px; color: var(--text-light);">Digital Platform Architecture by <a href="admissions.html" style="color: var(--secondary-light); text-decoration: none;">Campus OS</a></p>
         </div>
     </footer>
@@ -1451,12 +1379,12 @@
             }
         });
 
-        // 6-Slide Cinematic Hero Data (4-second interval)
+        // 6-Slide Cinematic Hero Data
         const heroSlides = [
             {
-                badge: "Est. 1969 • Mumbai",
+                badge: "Est. 1969 • Mumbai[cite: 1]",
                 title: "Where Leaders Are Made",
-                desc: "Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai.",
+                desc: "Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai[cite: 1].",
                 image: "images/1-Campus/hero-campus-aerial-evening.png"
             },
             {
@@ -1533,7 +1461,7 @@
         });
 
         function startHeroTimer() {
-            heroInterval = setInterval(nextHeroSlide, 4000); // 4-second auto-rotation
+            heroInterval = setInterval(nextHeroSlide, 4000);
         }
 
         function resetHeroTimer() {
@@ -1563,7 +1491,7 @@
                 if (question.includes('fee')) {
                     aiBubble.textContent = "B.Com tuition is ₹12,400/year and BMS is ₹28,500/year as per FRA guidelines. Digital payment is supported via secure UPI/Netbanking gateway.";
                 } else if (question.includes('track')) {
-                    aiBubble.textContent = "You can track your application in real-time by entering your Application ID in our Admissions Portal tracker.Average verification time is 48 hours.";
+                    aiBubble.textContent = "You can track your application in real-time by entering your Application ID in our Admissions Portal tracker. Average verification time is 48 hours.";
                 } else {
                     aiBubble.textContent = "We partner with over 220+ top recruiters including TCS, Infosys, Deloitte, and HDFC Bank, achieving a 96% placement success rate.";
                 }

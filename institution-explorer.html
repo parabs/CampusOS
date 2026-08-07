@@ -75,7 +75,7 @@
             gap: 4px;
         }
 
-        /* Navbar */
+        /* Standardized Enterprise Navigation Bar */
         .navbar {
             position: fixed;
             top: 37px;
@@ -85,12 +85,13 @@
             padding: 14px 5%;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.3s ease;
         }
-        .navbar-scrolled {
+        .navbar.scrolled {
             background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             padding: 10px 5%;
@@ -101,35 +102,6 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            flex-shrink: 0;
-        }
-
-        /* Enforce a consistent left margin/gap between the logo and menu items */
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            align-items: center;
-            list-style: none;
-            margin-left: 60px; /* Locks exact consistent distance from the logo */
-            margin-right: auto; /* Pushes the actions to the far right cleanly */
-        }
-
-        .nav-link {
-            color: var(--text);
-            font-weight: 500;
-            text-decoration: none;
-            padding: 6px 0;
-            font-size: 14.5px;
-            transition: color 0.2s ease;
-            white-space: nowrap;
-        }
-        .nav-link:hover, .nav-link.active { color: var(--secondary); }
-        .nav-link.active { font-weight: 700; color: var(--secondary); }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
             flex-shrink: 0;
         }
         .college-crest {
@@ -153,6 +125,7 @@
             display: flex;
             flex-direction: column;
             letter-spacing: -0.02em;
+            white-space: nowrap;
         }
         .logo-text span {
             font-size: 10px;
@@ -161,24 +134,33 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
         }
+
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             align-items: center;
             list-style: none;
+            margin-left: 60px;
+            margin-right: auto;
         }
         .nav-link {
             color: var(--text);
             font-weight: 500;
             text-decoration: none;
             padding: 6px 0;
-            font-size: 15px;
+            font-size: 14px;
             transition: color 0.2s ease;
+            white-space: nowrap;
         }
         .nav-link:hover, .nav-link.active { color: var(--secondary); }
         .nav-link.active { font-weight: 700; border-bottom: 2px solid var(--secondary); }
 
-        .nav-actions { display: flex; align-items: center; gap: 14px; }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
         .portal-login-link {
             color: var(--primary);
             font-weight: 600;
@@ -196,6 +178,27 @@
             font-size: 15px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Hamburger Toggle Button */
+        .hamburger { 
+            display: none; 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            flex-direction: column; 
+            gap: 5px; 
+            padding: 8px; 
+            z-index: 1200; 
+            margin-left: auto;
+        }
+        .hamburger span { 
+            display: block; 
+            width: 26px; 
+            height: 3px; 
+            background: var(--primary); 
+            border-radius: 2px; 
+            transition: all 0.3s; 
         }
 
         /* Breadcrumb Bar */
@@ -883,7 +886,7 @@
         }
 
         /* Footer */
-        footer {
+        <footer>
             background: var(--primary-dark);
             color: white;
             padding: 60px 20px 40px;
@@ -891,7 +894,43 @@
         }
         .footer-bottom p { font-size: 14px; color: var(--text-light); }
 
+        /* Responsive Breakpoints & Mobile Navigation Drawer */
         @media(max-width: 992px) {
+            .hamburger { display: flex; }
+            .nav-actions { display: none; }
+            
+            .nav-links {
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                left: auto;
+                width: 280px;
+                height: calc(100vh - 85px);
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 30px;
+                gap: 20px;
+                transition: right 0.3s ease-in-out;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                z-index: 1500;
+                margin-left: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                font-size: 16px;
+                font-weight: 600;
+                width: 100%;
+                padding-bottom: 8px;
+                border-bottom: 1px solid #F1F5F9;
+                color: var(--text);
+            }
+
             .explorer-wrapper { grid-template-columns: 1fr; }
             .settings-sidebar { position: static; max-height: none; }
         }
@@ -912,7 +951,7 @@
             <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
         </a>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="programs.html" class="nav-link">Programs</a></li>
             <li><a href="admissions.html" class="nav-link">Admissions</a></li>
             <li><a href="career-services.html" class="nav-link">Career Success</a></li>
@@ -925,6 +964,13 @@
             <a href="index.html#apply" class="portal-login-link">Portal Login</a>
             <a href="index.html#apply" class="nav-cta">Apply Now</a>
         </div>
+
+        <!-- Mobile Hamburger Button Pinned to Right -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- Breadcrumb Bar -->
@@ -972,14 +1018,14 @@
                 <div class="panel-header-row">
                     <div>
                         <h3 class="panel-header-title">Institution Overview</h3>
-                        <p class="panel-header-sub">The executive summary and institutional footprint establishing trust and credibility[cite: 3].</p>
+                        <p class="panel-header-sub">The executive summary and institutional footprint establishing trust and credibility.</p>
                     </div>
                 </div>
 
                 <div class="dashboard-metrics-grid">
                     <div class="dash-metric-card">
                         <span class="lbl">Founded</span>
-                        <span class="val">1969[cite: 1]</span>
+                        <span class="val">1969</span>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Legacy</span>
@@ -987,11 +1033,11 @@
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Alumni Base</span>
-                        <span class="val">35,000+[cite: 1]</span>
+                        <span class="val">35,000+</span>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Faculty</span>
-                        <span class="val">120[cite: 1]</span>
+                        <span class="val">120</span>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Programs Offered</span>
@@ -999,15 +1045,15 @@
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Accreditation</span>
-                        <span class="val" style="color: var(--secondary-light);">NAAC A+[cite: 1]</span>
+                        <span class="val" style="color: var(--secondary-light);">NAAC A+</span>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Corporate Recruiters</span>
-                        <span class="val">220+[cite: 1]</span>
+                        <span class="val">220+</span>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Placement Rate</span>
-                        <span class="val" style="color: #10B981;">96%[cite: 1]</span>
+                        <span class="val" style="color: #10B981;">96%</span>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Scholarships Disbursed</span>
@@ -1087,7 +1133,7 @@
 
                 <div class="legacy-timeline">
                     <div class="timeline-node">
-                        <div class="timeline-year">1969[cite: 1]</div>
+                        <div class="timeline-year">1969</div>
                         <div class="timeline-title">College Established</div>
                         <p style="font-size: 14px; color: var(--text-light);">Founded by Barrister Akbar Peerbhoy under Anjuman-i-Islam.</p>
                     </div>
@@ -1135,7 +1181,7 @@
 
                 <div class="dashboard-metrics-grid" style="margin-bottom: 30px;">
                     <div class="dash-metric-card"><span class="lbl">Departments</span><span class="val">18</span></div>
-                    <div class="dash-metric-card"><span class="lbl">Faculty</span><span class="val">120[cite: 1]</span></div>
+                    <div class="dash-metric-card"><span class="lbl">Faculty</span><span class="val">120</span></div>
                     <div class="dash-metric-card"><span class="lbl">PhDs</span><span class="val">58</span></div>
                     <div class="dash-metric-card"><span class="lbl">Industry Mentors</span><span class="val">12</span></div>
                     <div class="dash-metric-card"><span class="lbl">Research Papers</span><span class="val">480</span></div>
@@ -1741,6 +1787,10 @@
             const nav = document.getElementById('navbar');
             if (window.scrollY > 40) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
+        });
+
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
         });
 
         // Tab Switching Logic with vertical strip active indicator
