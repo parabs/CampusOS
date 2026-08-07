@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Explorer — Campus OS</title>
+    <title>Academic Explorer & Course Screener — Akbar Peerbhoy College</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
             --text: #1E293B;
             --text-light: #64748B;
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-            --radius-card: 20px;
+            --radius-card: 24px;
             --radius-btn: 9999px;
         }
 
@@ -55,75 +55,77 @@
         .nav-link:hover, .nav-link.active { color: var(--secondary); font-weight: 700; }
         .nav-cta { background: var(--secondary); color: white !important; padding: 10px 24px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 600; font-size: 15px; }
 
-        /* Main Container */
-        .main-container { max-width: 1380px; margin: 120px auto 60px; padding: 0 24px; }
+        /* Main Explorer Container */
+        .explorer-container { max-width: 1400px; margin: 120px auto 80px; padding: 0 24px; }
         
-        .page-header { margin-bottom: 30px; }
-        .page-header h1 { font-size: 32px; font-weight: 900; color: var(--primary); letter-spacing: -0.02em; }
-        .page-header p { color: var(--text-light); font-size: 15px; margin-top: 4px; }
+        .explorer-header { text-align: center; margin-bottom: 40px; }
+        .explorer-header h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 900; color: var(--primary); letter-spacing: -0.03em; margin-bottom: 10px; }
+        .explorer-header p { color: var(--text-light); font-size: 16px; }
 
-        /* Search & Filter Controls */
-        .controls-bar {
-            display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; background: white;
-            padding: 20px; border-radius: var(--radius-card); border: 1px solid var(--border-color); box-shadow: var(--shadow);
-        }
-        .search-box { flex: 1; min-width: 260px; position: relative; }
-        .search-box input {
-            width: 100%; padding: 12px 16px 12px 42px; border-radius: 12px; border: 1px solid var(--border-color);
-            font-size: 14px; outline: none; transition: border-color 0.2s;
-        }
-        .search-box input:focus { border-color: var(--secondary); }
-        .search-box svg { position: absolute; left: 14px; top: 14px; width: 18px; height: 18px; color: var(--text-light); }
+        /* Main Workspace Grid (Filters Sidebar + Program Cards) */
+        .explorer-layout { display: grid; grid-template-columns: 280px 1fr; gap: 30px; align-items: start; }
+
+        /* Filters Sidebar */
+        .filters-sidebar { background: white; border-radius: var(--radius-card); padding: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow); position: sticky; top: 120px; }
+        .filters-title { font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .filter-section-label { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-bottom: 10px; display: block; }
         
-        .filter-select {
-            padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-color);
-            font-size: 14px; outline: none; background: white; color: var(--text); font-weight: 600; cursor: pointer;
-        }
+        .filter-btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .filter-btn { background: #F8FAFC; border: 1px solid var(--border-color); padding: 12px 16px; border-radius: 12px; font-size: 14px; font-weight: 600; color: var(--text); text-align: left; cursor: pointer; transition: all 0.2s; }
+        .filter-btn:hover, .filter-btn.active { background: var(--secondary); color: white; border-color: var(--secondary); }
 
-        /* Programs Grid */
-        .programs-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px;
-        }
+        /* Right Content Area */
+        .content-main { display: flex; flex-direction: column; gap: 24px; }
+
+        /* Search Bar */
+        .search-row { background: white; padding: 16px 20px; border-radius: var(--radius-card); border: 1px solid var(--border-color); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .search-input-box { flex: 1; display: flex; align-items: center; gap: 10px; }
+        .search-input-box svg { width: 18px; height: 18px; color: var(--text-light); }
+        .search-input-box input { width: 100%; border: none; outline: none; font-size: 15px; color: var(--text); background: transparent; }
+        .search-counter { font-size: 13px; font-weight: 600; color: var(--text-light); white-space: nowrap; }
+
+        /* Cards Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+        
         .program-card {
-            background: var(--surface); border: 1px solid var(--border-color); border-radius: var(--radius-card);
+            background: white; border: 1px solid var(--border-color); border-radius: var(--radius-card);
             padding: 28px; display: flex; flex-direction: column; justify-content: space-between;
-            box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden;
+            box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; position: relative;
         }
         .program-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        
-        .badge-row { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-        .program-badge {
-            background: #EFF6FF; color: var(--secondary); font-size: 11px; font-weight: 700;
-            padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
-        }
-        .rating-badge { background: #FEF3C7; color: #D97706; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
-        
-        .program-title { font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 10px; line-height: 1.3; }
-        .program-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
-        
-        .program-meta {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;
-            padding-top: 16px; border-top: 1px solid var(--border-color); font-size: 13px;
-        }
-        .meta-item span { display: block; font-size: 11px; color: var(--text-light); text-transform: uppercase; font-weight: 600; }
-        .meta-item strong { color: var(--primary); font-weight: 700; }
 
-        .btn-details {
-            background: var(--primary); color: white; text-align: center; padding: 12px; border-radius: 12px;
-            font-weight: 700; text-decoration: none; font-size: 14px; transition: background 0.2s; display: block;
-        }
-        .btn-details:hover { background: var(--secondary); }
+        .card-top-badges { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .badge-nep { background: #FEF3C7; color: #92400E; font-size: 10px; font-weight: 800; padding: 5px 12px; border-radius: 20px; text-transform: uppercase; }
+        .badge-rating { background: #FEF3C7; color: #D97706; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
 
-        .empty-state { grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-light); font-weight: 600; }
+        .card-title { font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 10px; line-height: 1.3; }
+        .card-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
+
+        .card-meta-box { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; font-size: 13px; }
+        .meta-row { display: flex; align-items: center; justify-content: space-between; color: var(--text); }
+        .meta-row span:first-child { color: var(--text-light); font-weight: 500; }
+        .meta-row span:last-child { font-weight: 700; color: var(--primary); }
+
+        .btn-card-action {
+            background: var(--secondary); color: white; text-align: center; padding: 12px; border-radius: var(--radius-btn);
+            font-weight: 700; text-decoration: none; font-size: 14px; transition: background 0.2s; display: block; box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+        }
+        .btn-card-action:hover { background: var(--secondary-dark); }
+
         footer { background: var(--primary-dark); color: white; padding: 40px 20px; text-align: center; margin-top: 80px; }
         footer p { font-size: 14px; color: var(--text-light); }
+
+        @media(max-width: 992px) {
+            .explorer-layout { grid-template-columns: 1fr; }
+            .filters-sidebar { position: static; }
+        }
     </style>
 </head>
 <body>
 
     <!-- Slim Product Banner -->
     <header class="campus-os-banner">
-        <div>🚀 <span>Campus OS</span> — Academic Explorer Repository</div>
+        <div>🚀 <strong>Campus OS Academic Decision Platform</strong> — Program Discovery Explorer</div>
         <div><a href="index.html">&larr; Back to Home</a></div>
     </header>
 
@@ -131,138 +133,130 @@
     <nav class="navbar">
         <a href="index.html" class="logo-area">
             <div class="college-crest">AP</div>
-            <div class="logo-text">
-                <span id="navCollegeShort">APCCE</span> 
-                <span>Academic Catalog</span>
-            </div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
         </a>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">Home</a></li>
             <li><a href="programs.html" class="nav-link active">Programs</a></li>
             <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
             <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance</a></li>
         </ul>
         <div class="nav-actions">
             <a href="admissions.html" class="nav-cta">Apply Now</a>
         </div>
     </nav>
 
-    <!-- Main Container -->
-    <main class="main-container">
-        <div class="page-header">
-            <h1>Academic Programs Explorer</h1>
-            <p>Browse our comprehensive directory of undergraduate and postgraduate degrees powered by live XML repositories.</p>
+    <!-- Main Content Container -->
+    <main class="explorer-container">
+        
+        <div class="explorer-header">
+            <h1>Academic Explorer & Course Screener</h1>
+            <p>Filter programs dynamically from the institutional repository to find your ideal path.</p>
         </div>
 
-        <!-- Search and Filters -->
-        <div class="controls-bar">
-            <div class="search-box">
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                <input type="text" id="searchInput" placeholder="Search by program title, code, or description..." oninput="filterPrograms()">
-            </div>
-            <select id="levelFilter" class="filter-select" onchange="filterPrograms()">
-                <option value="">All Levels</option>
-                <option value="Undergraduate">Undergraduate</option>
-                <option value="Postgraduate">Postgraduate</option>
-                <option value="Doctoral">Doctoral</option>
-            </select>
-        </div>
+        <div class="explorer-layout">
+            
+            <!-- Left Filter Sidebar -->
+            <aside class="filters-sidebar">
+                <div class="filters-title">Program Filters</div>
+                <span class="filter-section-label">1. Academic Level</span>
+                <div class="filter-btn-group">
+                    <button class="filter-btn active">All Levels</button>
+                    <button class="filter-btn">🎓 Undergraduate (UG)</button>
+                    <button class="filter-btn">📜 Postgraduate (PG)</button>
+                </div>
+            </aside>
 
-        <!-- Programs Grid -->
-        <div id="programsGrid" class="programs-grid">
-            <div class="empty-state">Loading programs repository...</div>
+            <!-- Right Content Area -->
+            <section class="content-main">
+                
+                <!-- Search Bar -->
+                <div class="search-row">
+                    <div class="search-input-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <input type="text" placeholder="Search courses by title or keyword...">
+                    </div>
+                    <div class="search-counter">Showing 3 programs</div>
+                </div>
+
+                <!-- Program Cards Grid -->
+                <div class="cards-grid">
+                    
+                    <!-- BMS Card -->
+                    <div class="program-card">
+                        <div>
+                            <div class="card-top-badges">
+                                <span class="badge-nep">NEP 2020 Compliant</span>
+                                <span class="badge-rating">⭐ 4.75 Rating</span>
+                            </div>
+                            <h3 class="card-title">Bachelor of Management Studies (BMS)</h3>
+                            <p class="card-desc">Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills designed for top global corporations.</p>
+                        </div>
+                        <div>
+                            <div class="card-meta-box">
+                                <div class="meta-row"><span>✓ Duration:</span><span>3 Years</span></div>
+                                <div class="meta-row"><span>✓ Eligibility:</span><span>10+2 Any Stream (45%+)</span></div>
+                                <div class="meta-row"><span>✓ Placement:</span><span>98% Success</span></div>
+                                <div class="meta-row"><span>✓ Avg Salary:</span><span>₹6.2 LPA</span></div>
+                            </div>
+                            <a href="program-detail.html?course=bms" class="btn-card-action">View Program & Details &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- B.Com Card -->
+                    <div class="program-card">
+                        <div>
+                            <div class="card-top-badges">
+                                <span class="badge-nep">NEP 2020 Compliant</span>
+                                <span class="badge-rating">⭐ 4.9 Rating</span>
+                            </div>
+                            <h3 class="card-title">Bachelor of Commerce (B.Com)</h3>
+                            <p class="card-desc">Comprehensive foundation in accounting, taxation, auditing, and global corporate finance principles.</p>
+                        </div>
+                        <div>
+                            <div class="card-meta-box">
+                                <div class="meta-row"><span>✓ Duration:</span><span>3 Years</span></div>
+                                <div class="meta-row"><span>✓ Eligibility:</span><span>10+2 Commerce (45%+)</span></div>
+                                <div class="meta-row"><span>✓ Placement:</span><span>94% Success</span></div>
+                                <div class="meta-row"><span>✓ Avg Salary:</span><span>₹4.5 LPA</span></div>
+                            </div>
+                            <a href="program-detail.html?course=bcom" class="btn-card-action">View Program & Details &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- B.Sc IT Card -->
+                    <div class="program-card">
+                        <div>
+                            <div class="card-top-badges">
+                                <span class="badge-nep" style="background: #E0E7FF; color: #3730A3;">AI Integrated</span>
+                                <span class="badge-rating">⭐ 4.85 Rating</span>
+                            </div>
+                            <h3 class="card-title">Bachelor of Science in IT (B.Sc IT)</h3>
+                            <p class="card-desc">Cutting-edge technical curriculum covering software engineering, cloud workflows, and data structures.</p>
+                        </div>
+                        <div>
+                            <div class="card-meta-box">
+                                <div class="meta-row"><span>✓ Duration:</span><span>3 Years</span></div>
+                                <div class="meta-row"><span>✓ Eligibility:</span><span>10+2 with Math (45%+)</span></div>
+                                <div class="meta-row"><span>✓ Placement:</span><span>97% Success</span></div>
+                                <div class="meta-row"><span>✓ Avg Salary:</span><span>₹7.5 LPA</span></div>
+                            </div>
+                            <a href="program-detail.html?course=bsit" class="btn-card-action">View Program & Details &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Akbar Peerbhoy College & Economics. Powered by Campus OS.</p>
+        <p>© 2026 Akbar Peerbhoy College. Program Explorer Powered by Campus OS.</p>
     </footer>
 
-    <!-- XML Parser & Dynamic Renderer Script with Cache Busting -->
-    <script>
-        let allPrograms = [];
-
-        async function loadProgramsRepository() {
-            try {
-                // Cache-busting query parameter forces fresh load from GitHub
-                const response = await fetch('data/programs.xml?v=' + new Date().getTime());
-                if (!response.ok) throw new Error('Network response was not ok');
-                
-                const xmlText = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-                
-                const programNodes = xmlDoc.querySelectorAll('program');
-                allPrograms = Array.from(programNodes).map(node => ({
-                    id: node.getAttribute('id') || '',
-                    title: node.querySelector('title')?.textContent || node.querySelector('name')?.textContent || node.getElementsByTagName('title')[0]?.textContent || 'Untitled Program',
-                    level: node.querySelector('level')?.textContent || 'Undergraduate',
-                    rating: node.querySelector('rating')?.textContent || 'No Rating',
-                    duration: node.querySelector('duration')?.textContent || 'No Years',
-                    intake: node.querySelector('intake')?.textContent || 'No Seats',
-                    description: node.querySelector('description')?.textContent || 'No description available.'
-                }));
-
-                renderPrograms(allPrograms);
-            } catch (err) {
-                console.error("Failed to load programs XML:", err);
-                document.getElementById('programsGrid').innerHTML = `
-                    <div class="empty-state">
-                        <strong>Repository Offline or CORS Blocked</strong><br>
-                        Please run via a local server or deploy via GitHub Pages.
-                    </div>`;
-            }
-        }
-
-        function renderPrograms(programs) {
-            const grid = document.getElementById('programsGrid');
-            if (programs.length === 0) {
-                grid.innerHTML = `<div class="empty-state">No matching academic programs found.</div>`;
-                return;
-            }
-
-            grid.innerHTML = programs.map(p => `
-                <div class="program-card">
-                    <div>
-                        <div class="badge-row">
-                            <span class="program-badge">${p.level}</span>
-                            <span class="rating-badge">${p.rating}</span>
-                        </div>
-                        <h3 class="program-title">${p.title}</h3>
-                        <p class="program-desc">${p.description}</p>
-                    </div>
-                    <div>
-                        <div class="program-meta">
-                            <div class="meta-item">
-                                <span>Duration</span>
-                                <strong>${p.duration}</strong>
-                            </div>
-                            <div class="meta-item">
-                                <span>Intake Capacity</span>
-                                <strong>${p.intake}</strong>
-                            </div>
-                        </div>
-                        <a href="program-detail.html?course=${p.id}" class="btn-details">View Curriculum &rarr;</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function filterPrograms() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const level = document.getElementById('levelFilter').value;
-
-            const filtered = allPrograms.filter(p => {
-                const matchesQuery = p.title.toLowerCase().includes(query) || p.description.toLowerCase().includes(query);
-                const matchesLevel = level === "" || p.level.toLowerCase().includes(level.toLowerCase());
-                return matchesQuery && matchesLevel;
-            });
-
-            renderPrograms(filtered);
-        }
-
-        document.addEventListener("DOMContentLoaded", loadProgramsRepository);
-    </script>
 </body>
-</html> 
+</html>
