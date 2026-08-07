@@ -198,9 +198,9 @@
                     id: node.getAttribute('id') || '',
                     title: node.querySelector('title')?.textContent || node.querySelector('name')?.textContent || node.getElementsByTagName('title')[0]?.textContent || 'Untitled Program',
                     level: node.querySelector('level')?.textContent || 'Undergraduate',
-                    rating: node.querySelector('rating')?.textContent || '4.5 Rating',
-                    duration: node.querySelector('duration')?.textContent || '3 Years',
-                    intake: node.querySelector('intake')?.textContent || '60 Seats',
+                    rating: node.querySelector('rating')?.textContent || 'No Rating',
+                    duration: node.querySelector('duration')?.textContent || 'No Years',
+                    intake: node.querySelector('intake')?.textContent || 'No Seats',
                     description: node.querySelector('description')?.textContent || 'No description available.'
                 }));
 
@@ -265,4 +265,4 @@
         document.addEventListener("DOMContentLoaded", loadProgramsRepository);
     </script>
 </body>
-</html>
+</html> 
