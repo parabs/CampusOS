@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parabs.github.io/CampusOS/sitemap.xml

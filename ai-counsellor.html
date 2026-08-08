@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusOS AI Assistant — Admissions Experience Center</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-gray: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(37, 99, 235, 0.08);
+            --radius-card: 20px;
+            --radius-btn: 9999px;
+        }
+
+        [data-theme="dark"] {
+            --primary: #F8FAFC;
+            --primary-dark: #FFFFFF;
+            --secondary: #3B82F6;
+            --secondary-dark: #2563EB;
+            --background: #020617;
+            --surface: #0F172A;
+            --surface-gray: #1E293B;
+            --border-color: #334155;
+            --text: #F1F5F9;
+            --text-light: #94A3B8;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--background); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; overflow-y: auto; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        /* Top Mission Control Banner */
+        .mission-control-banner {
+            background: linear-gradient(90deg, #020617, #0F172A);
+            color: #FFFFFF; font-size: 12px; padding: 5px 20px;
+            display: flex; justify-content: space-between; align-items: center; z-index: 1100; flex-shrink: 0;
+        }
+        .mission-control-banner a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+        /* Navigation Header */
+        .counsellor-header {
+            background: var(--surface); border-bottom: 1px solid var(--border-color); padding: 10px 20px;
+            display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; z-index: 1000;
+        }
+        .header-brand { display: flex; align-items: center; gap: 10px; }
+        .brand-crest { width: 34px; height: 34px; background: linear-gradient(135deg, var(--secondary), var(--primary)); border-radius: 9px; color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; }
+        .brand-titles h1 { font-size: 15px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+        .brand-titles p { font-size: 11px; color: var(--text-light); }
+
+        .header-controls { display: flex; align-items: center; gap: 10px; }
+        .badge-open { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 99px; display: inline-flex; align-items: center; gap: 4px; }
+        .btn-control { background: var(--surface-gray); border: 1px solid var(--border-color); color: var(--text); padding: 5px 10px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+        .btn-control:hover { border-color: var(--secondary); color: var(--secondary); }
+
+        /* Three-Column Workspace Layout */
+        .workspace-layout { display: grid; grid-template-columns: 270px 1fr 310px; flex-grow: 1; }
+
+        /* Left Panel: College Snapshot */
+        .left-panel { background: var(--surface); border-right: 1px solid var(--border-color); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .info-card { background: var(--surface-gray); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 3px; }
+        .info-label { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); display: flex; align-items: center; gap: 4px; }
+        .info-value { font-size: 13px; font-weight: 800; color: var(--text); }
+        .info-sub { font-size: 11px; color: var(--text-light); }
+
+        /* Center Panel: Hero Conversation Experience */
+        .center-panel { display: flex; flex-direction: column; background: var(--background); position: relative; }
+        
+        /* Thinner Copilot-style 42px Notification Banner */
+        .explore-banner { background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%); color: white; padding: 6px 16px; border-radius: 8px; margin: 10px 18px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 3px 10px rgba(37,99,235,0.12); flex-shrink: 0; height: 42px; }
+        .explore-banner h3 { font-size: 12px; font-weight: 900; }
+        .btn-explore { background: white; color: var(--secondary); border: none; padding: 4px 12px; border-radius: 99px; font-size: 10.5px; font-weight: 800; cursor: pointer; transition: transform 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .btn-explore:hover { transform: scale(1.05); }
+
+        /* Workspace View Area */
+        .workspace-view-area { padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 420px; }
+        
+        /* Welcome State & Single Workspace Card Container (Natural Page Scroll) */
+        .workspace-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; box-shadow: var(--shadow); max-width: 680px; width: 100%; display: flex; flex-direction: column; gap: 12px; text-align: left; transition: all 0.3s ease; }
+        .workspace-card h2 { font-size: 22px; font-weight: 900; color: var(--text); letter-spacing: -0.03em; }
+
+        /* Compact Concise Response Cards (~250-300px height feel) */
+        .ai-structured-card { background: var(--surface-gray); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+        .ai-grid-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+        .ai-stat-box { background: var(--surface); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 2px; }
+        .ai-stat-box span:first-child { font-size: 9.5px; font-weight: 800; text-transform: uppercase; color: var(--text-light); }
+        .ai-stat-box span:last-child { font-size: 13px; font-weight: 800; color: var(--text); }
+
+        /* Comparison Table Component */
+        .comparison-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 4px; }
+        .comparison-table th, .comparison-table td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .comparison-table th { font-size: 10.5px; font-weight: 800; color: var(--text-light); text-transform: uppercase; background: var(--surface); }
+
+        .smart-action-group { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; border-top: 1px solid var(--border-color); padding-top: 10px; }
+        .btn-smart-action { background: var(--surface); border: 1px solid var(--border-color); color: var(--text); padding: 6px 12px; border-radius: 8px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .btn-smart-action:hover { background: var(--secondary); color: white; border-color: var(--secondary); }
+
+        /* Compact 120-150px Thinking Animation Card */
+        .ai-thinking-box { background: var(--surface); border: 1px solid #BFDBFE; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px; max-width: 440px; width: 100%; box-shadow: 0 4px 15px rgba(37,99,235,0.08); margin: auto; height: 135px; justify-content: center; }
+        .thinking-header { font-size: 12.5px; font-weight: 900; color: var(--secondary); margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
+        .thinking-bullet { font-size: 11.5px; font-weight: 700; color: var(--text-light); display: flex; align-items: center; gap: 6px; }
+
+        /* 5 Ideal Prompt Chips Directly Above Input */
+        .suggestions-bar { display: flex; gap: 6px; overflow-x: auto; padding: 8px 18px 4px; flex-shrink: 0; max-width: 780px; margin: 0 auto; width: 100%; scrollbar-width: none; }
+        .suggestions-bar::-webkit-scrollbar { display: none; }
+        .suggestion-chip { background: var(--surface); border: 1px solid var(--border-color); color: var(--secondary); padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s; }
+        .suggestion-chip:hover { border-color: var(--secondary); background: #EFF6FF; }
+
+        /* Chat Input Bar with AI Ready Status */
+        .chat-input-wrapper { background: var(--surface); border-top: 1px solid var(--border-color); padding: 12px 18px; flex-shrink: 0; display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+        .input-bar-inner { display: flex; gap: 10px; align-items: center; max-width: 740px; margin: 0 auto; width: 100%; }
+        .chat-text-input { flex-grow: 1; background: var(--surface-gray); border: 1px solid var(--border-color); padding: 10px 16px; border-radius: 99px; font-size: 13px; font-family: inherit; color: var(--text); outline: none; transition: all 0.2s; }
+        .chat-text-input:focus { background: var(--surface); border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        .btn-send { background: var(--secondary); color: white; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 4px 10px rgba(37,99,235,0.3); transition: background 0.2s; flex-shrink: 0; }
+        .btn-send:hover { background: var(--secondary-dark); }
+
+        /* Right Panel: Campus Highlights, Live Updates Ticker (~142.5px), Recommended Next */
+        .right-panel { background: var(--surface); border-left: 1px solid var(--border-color); padding: 16px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; }
+        .panel-block { background: var(--surface-gray); border: 1px solid var(--border-color); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+        .block-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); display: flex; align-items: center; justify-content: space-between; }
+
+        /* Clickable Promotional Widget Slideshow Card */
+        .slideshow-card { background: var(--surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); min-height: 130px; justify-content: space-between; cursor: pointer; transition: border-color 0.2s; }
+        .slideshow-card:hover { border-color: var(--secondary); }
+        .slide-title { font-size: 13.5px; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+        .slide-desc { font-size: 11.5px; color: var(--text-light); line-height: 1.35; }
+        .slide-action { align-self: flex-start; background: #EFF6FF; color: var(--secondary); border: 1px solid #BFDBFE; padding: 3px 8px; border-radius: 6px; font-size: 10.5px; font-weight: 700; cursor: pointer; text-decoration: none; }
+        
+        /* Dots Pagination */
+        .dots-row { display: flex; gap: 4px; justify-content: center; margin-top: 4px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border-color); transition: all 0.3s; cursor: pointer; }
+        .dot.active { background: var(--secondary); width: 16px; border-radius: 99px; }
+
+        /* Decreased Height Live Updates Ticker Container (~142.5px tall) */
+        .news-ticker-wrapper { background: var(--surface); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px 12px; overflow: hidden; position: relative; height: 142.5px; display: flex; flex-direction: column; justify-content: flex-start; }
+        .ticker-track-anim { display: flex; flex-direction: column; gap: 10px; animation: tickerScrollDecreased 16s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+        .ticker-card-item { background: var(--surface-gray); border: 1px solid var(--border-color); padding: 7px 10px; border-radius: 8px; display: flex; flex-direction: column; gap: 2px; }
+        .ticker-card-title { font-size: 11.5px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+        .ticker-card-sub { font-size: 10px; color: var(--text-light); }
+        @keyframes tickerScrollDecreased {
+            0% { transform: translateY(0); }
+            20% { transform: translateY(-52px); }
+            40% { transform: translateY(-104px); }
+            60% { transform: translateY(-156px); }
+            80% { transform: translateY(-208px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Recommended Next Box */
+        .ai-suggestions-box { background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border: 1px solid #BFDBFE; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 6px; transition: all 0.3s ease; }
+        .ai-sugg-title { font-size: 11px; font-weight: 800; color: #1D4ED8; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; }
+        .ai-sugg-item { background: white; border: 1px solid rgba(191,219,254,0.6); padding: 5px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 700; color: var(--secondary); cursor: pointer; transition: all 0.2s; }
+        .ai-sugg-item:hover { background: var(--secondary); color: white; }
+
+        /* Modal Overlays */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: all 0.3s; }
+        .modal-box { background: var(--surface); border-radius: 20px; width: 100%; max-width: 480px; padding: 30px; box-shadow: 0 25px 50px rgba(0,0,0,0.25); display: flex; flex-direction: column; gap: 16px; }
+        .modal-box h3 { font-size: 18px; font-weight: 900; color: var(--text); }
+
+        @media(max-width: 1200px) {
+            .workspace-layout { grid-template-columns: 240px 1fr; }
+            .right-panel { display: none; }
+        }
+        @media(max-width: 768px) {
+            .workspace-layout { grid-template-columns: 1fr; }
+            .left-panel { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mission Control Banner -->
+    <header class="mission-control-banner">
+        <div>🚀 <strong>CampusOS Experience Center</strong> — Intelligent Admissions Engine</div>
+        <div><a href="index.html">&larr; Return to Studio</a></div>
+    </header>
+
+    <!-- Header -->
+    <header class="counsellor-header">
+        <div class="header-brand">
+            <div class="brand-crest">OS</div>
+            <div class="brand-titles">
+                <h1>CampusOS AI</h1>
+                <p>Your Intelligent Campus Guide</p>
+            </div>
+        </div>
+        <div class="header-controls">
+            <span class="badge-open">🟢 Admissions Open '26</span>
+            <button class="btn-control" onclick="toggleDarkMode()">🌙 Theme</button>
+        </div>
+    </header>
+
+    <!-- Three-Column Workspace Layout -->
+    <div class="workspace-layout">
+
+        <!-- LEFT PANEL: Institutional Snapshot & Visit Campus Card -->
+        <aside class="left-panel">
+            <div class="info-card">
+                <span class="info-label">🎓 Admissions</span>
+                <span class="info-value">Batch 2026-27 Round 1</span>
+                <span class="info-sub">Applications active</span>
+            </div>
+            <div class="info-card">
+                <span class="info-label">📅 Important Dates</span>
+                <span class="info-value">July 15, 2026</span>
+                <span class="info-sub">Application deadline</span>
+            </div>
+            <div class="info-card">
+                <span class="info-label">🏆 Top Programs</span>
+                <span class="info-value">BMS, B.Com, BSc IT</span>
+                <span class="info-sub">NAAC A+ Accredited</span>
+            </div>
+            <div class="info-card">
+                <span class="info-label">💰 Scholarships</span>
+                <span class="info-value">Up to 100% Waiver</span>
+                <span class="info-sub">Merit & sports quotas</span>
+            </div>
+            
+            <!-- Visit Campus Card -->
+            <div class="info-card" style="background: #EFF6FF; border-color: #BFDBFE;">
+                <span class="info-label" style="color: var(--secondary);">📍 Visit Campus</span>
+                <span class="info-value">Mon – Sat &bull; 9:00 AM – 6:00 PM</span>
+                <span class="info-sub">Admissions Office, Ground Floor</span>
+                <span class="info-sub" style="margin-top: 2px;">☎ +91 22 2308-1470</span>
+                <span class="info-sub" style="font-weight: 800; color: var(--text); margin-top: 4px;">Today's Slots:</span>
+                <div style="display: flex; gap: 4px; margin-top: 4px;">
+                    <span style="background: white; border: 1px solid #BFDBFE; padding: 3px 6px; border-radius: 6px; font-size: 10.5px; font-weight: 700; cursor: pointer;" onclick="openVisitModal()">11:00</span>
+                    <span style="background: white; border: 1px solid #BFDBFE; padding: 3px 6px; border-radius: 6px; font-size: 10.5px; font-weight: 700; cursor: pointer;" onclick="openVisitModal()">2:30</span>
+                    <span style="background: white; border: 1px solid #BFDBFE; padding: 3px 6px; border-radius: 6px; font-size: 10.5px; font-weight: 700; cursor: pointer;" onclick="openVisitModal()">4:00</span>
+                </div>
+                <button class="btn-control" style="background: var(--secondary); color: white; border: none; margin-top: 8px; text-align: center; padding: 6px;" onclick="openVisitModal()">Schedule Appointment</button>
+            </div>
+        </aside>
+
+        <!-- CENTER PANEL: Single-Card Workspace Experience -->
+        <main class="center-panel">
+            
+            <!-- Thinner Copilot-style 42px Notification Banner -->
+            <div class="explore-banner">
+                <h3>🎯 AI Career Discovery</h3>
+                <button class="btn-explore" onclick="openExploreWizard()">Start Assessment</button>
+            </div>
+
+            <!-- Workspace View Area -->
+            <div class="workspace-view-area" id="workspaceViewArea">
+                
+                <!-- Minimalist Welcome State -->
+                <div class="workspace-card" id="welcomeCanvas">
+                    <h2>👋 Hi, I'm CampusOS AI</h2>
+                    <p style="font-size: 15px; color: var(--text);">How can I help you today?</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+                        <button class="btn-control" onclick="sendPrompt('Which course suits me?')">🎓 Which course suits me?</button>
+                        <button class="btn-control" onclick="sendPrompt('Compare BMS vs B.Com')">📊 Compare BMS vs B.Com</button>
+                        <button class="btn-control" onclick="sendPrompt('Am I eligible?')">✅ Am I eligible?</button>
+                        <button class="btn-control" onclick="sendPrompt('Calculate my fees')">💰 Calculate my fees</button>
+                        <button class="btn-control" onclick="sendPrompt('Hostel facilities')">🏠 Hostel facilities</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 5 Ideal Prompt Chips Directly Above Input -->
+            <div class="suggestions-bar">
+                <span class="suggestion-chip" onclick="sendPrompt('Which course suits me?')">✓ Which course suits me?</span>
+                <span class="suggestion-chip" onclick="sendPrompt('Compare BMS vs B.Com')">✓ Compare BMS vs B.Com</span>
+                <span class="suggestion-chip" onclick="sendPrompt('Am I eligible?')">✓ Am I eligible?</span>
+                <span class="suggestion-chip" onclick="sendPrompt('Calculate my fees')">✓ Calculate my fees</span>
+                <span class="suggestion-chip" onclick="sendPrompt('Hostel facilities')">✓ Hostel facilities</span>
+            </div>
+
+            <!-- Chat Input Bar with AI Ready Status -->
+            <div class="chat-input-wrapper">
+                <div style="display: flex; justify-content: flex-end; max-width: 740px; margin: 0 auto; width: 100%; font-size: 11px; color: #10B981; font-weight: 700;">
+                    <span>🟢 AI Ready &bull; Institutional Repository Connected</span>
+                </div>
+                <div class="input-bar-inner">
+                    <input type="text" id="chatInput" class="chat-text-input" placeholder="Ask anything..." onkeypress="handleKey(event)">
+                    <button class="btn-send" onclick="handleUserSubmit()">➔</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- RIGHT PANEL: Campus Highlights, Live Updates Ticker (~142.5px), Recommended Next -->
+        <aside class="right-panel">
+            
+            <!-- 1. Campus Highlights -->
+            <div class="panel-block">
+                <span class="block-title">Campus Highlights</span>
+                <div class="slideshow-card" id="slideshowCardContainer" onclick="triggerSlideAction()">
+                    <!-- Dynamic Slide Content -->
+                </div>
+                <div class="dots-row" id="slideshowDots">
+                    <div class="dot active" onclick="setSlide(0)"></div>
+                    <div class="dot" onclick="setSlide(1)"></div>
+                    <div class="dot" onclick="setSlide(2)"></div>
+                    <div class="dot" onclick="setSlide(3)"></div>
+                    <div class="dot" onclick="setSlide(4)"></div>
+                </div>
+            </div>
+
+            <!-- 2. Live Updates (~142.5px tall ticker) -->
+            <div class="panel-block">
+                <span class="block-title">Live Updates</span>
+                <div class="news-ticker-wrapper">
+                    <div class="ticker-track-anim">
+                        <div class="ticker-card-item">
+                            <div class="ticker-card-title">🟢 Admissions Open</div>
+                            <div class="ticker-card-sub">Batch 2026-27 Round 1 live</div>
+                        </div>
+                        <div class="ticker-card-item">
+                            <div class="ticker-card-title">🎓 Placement Drive</div>
+                            <div class="ticker-card-sub">Tomorrow with Deloitte & TCS</div>
+                        </div>
+                        <div class="ticker-card-item">
+                            <div class="ticker-card-title">🏆 NAAC A+ Inspection</div>
+                            <div class="ticker-card-sub">Successfully completed with 3.51 GPA</div>
+                        </div>
+                        <div class="ticker-card-item">
+                            <div class="ticker-card-title">🤖 AI Lab Now Open</div>
+                            <div class="ticker-card-sub">Equipped with local LLMs & n8n</div>
+                        </div>
+                        <div class="ticker-card-item">
+                            <div class="ticker-card-title">🎉 Merit List</div>
+                            <div class="ticker-card-sub">Publishing on 18 July 2026</div>
+                        </div>
+                        <!-- Loop duplicates -->
+                        <div class="ticker-card-item">
+                            <div class="ticker-card-title">🟢 Admissions Open</div>
+                            <div class="ticker-card-sub">Batch 2026-27 Round 1 live</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Recommended Next -->
+            <div class="ai-suggestions-box" id="proactiveAiBox">
+                <div class="ai-sugg-title">Recommended Next</div>
+                <div style="font-size: 11px; color: var(--text-light); margin-bottom: 2px;" id="aiSuggSubtitle">Based on your session:</div>
+                <div class="ai-sugg-item" onclick="sendPrompt('Hostel facilities')">✓ Hostel Facilities</div>
+                <div class="ai-sugg-item" onclick="sendPrompt('Calculate my fees')">✓ Calculate my fees</div>
+                <div class="ai-sugg-item" onclick="sendPrompt('Placement statistics')">✓ Placement Report</div>
+            </div>
+
+        </aside>
+    </div>
+
+    <!-- Modal for Campus Visit Booking -->
+    <div class="modal-overlay" id="visitModal">
+        <div class="modal-box">
+            <h3>Book Campus Visit</h3>
+            <p style="font-size: 13px; color: var(--text-light);">Select your preferred date and time for a guided tour with our senior faculty.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <label style="font-size: 11px; font-weight: 800; text-transform: uppercase;">Preferred Date</label>
+                <input type="date" id="visitDate" class="chat-text-input" style="border-radius: 10px;">
+                <label style="font-size: 11px; font-weight: 800; text-transform: uppercase;">Preferred Time</label>
+                <select id="visitTime" class="chat-text-input" style="border-radius: 10px;">
+                    <option>10:00 AM - 11:30 AM</option>
+                    <option>02:00 PM - 03:30 PM</option>
+                </select>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 10px;">
+                <button class="btn-control" onclick="closeVisitModal()">Cancel</button>
+                <button class="btn-send" style="width: auto; border-radius: 99px; padding: 0 18px; font-weight: 700; font-size: 12.5px;" onclick="confirmVisit()">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for AI Career Discovery Wizard -->
+    <div class="modal-overlay" id="exploreModal">
+        <div class="modal-box">
+            <h3 id="wizardTitle">🎯 AI Career Discovery (Q1 / 8)</h3>
+            <div id="wizardContent">
+                <p style="font-size: 13px; color: var(--text-light); margin-bottom: 12px;" id="wizardQuestion">What subjects do you enjoy the most?</p>
+                <div style="display: flex; flex-direction: column; gap: 8px;" id="wizardOptions">
+                    <button class="btn-control" style="text-align: left; padding: 10px;" onclick="nextWizardStep(1)">○ Commerce & Accounts</button>
+                    <button class="btn-control" style="text-align: left; padding: 10px;" onclick="nextWizardStep(1)">○ Science & Mathematics</button>
+                    <button class="btn-control" style="text-align: left; padding: 10px;" onclick="nextWizardStep(1)">○ Arts & Humanities</button>
+                    <button class="btn-control" style="text-align: left; padding: 10px;" onclick="nextWizardStep(1)">○ Computers & Technology</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Lead Capture -->
+    <div class="modal-overlay" id="leadModal">
+        <div class="modal-box">
+            <h3>Admissions CRM Lead Capture</h3>
+            <p style="font-size: 13px; color: var(--text-light);">Provide your contact details to submit your application directly into our Admissions CRM.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <input type="text" id="leadName" placeholder="Full Name" class="chat-text-input" style="border-radius: 10px;">
+                <input type="text" id="leadPhone" placeholder="Phone Number" class="chat-text-input" style="border-radius: 10px;">
+                <input type="email" id="leadEmail" placeholder="Email Address" class="chat-text-input" style="border-radius: 10px;">
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 10px;">
+                <button class="btn-control" onclick="closeLeadModal()">Cancel</button>
+                <button class="btn-send" style="width: auto; border-radius: 99px; padding: 0 18px; font-weight: 700; font-size: 12.5px;" onclick="submitLead()">Submit Application</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Knowledge & Experience Engine (Dictionary-mapped mapping architected per user specifications) -->
+    <script>
+        // Clickable Promotional Slideshow Data
+        const slides = [
+            { title: "🏢 150+ Recruiters", desc: "TCS • Infosys • Accenture • Deloitte. High-value internships & final job placement.", actionText: "View Placements", prompt: "Placement statistics" },
+            { title: "🏆 NAAC A+ Accredited", desc: "55 Years of Excellence • NBA Programs • NEP 2020 Ready • Autonomous status.", actionText: "Explore College", prompt: "Tell me about college accreditation" },
+            { title: "🤖 AI Innovation Lab", desc: "State-of-the-art computing facilities equipped with local LLMs, n8n, and modern tools.", actionText: "Explore Labs", prompt: "Tell me about computer labs and AI infrastructure" },
+            { title: "💰 100% Scholarships", desc: "Merit scholarships, government schemes, and sports quotas for eligible scholars.", actionText: "Check Eligibility", prompt: "Am I eligible?" },
+            { title: "🏛️ 55 Years Legacy", desc: "Trusted by generations of students for academic rigor, character building, and success.", actionText: "Our Legacy", prompt: "Tell me about the college history" }
+        ];
+        let currentSlide = 0;
+
+        function renderSlide() {
+            const s = slides[currentSlide];
+            document.getElementById('slideshowCardContainer').innerHTML = `
+                <div class="slide-title">${s.title}</div>
+                <div class="slide-desc">${s.desc}</div>
+                <button class="slide-action" onclick="sendPrompt('${s.prompt}')">${s.actionText} &rarr;</button>
+            `;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((d, i) => {
+                if (i === currentSlide) d.classList.add('active');
+                else d.classList.remove('active');
+            });
+            currentSlide = (currentSlide + 1) % slides.length;
+        }
+
+        function setSlide(idx) {
+            currentSlide = idx;
+            renderSlide();
+        }
+
+        function triggerSlideAction() {
+            const activeIdx = (currentSlide - 1 + slides.length) % slides.length;
+            sendPrompt(slides[activeIdx].prompt);
+        }
+
+        setInterval(renderSlide, 5000);
+        window.addEventListener('DOMContentLoaded', renderSlide);
+
+        // Handcrafted Response Dictionary Mapping (Exact user content specs, max 250-300px height feel, zero scrollbar)
+        const responses = {
+            "Which course suits me?": `
+                <div class="workspace-card">
+                    <div style="font-weight: 900; font-size: 16px; color: var(--text);">🎓 Which course suits me?</div>
+                    <div style="font-size: 13.5px; color: var(--text); line-height: 1.5;">
+                        If you enjoy business, marketing, leadership and entrepreneurship,<br>
+                        <strong>Bachelor of Management Studies (BMS)</strong> is an excellent choice.<br><br>
+                        If you prefer accounting, taxation and finance,<br>
+                        <strong>Bachelor of Commerce (B.Com)</strong> may be more suitable.<br><br>
+                        If you're interested in software development and technology,<br>
+                        <strong>BSc IT</strong> is the recommended program.
+                    </div>
+                    <div style="font-size: 12px; color: var(--secondary); font-weight: 700; margin-top: 2px;">💡 Still unsure? Use AI Career Discovery for a personalized recommendation.</div>
+                    <div style="display: flex; gap: 8px; margin-top: 6px;">
+                        <button class="btn-control" onclick="sendPrompt('Compare BMS vs B.Com')">Compare Programs</button>
+                        <button class="btn-control" style="background: var(--secondary); color: white;" onclick="openExploreWizard()">Start Assessment</button>
+                    </div>
+                </div>
+            `,
+            "Compare BMS vs B.Com": `
+                <div class="workspace-card">
+                    <div style="font-weight: 900; font-size: 16px; color: var(--text);">📊 BMS vs B.Com</div>
+                    <table class="comparison-table">
+                        <tr><th></th><th>BMS</th><th>B.Com</th></tr>
+                        <tr><td><strong>Focus</strong></td><td>Management</td><td>Accounting</td></tr>
+                        <tr><td><strong>Duration</strong></td><td>3 Years</td><td>3 Years</td></tr>
+                        <tr><td><strong>Eligibility</strong></td><td>45%+</td><td>45%+</td></tr>
+                        <tr><td><strong>Average Salary</strong></td><td>₹6.2 LPA</td><td>₹4.8 LPA</td></tr>
+                    </table>
+                    <div style="font-size: 12.5px; color: var(--text); margin-top: 4px;">
+                        <strong>Best For:</strong><br>
+                        • <strong>BMS</strong>: Leadership • Marketing • HR • Business<br>
+                        • <strong>B.Com</strong>: Finance • Banking • Taxation • CA/CMA
+                    </div>
+                    <div style="margin-top: 6px;">
+                        <button class="btn-control" style="background: var(--secondary); color: white;" onclick="sendPrompt('View Curriculum')">View Curriculum</button>
+                    </div>
+                </div>
+            `,
+            "Am I eligible?": `
+                <div class="workspace-card">
+                    <div style="font-weight: 900; font-size: 16px; color: var(--text);">✅ Eligibility</div>
+                    <div style="font-size: 13.5px; color: var(--text); line-height: 1.4;">
+                        For BMS admissions:<br>
+                        • Minimum 45% in HSC<br>
+                        • Commerce, Science & Arts students can apply<br>
+                        • Admissions based on college guidelines<br><br>
+                        <strong>Required Documents:</strong><br>
+                        ✓ HSC Marksheet &bull; ✓ Leaving Certificate &bull; ✓ Aadhaar &bull; ✓ Photo
+                    </div>
+                    <div style="margin-top: 6px;">
+                        <button class="btn-control" style="background: var(--secondary); color: white;" onclick="openLeadModal()">Apply Now</button>
+                    </div>
+                </div>
+            `,
+            "Calculate my fees": `
+                <div class="workspace-card">
+                    <div style="font-weight: 900; font-size: 16px; color: var(--text);">💰 Fee Structure</div>
+                    <div style="font-size: 13.5px; color: var(--text); line-height: 1.4;">
+                        Annual Tuition: <strong>₹28,500</strong><br>
+                        Development Fee: <strong>₹4,500</strong><br>
+                        Library & Exam: <strong>₹2,000</strong><br>
+                        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 6px 0;">
+                        <strong>Total Annual Fees: ₹35,000</strong><br>
+                        <span style="font-size: 12px; color: #047857; font-weight: 700;">✓ Scholarships are available for eligible students.</span>
+                    </div>
+                    <div style="margin-top: 6px;">
+                        <button class="btn-control" style="background: var(--secondary); color: white;" onclick="sendPrompt('Download Fee Structure')">Download Fee Structure</button>
+                    </div>
+                </div>
+            `,
+            "Hostel facilities": `
+                <div class="workspace-card">
+                    <div style="font-weight: 900; font-size: 16px; color: var(--text);">🏠 Hostel Facilities</div>
+                    <div style="font-size: 13.5px; color: var(--text); line-height: 1.4;">
+                        ✓ Separate Boys & Girls Hostel &nbsp;&bull;&nbsp; ✓ WiFi Campus<br>
+                        ✓ 24×7 Security &nbsp;&bull;&nbsp; ✓ Reading Room &nbsp;&bull;&nbsp; ✓ Mess Facility<br><br>
+                        <strong>Hostel Fees: ₹65,000 per year</strong>
+                    </div>
+                    <div style="margin-top: 6px;">
+                        <button class="btn-control" style="background: var(--secondary); color: white;" onclick="openVisitModal()">View Hostel</button>
+                    </div>
+                </div>
+            `
+        };
+
+        const defaultFallback = `
+            <div class="workspace-card">
+                <div style="font-weight: 900; font-size: 16px; color: var(--text);">⚠️ Response Unavailable</div>
+                <div style="font-size: 13.5px; color: var(--text-light); line-height: 1.5;">
+                    Sorry, I couldn't find an answer.<br>
+                    Please try another question from the suggestions below.
+                </div>
+            </div>
+        `;
+
+        function showThinking() {
+            const viewArea = document.getElementById('workspaceViewArea');
+            viewArea.innerHTML = `
+                <div class="ai-thinking-box">
+                    <div class="thinking-header">🤖 CampusOS AI is preparing your answer...</div>
+                    <div class="thinking-bullet">✓ Reading Programs</div>
+                    <div class="thinking-bullet">✓ Checking Eligibility</div>
+                    <div class="thinking-bullet">✓ Comparing Career Data</div>
+                    <div style="font-size: 11px; font-weight: 800; color: var(--secondary); margin-top: 2px;">⏳ Almost Ready...</div>
+                </div>
+            `;
+        }
+
+        function hideThinking() {
+            // Handled seamlessly by renderResponse replacement
+        }
+
+        function renderResponse(htmlContent) {
+            const viewArea = document.getElementById('workspaceViewArea');
+            viewArea.innerHTML = htmlContent || defaultFallback;
+        }
+
+        function sendPrompt(text) {
+            document.getElementById('chatInput').value = text;
+            handleUserSubmit();
+        }
+
+        function handleKey(e) {
+            if (e.key === 'Enter') handleUserSubmit();
+        }
+
+        function handleUserSubmit() {
+            const input = document.getElementById('chatInput');
+            const query = input.value.trim();
+            if (!query) return;
+
+            input.value = '';
+
+            // Clean, bulletproof architecture flow: showThinking -> 1.5s timeout -> lookup dictionary -> renderResponse / fallback
+            showThinking();
+
+            setTimeout(() => {
+                hideThinking();
+                // Match against exact dictionary key or fallback
+                let matchedHtml = responses[query];
+                if (!matchedHtml) {
+                    // Try flexible lowercase matching if exact match fails
+                    const foundKey = Object.keys(responses).find(k => k.toLowerCase() === query.toLowerCase());
+                    if (foundKey) matchedHtml = responses[foundKey];
+                }
+                renderResponse(matchedHtml);
+            }, 1500);
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        function openVisitModal() { document.getElementById('visitModal').classList.add('active'); }
+        function closeVisitModal() { document.getElementById('visitModal').classList.remove('active'); }
+        function confirmVisit() {
+            alert('Campus visit successfully booked! Appointment synced to Admissions CRM.');
+            closeVisitModal();
+        }
+
+        let wizardStep = 1;
+        function openExploreWizard() { document.getElementById('exploreModal').classList.add('active'); }
+        function nextWizardStep(step) {
+            wizardStep++;
+            if (wizardStep <= 8) {
+                document.getElementById('wizardTitle').textContent = `🎯 AI Career Discovery (Q${wizardStep} / 8)`;
+                document.getElementById('wizardQuestion').textContent = wizardStep === 2 ? "What is your preferred career objective?" : `Question ${wizardStep}: Evaluating your institutional match...`;
+            } else {
+                document.getElementById('exploreModal').classList.remove('active');
+                wizardStep = 1;
+                sendPrompt('Which course suits me?');
+            }
+        }
+
+        function openLeadModal() { document.getElementById('leadModal').classList.add('active'); }
+        function closeLeadModal() { document.getElementById('leadModal').classList.remove('active'); }
+        function submitLead() {
+            alert('Application successfully submitted to Admissions CRM!');
+            closeLeadModal();
+        }
+    </script>
+</body>
+</html>

@@ -347,6 +347,7 @@
             border-radius: 2px; 
             transition: all 0.3s; 
         }
+
         /* Cinematic Hero Wrapper */
         .cinematic-hero-wrapper {
             width: 100%;
@@ -849,7 +850,7 @@
             font-size: 11px; background: rgba(37, 99, 235, 0.2); color: #93C5FD; padding: 3px 10px; border-radius: 20px; font-weight: 600;
         }
 
-        /* Interactive Campus AI Section */
+        /* Interactive Campus AI Section (Refactored to Single-Card Workspace Model) */
         .ai-section {
             background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
             border-radius: var(--radius-hero);
@@ -875,58 +876,108 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
+            min-height: 380px;
+            justify-content: space-between;
         }
-        .ai-chat-history {
+
+        /* Single-Card Workspace View Area */
+        .ai-workspace-view {
+            background: #0F172A;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 20px;
+            min-height: 250px;
+            max-height: 320px;
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-height: 260px;
-            overflow-y: auto;
-            padding-right: 4px;
+            justify-content: center;
         }
-        .ai-chat-bubble {
+
+        /* Compact Thinking Animation Card (~120-150px) */
+        .ai-thinking-box {
             background: #1E293B;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 14px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-width: 420px;
+            margin: auto;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.15);
+        }
+        .thinking-header {
+            font-size: 12.5px;
+            font-weight: 900;
+            color: #60A5FA;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .thinking-bullet {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #94A3B8;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Workspace Response Card Styling */
+        .workspace-response-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: #F8FAFC;
+        }
+        .workspace-response-card h4 {
+            font-size: 17px;
+            font-weight: 900;
+            color: #FFFFFF;
+        }
+        .comparison-table-ai {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            margin-top: 4px;
             color: #E2E8F0;
-            line-height: 1.4;
         }
-        .ai-chat-bubble.user {
-            background: var(--secondary);
-            text-align: right;
-            margin-left: 30px;
-            border-bottom-right-radius: 2px;
+        .comparison-table-ai th, .comparison-table-ai td {
+            padding: 6px 8px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .ai-chat-bubble.assistant {
-            background: #1E293B;
-            margin-right: 30px;
-            border-bottom-left-radius: 2px;
-            border: 1px solid rgba(255,255,255,0.06);
+        .comparison-table-ai th {
+            font-size: 10px;
+            font-weight: 800;
+            color: #94A3B8;
+            text-transform: uppercase;
         }
+
         .ai-quick-prompts {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 8px;
+            flex-wrap: wrap;
+            gap: 6px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 12px;
+            padding-top: 14px;
         }
         .ai-prompt-chip {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.15);
             color: #93C5FD;
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 99px;
+            font-size: 11.5px;
             font-weight: 600;
             cursor: pointer;
-            text-align: left;
             transition: all 0.2s;
         }
         .ai-prompt-chip:hover {
-            background: rgba(37, 99, 235, 0.3);
+            background: rgba(37, 99, 235, 0.4);
             border-color: var(--secondary-light);
             color: white;
         }
@@ -995,6 +1046,7 @@
                 padding-bottom: 8px;
                 border-bottom: 1px solid #F1F5F9;
             }
+            .ai-section { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -1021,7 +1073,7 @@
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="Search courses, faculty, documents, notices..." autofocus>
             <div class="search-suggestions">
-                <a href="programs.html" class="search-item">Bachelor of Commerce (B.Com)[cite: 1]</a>
+                <a href="programs.html" class="search-item">Bachelor of Commerce (B.Com)</a>
                 <a href="programs.html" class="search-item">Bachelor of Management Studies (BMS)</a>
                 <a href="institution-explorer.html" class="search-item">Faculty & Leadership Directory</a>
                 <a href="compliance.html" class="search-item">Download NAAC SSR Report 2024-25</a>
@@ -1040,7 +1092,7 @@
     <nav class="navbar" id="navbar" aria-label="Main Navigation">
         <a href="index.html" class="logo-area">
             <div class="college-crest">AP</div>
-            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+[cite: 1]</span></div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
         </a>
 
         <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -1083,9 +1135,9 @@
             </div>
 
             <div class="cinematic-hero-content" id="cinematicContent">
-                <div class="cinematic-tag" id="heroBadge">Est. 1969 • Mumbai[cite: 1]</div>
+                <div class="cinematic-tag" id="heroBadge">Est. 1969 • Mumbai</div>
                 <h1 id="heroTitle">Where Leaders Are Made</h1>
-                <p id="heroDesc">Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai[cite: 1].</p>
+                <p id="heroDesc">Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai.</p>
                 <div class="cinematic-buttons">
                     <a href="admissions.html" class="cinematic-btn-primary">
                         <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
@@ -1180,7 +1232,7 @@
         <section class="advantage-section">
             <div class="advantage-header">
                 <h2>Why Akbar Peerbhoy College?</h2>
-                <p>Preparing Future-Ready Graduates Since 1969[cite: 1] through accredited academic excellence and digital student systems.</p>
+                <p>Preparing Future-Ready Graduates Since 1969 through accredited academic excellence and digital student systems.</p>
             </div>
 
             <div class="advantage-metrics-strip">
@@ -1209,7 +1261,7 @@
             <div class="advantage-content-grid">
                 <div>
                     <ul class="advantage-list">
-                        <li><span class="check">✓</span> NAAC A+ Accredited Quality Standards[cite: 1]</li>
+                        <li><span class="check">✓</span> NAAC A+ Accredited Quality Standards</li>
                         <li><span class="check">✓</span> Modern Smart Campus & Advanced Labs</li>
                         <li><span class="check">✓</span> Industry-Designed Curriculum & Skill Certifications</li>
                         <li><span class="check">✓</span> Experienced Faculty & Corporate Mentorship</li>
@@ -1273,7 +1325,7 @@
             </div>
         </section>
 
-        <!-- Interactive Campus AI Assistant Section -->
+        <!-- Interactive Campus AI Assistant Section (Single-Card Workspace Model) -->
         <section style="padding: 60px 20px; background: #FFFFFF;">
             <div class="ai-section" style="margin-bottom: 0;">
                 <div>
@@ -1289,16 +1341,25 @@
                 <div>
                     <div class="ai-chat-box">
                         <div style="font-size: 13px; color: #94A3B8; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; display:flex; justify-content:space-between; align-items:center;">
-                            <span>🟢 Campus AI Interactive Demo</span>
-                            <button onclick="resetAIChat()" style="background:transparent; border:none; color:#93C5FD; font-size:11px; cursor:pointer;">Clear Chat</button>
+                            <span>🟢 Campus AI Interactive Workspace</span>
+                            <span style="font-size: 10px; color: #60A5FA;">Repository Connected</span>
                         </div>
-                        <div class="ai-chat-history" id="aiChatHistory">
-                            <div class="ai-chat-bubble assistant">Hello! I am your Campus AI assistant powered by Campus OS. Click any question below to test my knowledge!</div>
+                        
+                        <!-- Single Card Workspace View -->
+                        <div class="ai-workspace-view" id="aiWorkspaceView">
+                            <div style="text-align: center; color: #94A3B8; margin: auto;">
+                                <h4 style="color: #FFFFFF; font-size: 18px; margin-bottom: 6px;">👋 Hi, I'm CampusOS AI</h4>
+                                <p style="font-size: 13px;">Click any question below to view instant institutional answers.</p>
+                            </div>
                         </div>
+
+                        <!-- 5 Standard Prompt Chips -->
                         <div class="ai-quick-prompts">
-                            <button class="ai-prompt-chip" onclick="askAI('What are the fee structures for B.Com and BMS?')">💬 What are the fee structures for B.Com and BMS?</button>
-                            <button class="ai-prompt-chip" onclick="askAI('How do I track my admission application status?')">💬 How do I track my admission application status?</button>
-                            <button class="ai-prompt-chip" onclick="askAI('What top companies recruit from campus?')">💬 What top companies recruit from campus?</button>
+                            <button class="ai-prompt-chip" onclick="askAI('Which course suits me?')">🎓 Which course suits me?</button>
+                            <button class="ai-prompt-chip" onclick="askAI('Compare BMS vs B.Com')">📊 Compare BMS vs B.Com</button>
+                            <button class="ai-prompt-chip" onclick="askAI('Am I eligible?')">✅ Am I eligible?</button>
+                            <button class="ai-prompt-chip" onclick="askAI('Calculate my fees')">💰 Calculate my fees</button>
+                            <button class="ai-prompt-chip" onclick="askAI('Hostel facilities')">🏠 Hostel facilities</button>
                         </div>
                     </div>
                 </div>
@@ -1311,11 +1372,11 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Akbar Peerbhoy College</h4>
-                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px; line-height: 1.6;">Maulana Shaukat Ali Road, Do Taki, Mumbai 400004. NAAC A+ Accredited institution powered by Campus OS[cite: 1].</p>
+                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px; line-height: 1.6;">Maulana Shaukat Ali Road, Do Taki, Mumbai 400004. NAAC A+ Accredited institution powered by Campus OS.</p>
                 <div class="footer-badges">
-                    <span class="footer-badge">NAAC A+[cite: 1]</span>
+                    <span class="footer-badge">NAAC A+</span>
                     <span class="footer-badge">UGC Approved</span>
-                    <span class="footer-badge">Est. 1969[cite: 1]</span>
+                    <span class="footer-badge">Est. 1969</span>
                 </div>
             </div>
             <div class="footer-col">
@@ -1346,7 +1407,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved[cite: 1].</p>
+            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved.</p>
             <p style="font-size: 13px; color: var(--text-light);">Digital Platform Architecture by <a href="admissions.html" style="color: var(--secondary-light); text-decoration: none;">Campus OS</a></p>
         </div>
     </footer>
@@ -1382,9 +1443,9 @@
         // 6-Slide Cinematic Hero Data
         const heroSlides = [
             {
-                badge: "Est. 1969 • Mumbai[cite: 1]",
+                badge: "Est. 1969 • Mumbai",
                 title: "Where Leaders Are Made",
-                desc: "Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai[cite: 1].",
+                desc: "Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai.",
                 image: "images/1-Campus/hero-campus-aerial-evening.png"
             },
             {
@@ -1475,37 +1536,107 @@
         updateHeroSlide(0);
         startHeroTimer();
 
-        // Interactive AI Chat Demo Logic
-        function askAI(question) {
-            const history = document.getElementById('aiChatHistory');
-            
-            const userBubble = document.createElement('div');
-            userBubble.className = 'ai-chat-bubble user';
-            userBubble.textContent = question;
-            history.appendChild(userBubble);
-            
-            setTimeout(() => {
-                const aiBubble = document.createElement('div');
-                aiBubble.className = 'ai-chat-bubble assistant';
-                
-                if (question.includes('fee')) {
-                    aiBubble.textContent = "B.Com tuition is ₹12,400/year and BMS is ₹28,500/year as per FRA guidelines. Digital payment is supported via secure UPI/Netbanking gateway.";
-                } else if (question.includes('track')) {
-                    aiBubble.textContent = "You can track your application in real-time by entering your Application ID in our Admissions Portal tracker. Average verification time is 48 hours.";
-                } else {
-                    aiBubble.textContent = "We partner with over 220+ top recruiters including TCS, Infosys, Deloitte, and HDFC Bank, achieving a 96% placement success rate.";
-                }
-                
-                history.appendChild(aiBubble);
-                history.scrollTop = history.scrollHeight;
-            }, 400);
+        // Direct Handcrafted Response Dictionary Mapping
+        const aiResponses = {
+            "Which course suits me?": `
+                <div class="workspace-response-card">
+                    <h4>🎓 Which course suits me?</h4>
+                    <p style="font-size: 13px; color: #E2E8F0; line-height: 1.4;">
+                        If you enjoy business, marketing, leadership and entrepreneurship, <strong>BMS</strong> is an excellent choice.<br>
+                        If you prefer accounting, taxation and finance, <strong>B.Com</strong> is ideal.<br>
+                        If you're interested in software development, choose <strong>BSc IT</strong>.
+                    </p>
+                    <div style="font-size: 11.5px; color: #60A5FA; font-weight: 700; margin-top: 2px;">💡 AI Tip: Use our AI Career Discovery tool for a tailored profile match.</div>
+                </div>
+            `,
+            "Compare BMS vs B.Com": `
+                <div class="workspace-response-card">
+                    <h4>📊 BMS vs B.Com Comparison</h4>
+                    <table class="comparison-table-ai">
+                        <tr><th>Metric</th><th>BMS</th><th>B.Com</th></tr>
+                        <tr><td>Focus</td><td>Management</td><td>Accounting</td></tr>
+                        <tr><td>Duration</td><td>3 Years</td><td>3 Years</td></tr>
+                        <tr><td>Average Salary</td><td>₹6.2 LPA</td><td>₹4.8 LPA</td></tr>
+                    </table>
+                    <p style="font-size: 11.5px; color: #94A3B8; margin-top: 4px;">
+                        <strong>BMS</strong>: Leadership, Marketing, HR | <strong>B.Com</strong>: Finance, Taxation, CA/CMA
+                    </p>
+                </div>
+            `,
+            "Am I eligible?": `
+                <div class="workspace-response-card">
+                    <h4>✅ Admission Eligibility</h4>
+                    <p style="font-size: 13px; color: #E2E8F0; line-height: 1.4;">
+                        • Minimum 45% aggregate in 10+2 (HSC) or equivalent.<br>
+                        • Open to Commerce, Science, and Arts streams.<br>
+                        • Required Documents: HSC Marksheet, Leaving Certificate, Aadhaar [Redacted], Photo.
+                    </p>
+                </div>
+            `,
+            "Calculate my fees": `
+                <div class="workspace-response-card">
+                    <h4>💰 Fee Structure & Aid</h4>
+                    <p style="font-size: 13px; color: #E2E8F0; line-height: 1.4;">
+                        Tuition: ₹28,500 | Development: ₹4,500 | Library/Exam: ₹2,000<br>
+                        <strong style="color: #F8FAFC; display: block; margin-top: 4px;">Total Annual Fee: ₹35,000</strong>
+                        <span style="font-size: 11.5px; color: #34D399; font-weight: 700;">✓ Merit and minority scholarships available.</span>
+                    </p>
+                </div>
+            `,
+            "Hostel facilities": `
+                <div class="workspace-response-card">
+                    <h4>🏠 Hostel Accommodations</h4>
+                    <p style="font-size: 13px; color: #E2E8F0; line-height: 1.4;">
+                        ✓ Separate Boys & Girls Hostels on campus<br>
+                        ✓ High-speed WiFi & 24×7 Security Monitored<br>
+                        ✓ Mess facility, reading rooms, and indoor games<br>
+                        <strong style="color: #F8FAFC; display: block; margin-top: 4px;">Hostel Fee: ₹65,000 per year</strong>
+                    </p>
+                </div>
+            `
+        };
 
-            history.scrollTop = history.scrollHeight;
+        const aiFallbackResponse = `
+            <div class="workspace-response-card">
+                <h4>⚠️ Response Unavailable</h4>
+                <p style="font-size: 13px; color: #94A3B8;">Sorry, I couldn't find an exact match in our institutional repository. Please select one of the suggested prompts below.</p>
+            </div>
+        `;
+
+        // Interactive AI Workspace Logic (Guaranteed 1.5s thinking timeout & error-free fallback)
+        function askAI(question) {
+            const viewArea = document.getElementById('aiWorkspaceView');
+            
+            // 1. Show Compact Thinking State (~120-150px)
+            viewArea.innerHTML = `
+                <div class="ai-thinking-box">
+                    <div class="thinking-header">🤖 CampusOS AI is preparing your answer...</div>
+                    <div class="thinking-bullet">✓ Reading Programs</div>
+                    <div class="thinking-bullet">✓ Checking Eligibility</div>
+                    <div class="thinking-bullet">✓ Comparing Career Data</div>
+                    <div style="font-size: 10.5px; font-weight: 800; color: #60A5FA; margin-top: 2px;">⏳ Almost Ready...</div>
+                </div>
+            `;
+
+            // 2. 1.5 Second Timeout -> Lookup Dictionary -> Render HTML Card (No lingering loading state)
+            setTimeout(() => {
+                let resolvedCard = aiResponses[question];
+                if (!resolvedCard) {
+                    const matchedKey = Object.keys(aiResponses).find(k => k.toLowerCase() === question.toLowerCase());
+                    resolvedCard = matchedKey ? aiResponses[matchedKey] : aiFallbackResponse;
+                }
+                viewArea.innerHTML = resolvedCard;
+            }, 1500);
         }
 
         function resetAIChat() {
-            const history = document.getElementById('aiChatHistory');
-            history.innerHTML = '<div class="ai-chat-bubble assistant">Hello! I am your Campus AI assistant powered by Campus OS. Click any question below to test my knowledge!</div>';
+            const viewArea = document.getElementById('aiWorkspaceView');
+            viewArea.innerHTML = `
+                <div style="text-align: center; color: #94A3B8; margin: auto;">
+                    <h4 style="color: #FFFFFF; font-size: 18px; margin-bottom: 6px;">👋 Hi, I'm CampusOS AI</h4>
+                    <p style="font-size: 13px;">Click any question below to view instant institutional answers.</p>
+                </div>
+            `;
         }
 
         // Animated Counters

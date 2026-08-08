@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://parabs.github.io/CampusOS/</loc><priority>1.0</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/about.html</loc><priority>0.8</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/programs-manager.html</loc><priority>0.9</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/programs/bcom.html</loc><priority>0.8</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/programs/bms.html</loc><priority>0.8</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/programs/bsc-it.html</loc><priority>0.8</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/admissions.html</loc><priority>0.9</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/campus-life.html</loc><priority>0.7</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/placements.html</loc><priority>0.8</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/faculty.html</loc><priority>0.7</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/contact.html</loc><priority>0.7</priority></url>
+  <url><loc>https://parabs.github.io/CampusOS/ai-counsellor.html</loc><priority>0.9</priority></url>
+</urlset>
