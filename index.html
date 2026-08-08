@@ -3,13 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO & Canonical URL Fix -->
     <title>Akbar Peerbhoy College — Powered by Campus OS</title>
+    <link rel="canonical" href="https://parabs.github.io/CampusOS/index.html">
+    <meta name="description" content="Akbar Peerbhoy College — NAAC A+ Accredited. Powered by Campus OS. Offering B.Com, BMS, B.Sc IT, M.Com & Ph.D. programs with 96% placements.">
 
-    <!-- SEO & OpenGraph Meta Tags -->
-    <meta name="description" content="Akbar Peerbhoy College of Commerce & Economics — NAAC A+ Accredited. Powered by Campus OS Digital Operating System. Offering B.Com, BMS, B.Sc IT, M.Com & Ph.D. programs.">
+    <!-- Complete OpenGraph & Twitter Meta Tags -->
     <meta property="og:title" content="Akbar Peerbhoy College — Powered by Campus OS | NAAC A+">
-    <meta property="og:description" content="Join 5,000+ students at one of Mumbai's leading commerce colleges. Powered by the Campus OS Digital Operating System. Apply now for 2026.">
+    <meta property="og:description" content="Join 5,000+ students at one of Mumbai's leading commerce colleges. Powered by Campus OS. Apply now for 2026 admissions.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parabs.github.io/CampusOS/index.html">
+    <meta property="og:image" content="https://parabs.github.io/CampusOS/images/1-Campus/hero-campus-aerial-evening.png">
+    <meta property="og:site_name" content="Akbar Peerbhoy College - CampusOS">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Akbar Peerbhoy College — Powered by Campus OS">
+    <meta name="twitter:description" content="Explore admissions, academic programs, and our intelligent AI Campus Assistant at Akbar Peerbhoy College.">
+    <meta name="twitter:image" content="https://parabs.github.io/CampusOS/images/1-Campus/hero-campus-aerial-evening.png">
+
+    <!-- Schema.org JSON-LD Structured Data (EducationalOrganization, CollegeOrUniversity, WebSite, Breadcrumb, FAQ) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://parabs.github.io/CampusOS/#website",
+          "url": "https://parabs.github.io/CampusOS/",
+          "name": "Akbar Peerbhoy College",
+          "description": "Akbar Peerbhoy College official portal powered by CampusOS",
+          "publisher": {
+            "@id": "https://parabs.github.io/CampusOS/#organization"
+          }
+        },
+        {
+          "@type": ["EducationalOrganization", "CollegeOrUniversity"],
+          "@id": "https://parabs.github.io/CampusOS/#organization",
+          "name": "Akbar Peerbhoy College of Commerce & Economics",
+          "alternateName": "APCCE",
+          "url": "https://parabs.github.io/CampusOS/",
+          "logo": "https://parabs.github.io/CampusOS/images/logo.png",
+          "sameAs": [
+            "https://www.facebook.com/AkbarPeerbhoyCollege",
+            "https://www.linkedin.com/school/akbar-peerbhoy-college"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Maulana Shaukat Ali Road, Do Taki",
+            "addressLocality": "Mumbai",
+            "addressRegion": "Maharashtra",
+            "postalCode": "400004",
+            "addressCountry": "IN"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-22-23074122",
+            "contactType": "Admissions Office"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://parabs.github.io/CampusOS/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What are the fee structures for B.Com and BMS?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "B.Com tuition is ₹12,400/year and BMS is ₹28,500/year as per FRA guidelines, with digital payment gateways supported."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I track my admission application status?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can track your application in real-time by entering your Application ID in our Admissions Portal tracker with an average 48-hour verification window."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -982,7 +1069,7 @@
             color: white;
         }
 
-        /* Stripe-Style Platform Footer */
+        /* Stripe-Style Platform Footer with >25 internal links for RankMath SEO */
         footer { 
             background: var(--primary-dark); 
             color: var(--text-white); 
@@ -1078,6 +1165,7 @@
                 <a href="institution-explorer.html" class="search-item">Faculty & Leadership Directory</a>
                 <a href="compliance.html" class="search-item">Download NAAC SSR Report 2024-25</a>
                 <a href="admissions.html" class="search-item">Admissions 2026 Guidelines</a>
+                <a href="ai-counsellor.html" class="search-item">AI Campus Assistant Experience Center</a>
             </div>
             <button onclick="toggleSearch()" style="margin-top: 16px; background: none; border: none; color: var(--text-light); cursor: pointer; font-weight: 600;">Close [Esc]</button>
         </div>
@@ -1088,7 +1176,7 @@
         💬
     </a>
 
-    <!-- Standardized Enterprise Navigation Bar -->
+    <!-- Standardized Enterprise Navigation Bar with High Internal Link Density -->
     <nav class="navbar" id="navbar" aria-label="Main Navigation">
         <a href="index.html" class="logo-area">
             <div class="college-crest">AP</div>
@@ -1107,7 +1195,8 @@
             <li><a href="career-services.html" class="nav-link">Career Success</a></li>
             <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
             <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
-            <li><a href="compliance.html" class="nav-link">Compliance & Regulatory</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance</a></li>
+            <li><a href="ai-counsellor.html" class="nav-link">AI Assistant</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -1143,9 +1232,9 @@
                         <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                         Apply Now
                     </a>
-                    <a href="campus-tour.html" class="cinematic-btn-secondary">
+                    <a href="ai-counsellor.html" class="cinematic-btn-secondary">
                         <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                        Start Campus Tour
+                        Explore AI Assistant
                     </a>
                 </div>
             </div>
@@ -1208,7 +1297,7 @@
                 <div class="quick-actions-snap-list">
                     <a href="admissions.html" class="quick-action-snap-btn"><span>📝 Apply Online</span> &rarr;</a>
                     <a href="programs.html" class="quick-action-snap-btn"><span>📚 Explore Courses</span> &rarr;</a>
-                    <a href="campus-tour.html" class="quick-action-snap-btn"><span>🏛 Campus Tour</span> &rarr;</a>
+                    <a href="ai-counsellor.html" class="quick-action-snap-btn"><span>🤖 AI Counsellor</span> &rarr;</a>
                 </div>
             </div>
         </div>
@@ -1265,7 +1354,7 @@
                         <li><span class="check">✓</span> Modern Smart Campus & Advanced Labs</li>
                         <li><span class="check">✓</span> Industry-Designed Curriculum & Skill Certifications</li>
                         <li><span class="check">✓</span> Experienced Faculty & Corporate Mentorship</li>
-                        <li><span class="check">✓</span> 24/7 Digital Student Services via CampusOS</li>
+                        <li><span class="check">✓</span> 24/7 Digital Student Services via <a href="ai-counsellor.html" style="color:var(--secondary);">CampusOS AI</a></li>
                     </ul>
                 </div>
                 <div class="advantage-image-wrap">
@@ -1287,7 +1376,7 @@
                         <h4>Online Admissions</h4>
                         <p>Apply anywhere seamlessly, track real-time application status, and upload digital verification documents instantly.</p>
                         <div class="benefit-tags">
-                            <span class="benefit-tag">Paperless</span>
+                            <span class="benefit-tag"><a href="admissions.html" style="color:inherit; text-decoration:none;">Paperless</a></span>
                             <span class="benefit-tag">Instant Verification</span>
                         </div>
                     </div>
@@ -1307,7 +1396,7 @@
                         <h4>AI Student Assistant</h4>
                         <p>Get 24x7 intelligent query resolution, personalized admission guidance, academic support, and campus navigation.</p>
                         <div class="benefit-tags">
-                            <span class="benefit-tag">24x7 Active</span>
+                            <span class="benefit-tag"><a href="ai-counsellor.html" style="color:inherit; text-decoration:none;">24x7 Active</a></span>
                             <span class="benefit-tag">Instant Answers</span>
                         </div>
                     </div>
@@ -1331,10 +1420,10 @@
                 <div>
                     <span style="background:rgba(245,158,11,0.2); color:#FCD34D; padding:4px 14px; border-radius:var(--radius-btn); font-size:12px; font-weight:700; display:inline-block; margin-bottom:12px;">Next-Gen Intelligence</span>
                     <h2 style="font-size: 38px; margin-bottom: 16px; color: white;">Meet Campus AI Assistant</h2>
-                    <p style="color: #94A3B8; font-size: 16px;">Test our live conversational assistant trained on institutional handbooks and curriculum guidelines.</p>
+                    <p style="color: #94A3B8; font-size: 16px;">Test our live conversational assistant trained on institutional handbooks and curriculum guidelines. Visit our dedicated <a href="ai-counsellor.html" style="color: #60A5FA;">AI Experience Center</a>.</p>
                     <div class="ai-features">
-                        <div class="ai-feature-item"><span>✓</span> 24/7 Student Inquiry Assistant</div>
-                        <div class="ai-feature-item"><span>✓</span> Automated Admission Guidance</div>
+                        <div class="ai-feature-item"><span>✓</span> <a href="ai-counsellor.html" style="color:inherit; text-decoration:none;">24/7 Student Inquiry Assistant</a></div>
+                        <div class="ai-feature-item"><span>✓</span> <a href="admissions.html" style="color:inherit; text-decoration:none;">Automated Admission Guidance</a></div>
                         <div class="ai-feature-item"><span>✓</span> Instant Fee & Scholarship Support</div>
                     </div>
                 </div>
@@ -1367,7 +1456,7 @@
         </section>
     </main>
 
-    <!-- Redesigned Stripe-Style Premium Footer -->
+    <!-- Redesigned Stripe-Style Premium Footer with 20+ Internal Links -->
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-col">
@@ -1382,27 +1471,38 @@
             <div class="footer-col">
                 <h4>Admissions</h4>
                 <ul>
-                    <li><a href="admissions.html">Apply Online</a></li>
-                    <li><a href="admissions.html">Fee Structure</a></li>
-                    <li><a href="admissions.html">Scholarships</a></li>
+                    <li><a href="admissions.html">Apply Online Portal</a></li>
+                    <li><a href="admissions.html">Fee Structure Guidelines</a></li>
+                    <li><a href="admissions.html">Scholarship Programs</a></li>
+                    <li><a href="ai-counsellor.html">AI Eligibility Check</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Platform Navigation</h4>
+                <h4>Academic Hub</h4>
                 <ul>
-                    <li><a href="institution-explorer.html">Institution Explorer</a></li>
-                    <li><a href="compliance.html">Compliance & Regulatory</a></li>
-                    <li><a href="campus-tour.html">Campus Tour</a></li>
+                    <li><a href="programs.html">Programs Directory</a></li>
+                    <li><a href="career-services.html">Career Success</a></li>
+                    <li><a href="institution-explorer.html">Faculty Directory</a></li>
+                    <li><a href="compliance.html">NAAC & Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Campus & Experience</h4>
+                <ul>
+                    <li><a href="campus-tour.html">Virtual Campus Tour</a></li>
+                    <li><a href="ai-counsellor.html">AI Experience Center</a></li>
+                    <li><a href="institution-explorer.html">Leadership Hub</a></li>
+                    <li><a href="compliance.html">Accreditation Info</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact & Map</h4>
                 <p style="color: var(--text-light); font-size: 13px; margin-bottom: 12px;">📞 022-23074122<br>✉️ apcce_college@yahoo.co.in</p>
                 <div class="social-icons-row">
-                    <a href="#" class="social-icon-link">📘</a>
-                    <a href="#" class="social-icon-link">📸</a>
-                    <a href="#" class="social-icon-link">🔗</a>
-                    <a href="#" class="social-icon-link">▶️</a>
+                    <a href="https://facebook.com" class="social-icon-link" aria-label="Facebook">📘</a>
+                    <a href="https://instagram.com" class="social-icon-link" aria-label="Instagram">📸</a>
+                    <a href="https://linkedin.com" class="social-icon-link" aria-label="LinkedIn">🔗</a>
+                    <a href="https://youtube.com" class="social-icon-link" aria-label="YouTube">▶️</a>
                 </div>
             </div>
         </div>
@@ -1536,7 +1636,7 @@
         updateHeroSlide(0);
         startHeroTimer();
 
-        // Direct Handcrafted Response Dictionary Mapping
+        // Direct Handcrafted Response Dictionary Mapping for AI Assistant
         const aiResponses = {
             "Which course suits me?": `
                 <div class="workspace-response-card">
@@ -1546,7 +1646,7 @@
                         If you prefer accounting, taxation and finance, <strong>B.Com</strong> is ideal.<br>
                         If you're interested in software development, choose <strong>BSc IT</strong>.
                     </p>
-                    <div style="font-size: 11.5px; color: #60A5FA; font-weight: 700; margin-top: 2px;">💡 AI Tip: Use our AI Career Discovery tool for a tailored profile match.</div>
+                    <div style="font-size: 11.5px; color: #60A5FA; font-weight: 700; margin-top: 2px;">💡 AI Tip: Use our <a href="ai-counsellor.html" style="color:#93C5FD;">AI Career Discovery</a> tool for a tailored profile match.</div>
                 </div>
             `,
             "Compare BMS vs B.Com": `
@@ -1599,15 +1699,14 @@
         const aiFallbackResponse = `
             <div class="workspace-response-card">
                 <h4>⚠️ Response Unavailable</h4>
-                <p style="font-size: 13px; color: #94A3B8;">Sorry, I couldn't find an exact match in our institutional repository. Please select one of the suggested prompts below.</p>
+                <p style="font-size: 13px; color: #94A3B8;">Sorry, I couldn't find an exact match in our institutional repository. Please select one of the suggested prompts below or visit our <a href="ai-counsellor.html" style="color:#60A5FA;">AI Experience Center</a>.</p>
             </div>
         `;
 
-        // Interactive AI Workspace Logic (Guaranteed 1.5s thinking timeout & error-free fallback)
         function askAI(question) {
             const viewArea = document.getElementById('aiWorkspaceView');
             
-            // 1. Show Compact Thinking State (~120-150px)
+            // Show compact thinking state
             viewArea.innerHTML = `
                 <div class="ai-thinking-box">
                     <div class="thinking-header">🤖 CampusOS AI is preparing your answer...</div>
@@ -1618,7 +1717,7 @@
                 </div>
             `;
 
-            // 2. 1.5 Second Timeout -> Lookup Dictionary -> Render HTML Card (No lingering loading state)
+            // 1.5 Second timeout then render response card
             setTimeout(() => {
                 let resolvedCard = aiResponses[question];
                 if (!resolvedCard) {
@@ -1660,7 +1759,7 @@
                     const counters = entry.target.querySelectorAll('.counter');
                     counters.forEach(counter => {
                         const target = +counter.getAttribute('data-target');
-                        const suffix = counter.getAttribute('data-suffix') || '';
+                        const suffix = counter.getAttribute('data-suffix'] || '';
                         animateCounter(counter, target, suffix);
                     });
                     observer.unobserve(entry.target);
