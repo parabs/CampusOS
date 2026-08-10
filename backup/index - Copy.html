@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akbar Peerbhoy College — Powered by Campus OS</title>
+
+    <!-- SEO & OpenGraph Meta Tags -->
+    <meta name="description" content="Akbar Peerbhoy College of Commerce & Economics — NAAC A+ Accredited. Powered by Campus OS Digital Operating System. Offering B.Com, BMS, B.Sc IT, M.Com & Ph.D. programs.">
+    <meta property="og:title" content="Akbar Peerbhoy College — Powered by Campus OS | NAAC A+">
+    <meta property="og:description" content="Join 5,000+ students at one of Mumbai's leading commerce colleges. Powered by the Campus OS Digital Operating System. Apply now for 2026.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-dark: #020617;
+            --primary-light: #1E293B;
+            --secondary: #2563EB;
+            --secondary-dark: #1D4ED8;
+            --secondary-light: #60A5FA;
+            --accent: #F59E0B;
+            --background: #F8FAFC;
+            --surface: #FFFFFF;
+            --surface-gray: #F1F5F9;
+            --border-color: #E2E8F0;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --text-white: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.1);
+            
+            --radius-hero: 32px;
+            --radius-card: 24px;
+            --radius-btn: 9999px;
+            --radius-stats: 16px;
+            --radius-img: 28px;
+            
+            --glass-bg: rgba(15, 23, 42, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* SVG Icon Helper */
+        .icon-svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-card);
+            z-index: 9999;
+            transition: top 0.3s ease;
+            text-decoration: none;
+        }
+        .skip-link:focus { top: 20px; }
+
+        /* Slim Campus OS Clickable Product Badge Banner */
+        .campus-os-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            color: var(--text-white);
+            font-size: 13px;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1100;
+            letter-spacing: 0.03em;
+        }
+        .campus-os-banner .banner-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: opacity 0.2s;
+        }
+        .campus-os-banner .banner-link:hover { opacity: 0.8; }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #25D366;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Standardized Enterprise Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 37px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            padding: 12px 5%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .college-crest {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 19px;
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+        .logo-text span {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            list-style: none;
+            margin-left: 60px;
+            margin-right: auto;
+        }
+        .nav-link {
+            color: var(--text);
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 14px;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+        .search-portal-group {
+            display: flex;
+            align-items: center;
+            background: #F1F5F9;
+            border-radius: var(--radius-btn);
+            padding: 4px;
+            border: 1px solid #E2E8F0;
+        }
+        .search-btn-grouped {
+            background: transparent;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 15px;
+            color: var(--primary);
+            transition: background 0.2s;
+        }
+        .search-btn-grouped:hover { background: #E2E8F0; }
+        .portal-login-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 0 12px 0 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .portal-login-link:hover { color: var(--secondary); }
+
+        .nav-cta {
+            background: var(--secondary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        }
+        .nav-cta:hover { background: var(--secondary-dark); transform: translateY(-1px); }
+
+        /* Search Modal */
+        .search-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .search-modal.active { opacity: 1; visibility: visible; }
+        .search-container {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: var(--radius-card);
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: var(--radius-stats);
+            outline: none;
+            font-family: inherit;
+        }
+        .search-input:focus { border-color: var(--secondary); }
+        .search-suggestions { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+        .search-item {
+            padding: 10px 14px;
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            background: #F8FAFC;
+        }
+        .search-item:hover { background: rgba(37, 99, 235, 0.08); color: var(--secondary); }
+
+        /* Hamburger Toggle Button */
+        .hamburger { 
+            display: none; 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            flex-direction: column; 
+            gap: 5px; 
+            padding: 8px; 
+            z-index: 1200; 
+            margin-left: auto;
+        }
+        .hamburger span { 
+            display: block; 
+            width: 26px; 
+            height: 3px; 
+            background: var(--primary); 
+            border-radius: 2px; 
+            transition: all 0.3s; 
+        }
+        /* Cinematic Hero Wrapper */
+        .cinematic-hero-wrapper {
+            width: 100%;
+            max-width: 1320px;
+            margin: 95px auto 20px;
+            padding: 0 20px;
+        }
+
+        .cinematic-hero {
+            position: relative;
+            border-radius: var(--radius-hero);
+            overflow: hidden;
+            height: 460px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5vw;
+            color: white;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+            background-size: cover;
+            background-position: 75% center;
+            transition: background-image 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s ease;
+        }
+
+        .cinematic-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.1) 40%, rgba(15, 23, 42, 0.40) 100%),
+                        linear-gradient(90deg, rgba(2, 6, 23, 0.75) 0%, rgba(2, 6, 23, 0.25) 45%, transparent 100%);
+            backdrop-filter: blur(1px);
+            z-index: 1;
+        }
+
+        .cinematic-particles {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 0);
+            background-size: 36px 36px;
+            z-index: 2;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .hero-floating-glass-cards {
+            position: absolute;
+            top: 28px;
+            left: 4vw;
+            right: 4vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .glass-depth-badge {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            padding: 6px 14px;
+            border-radius: var(--radius-btn);
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.02em;
+            box-shadow: var(--glass-shadow);
+            animation: floatDepthBadge 6s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .glass-depth-badge:nth-child(2) { animation-delay: 2.5s; }
+
+        @keyframes floatDepthBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .cinematic-hero-content {
+            position: relative;
+            z-index: 4;
+            max-width: 540px;
+            transform: translateY(-10px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .cinematic-hero-content.fade-out {
+            opacity: 0;
+            transform: translateY(-5px);
+        }
+
+        .cinematic-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 158, 11, 0.25);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: #FCD34D;
+            padding: 3px 10px;
+            border-radius: var(--radius-btn);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            backdrop-filter: blur(8px);
+        }
+
+        .cinematic-hero-content h1 {
+            font-size: clamp(32px, 4vw, 46px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .cinematic-hero-content p {
+            font-size: 15px;
+            font-weight: 400;
+            color: #E2E8F0;
+            margin-bottom: 20px;
+            line-height: 1.45;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .cinematic-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cinematic-btn-primary {
+            background: var(--secondary);
+            color: white;
+            padding: 12px 26px;
+            border-radius: var(--radius-btn);
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cinematic-btn-primary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .cinematic-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 12px 26px;
+            border-radius: var(--radius-btn);
+            font-size: 13.5px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cinematic-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .cinematic-slider-controls {
+            position: absolute;
+            bottom: 24px;
+            right: 4vw;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cinematic-ctrl-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            color: white;
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .cinematic-ctrl-btn:hover { background: rgba(255, 255, 255, 0.4); }
+
+        /* Unified Campus Snapshot Block */
+        .campus-snapshot-section {
+            max-width: 1320px;
+            margin: -50px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        .snapshot-container-unified {
+            background: #FFFFFF;
+            border-radius: var(--radius-card);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            display: grid;
+            grid-template-columns: 4fr 3fr 3fr;
+            gap: 30px;
+            align-items: center;
+        }
+        .snapshot-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .snapshot-column + .snapshot-column {
+            border-left: 1px solid #E2E8F0;
+            padding-left: 30px;
+        }
+        .snapshot-col-header {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .principal-snapshot-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .principal-photo-snap {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid var(--secondary-light);
+        }
+        .principal-info-snap h4 {
+            font-size: 17px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .principal-info-snap span {
+            font-size: 12px;
+            color: var(--secondary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .principal-quote-snap {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        .notices-snapshot-box {
+            height: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+        .notices-snapshot-track {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            animation: scrollNoticesSnap 16s linear infinite;
+        }
+        .notices-snapshot-box:hover .notices-snapshot-track { animation-play-state: paused; }
+        @keyframes scrollNoticesSnap {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        .notice-snap-row {
+            font-size: 13px;
+            color: var(--text);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        .notice-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+        .badge-admit { background: #DBEAFE; color: #1D4ED8; }
+        .badge-exam { background: #FEF3C7; color: #B45309; }
+        .badge-event { background: #FCE7F3; color: #9D174D; }
+
+        .quick-actions-snap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .quick-action-snap-btn {
+            background: #F8FAFC;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s;
+        }
+        .quick-action-snap-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        /* Trusted Partner Logos Bar */
+        .trusted-by-section {
+            max-width: 1320px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .trusted-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+        }
+        .trusted-logos-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+        .corp-logo-badge {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            color: #475569;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            letter-spacing: 0.03em;
+        }
+        .corp-logo-badge:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Merged Advantage & Statistics Section */
+        .advantage-section {
+            max-width: 1320px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+        .advantage-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 50px;
+        }
+        .advantage-header h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        .advantage-header p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .advantage-metrics-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .stats-card-apple {
+            background: #FFFFFF;
+            border-radius: var(--radius-stats);
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        .stats-card-apple:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+        .stats-card-apple h3 { font-size: 42px; font-weight: 900; color: var(--secondary); margin-bottom: 6px; letter-spacing: -0.02em; }
+        .stats-card-apple p { font-size: 15px; color: var(--text-light); font-weight: 600; }
+
+        .advantage-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: #FFFFFF;
+            border-radius: var(--radius-card);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .advantage-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .advantage-list li {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .advantage-list li:last-child { border-bottom: none; }
+        .advantage-list .check {
+            width: 28px; height: 28px; background: #EFF6FF; color: var(--secondary);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 900; flex-shrink: 0;
+        }
+        .advantage-image-wrap {
+            border-radius: var(--radius-img);
+            overflow: hidden;
+            height: 380px;
+            box-shadow: var(--shadow);
+        }
+        .advantage-image-wrap img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+        }
+        .advantage-image-wrap:hover img { transform: scale(1.04); }
+
+        /* Intelligent Campus OS Benefits Section */
+        .platform-benefits-section {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            border-radius: var(--radius-hero);
+            padding: 90px 50px;
+            color: white;
+            margin: 0 auto;
+            max-width: 1320px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
+            text-align: center;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: left;
+        }
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-card);
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            background: rgba(255, 255, 255, 0.09);
+            transform: translateY(-6px);
+            border-color: var(--secondary-light);
+        }
+        .benefit-icon { font-size: 36px; margin-bottom: 16px; display: inline-block; }
+        .benefit-card h4 { font-size: 20px; color: #FFFFFF; margin-bottom: 10px; }
+        .benefit-card p { font-size: 14px; color: #94A3B8; line-height: 1.5; }
+        .benefit-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+        .benefit-tag {
+            font-size: 11px; background: rgba(37, 99, 235, 0.2); color: #93C5FD; padding: 3px 10px; border-radius: 20px; font-weight: 600;
+        }
+
+        /* Interactive Campus AI Section */
+        .ai-section {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            border-radius: var(--radius-hero);
+            padding: 80px 50px;
+            color: white;
+            margin: 0 auto;
+            max-width: 1320px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3);
+        }
+        .ai-features { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+        .ai-feature-item { display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 500; }
+        .ai-feature-item span { color: var(--accent); font-weight: 700; }
+        
+        .ai-chat-box {
+            background: #020617;
+            border-radius: var(--radius-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .ai-chat-history {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 260px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .ai-chat-bubble {
+            background: #1E293B;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #E2E8F0;
+            line-height: 1.4;
+        }
+        .ai-chat-bubble.user {
+            background: var(--secondary);
+            text-align: right;
+            margin-left: 30px;
+            border-bottom-right-radius: 2px;
+        }
+        .ai-chat-bubble.assistant {
+            background: #1E293B;
+            margin-right: 30px;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .ai-quick-prompts {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 12px;
+        }
+        .ai-prompt-chip {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #93C5FD;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        .ai-prompt-chip:hover {
+            background: rgba(37, 99, 235, 0.3);
+            border-color: var(--secondary-light);
+            color: white;
+        }
+
+        /* Stripe-Style Platform Footer */
+        footer { 
+            background: var(--primary-dark); 
+            color: var(--text-white); 
+            padding: 80px 20px 50px; 
+            margin-top: 0;
+        }
+        .footer-grid {
+            max-width: 1320px; margin: 0 auto 50px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px;
+        }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; color: white; font-weight: 700; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a {
+            color: var(--text-light); text-decoration: none; transition: color 0.3s ease; font-size: 14px;
+        }
+        .footer-col ul li a:hover { color: white; }
+        .footer-badges { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        .footer-badge {
+            background: rgba(255, 255, 255, 0.08); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #94A3B8; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-bottom {
+            max-width: 1320px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; justify-content: space-between; align-items: center; color: var(--text-light); font-size: 14px; flex-wrap: wrap; gap: 20px;
+        }
+        .social-icons-row { display: flex; gap: 16px; align-items: center; }
+        .social-icon-link { color: var(--text-light); text-decoration: none; font-size: 16px; transition: color 0.2s; }
+        .social-icon-link:hover { color: white; }
+
+        /* Responsive Breakpoints & Fixed Mobile Navigation Drawer */
+        @media(max-width: 992px) {
+            .hamburger { display: flex; }
+            .nav-actions { display: none; }
+            
+            .nav-links {
+                position: fixed;
+                top: 85px;
+                right: -100%;
+                left: auto;
+                width: 280px;
+                height: calc(100vh - 85px);
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 30px;
+                gap: 20px;
+                transition: right 0.3s ease-in-out;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                z-index: 1500;
+                margin-left: 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                font-size: 16px;
+                font-weight: 600;
+                width: 100%;
+                padding-bottom: 8px;
+                border-bottom: 1px solid #F1F5F9;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cinematic-hero-wrapper { width: 100%; padding: 0 12px; margin-top: 85px; }
+            .cinematic-hero { height: 380px; padding: 0 24px; background-position: center center; }
+            .whatsapp-float { bottom: 80px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Slim Campus OS Clickable Product Badge Banner -->
+    <header class="campus-os-banner">
+        <div>🚀 <strong>Campus OS Demo Showcase</strong> — Digital Operating System for Higher Education</div>
+        <div><a href="admissions.html" class="banner-link">Powered by Campus OS &rarr;</a></div>
+    </header>
+
+    <!-- Search Modal Overlay -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search courses, faculty, documents, notices..." autofocus>
+            <div class="search-suggestions">
+                <a href="programs.html" class="search-item">Bachelor of Commerce (B.Com)[cite: 1]</a>
+                <a href="programs.html" class="search-item">Bachelor of Management Studies (BMS)</a>
+                <a href="institution-explorer.html" class="search-item">Faculty & Leadership Directory</a>
+                <a href="compliance.html" class="search-item">Download NAAC SSR Report 2024-25</a>
+                <a href="admissions.html" class="search-item">Admissions 2026 Guidelines</a>
+            </div>
+            <button onclick="toggleSearch()" style="margin-top: 16px; background: none; border: none; color: var(--text-light); cursor: pointer; font-weight: 600;">Close [Esc]</button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919999999999?text=Hi%20I%20want%20to%20know%20more%20about%20admissions" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        💬
+    </a>
+
+    <!-- Standardized Enterprise Navigation Bar -->
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="logo-area">
+            <div class="college-crest">AP</div>
+            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+[cite: 1]</span></div>
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="programs.html" class="nav-link">Programs</a></li>
+            <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
+            <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance & Regulatory</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <div class="search-portal-group">
+                <button class="search-btn-grouped" onclick="toggleSearch()" aria-label="Search">🔍</button>
+                <a href="admissions.html" class="portal-login-link">Portal Login</a>
+            </div>
+            <a href="admissions.html" class="nav-cta">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Cinematic Hero Section -->
+    <div class="cinematic-hero-wrapper">
+        <header class="cinematic-hero" id="cinematicHero">
+            <div class="cinematic-particles"></div>
+            
+            <div class="hero-floating-glass-cards">
+                <div class="glass-depth-badge" style="font-size: 11px; font-weight: 500; opacity: 0.85;">
+                    Admissions Open 2026
+                </div>
+                <div class="glass-depth-badge" style="font-size: 13px; font-weight: 700; background: rgba(37,99,235,0.4); border-color: rgba(96,165,250,0.5);">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    Collaborative Student Life
+                </div>
+            </div>
+
+            <div class="cinematic-hero-content" id="cinematicContent">
+                <div class="cinematic-tag" id="heroBadge">Est. 1969 • Mumbai[cite: 1]</div>
+                <h1 id="heroTitle">Where Leaders Are Made</h1>
+                <p id="heroDesc">Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai[cite: 1].</p>
+                <div class="cinematic-buttons">
+                    <a href="admissions.html" class="cinematic-btn-primary">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        Apply Now
+                    </a>
+                    <a href="campus-tour.html" class="cinematic-btn-secondary">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                        Start Campus Tour
+                    </a>
+                </div>
+            </div>
+
+            <div class="cinematic-slider-controls">
+                <button class="cinematic-ctrl-btn" id="prevSlide" aria-label="Previous Slide">&larr;</button>
+                <span id="slideIndicatorNum" style="font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.9);">01 / 06</span>
+                <button class="cinematic-ctrl-btn" id="nextSlide" aria-label="Next Slide">&rarr;</button>
+            </div>
+        </header>
+    </div>
+
+    <!-- Unified Campus Snapshot Block -->
+    <div class="campus-snapshot-section">
+        <div class="snapshot-container-unified">
+            <div class="snapshot-column">
+                <div class="snapshot-col-header">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Message from the Principal
+                </div>
+                <div class="principal-snapshot-row">
+                    <img src="images/4-Faculty & Leadership/principal-portrait.png" alt="Dr. Shaikh Mehmood Hasan" class="principal-photo-snap" loading="lazy" decoding="async">
+                    <div class="principal-info-snap">
+                        <h4>Dr. Shaikh Mehmood Hasan</h4>
+                        <span>Principal, APCCE</span>
+                        <p class="principal-quote-snap">"Empowering students through academic rigor and digital leadership."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="snapshot-column">
+                <div class="snapshot-col-header">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    Latest Updates
+                </div>
+                <div class="notices-snapshot-box">
+                    <div class="notices-snapshot-track" id="noticesTrack">
+                        <div class="notice-snap-row">
+                            <span>Admissions Open 2026-27</span>
+                            <span class="notice-badge badge-admit">Admit</span>
+                        </div>
+                        <div class="notice-snap-row">
+                            <span>Sem IV Exam Results Out</span>
+                            <span class="notice-badge badge-exam">Exam</span>
+                        </div>
+                        <div class="notice-snap-row">
+                            <span>Annual Fest 'Melange'</span>
+                            <span class="notice-badge badge-event">Event</span>
+                        </div>
+                        <div class="notice-snap-row">
+                            <span>TCS Placement Drive</span>
+                            <span class="notice-badge badge-admit">Career</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="snapshot-column">
+                <div class="snapshot-col-header">🚀 Start Here</div>
+                <div class="quick-actions-snap-list">
+                    <a href="admissions.html" class="quick-action-snap-btn"><span>📝 Apply Online</span> &rarr;</a>
+                    <a href="programs.html" class="quick-action-snap-btn"><span>📚 Explore Courses</span> &rarr;</a>
+                    <a href="campus-tour.html" class="quick-action-snap-btn"><span>🏛 Campus Tour</span> &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trusted Partner Logos Bar -->
+    <div class="trusted-by-section">
+        <div class="trusted-label">Trusted by Industry Leaders & Partners</div>
+        <div class="trusted-logos-flex">
+            <div class="corp-logo-badge">TATA CONSULTANCY</div>
+            <div class="corp-logo-badge">INFOSYS</div>
+            <div class="corp-logo-badge">WIPRO</div>
+            <div class="corp-logo-badge">DELOITTE</div>
+            <div class="corp-logo-badge">ACCENTURE</div>
+            <div class="corp-logo-badge">HDFC BANK</div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Merged Advantage & Statistics Section -->
+        <section class="advantage-section">
+            <div class="advantage-header">
+                <h2>Why Akbar Peerbhoy College?</h2>
+                <p>Preparing Future-Ready Graduates Since 1969[cite: 1] through accredited academic excellence and digital student systems.</p>
+            </div>
+
+            <div class="advantage-metrics-strip">
+                <div class="stats-card-apple">
+                    <h3 class="counter" data-target="57">0</h3>
+                    <p>Years of Excellence</p>
+                </div>
+                <div class="stats-card-apple">
+                    <h3 class="counter" data-target="220">0</h3>
+                    <p>Recruiters</p>
+                </div>
+                <div class="stats-card-apple">
+                    <h3 class="counter" data-target="96" data-suffix="%">0</h3>
+                    <p>Placement Rate</p>
+                </div>
+                <div class="stats-card-apple">
+                    <h3 class="counter" data-target="35000">0</h3>
+                    <p>Alumni Network</p>
+                </div>
+                <div class="stats-card-apple">
+                    <h3 class="counter" data-target="100">0</h3>
+                    <p>Faculty Members</p>
+                </div>
+            </div>
+
+            <div class="advantage-content-grid">
+                <div>
+                    <ul class="advantage-list">
+                        <li><span class="check">✓</span> NAAC A+ Accredited Quality Standards[cite: 1]</li>
+                        <li><span class="check">✓</span> Modern Smart Campus & Advanced Labs</li>
+                        <li><span class="check">✓</span> Industry-Designed Curriculum & Skill Certifications</li>
+                        <li><span class="check">✓</span> Experienced Faculty & Corporate Mentorship</li>
+                        <li><span class="check">✓</span> 24/7 Digital Student Services via CampusOS</li>
+                    </ul>
+                </div>
+                <div class="advantage-image-wrap">
+                    <img src="images/3-Academics/smart-classroom-interactive.png" alt="Smart Classroom" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </section>
+
+        <!-- Intelligent Campus Platform Experience Section -->
+        <section style="background: #F1F5F9; padding: 10px 20px 60px 20px;">
+            <div class="platform-benefits-section" style="margin-bottom: 0;">
+                <span style="margin-bottom:12px; display:inline-block; background:rgba(245,158,11,0.2); color:#FCD34D; padding:4px 14px; border-radius:var(--radius-btn); font-size:12px; font-weight:700;">Intelligent Digital Campus</span>
+                <h2>An Intelligent Campus Experience</h2>
+                <p style="color: #94A3B8; max-width: 700px; margin: 8px auto 0;">Every interaction—from admissions to graduation—is powered by a secure digital ecosystem designed to make learning simpler, faster, and smarter.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <span class="benefit-icon">🎓</span>
+                        <h4>Online Admissions</h4>
+                        <p>Apply anywhere seamlessly, track real-time application status, and upload digital verification documents instantly.</p>
+                        <div class="benefit-tags">
+                            <span class="benefit-tag">Paperless</span>
+                            <span class="benefit-tag">Instant Verification</span>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <span class="benefit-icon">📱</span>
+                        <h4>Student Mobile App</h4>
+                        <p>Access live attendance logs, interactive timetable schedules, homework assignments, and push notifications.</p>
+                        <div class="benefit-tags">
+                            <span class="benefit-tag">Real-Time Sync</span>
+                            <span class="benefit-tag">iOS & Android</span>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card">
+                        <span class="benefit-icon">🤖</span>
+                        <h4>AI Student Assistant</h4>
+                        <p>Get 24x7 intelligent query resolution, personalized admission guidance, academic support, and campus navigation.</p>
+                        <div class="benefit-tags">
+                            <span class="benefit-tag">24x7 Active</span>
+                            <span class="benefit-tag">Instant Answers</span>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card">
+                        <span class="benefit-icon">💳</span>
+                        <h4>Digital Campus Services</h4>
+                        <p>Manage fee payments, digital library checkouts, verifiable certificates, and smart student ID cards.</p>
+                        <div class="benefit-tags">
+                            <span class="benefit-tag">Secure Gateway</span>
+                            <span class="benefit-tag">Cashless</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Campus AI Assistant Section -->
+        <section style="padding: 60px 20px; background: #FFFFFF;">
+            <div class="ai-section" style="margin-bottom: 0;">
+                <div>
+                    <span style="background:rgba(245,158,11,0.2); color:#FCD34D; padding:4px 14px; border-radius:var(--radius-btn); font-size:12px; font-weight:700; display:inline-block; margin-bottom:12px;">Next-Gen Intelligence</span>
+                    <h2 style="font-size: 38px; margin-bottom: 16px; color: white;">Meet Campus AI Assistant</h2>
+                    <p style="color: #94A3B8; font-size: 16px;">Test our live conversational assistant trained on institutional handbooks and curriculum guidelines.</p>
+                    <div class="ai-features">
+                        <div class="ai-feature-item"><span>✓</span> 24/7 Student Inquiry Assistant</div>
+                        <div class="ai-feature-item"><span>✓</span> Automated Admission Guidance</div>
+                        <div class="ai-feature-item"><span>✓</span> Instant Fee & Scholarship Support</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="ai-chat-box">
+                        <div style="font-size: 13px; color: #94A3B8; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; display:flex; justify-content:space-between; align-items:center;">
+                            <span>🟢 Campus AI Interactive Demo</span>
+                            <button onclick="resetAIChat()" style="background:transparent; border:none; color:#93C5FD; font-size:11px; cursor:pointer;">Clear Chat</button>
+                        </div>
+                        <div class="ai-chat-history" id="aiChatHistory">
+                            <div class="ai-chat-bubble assistant">Hello! I am your Campus AI assistant powered by Campus OS. Click any question below to test my knowledge!</div>
+                        </div>
+                        <div class="ai-quick-prompts">
+                            <button class="ai-prompt-chip" onclick="askAI('What are the fee structures for B.Com and BMS?')">💬 What are the fee structures for B.Com and BMS?</button>
+                            <button class="ai-prompt-chip" onclick="askAI('How do I track my admission application status?')">💬 How do I track my admission application status?</button>
+                            <button class="ai-prompt-chip" onclick="askAI('What top companies recruit from campus?')">💬 What top companies recruit from campus?</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Redesigned Stripe-Style Premium Footer -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Akbar Peerbhoy College</h4>
+                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px; line-height: 1.6;">Maulana Shaukat Ali Road, Do Taki, Mumbai 400004. NAAC A+ Accredited institution powered by Campus OS[cite: 1].</p>
+                <div class="footer-badges">
+                    <span class="footer-badge">NAAC A+[cite: 1]</span>
+                    <span class="footer-badge">UGC Approved</span>
+                    <span class="footer-badge">Est. 1969[cite: 1]</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Admissions</h4>
+                <ul>
+                    <li><a href="admissions.html">Apply Online</a></li>
+                    <li><a href="admissions.html">Fee Structure</a></li>
+                    <li><a href="admissions.html">Scholarships</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Platform Navigation</h4>
+                <ul>
+                    <li><a href="institution-explorer.html">Institution Explorer</a></li>
+                    <li><a href="compliance.html">Compliance & Regulatory</a></li>
+                    <li><a href="campus-tour.html">Campus Tour</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact & Map</h4>
+                <p style="color: var(--text-light); font-size: 13px; margin-bottom: 12px;">📞 022-23074122<br>✉️ apcce_college@yahoo.co.in</p>
+                <div class="social-icons-row">
+                    <a href="#" class="social-icon-link">📘</a>
+                    <a href="#" class="social-icon-link">📸</a>
+                    <a href="#" class="social-icon-link">🔗</a>
+                    <a href="#" class="social-icon-link">▶️</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved[cite: 1].</p>
+            <p style="font-size: 13px; color: var(--text-light);">Digital Platform Architecture by <a href="admissions.html" style="color: var(--secondary-light); text-decoration: none;">Campus OS</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions & Logic -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 40) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        function toggleSearch() {
+            const modal = document.getElementById('searchModal');
+            modal.classList.toggle('active');
+            if(modal.classList.contains('active')) {
+                document.getElementById('searchInput').focus();
+            }
+        }
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'Escape') {
+                document.getElementById('searchModal').classList.remove('active');
+            }
+        });
+
+        // 6-Slide Cinematic Hero Data
+        const heroSlides = [
+            {
+                badge: "Est. 1969 • Mumbai[cite: 1]",
+                title: "Where Leaders Are Made",
+                desc: "Industry-ready education, world-class faculty, and a vibrant campus community in the heart of Mumbai[cite: 1].",
+                image: "images/1-Campus/hero-campus-aerial-evening.png"
+            },
+            {
+                badge: "Collaborative Student Life",
+                title: "Collaborate. Create. Lead.",
+                desc: "Engage in student projects, lively discussions, and vibrant campus interactions that shape future executives.",
+                image: "images/2-Student Life/students-collaborating-steps.png"
+            },
+            {
+                badge: "State-of-the-Art Labs",
+                title: "Innovation Starts Here",
+                desc: "Equipped with advanced workstations, simulation software, and collaborative digital workspaces.",
+                image: "images/3-Academics/science-lab-experiment.png"
+            },
+            {
+                badge: "Academic Excellence",
+                title: "Interactive Learning Spaces",
+                desc: "Dynamic smart classrooms fostering critical thinking, debate, and immersive mentorship.",
+                image: "images/3-Academics/smart-classroom-interactive.png"
+            },
+            {
+                badge: "Vibrant Community",
+                title: "A Campus That Feels Alive",
+                desc: "Festivals, cultural showcases, and student clubs fostering holistic personal development.",
+                image: "images/2-Student Life/cultural-festival-stage.png"
+            },
+            {
+                badge: "Global Success",
+                title: "From Classroom to Career",
+                desc: "Celebrating graduating leaders equipped for top-tier corporate placements worldwide.",
+                image: "images/2-Student Life/convocation-celebration.png"
+            }
+        ];
+
+        let currentHeroIndex = 0;
+        const cinematicHero = document.getElementById('cinematicHero');
+        const cinematicContent = document.getElementById('cinematicContent');
+        const heroBadge = document.getElementById('heroBadge');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroDesc = document.getElementById('heroDesc');
+        const slideIndicatorNum = document.getElementById('slideIndicatorNum');
+        let heroInterval;
+
+        function updateHeroSlide(index) {
+            cinematicContent.classList.add('fade-out');
+            setTimeout(() => {
+                cinematicHero.style.backgroundImage = `url('${heroSlides[index].image}')`;
+                heroBadge.textContent = heroSlides[index].badge;
+                heroTitle.textContent = heroSlides[index].title;
+                heroDesc.textContent = heroSlides[index].desc;
+                slideIndicatorNum.textContent = `0${index + 1} / 06`;
+                cinematicContent.classList.remove('fade-out');
+            }, 300);
+        }
+
+        function nextHeroSlide() {
+            currentHeroIndex = (currentHeroIndex + 1) % heroSlides.length;
+            updateHeroSlide(currentHeroIndex);
+        }
+
+        function prevHeroSlide() {
+            currentHeroIndex = (currentHeroIndex - 1 + heroSlides.length) % heroSlides.length;
+            updateHeroSlide(currentHeroIndex);
+        }
+
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            nextHeroSlide();
+            resetHeroTimer();
+        });
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            prevHeroSlide();
+            resetHeroTimer();
+        });
+
+        function startHeroTimer() {
+            heroInterval = setInterval(nextHeroSlide, 4000);
+        }
+
+        function resetHeroTimer() {
+            clearInterval(heroInterval);
+            startHeroTimer();
+        }
+
+        cinematicHero.addEventListener('mouseenter', () => clearInterval(heroInterval));
+        cinematicHero.addEventListener('mouseleave', startHeroTimer);
+
+        updateHeroSlide(0);
+        startHeroTimer();
+
+        // Interactive AI Chat Demo Logic
+        function askAI(question) {
+            const history = document.getElementById('aiChatHistory');
+            
+            const userBubble = document.createElement('div');
+            userBubble.className = 'ai-chat-bubble user';
+            userBubble.textContent = question;
+            history.appendChild(userBubble);
+            
+            setTimeout(() => {
+                const aiBubble = document.createElement('div');
+                aiBubble.className = 'ai-chat-bubble assistant';
+                
+                if (question.includes('fee')) {
+                    aiBubble.textContent = "B.Com tuition is ₹12,400/year and BMS is ₹28,500/year as per FRA guidelines. Digital payment is supported via secure UPI/Netbanking gateway.";
+                } else if (question.includes('track')) {
+                    aiBubble.textContent = "You can track your application in real-time by entering your Application ID in our Admissions Portal tracker. Average verification time is 48 hours.";
+                } else {
+                    aiBubble.textContent = "We partner with over 220+ top recruiters including TCS, Infosys, Deloitte, and HDFC Bank, achieving a 96% placement success rate.";
+                }
+                
+                history.appendChild(aiBubble);
+                history.scrollTop = history.scrollHeight;
+            }, 400);
+
+            history.scrollTop = history.scrollHeight;
+        }
+
+        function resetAIChat() {
+            const history = document.getElementById('aiChatHistory');
+            history.innerHTML = '<div class="ai-chat-bubble assistant">Hello! I am your Campus AI assistant powered by Campus OS. Click any question below to test my knowledge!</div>';
+        }
+
+        // Animated Counters
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const step = target / 60;
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(interval);
+                }
+                element.textContent = Math.round(current).toLocaleString() + suffix;
+            }, 25);
+        }
+
+        const observerOptions = { threshold: 0.2 };
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const suffix = counter.getAttribute('data-suffix') || '';
+                        animateCounter(counter, target, suffix);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const advantageSection = document.querySelector('.advantage-section');
+            if (advantageSection) {
+                counterObserver.observe(advantageSection);
+            }
+        });
+    </script>
+</body>
+</html>

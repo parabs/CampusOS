@@ -1,0 +1,15 @@
+git add .
+git commit -m "Update browser to treat every load as a completely new request in programs.xml"
+git push origin main
+
+
+PNG to webp
+only one folder 
+Get-ChildItem -Filter *.png | ForEach-Object {
+    cwebp -q 80 $_.FullName -o "$($_.DirectoryName)\$($_.BaseName).webp"
+}
+
+all subfolders 
+Get-ChildItem -Recurse -Filter *.png | ForEach-Object {
+    cwebp -q 80 $_.FullName -o "$($_.DirectoryName)\$($_.BaseName).webp"
+}
