@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Primary SEO & Canonical URL (Standardized for Sachin Shiksha Mandal) -->
+    <!-- Primary SEO & Canonical URL (Dynamically updated via JS or defaults) -->
     <title id="pageTitle">Program Details — Sachin Shiksha Mandal</title>
     <link rel="canonical" href="https://parabs.github.io/CampusOS/program-detail.html">
-    <meta name="description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
+    <meta id="metaDesc" name="description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
 
     <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,21 +20,21 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.webp">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Complete OpenGraph & Twitter Meta Tags -->
-    <meta property="og:title" content="Program Details — Sachin Shiksha Mandal">
-    <meta property="og:description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
+    <!-- Complete OpenGraph & Twitter Meta Tags (Dynamic IDs for real-time hydration) -->
+    <meta id="ogTitle" property="og:title" content="Program Details — Sachin Shiksha Mandal">
+    <meta id="ogDesc" property="og:description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://parabs.github.io/CampusOS/program-detail.html">
     <meta property="og:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
     <meta property="og:site_name" content="Sachin Shiksha Mandal">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Program Details | Sachin Shiksha Mandal">
-    <meta name="twitter:description" content="Explore detailed curriculum, fee structure, and admission workflow at Sachin Shiksha Mandal.">
+    <meta id="twitterTitle" name="twitter:title" content="Program Details | Sachin Shiksha Mandal">
+    <meta id="twitterDesc" name="twitter:description" content="Explore detailed curriculum, fee structure, and admission workflow at Sachin Shiksha Mandal.">
     <meta name="twitter:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
 
-    <!-- Advanced Schema.org JSON-LD -->
-    <script type="application/ld+json">
+    <!-- Advanced Schema.org JSON-LD (Unified Platform + Dynamic Course Schema container) -->
+    <script type="application/ld+json" id="schemaJSON">
     {
       "@context": "https://schema.org",
       "@graph": [
@@ -225,7 +225,7 @@
         .stat-box-row span:first-child { color: #94A3B8; }
         .stat-box-row span:last-child { color: white; font-weight: 700; }
 
-        /* Sticky Section Navigation Bar (Calculated offset clearance) */
+        /* Sticky Section Navigation Bar */
         .sticky-section-nav {
             position: sticky; top: calc(var(--top-banner-height) + var(--global-nav-height)); z-index: 900; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
@@ -242,7 +242,7 @@
         .content-card h3 { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .content-card p { font-size: 15px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
 
-        /* Admission Visual Flow (Responsive 6-column grid without wrapping single elements) */
+        /* Admission Visual Flow (Fixed 6-column grid without wrapping single elements) */
         .admission-flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
         .flow-step { background: #F8FAFC; border: 1px solid var(--border-color); padding: 14px 8px; border-radius: 14px; text-align: center; }
         .flow-step .step-num { width: 26px; height: 26px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; margin: 0 auto 8px; }
@@ -357,7 +357,7 @@
         </ul>
         <div class="nav-actions">
             <div class="search-portal-group">
-                <button class="search-btn-grouped" onclick="alert('Use the live search bar on the programs page to screen courses instantly.')" aria-label="Search">🔍</button>
+                <button class="search-btn-grouped" onclick="window.location.href='programs.html'" aria-label="Search Programs">🔍</button>
                 <a href="student-portal.html" class="portal-login-link">Student Portal</a>
             </div>
             <a href="admissions.html" class="nav-cta">Apply Now</a>
@@ -376,7 +376,7 @@
         <a href="index.html">Home</a> &gt; <a href="programs.html">Programs</a> &gt; <span id="breadcrumbTitle">Program Detail</span>
     </div>
 
-    <!-- Program Hero Banner (View Fees CTA removed per review) -->
+    <!-- Program Hero Banner (View Fees removed per review) -->
     <section class="program-hero">
         <div class="program-hero-card">
             <div>
@@ -518,7 +518,7 @@
         </div>
     </footer>
 
-    <!-- Dynamic XML Fetching & Interactive Script -->
+    <!-- Dynamic XML Fetching, Interactive Script, and Schema/Meta Hydration -->
     <script>
         function toggleMobileMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -546,14 +546,85 @@
 
                 const getVal = (tag) => programNode.querySelector(tag)?.textContent || '';
 
-                // Populate UI with dynamic XML data including precise eligibility
-                document.getElementById('pageTitle').textContent = `${getVal('title')} — Sachin Shiksha Mandal`;
-                document.getElementById('breadcrumbTitle').textContent = getVal('title');
-                document.getElementById('heroTitle').textContent = getVal('title');
-                document.getElementById('heroDesc').textContent = getVal('description');
+                const progTitle = getVal('title');
+                const progDesc = getVal('description');
+                const progLevel = getVal('level');
+                const progDuration = getVal('duration') || '3 Years';
+                const progTuition = getVal('tuitionFee');
+                const progTotalFee = getVal('totalFee');
+                const progEligibility = getVal('eligibility');
+
+                // Dynamic SEO, OpenGraph, and Twitter Meta Tag Hydration
+                const fullPageTitle = `${progTitle} — Sachin Shiksha Mandal`;
+                document.getElementById('pageTitle').textContent = fullPageTitle;
+                document.getElementById('metaDesc').setAttribute('content', progDesc);
+                document.getElementById('ogTitle').setAttribute('content', fullPageTitle);
+                document.getElementById('ogDesc').setAttribute('content', progDesc);
+                document.getElementById('twitterTitle').setAttribute('content', fullPageTitle);
+                document.getElementById('twitterDesc').setAttribute('content', progDesc);
+
+                // Dynamic Breadcrumb Schema & Course Schema Injection
+                const dynamicSchema = {
+                  "@context": "https://schema.org",
+                  "@graph": [
+                    {
+                      "@type": ["EducationalOrganization", "CollegeOrUniversity"],
+                      "@id": "https://parabs.github.io/CampusOS/#organization",
+                      "name": "Sachin Shiksha Mandal (SSM)",
+                      "alternateName": "SSM Institutions",
+                      "url": "https://parabs.github.io/CampusOS/",
+                      "logo": "https://parabs.github.io/CampusOS/images/logo.webp",
+                      "image": "https://parabs.github.io/CampusOS/images/logo.webp"
+                    },
+                    {
+                      "@type": "WebSite",
+                      "@id": "https://parabs.github.io/CampusOS/#website",
+                      "url": "https://parabs.github.io/CampusOS/",
+                      "name": "Sachin Shiksha Mandal",
+                      "description": "Sachin Shiksha Mandal official institutional portal powered by CampusOS",
+                      "publisher": { "@id": "https://parabs.github.io/CampusOS/#organization" }
+                    },
+                    {
+                      "@type": "WebPage",
+                      "@id": `https://parabs.github.io/CampusOS/program-detail.html?course=${courseKey}#webpage`,
+                      "url": window.location.href,
+                      "name": fullPageTitle,
+                      "isPartOf": { "@id": "https://parabs.github.io/CampusOS/#website" },
+                      "about": { "@id": "https://parabs.github.io/CampusOS/#organization" }
+                    },
+                    {
+                      "@type": "BreadcrumbList",
+                      "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://parabs.github.io/CampusOS/" },
+                        { "@type": "ListItem", "position": 2, "name": "Programs", "item": "https://parabs.github.io/CampusOS/programs.html" },
+                        { "@type": "ListItem", "position": 3, "name": progTitle, "item": window.location.href }
+                      ]
+                    },
+                    {
+                      "@type": "Course",
+                      "name": progTitle,
+                      "description": progDesc,
+                      "provider": { "@id": "https://parabs.github.io/CampusOS/#organization" },
+                      "educationalLevel": progLevel,
+                      "timeRequired": progDuration,
+                      "offers": {
+                        "@type": "Offer",
+                        "price": progTotalFee,
+                        "priceCurrency": "INR"
+                      }
+                    }
+                  ]
+                };
+                
+                document.getElementById('schemaJSON').textContent = JSON.stringify(dynamicSchema, null, 2);
+
+                // Populate UI
+                document.getElementById('breadcrumbTitle').textContent = progTitle;
+                document.getElementById('heroTitle').textContent = progTitle;
+                document.getElementById('heroDesc').textContent = progDesc;
 
                 document.getElementById('heroBadges').innerHTML = `
-                    <span class="prog-tag">${getVal('level')}</span>
+                    <span class="prog-tag">${progLevel}</span>
                     <span class="prog-tag" style="background: rgba(16, 185, 129, 0.2); border-color: rgba(52, 211, 153, 0.4); color: #34D399;">${getVal('nep')}</span>
                 `;
 
@@ -562,21 +633,21 @@
                     <div class="stat-box-row"><span>Average Salary:</span><span>${getVal('avgSalary')}</span></div>
                     <div class="stat-box-row"><span>Highest Package:</span><span>${getVal('highSalary')}</span></div>
                     <div class="stat-box-row"><span>Intake Capacity:</span><span>${getVal('intake')}</span></div>
-                    <div class="stat-box-row"><span>Eligibility:</span><span>${getVal('eligibility')}</span></div>
+                    <div class="stat-box-row"><span>Eligibility:</span><span>${progEligibility}</span></div>
                 `;
 
                 document.getElementById('progOverviewText').textContent = getVal('overview');
 
                 document.getElementById('feeBreakdownContainer').innerHTML = `
-                    <div class="fee-breakdown-row"><span>Annual Tuition Fee</span><span>${getVal('tuitionFee')}</span></div>
+                    <div class="fee-breakdown-row"><span>Annual Tuition Fee</span><span>${progTuition}</span></div>
                     <div class="fee-breakdown-row"><span>Development & Lab Fee</span><span>${getVal('devFee')}</span></div>
                     <div class="fee-breakdown-row"><span>Library & Exam Fee</span><span>${getVal('libFee')}</span></div>
-                    <div class="fee-breakdown-row" style="border-bottom:none; font-weight:800; font-size:15px; color:var(--secondary);"><span>Total Annual Fee</span><span>${getVal('totalFee')}</span></div>
+                    <div class="fee-breakdown-row" style="border-bottom:none; font-weight:800; font-size:15px; color:var(--secondary);"><span>Total Annual Fee</span><span>${progTotalFee}</span></div>
                 `;
 
-                window.currentProgramTitle = getVal('title');
-                window.currentProgramFee = getVal('totalFee');
-                window.currentProgramEligibility = getVal('eligibility');
+                window.currentProgramTitle = progTitle;
+                window.currentProgramFee = progTotalFee;
+                window.currentProgramEligibility = progEligibility;
 
             } catch (err) {
                 console.error("XML Load Error:", err);
@@ -587,7 +658,7 @@
         function talkToCounselor() {
             const program = window.currentProgramTitle || 'this program';
             const message = `Hello, I am interested in the ${program} program. I would like to know more about eligibility, fees and admission.`;
-            const counselorNumber = "919999999999"; // Official admissions helpline number
+            const counselorNumber = "919999999999"; // Official admissions helpline WhatsApp number
             window.open(`https://wa.me/${counselorNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
