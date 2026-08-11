@@ -7,7 +7,7 @@
     <!-- Primary SEO & Canonical URL (Dynamically hydrated) -->
     <title id="pageTitle">Program Details — Sachin Shiksha Mandal</title>
     <link id="canonicalLink" rel="canonical" href="https://parabs.github.io/CampusOS/program-detail.html">
-    <meta id="metaDesc" name="description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
+    <meta id="metaDesc" name="description" content="Explore detailed eligibility criteria, curriculum, faculty, learning outcomes, career opportunities, and annual fee structure for academic programs at Sachin Shiksha Mandal in Mumbai.">
 
     <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
 
     <!-- Complete OpenGraph & Twitter Meta Tags -->
     <meta id="ogTitle" property="og:title" content="Program Details — Sachin Shiksha Mandal">
-    <meta id="ogDesc" property="og:description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
+    <meta id="ogDesc" property="og:description" content="Explore detailed eligibility criteria, curriculum, faculty, learning outcomes, career opportunities, and annual fee structure for academic programs at Sachin Shiksha Mandal in Mumbai.">
     <meta id="ogUrl" property="og:url" content="https://parabs.github.io/CampusOS/program-detail.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
@@ -30,10 +30,10 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta id="twitterTitle" name="twitter:title" content="Program Details | Sachin Shiksha Mandal">
-    <meta id="twitterDesc" name="twitter:description" content="Explore detailed curriculum, fee structure, and admission workflow at Sachin Shiksha Mandal.">
+    <meta id="twitterDesc" name="twitter:description" content="Explore eligibility, curriculum, faculty, outcomes, and careers at Sachin Shiksha Mandal.">
     <meta name="twitter:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
 
-    <!-- Advanced Schema.org JSON-LD (Unified Platform + Robust Duration / Offer Validation) -->
+    <!-- Advanced Schema.org JSON-LD (Unified Platform + Course Schema container) -->
     <script type="application/ld+json" id="schemaJSON">
     {
       "@context": "https://schema.org",
@@ -229,7 +229,7 @@
         .stat-box-row span:first-child { color: #94A3B8; }
         .stat-box-row span:last-child { color: white; font-weight: 700; }
 
-        /* Sticky Section Navigation Bar */
+        /* Sticky Section Navigation Bar (Overview | Eligibility | Curriculum | Faculty | Outcomes | Careers) */
         .sticky-section-nav {
             position: sticky; top: calc(var(--top-banner-height) + var(--global-nav-height)); z-index: 900; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
@@ -246,27 +246,42 @@
         .content-card h3 { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .content-card p { font-size: 15px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
 
-        /* Admission Visual Flow (Fixed 6-column grid without wrapping single elements) */
-        .admission-flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
-        .flow-step { background: #F8FAFC; border: 1px solid var(--border-color); padding: 14px 8px; border-radius: 14px; text-align: center; }
-        .flow-step .step-num { width: 26px; height: 26px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; margin: 0 auto 8px; }
-        .flow-step h6 { font-size: 12px; font-weight: 800; color: var(--primary); margin-bottom: 2px; }
-        .flow-step p { font-size: 10px; color: var(--text-light); }
+        /* Key Information Grid */
+        .key-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; margin-bottom: 24px; }
+        .key-info-item { background: #F8FAFC; border: 1px solid var(--border-color); padding: 14px; border-radius: 12px; }
+        .key-info-item span { display: block; font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-bottom: 4px; }
+        .key-info-item strong { font-size: 14px; color: var(--primary); font-weight: 700; }
 
-        @media (max-width: 1100px) {
-            .admission-flow { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .admission-flow { grid-template-columns: 1fr; }
-        }
+        /* Eligibility Styles */
+        .eligibility-box { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 16px; padding: 22px; margin-top: 16px; }
+        .eligibility-box ul { list-style-type: disc; padding-left: 20px; color: var(--text-light); font-size: 14px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
 
-        /* Scholarships Grid */
-        .scholarship-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
-        .scholarship-card { background: #F8FAFC; border: 1px solid var(--border-color); padding: 18px; border-radius: 14px; }
-        .scholarship-card h5 { font-size: 15px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-        .scholarship-card p { font-size: 12px; color: var(--text-light); }
+        /* Curriculum Styles */
+        .curriculum-semester-block { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-top: 16px; }
+        .curriculum-semester-block h4 { font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        .course-row { display: flex; justify-content: space-between; align-items: center; background: white; border: 1px solid var(--border-color); padding: 12px 16px; border-radius: 10px; margin-bottom: 8px; font-size: 14px; }
+        .course-row span:first-child { font-weight: 600; color: var(--primary); }
+        .course-row span:last-child { font-size: 12px; font-weight: 700; color: var(--secondary); background: #EFF6FF; padding: 3px 8px; border-radius: 6px; }
 
-        /* Sticky Sidebar Panel */
+        /* Faculty Cards */
+        .faculty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px; }
+        .faculty-card { background: #F8FAFC; border: 1px solid var(--border-color); padding: 20px; border-radius: 16px; display: flex; gap: 14px; align-items: center; }
+        .faculty-avatar { width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+        .faculty-info h5 { font-size: 15px; font-weight: 800; color: var(--primary); margin-bottom: 2px; }
+        .faculty-info span { font-size: 12px; color: var(--secondary); font-weight: 600; display: block; }
+        .faculty-info p { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+
+        /* Outcomes Accordion/Grid */
+        .outcomes-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+        .outcome-item { background: #F8FAFC; border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; }
+        .outcome-item h5 { font-size: 15px; font-weight: 800; color: var(--primary); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .outcome-item p { font-size: 13px; color: var(--text-light); margin-bottom: 0; }
+
+        /* Careers Grid */
+        .careers-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .career-badge { background: #EFF6FF; border: 1px solid #DBEAFE; color: var(--secondary); padding: 8px 16px; border-radius: var(--radius-btn); font-size: 13px; font-weight: 700; }
+
+        /* Sticky Sidebar Panel (Updated title: Annual Fee Summary) */
         .sidebar-panel { background: white; border-radius: var(--radius-card); padding: 28px; border: 1px solid var(--border-color); box-shadow: var(--shadow); position: sticky; top: 140px; display: flex; flex-direction: column; gap: 16px; }
         .sidebar-title { font-size: 18px; font-weight: 800; color: var(--primary); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
         .fee-breakdown-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--surface-gray); }
@@ -282,7 +297,7 @@
         .ai-chip:hover { background: rgba(37, 99, 235, 0.3); color: white; }
         .ai-response-box { background: #020617; border-radius: 10px; padding: 10px; font-size: 12px; color: #E2E8F0; margin-top: 10px; display: none; }
 
-        /* Standardized Global Footer with 0 top margin to clear cleanly */
+        /* Standardized Global Footer */
         footer { background: var(--primary-dark); color: white; padding: 80px 20px 50px; margin-top: 0; }
         .footer-grid { max-width: 1320px; margin: 0 auto 50px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; text-align: left; }
         .footer-col h4 { font-size: 16px; margin-bottom: 20px; color: white; font-weight: 700; }
@@ -388,7 +403,7 @@
                 <h1 id="heroTitle">Loading Program...</h1>
                 <p id="heroDesc">Please fetch course particulars from the centralized data repository.</p>
                 <div class="hero-action-buttons">
-                    <a href="admissions.html" class="btn-apply-hero">Start Admission</a>
+                    <a href="admissions.html" class="btn-apply-hero" id="heroApplyBtn">Apply for this Programme</a>
                     <a href="javascript:void(0);" class="btn-hero-sec" onclick="talkToCounselor()">Talk to Counselor</a>
                 </div>
             </div>
@@ -396,11 +411,15 @@
         </div>
     </section>
 
-    <!-- Sticky Section Navigation Bar -->
+    <!-- Sticky Section Navigation Bar (Overview | Eligibility | Curriculum | Faculty | Outcomes | Careers) -->
     <div class="sticky-section-nav">
         <div class="section-nav-container">
             <a href="#overview" class="section-nav-link active">Overview</a>
-            <a href="#admissions" class="section-nav-link">Admissions & Fees</a>
+            <a href="#eligibility" class="section-nav-link">Eligibility</a>
+            <a href="#curriculum" class="section-nav-link">Curriculum</a>
+            <a href="#faculty" class="section-nav-link">Faculty</a>
+            <a href="#outcomes" class="section-nav-link">Outcomes</a>
+            <a href="#careers" class="section-nav-link">Careers</a>
         </div>
     </div>
 
@@ -413,48 +432,79 @@
             <div class="content-card" id="overview">
                 <h3>📖 Program Overview</h3>
                 <p id="progOverviewText">Loading repository records...</p>
+
+                <h4 style="font-size: 16px; font-weight: 800; color: var(--primary); margin: 24px 0 12px;">Key Information</h4>
+                <div class="key-info-grid" id="keyInfoGrid">
+                    <!-- Dynamically populated from XML -->
+                </div>
             </div>
 
-            <!-- Admissions Flow & Scholarships -->
-            <div class="content-card" id="admissions">
-                <h3>📝 Admission Process</h3>
-                <p>Step-by-step guidance through our digital admission workflow:</p>
-                <div class="admission-flow">
-                    <div class="flow-step"><div class="step-num">1</div><h6>Eligibility</h6><p>Verify criteria</p></div>
-                    <div class="flow-step"><div class="step-num">2</div><h6>Application</h6><p>Submit online form</p></div>
-                    <div class="flow-step"><div class="step-num">3</div><h6>Verification</h6><p>Cloud document check</p></div>
-                    <div class="flow-step"><div class="step-num">4</div><h6>Merit List</h6><p>Transparent selection</p></div>
-                    <div class="flow-step"><div class="step-num">5</div><h6>Fee Payment</h6><p>Secure gateway</p></div>
-                    <div class="flow-step"><div class="step-num">6</div><h6>Confirmed</h6><p>Welcome orientation</p></div>
+            <!-- Eligibility & Entry Requirements Section -->
+            <div class="content-card" id="eligibility">
+                <h3>📋 Eligibility & Entry Requirements</h3>
+                <p>Ensure you meet the academic criteria established for this programme prior to submitting your application.</p>
+                <div class="eligibility-box" id="eligibilityContainer">
+                    <!-- Dynamically populated from XML -->
                 </div>
+            </div>
 
-                <h3 style="margin-top: 30px;">💰 Scholarships & Financial Assistance</h3>
-                <div class="scholarship-grid">
-                    <div class="scholarship-card"><h5>Merit Scholarships</h5><p>Up to 100% tuition waiver for top board scorers.</p></div>
-                    <div class="scholarship-card"><h5>Government Schemes</h5><p>Eligible for state and central reserved category grants.</p></div>
-                    <div class="scholarship-card"><h5>Sports Quota</h5><p>Fee concessions for state and national-level athletes.</p></div>
+            <!-- Curriculum Section -->
+            <div class="content-card" id="curriculum">
+                <h3>📚 Curriculum & Study Plan</h3>
+                <p>Explore semester-wise course modules structured to build deep technical and professional mastery.</p>
+                <div id="curriculumContainer">
+                    <!-- Dynamically populated from XML -->
+                </div>
+            </div>
+
+            <!-- Faculty Section -->
+            <div class="content-card" id="faculty">
+                <h3>👨‍🏫 Programme Faculty</h3>
+                <p>Learn from experienced educators, researchers, and industry mentors.</p>
+                <div class="faculty-grid" id="facultyContainer">
+                    <!-- Dynamically populated from XML -->
+                </div>
+            </div>
+
+            <!-- Outcomes Section -->
+            <div class="content-card" id="outcomes">
+                <h3>🎯 Programme Outcomes & Objectives</h3>
+                <p>Core competencies, learning objectives, and professional outcomes you will achieve.</p>
+                <div class="outcomes-grid" id="outcomesContainer">
+                    <!-- Dynamically populated from XML -->
+                </div>
+            </div>
+
+            <!-- Careers Section -->
+            <div class="content-card" id="careers">
+                <h3>🚀 Career Opportunities</h3>
+                <p>Target roles and industries awaiting graduates of this programme:</p>
+                <div class="careers-grid" id="careersContainer">
+                    <!-- Dynamically populated from XML -->
                 </div>
             </div>
         </div>
 
         <!-- Sticky Right Sidebar Panel (30%) -->
         <div class="sidebar-panel">
-            <div class="sidebar-title">Fee & Admission Summary</div>
+            <div class="sidebar-title">Annual Fee Summary</div>
             
             <div id="feeBreakdownContainer"></div>
 
             <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
-                <a href="admissions.html" class="btn-apply-hero" style="text-align:center;">Start Application</a>
+                <a href="admissions.html" class="btn-apply-hero" id="sidebarApplyBtn" style="text-align:center;">Apply for this Programme</a>
                 <a href="javascript:void(0);" class="btn-hero-sec" style="color:var(--primary); border:1px solid var(--border-color); text-align:center;" onclick="talkToCounselor()">💬 Talk to Counselor</a>
             </div>
 
             <!-- Program-Specific AI Counselor Chat -->
             <div class="ai-counselor-box">
-                <h5>🤖 Ask Program AI Counselor</h5>
-                <p>Instant answers regarding eligibility, career scope, and fees.</p>
+                <h5>🤖 AI Program Counselor</h5>
+                <p>Instant answers regarding this programme:</p>
                 <div class="ai-chips">
-                    <button class="ai-chip" onclick="askAICounselor('What is the eligibility criteria?')">💬 What is the eligibility criteria?</button>
-                    <button class="ai-chip" onclick="askAICounselor('What are the total program fees?')">💬 What are the total program fees?</button>
+                    <button class="ai-chip" onclick="askAICounselor('Am I eligible for this programme?')">💬 Am I eligible for this programme?</button>
+                    <button class="ai-chip" onclick="askAICounselor('What will I study in this programme?')">💬 What will I study in this programme?</button>
+                    <button class="ai-chip" onclick="askAICounselor('What are the total annual fees?')">💬 What are the total annual fees?</button>
+                    <button class="ai-chip" onclick="askAICounselor('What careers can I pursue after this programme?')">💬 What careers can I pursue after this programme?</button>
                 </div>
                 <div class="ai-response-box" id="aiResponseBox"></div>
             </div>
@@ -556,19 +606,33 @@
                 const getVal = (tag) => programNode.querySelector(tag)?.textContent || '';
 
                 const progTitle = getVal('title');
+                const progShortTitle = getVal('shortTitle') || progTitle;
                 const progDesc = getVal('description');
                 const progLevel = getVal('level');
+                const progDuration = getVal('duration') || '3 Years';
                 const progDurationISO = getVal('durationISO') || 'P3Y';
+                const progCode = getVal('code') || courseKey.toUpperCase();
+                const progCourseType = getVal('courseType') || 'Bachelor Degree';
+                const progIntake = getVal('intake') || '120 Seats';
                 const progTuition = getVal('tuitionFee');
                 const progTotalFee = getVal('totalFee');
                 const progEligibility = getVal('eligibility');
 
+                // Update context-aware CTAs dynamically
+                document.getElementById('heroApplyBtn').textContent = `Apply for ${progShortTitle}`;
+                document.getElementById('sidebarApplyBtn').textContent = `Apply for ${progShortTitle}`;
+
                 // Clean numeric fee for schema Offer object
                 const numericFee = Number(progTotalFee.replace(/[₹,\s]/g, '')) || 0;
+                const offerObject = Number.isFinite(numericFee) && numericFee > 0 ? {
+                    "@type": "Offer",
+                    "price": numericFee,
+                    "priceCurrency": "INR"
+                } : undefined;
 
                 // Dynamic SEO, OpenGraph, and Twitter Meta Tag Hydration
                 const fullPageTitle = `${progTitle} — Sachin Shiksha Mandal`;
-                const enhancedMetaDesc = `${progTitle} — ${progDesc} Learn about eligibility, fee structure, duration, and admission workflow.`;
+                const enhancedMetaDesc = `${progTitle} — ${progDesc} Learn about eligibility criteria, curriculum, faculty, outcomes, and annual fees.`;
                 
                 document.getElementById('pageTitle').textContent = fullPageTitle;
                 document.getElementById('metaDesc').setAttribute('content', enhancedMetaDesc);
@@ -635,11 +699,7 @@
                       "provider": { "@id": "https://parabs.github.io/CampusOS/#organization" },
                       "educationalLevel": progLevel,
                       "timeRequired": progDurationISO,
-                      "offers": {
-                        "@type": "Offer",
-                        "price": numericFee,
-                        "priceCurrency": "INR"
-                      }
+                      ...(offerObject ? { "offers": offerObject } : {})
                     }
                   ]
                 };
@@ -660,11 +720,140 @@
                     <div class="stat-box-row"><span>Placement Rate:</span><span>${getVal('placementRate')}</span></div>
                     <div class="stat-box-row"><span>Average Salary:</span><span>${getVal('avgSalary')}</span></div>
                     <div class="stat-box-row"><span>Highest Package:</span><span>${getVal('highSalary')}</span></div>
-                    <div class="stat-box-row"><span>Intake Capacity:</span><span>${getVal('intake')}</span></div>
+                    <div class="stat-box-row"><span>Intake Capacity:</span><span>${progIntake}</span></div>
                     <div class="stat-box-row"><span>Eligibility:</span><span>${progEligibility}</span></div>
                 `;
 
                 document.getElementById('progOverviewText').textContent = getVal('overview');
+
+                // Render Key Information block
+                document.getElementById('keyInfoGrid').innerHTML = `
+                    <div class="key-info-item"><span>Programme Type</span><strong>${progLevel}</strong></div>
+                    <div class="key-info-item"><span>Duration</span><strong>${progDuration}</strong></div>
+                    <div class="key-info-item"><span>Programme Code</span><strong>${progCode}</strong></div>
+                    <div class="key-info-item"><span>Course Type</span><strong>${progCourseType}</strong></div>
+                    <div class="key-info-item"><span>Eligibility</span><strong>${progEligibility}</strong></div>
+                    <div class="key-info-item"><span>Intake</span><strong>${progIntake}</strong></div>
+                `;
+
+                // Render Dedicated Eligibility & Entry Requirements Block
+                const eligibilityContainer = document.getElementById('eligibilityContainer');
+                const eligDetailNodes = programNode.querySelectorAll('eligibilityDetail');
+                if (eligDetailNodes.length > 0) {
+                    let eligHTML = `<strong>${progEligibility}</strong><ul>`;
+                    eligDetailNodes.forEach(ed => {
+                        eligHTML += `<li>${ed.textContent}</li>`;
+                    });
+                    eligHTML += `</ul>`;
+                    eligibilityContainer.innerHTML = eligHTML;
+                } else {
+                    eligibilityContainer.innerHTML = `
+                        <strong>${progEligibility}</strong>
+                        <ul>
+                            <li>Passed Standard XII (HSC) or equivalent examination from a recognized board.</li>
+                            <li>Minimum aggregate marks as mandated by institutional and regulatory guidelines for the academic year.</li>
+                        </ul>
+                    `;
+                }
+
+                // Render Curriculum from XML (or fallback example if nodes missing)
+                const curriculumContainer = document.getElementById('curriculumContainer');
+                const semNodes = programNode.querySelectorAll('semester');
+                if (semNodes.length > 0) {
+                    let semHTML = '';
+                    semNodes.forEach(sem => {
+                        const semName = sem.getAttribute('name') || 'Semester';
+                        semHTML += `<div class="curriculum-semester-block"><h4>${semName}</h4>`;
+                        sem.querySelectorAll('course').forEach(c => {
+                            const cName = c.querySelector('name')?.textContent || 'Course';
+                            const cCode = c.querySelector('code')?.textContent || '';
+                            const cCred = c.querySelector('credits')?.textContent || '';
+                            semHTML += `<div class="course-row"><span>${cName} (${cCode})</span><span>${cCred}</span></div>`;
+                        });
+                        semHTML += `</div>`;
+                    });
+                    curriculumContainer.innerHTML = semHTML;
+                } else {
+                    curriculumContainer.innerHTML = `
+                        <div class="curriculum-semester-block">
+                            <h4>Semester I & II (First Year Core)</h4>
+                            <div class="course-row"><span>Core Discipline Foundation I</span><span>4 Credits</span></div>
+                            <div class="course-row"><span>Applied Quantitative & Analytical Skills</span><span>4 Credits</span></div>
+                        </div>
+                    `;
+                }
+
+                // Render Faculty from XML (or fallback)
+                const facultyContainer = document.getElementById('facultyContainer');
+                const facNodes = programNode.querySelectorAll('facultyMember');
+                if (facNodes.length > 0) {
+                    let facHTML = '';
+                    facNodes.forEach(f => {
+                        const fName = f.querySelector('name')?.textContent || 'Faculty Member';
+                        const fDesig = f.querySelector('designation')?.textContent || 'Professor';
+                        const fQual = f.querySelector('qualification')?.textContent || '';
+                        const initials = fName.split(' ').map(n=>n[0]).join('').substring(0,2);
+                        facHTML += `
+                            <div class="faculty-card">
+                                <div class="faculty-avatar">${initials}</div>
+                                <div class="faculty-info">
+                                    <h5>${fName}</h5>
+                                    <span>${fDesig}</span>
+                                    <p>${fQual}</p>
+                                </div>
+                            </div>`;
+                    });
+                    facultyContainer.innerHTML = facHTML;
+                } else {
+                    facultyContainer.innerHTML = `
+                        <div class="faculty-card">
+                            <div class="faculty-avatar">DS</div>
+                            <div class="faculty-info">
+                               <h5>Dr. Department Chair</h5>
+                               <span>Professor & Head</span>
+                               <p>Ph.D., Senior Academic Lead</p>
+                            </div>
+                        </div>`;
+                }
+
+                // Render Outcomes from XML (or fallback)
+                const outcomesContainer = document.getElementById('outcomesContainer');
+                const outNodes = programNode.querySelectorAll('outcome');
+                if (outNodes.length > 0) {
+                    let outHTML = '';
+                    outNodes.forEach(o => {
+                        const oTitle = o.querySelector('title')?.textContent || 'Outcome';
+                        const oDesc = o.querySelector('description')?.textContent || '';
+                        outHTML += `
+                            <div class="outcome-item">
+                                <h5>🎯 ${oTitle}</h5>
+                                <p>${oDesc}</p>
+                            </div>`;
+                    });
+                    outcomesContainer.innerHTML = outHTML;
+                } else {
+                    outcomesContainer.innerHTML = `
+                        <div class="outcome-item">
+                            <h5>🎯 Technical & Professional Mastery</h5>
+                            <p>Gain comprehensive domain knowledge and rigorous practical problem-solving capabilities aligned with industry standards.</p>
+                        </div>`;
+                }
+
+                // Render Careers from XML (or fallback)
+                const careersContainer = document.getElementById('careersContainer');
+                const careerNodes = programNode.querySelectorAll('careerRole');
+                if (careerNodes.length > 0) {
+                    let careerHTML = '';
+                    careerNodes.forEach(cr => {
+                        careerHTML += `<span class="career-badge">💼 ${cr.textContent}</span>`;
+                    });
+                    careersContainer.innerHTML = careerHTML;
+                } else {
+                    careersContainer.innerHTML = `
+                        <span class="career-badge">💼 Industry Specialist</span>
+                        <span class="career-badge">💼 Enterprise Consultant</span>
+                        <span class="career-badge">💼 Research & Development</span>`;
+                }
 
                 document.getElementById('feeBreakdownContainer').innerHTML = `
                     <div class="fee-breakdown-row"><span>Annual Tuition Fee</span><span>${progTuition}</span></div>
@@ -676,6 +865,7 @@
                 window.currentProgramTitle = progTitle;
                 window.currentProgramFee = progTotalFee;
                 window.currentProgramEligibility = progEligibility;
+                window.currentProgramDuration = progDuration;
 
             } catch (err) {
                 console.error("XML Load Error:", err);
@@ -686,7 +876,7 @@
         function talkToCounselor() {
             const program = window.currentProgramTitle || 'this program';
             const message = `Hello, I am interested in the ${program} program. I would like to know more about eligibility, fees and admission.`;
-            const counselorNumber = "919999999999"; // Official institutional WhatsApp helpline number
+            const counselorNumber = "919999999999"; // Replace with official institutional WhatsApp helpline number before deployment
             window.open(`https://wa.me/${counselorNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
@@ -694,11 +884,15 @@
             const box = document.getElementById('aiResponseBox');
             box.style.display = 'block';
             if (q.includes('fees')) {
-                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> The total annual fee for ${window.currentProgramTitle || 'this program'} is ${window.currentProgramFee || 'As per fee schedule'}.`;
-            } else if (q.includes('eligibility')) {
-                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> Eligibility criteria for ${window.currentProgramTitle || 'this program'}: ${window.currentProgramEligibility || 'Standard 10+2 qualification'}.`;
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Program Counselor:</span> The total annual fee for ${window.currentProgramTitle || 'this programme'} is ${window.currentProgramFee || 'As per fee schedule'}.`;
+            } else if (q.includes('eligibility') || q.includes('Am I eligible')) {
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Program Counselor:</span> Eligibility criteria for ${window.currentProgramTitle || 'this programme'}: ${window.currentProgramEligibility || 'Standard 10+2 qualification'}.`;
+            } else if (q.includes('study') || q.includes('Curriculum')) {
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Program Counselor:</span> ${window.currentProgramTitle || 'This programme'} spans ${window.currentProgramDuration || '3 Years'} and covers foundational core modules as well as advanced specialisations. Explore the Curriculum tab above for semester-wise courses.`;
+            } else if (q.includes('careers') || q.includes('pursue')) {
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Program Counselor:</span> Graduates of ${window.currentProgramTitle || 'this programme'} pursue dynamic roles across leading corporate enterprises, consultancies, and technology firms. Check the Careers tab for specific pathways.`;
             } else {
-                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> Admissions and curriculum guidelines are fully updated for the 2026-27 academic session.`;
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Program Counselor:</span> Admissions and curriculum guidelines are fully updated for the 2026-27 academic session.`;
             }
         }
 
@@ -706,7 +900,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             loadProgramFromXML();
 
-            const sections = document.querySelectorAll('#overview, #admissions');
+            const sections = document.querySelectorAll('.content-card');
             const navLinks = document.querySelectorAll('.section-nav-link');
 
             const observer = new IntersectionObserver(entries => {
@@ -718,7 +912,7 @@
                     }
                 });
             }, {
-                rootMargin: '-150px 0px -60% 0px'
+                rootMargin: '-150px 0px -50% 0px'
             });
 
             sections.forEach(section => observer.observe(section));

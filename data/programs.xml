@@ -1,82 +1,199 @@
-<?xml5 version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <programs>
-    <program id="bms">
-        <title>Bachelor of Management Studies (BMS)</title>
-        <level>Undergraduate • 3 Years</level>
-        <rating>⭐ 4.75 Rating</rating>
-        <nep>NEP 2020 Compliant</nep>
-        <description>Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills designed for top global corporations.</description>
-        <duration>3 Years</duration>
-        <credits>120 ECTS</credits>
-        <intake>120 Seats</intake>
-        <placementRate>98% Success</placementRate>
-        <avgSalary>₹6.2 LPA</avgSalary>
-        <highSalary>₹11.0 LPA</highSalary>
-        <eligibility>10+2 Any Stream (45%+)</eligibility>
-        <overview>The Bachelor of Management Studies (BMS) is a premier 3-year undergraduate degree structured under NEP guidelines, bridging foundational business theory with real-world corporate case studies and internships.</overview>
-        <tuitionFee>₹28,500</tuitionFee>
-        <devFee>₹4,500</devFee>
-        <libFee>₹2,000</libFee>
-        <totalFee>₹35,000</totalFee>
-    </program>
-
-    <program id="bcom1">
-        <title>Bachelor of Commerce (B.Com)</title>
-        <level>Undergraduate • 3 Years</level>
-        <rating>⭐ 4.9 Rating</rating>
-        <nep>NEP 2020 Compliant</nep>
-        <description>Comprehensive foundation in accounting, taxation, auditing, and global corporate finance principles.</description>
-        <duration>3 Years</duration>
-        <credits>120 ECTS</credits>
-        <intake>240 Seats</intake>
-        <placementRate>94% Success</placementRate>
-        <avgSalary>₹4.5 LPA</avgSalary>
-        <highSalary>₹8.5 LPA</highSalary>
-        <eligibility>10+2 Commerce (45%+)</eligibility>
-        <overview>The Bachelor of Commerce (B.Com) program equips students with rigorous accounting skills, tax planning frameworks, and deep financial literacy required for modern corporate auditing and banking careers.</overview>
-        <tuitionFee>₹12,400</tuitionFee>
-        <devFee>₹2,500</devFee>
-        <libFee>₹1,500</libFee>
-        <totalFee>₹16,400</totalFee>
-    </program>
-
+    <!-- Bachelor of Science in Information Technology (B.Sc IT) -->
     <program id="bsit">
         <title>Bachelor of Science in IT (B.Sc IT)</title>
-        <level>Undergraduate • 3 Years</level>
-        <rating>⭐ 4.85 Rating</rating>
-        <nep>AI Integrated</nep>
-        <description>Cutting-edge technical curriculum covering software engineering, cloud workflows, and data structures.</description>
+        <shortTitle>B.Sc IT</shortTitle>
+        <code>BSCIT</code>
+        <level>Undergraduate (UG)</level>
+        <courseType>Bachelor Degree</courseType>
         <duration>3 Years</duration>
-        <credits>120 ECTS</credits>
+        <durationISO>P3Y</durationISO>
         <intake>120 Seats</intake>
-        <placementRate>97% Success</placementRate>
+        <nep>NEP 2020 Aligned</nep>
+        <nepBadge>AI Integrated</nepBadge>
+        <rating>4.85 Rating</rating>
+        <placementRate>97%</placementRate>
         <avgSalary>₹7.5 LPA</avgSalary>
         <highSalary>₹14.0 LPA</highSalary>
         <eligibility>10+2 with Math (45%+)</eligibility>
-        <overview>The B.Sc IT program provides immersive training in full-stack software development, database architecture, cybersecurity protocols, and cloud computing infrastructure.</overview>
+        
+        <eligibilityDetails>
+            <eligibilityDetail>Passed Standard XII (HSC) or equivalent examination from a recognized board.</eligibilityDetail>
+            <eligibilityDetail>Mathematics must be secured as a compulsory subject at the Higher Secondary level.</eligibilityDetail>
+            <eligibilityDetail>Minimum aggregate score of 45% for Open Category and 40% for Reserved Category candidates.</eligibilityDetail>
+        </eligibilityDetails>
+
+        <description>Cutting-edge technical curriculum covering software engineering, cloud workflows, and data structures.</description>
+        <overview>The Bachelor of Science in Information Technology (B.Sc IT) programme is designed to provide comprehensive theoretical and practical foundations in computing, modern software development, cloud infrastructure, and data architecture. Aligned with NEP 2020 framework, the curriculum integrates real-world programming labs, AI workflows, and collaborative capstone projects.</overview>
+        
+        <!-- Curriculum Nodes -->
+        <semester name="Year 1 • Semester I">
+            <course>
+                <name>Imperative Programming</name>
+                <code>BSIT101</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Digital Logic and Applications</name>
+                <code>BSIT102</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Discrete Mathematics</name>
+                <code>BSIT103</code>
+                <credits>4 Credits</credits>
+            </course>
+        </semester>
+        <semester name="Year 1 • Semester II">
+            <course>
+                <name>Object Oriented Programming</name>
+                <code>BSIT201</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Microprocessor Architecture</name>
+                <code>BSIT202</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Web Design and Client-Side Scripting</name>
+                <code>BSIT203</code>
+                <credits>4 Credits</credits>
+            </course>
+        </semester>
+
+        <!-- Faculty Nodes -->
+        <facultyMember>
+            <name>Dr. Rajesh Sharma</name>
+            <designation>Professor &amp; Head of Department</designation>
+            <qualification>Ph.D. in Computer Science, IIT Bombay</qualification>
+        </facultyMember>
+        <facultyMember>
+            <name>Prof. Sneha Kulkarni</name>
+            <designation>Associate Professor</designation>
+            <qualification>M.Tech in Software Engineering</qualification>
+        </facultyMember>
+
+        <!-- Outcome Nodes -->
+        <outcome>
+            <title>Technical Knowledge &amp; Coding Proficiency</title>
+            <description>Master multiple high-level programming paradigms, database management systems, and advanced software engineering lifecycles.</description>
+        </outcome>
+        <outcome>
+            <title>System Design &amp; Cloud Workflows</title>
+            <description>Architect scalable, secure cloud-native applications and deploy containerized microservices across enterprise environments.</description>
+        </outcome>
+
+        <!-- Career Roles -->
+        <careerRole>Software Developer</careerRole>
+        <careerRole>Web Developer</careerRole>
+        <careerRole>Cloud Engineer</careerRole>
+        <careerRole>Database Administrator</careerRole>
+        <careerRole>Cybersecurity Analyst</careerRole>
+        <careerRole>IT Consultant</careerRole>
+
         <tuitionFee>₹34,000</tuitionFee>
         <devFee>₹6,000</devFee>
         <libFee>₹2,500</libFee>
         <totalFee>₹42,500</totalFee>
     </program>
 
-    <program id="mcom">
-        <title>Master of Commerce (M.Com)</title>
-        <level>Postgraduate • 2 Years</level>
-        <rating>⭐ 4.85 Rating</rating>
-        <nep>Industry Partner</nep>
-        <description>Advanced specialization focusing on financial analytics, corporate research, and strategic auditing frameworks.</description>
-        <duration>2 Years</duration>
-        <credits>80 ECTS</credits>
-        <intake>60 Seats</intake>
-        <placementRate>95% Success</placementRate>
-        <avgSalary>₹8.0 LPA</avgSalary>
-        <highSalary>₹18.0 LPA</highSalary>
-        <eligibility>Graduate in Commerce</eligibility>
-        <overview>Advanced postgraduate study specializing in financial analytics, strategic auditing, and empirical corporate research.</overview>
+    <!-- Bachelor of Management Studies (BMS) -->
+    <program id="bms">
+        <title>Bachelor of Management Studies (BMS)</title>
+        <shortTitle>BMS</shortTitle>
+        <code>BMS</code>
+        <level>Undergraduate (UG)</level>
+        <courseType>Bachelor Degree</courseType>
+        <duration>3 Years</duration>
+        <durationISO>P3Y</durationISO>
+        <intake>120 Seats</intake>
+        <nep>NEP 2020 Aligned</nep>
+        <nepBadge>Executive Track</nepBadge>
+        <rating>4.80 Rating</rating>
+        <placementRate>98%</placementRate>
+        <avgSalary>₹6.8 LPA</avgSalary>
+        <highSalary>₹12.5 LPA</highSalary>
+        <eligibility>10+2 Any Stream (45%+)</eligibility>
+        
+        <eligibilityDetails>
+            <eligibilityDetail>Passed Standard XII (HSC) or equivalent examination in any stream (Science, Commerce, or Arts).</eligibilityDetail>
+            <eligibilityDetail>Minimum aggregate score of 45% for Open Category and 40% for Reserved Category applicants.</eligibilityDetail>
+        </eligibilityDetails>
+
+        <description>Develop executive decision-making, strategic marketing, financial acumen, and enterprise leadership skills.</description>
+        <overview>The Bachelor of Management Studies (BMS) programme equips students with foundational principles of corporate management, financial strategy, organizational behavior, and modern marketing analytics. The course prepares future business leaders through experiential case studies, live corporate projects, and leadership workshops.</overview>
+        
+        <!-- Curriculum Nodes -->
+        <semester name="Year 1 • Semester I">
+            <course>
+                <name>Introduction to Financial Accounting</name>
+                <code>BMS101</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Business Statistics</name>
+                <code>BMS102</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Principles of Management</name>
+                <code>BMS103</code>
+                <credits>4 Credits</credits>
+            </course>
+        </semester>
+        <semester name="Year 1 • Semester II">
+            <course>
+                <name>Principles of Marketing</name>
+                <code>BMS201</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Business Economics-I</name>
+                <code>BMS202</code>
+                <credits>4 Credits</credits>
+            </course>
+            <course>
+                <name>Corporate Finance</name>
+                <code>BMS203</code>
+                <credits>4 Credits</credits>
+            </course>
+        </semester>
+
+        <!-- Faculty Nodes -->
+        <facultyMember>
+            <name>Dr. Ananya Deshmukh</name>
+            <designation>Professor of Management</designation>
+            <qualification>Ph.D. in Finance, JBIMS</qualification>
+        </facultyMember>
+        <facultyMember>
+            <name>Prof. Vikram Malhotra</name>
+            <designation>Associate Professor - Marketing</designation>
+            <qualification>MBA, XLRI Jamshedpur</qualification>
+        </facultyMember>
+
+        <!-- Outcome Nodes -->
+        <outcome>
+            <title>Strategic Decision Making</title>
+            <description>Analyze complex business environments and formulate actionable commercial strategies using quantitative and qualitative tools.</description>
+        </outcome>
+        <outcome>
+            <title>Leadership &amp; Corporate Communication</title>
+            <description>Lead cross-functional teams with emotional intelligence, professional integrity, and robust negotiation frameworks.</description>
+        </outcome>
+
+        <!-- Career Roles -->
+        <careerRole>Management Trainee</careerRole>
+        <careerRole>Business Analyst</careerRole>
+        <careerRole>Marketing Executive</careerRole>
+        <careerRole>Financial Consultant</careerRole>
+        <careerRole>Operations Associate</careerRole>
+        <careerRole>Entrepreneur</careerRole>
+
         <tuitionFee>₹32,000</tuitionFee>
-        <devFee>₹5,000</devFee>
+        <devFee>₹5,500</devFee>
         <libFee>₹2,000</libFee>
-        <totalFee>₹39,000</totalFee>
+        <totalFee>₹39,500</totalFee>
     </program>
 </programs>
