@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admissions Portal — Akbar Peerbhoy College | Powered by Campus OS</title>
+    <title>Admissions 2026–27 | Sachin Shiksha Mandal | CampusOS</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -144,7 +144,7 @@
             gap: 14px;
             flex-shrink: 0;
         }
-        .portal-login-link { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 13px; padding: 0 12px; }
+        .portal-login-link { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 13px; padding: 0 12px; cursor: pointer; }
         .nav-cta {
             background: var(--secondary); color: white !important;
             padding: 10px 24px; border-radius: var(--radius-btn);
@@ -235,7 +235,7 @@
         }
         .admit-stat-box .lbl { font-size: 12px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; }
         .admit-stat-box .val { font-size: 26px; font-weight: 900; color: var(--primary); }
-        .admit-stat-box .sub { font-size: 12px; color: #10B981; font-weight: 600; }
+        .admit-stat-box .sub { font-size: 12px; color: var(--text-light); font-weight: 600; }
 
         .admit-grid-layout-70-30 {
             display: grid;
@@ -330,10 +330,18 @@
         .sidebar-info-row span:last-child { color: var(--primary); font-weight: 700; }
 
         .sidebar-action-group { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
-        .btn-apply-primary { background: var(--secondary); color: white; text-align: center; padding: 12px; border-radius: var(--radius-btn); font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+        .btn-apply-primary { background: var(--secondary); color: white; text-align: center; padding: 12px; border-radius: var(--radius-btn); font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); cursor: pointer; border: none; }
         .btn-apply-primary:hover { background: var(--secondary-dark); }
-        .btn-track-secondary { background: white; color: var(--primary); text-align: center; padding: 12px; border-radius: var(--radius-btn); font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid #CBD5E1; }
+        .btn-track-secondary { background: white; color: var(--primary); text-align: center; padding: 12px; border-radius: var(--radius-btn); font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid #CBD5E1; cursor: pointer; }
         .btn-track-secondary:hover { background: #F1F5F9; }
+
+        .eligibility-notice-box {
+            background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 14px; padding: 20px; margin-top: 24px;
+        }
+        .eligibility-notice-box h4 { font-size: 15px; color: var(--primary); font-weight: 800; margin-bottom: 6px; }
+        .eligibility-notice-box p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+        .eligibility-notice-box a { color: var(--secondary); font-weight: 700; text-decoration: none; }
+        .eligibility-notice-box a:hover { text-decoration: underline; }
 
         .admission-dates-strip {
             background: white; border-radius: var(--radius-card); padding: 28px;
@@ -343,6 +351,16 @@
         .date-item-box { display: flex; flex-direction: column; gap: 2px; padding-left: 10px; border-left: 3px solid var(--secondary); }
         .date-item-box .lbl { font-size: 11px; font-weight: 700; color: var(--text-light); text-transform: uppercase; }
         .date-item-box .val { font-size: 14px; font-weight: 800; color: var(--primary); }
+
+        .admission-faq-section {
+            background: #F8FAFC; border-radius: var(--radius-card); padding: 36px;
+            border: 1px solid #E2E8F0; box-shadow: var(--shadow); margin-top: 30px;
+        }
+        .admission-faq-section h3 { font-size: 22px; color: var(--primary); font-weight: 800; margin-bottom: 20px; }
+        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .faq-item-card { background: white; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; }
+        .faq-item-card h4 { font-size: 15px; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+        .faq-item-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
 
         .admissions-trust-banner {
             background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
@@ -411,29 +429,29 @@
 
     <!-- Slim Product Banner -->
     <header class="campus-os-banner">
-        <div>🚀 <strong>Campus OS Demo Showcase</strong> — Admissions Portal Module</div>
+        <div>🚀 <strong>CampusOS Demo Showcase</strong> — Admissions Portal Module</div>
         <div><a href="index.html" class="banner-link">Return to Home &rarr;</a></div>
     </header>
 
     <!-- Global Navigation Bar -->
     <nav class="navbar" id="navbar">
         <a href="index.html" class="logo-area">
-            <div class="college-crest">AP</div>
-            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+            <div class="college-crest">SS</div>
+            <div class="logo-text">Sachin Shiksha Mandal <span>Higher Education • Powered by CampusOS</span></div>
         </a>
 
         <ul class="nav-links" id="navLinks">
             <li><a href="programs.html" class="nav-link">Programs</a></li>
             <li><a href="admissions.html" class="nav-link active">Admissions</a></li>
-            <li><a href="career-services.html" class="nav-link">Career Services</a></li>
-            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
-            <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
-            <li><a href="compliance.html" class="nav-link">Compliance & Regulatory</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Life</a></li>
+            <li><a href="career-services.html" class="nav-link">Placements</a></li>
+            <li><a href="institution-explorer.html" class="nav-link">Institution</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance</a></li>
         </ul>
 
         <div class="nav-actions">
-            <a href="index.html#apply" class="portal-login-link">Portal Login</a>
-            <a href="index.html#apply" class="nav-cta">Apply Now</a>
+            <span class="portal-login-link" onclick="alert('Portal login module is currently in prototype phase.')">Portal Login</span>
+            <a href="admissions.html" class="nav-cta">Apply Now</a>
         </div>
 
         <!-- Mobile Hamburger Button Pinned to Right -->
@@ -446,14 +464,14 @@
 
     <!-- Breadcrumb Bar -->
     <div class="breadcrumb-bar" id="breadcrumbBar">
-        <a href="index.html">Akbar Peerbhoy College</a> &gt; <span>Admissions Portal</span>
+        <a href="index.html">Sachin Shiksha Mandal</a> &gt; <span>Admissions</span>
     </div>
 
     <!-- Admissions Portal Section -->
     <section class="admissions-redesign-section">
         <div class="admissions-container">
             <div class="admissions-header reveal">
-                <span class="step-pill-tag" style="margin-bottom: 12px; display: inline-block; padding: 4px 12px; font-size: 11px;">Admissions Portal 2026-27</span>
+                <span class="step-pill-tag" style="margin-bottom: 12px; display: inline-block; padding: 4px 12px; font-size: 11px;">Admissions Portal 2026–27</span>
                 <h2>Admissions Made Simple</h2>
                 <p>From application to confirmation, experience a completely digital admission process designed for speed, transparency, and convenience.</p>
             </div>
@@ -462,22 +480,22 @@
                 <div class="admit-stat-box">
                     <span class="lbl"><span style="color:#10B981; font-size:10px;">●</span> Admission Status</span>
                     <span class="val" style="color: #10B981;">Open</span>
-                    <span class="sub">Batch 2026-27 Active</span>
+                    <span class="sub">Batch 2026–27 Active</span>
                 </div>
                 <div class="admit-stat-box">
-                    <span class="lbl">📈 Applications Received</span>
-                    <span class="val">1,842</span>
-                    <span class="sub">Live counter</span>
+                    <span class="lbl">📈 Application Cycle</span>
+                    <span class="val" style="font-size: 20px; padding-top: 4px;">Active Intake</span>
+                    <span class="sub">Standard Digital Queue</span>
                 </div>
                 <div class="admit-stat-box">
-                    <span class="lbl">💺 Seats Remaining</span>
-                    <span class="val">84</span>
-                    <span class="sub">Across UG & PG branches</span>
+                    <span class="lbl">💺 Institutional Intake</span>
+                    <span class="val" style="font-size: 20px; padding-top: 4px;">Branch Specific</span>
+                    <span class="sub">Verified per programme</span>
                 </div>
                 <div class="admit-stat-box">
-                    <span class="lbl">⏱️ Average Processing</span>
-                    <span class="val">48 Hours</span>
-                    <span class="sub">Real-time verification</span>
+                    <span class="lbl">⏱️ Target Processing Time</span>
+                    <span class="val" style="font-size: 22px; padding-top: 4px;">48 Hours</span>
+                    <span class="sub">Standard workflow goal</span>
                 </div>
             </div>
 
@@ -516,11 +534,11 @@
                                     <p>Monitor your application progress in real-time through the student portal.</p>
                                     <div class="authentic-tracker-box">
                                         <div class="tracker-top-meta">
-                                            <span>Application #2026-001548</span>
-                                            <strong>Sachin P. • B.Com</strong>
+                                            <span>Application #2026-Demo</span>
+                                            <strong>Sample Applicant • UG Course</strong>
                                         </div>
-                                        <div class="tracker-milestone-row done"><span>✓ Submitted</span><span style="font-size: 11px;">12 Jun</span></div>
-                                        <div class="tracker-milestone-row done"><span>✓ Verified</span><span style="font-size: 11px;">13 Jun</span></div>
+                                        <div class="tracker-milestone-row done"><span>✓ Submitted</span><span style="font-size: 11px;">Completed</span></div>
+                                        <div class="tracker-milestone-row done"><span>✓ Verified</span><span style="font-size: 11px;">Validated</span></div>
                                         <div class="tracker-milestone-row active"><span>🟡 Under Review</span><span style="font-size: 11px; color: #FBBF24;">ETA 48 Hours</span></div>
                                     </div>
                                 </div>
@@ -536,18 +554,24 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Programme Eligibility Callout -->
+                        <div class="eligibility-notice-box">
+                            <h4>Programme-Specific Eligibility Criteria</h4>
+                            <p>Academic requirements vary by course (e.g., specific subject prerequisites or minimum aggregate scores). Please review detailed criteria on individual course pages before applying. <a href="programs.html">Explore Programs &rarr;</a></p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="admissions-sidebar-panel reveal">
-                    <div class="sidebar-panel-title">Admissions 2026</div>
+                    <div class="sidebar-panel-title">Admissions 2026–27</div>
                     <div class="sidebar-info-row"><span>Status</span><span style="color: #10B981;">Admissions Open</span></div>
                     <div class="sidebar-info-row"><span>Last Date</span><span>15 July 2026</span></div>
-                    <div class="sidebar-info-row"><span>Application Fee</span><span>₹500</span></div>
+                    <div class="sidebar-info-row"><span>Application Fee</span><span>₹500 [Placeholder]</span></div>
                     <div class="sidebar-info-row"><span>Response</span><span>48 Hours</span></div>
                     <div class="sidebar-action-group">
-                        <a href="#" class="btn-apply-primary" onclick="alert('Starting digital application...')">Start Your Application</a>
-                        <a href="#" class="btn-track-secondary" onclick="alert('Opening tracker...')">Track Application</a>
+                        <button type="button" class="btn-apply-primary" onclick="alert('Application submission module is currently a prototype feature.')">Start Your Application</button>
+                        <button type="button" class="btn-track-secondary" onclick="alert('Application tracking module is currently a prototype feature.')">Track Application</button>
                     </div>
                 </div>
             </div>
@@ -555,7 +579,7 @@
             <!-- Key Admission Dates Strip -->
             <div class="admission-dates-strip reveal">
                 <h3 style="font-size: 18px; color: var(--primary); font-weight: 800; margin-bottom: 4px;">Important Timeline Milestones</h3>
-                <p style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">Critical dates for the 2026-27 academic intake cycle.</p>
+                <p style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">Critical dates for the 2026–27 academic intake cycle.</p>
                 
                 <div class="dates-strip-row">
                     <div class="date-item-box"><span class="lbl">Applications Open</span><span class="val">1 June 2026</span></div>
@@ -566,15 +590,34 @@
                 </div>
             </div>
 
+            <!-- Admission FAQs Section -->
+            <div class="admission-faq-section reveal">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item-card">
+                        <h4>How do I check my eligibility for a specific course?</h4>
+                        <p>Eligibility requirements differ across undergraduate and postgraduate offerings. You can check detailed prerequisites and minimum marks directly on each course listing via our <a href="programs.html" style="color: var(--secondary); text-decoration: none; font-weight: 600;">Programs catalog</a>.</p>
+                    </div>
+                    <div class="faq-item-card">
+                        <h4>What programme-specific documents are required?</h4>
+                        <p>Document checklists vary depending on the chosen programme (e.g., qualifying entrance exams or specific stream backgrounds). Please refer to the specific prerequisites outlined on the respective programme details page.</p>
+                    </div>
+                    <div class="faq-item-card">
+                        <h4>When will the merit lists be published?</h4>
+                        <p>Merit lists and subsequent counseling rounds are published according to the official admission schedule and timeline milestones outlined above.</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Trust Section -->
             <div class="admissions-trust-banner reveal">
                 <span class="step-pill-tag" style="background: rgba(37,99,235,0.3); color: #93C5FD; margin-bottom: 12px; display: inline-block;">Secure & Transparent</span>
-                <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 8px;">Why Students Love Our Digital Admissions</h3>
+                <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 8px;">Why Students Choose Our Digital Admissions</h3>
                 <p style="color: #94A3B8; font-size: 15px; max-width: 600px; margin: 0 auto;">Engineered for total peace of mind and effortless completion.</p>
                 
                 <div class="trust-pills-grid">
                     <div class="trust-pill-item"><span>✓</span> Secure Digital Admission</div>
-                    <div class="trust-pill-item"><span>✓</span> UGC Compliant</div>
+                    <div class="trust-pill-item"><span>✓</span> Regulatory Compliant Framework</div>
                     <div class="trust-pill-item"><span>✓</span> SSL Protected Vault</div>
                     <div class="trust-pill-item"><span>✓</span> Instant Email Confirmation</div>
                     <div class="trust-pill-item"><span>✓</span> Real-Time Application Tracking</div>
@@ -586,13 +629,13 @@
     </section>
 
     <!-- Context-Aware Floating AI Assistant -->
-    <a href="#ask-ai" class="floating-ai-widget" onclick="alert('Launching Admission AI Assistant...')">
+    <a href="javascript:void(0);" class="floating-ai-widget" onclick="alert('Ask Admission AI is a prototype CampusOS functional capability.')">
         ✨ Ask Admission AI
     </a>
 
     <footer>
         <div class="footer-bottom">
-            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved. | <a href="index.html" style="color: var(--secondary-light); text-decoration: none;">Return to College Home</a></p>
+            <p>© 2026 Sachin Shiksha Mandal. All rights reserved. | <a href="index.html" style="color: var(--secondary-light); text-decoration: none;">Return to Home</a></p>
         </div>
     </footer>
 

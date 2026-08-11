@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immersive Campus Tour — Akbar Peerbhoy College | Powered by Campus OS</title>
+    <title>Campus Life & Virtual Campus Tour | Sachin Shiksha Mandal | CampusOS</title>
     
+    <!-- Meta Description -->
+    <meta name="description" content="Explore Sachin Shiksha Mandal through our immersive virtual campus tour. Discover state-of-the-art academic spaces, student life, cultural events, innovation labs, and modern campus facilities.">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -156,6 +159,7 @@
             text-decoration: none;
             font-size: 13px;
             padding: 0 12px;
+            cursor: pointer;
         }
         .nav-cta {
             background: var(--secondary);
@@ -240,6 +244,14 @@
             line-height: 1.08;
             margin-bottom: 12px;
             color: #FFFFFF;
+        }
+        .hero-descriptor {
+            font-size: 16px;
+            font-weight: 700;
+            color: #60A5FA;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         .hero-content p {
             font-size: 15px;
@@ -396,7 +408,7 @@
             gap: 10px;
         }
 
-        /* 3. Apple-Style Split Screen Drill-Down Walkthrough View */
+        /* 3. Apple-Style Split Screen Guided Tour Walkthrough */
         .guided-tour-view {
             display: none;
             max-width: 1280px;
@@ -629,6 +641,55 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        /* Campus Life & Campus Tour FAQs Section */
+        .campus-faq-section {
+            max-width: 1280px;
+            margin: 0 auto 80px;
+            padding: 0 6%;
+        }
+        .faq-container {
+            background: #111827;
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .faq-container h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .faq-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .faq-card h4 {
+            font-size: 16px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+        .faq-card p {
+            font-size: 13.5px;
+            color: #94A3B8;
+            line-height: 1.5;
+        }
+        .faq-card a {
+            color: #60A5FA;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .faq-card a:hover { text-decoration: underline; }
+
         /* Footer */
         .campus-os-footer {
             background: var(--primary-dark);
@@ -685,29 +746,29 @@
 
     <!-- Slim Product Banner -->
     <header class="campus-os-banner">
-        <div>🚀 <strong>Campus OS Demo Showcase</strong> — Immersive Campus Tour Workspace</div>
+        <div>🚀 <strong>CampusOS Demo Showcase</strong> — Immersive Campus Tour Workspace</div>
         <div><a href="index.html" class="banner-link">Return to Home &rarr;</a></div>
     </header>
 
     <!-- Standardized Enterprise Navigation Bar -->
     <nav class="navbar" id="navbar">
         <a href="index.html" class="logo-area">
-            <div class="college-crest">AP</div>
-            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+            <div class="college-crest">SS</div>
+            <div class="logo-text">Sachin Shiksha Mandal <span>Higher Education • Powered by CampusOS</span></div>
         </a>
 
         <ul class="nav-links" id="navLinks">
             <li><a href="programs.html" class="nav-link">Programs</a></li>
             <li><a href="admissions.html" class="nav-link">Admissions</a></li>
-            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
-            <li><a href="campus-tour.html" class="nav-link active">Campus Tour</a></li>
-            <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
-            <li><a href="compliance.html" class="nav-link">Compliance & Regulatory</a></li>
+            <li><a href="campus-tour.html" class="nav-link active">Campus Life</a></li>
+            <li><a href="career-services.html" class="nav-link">Placements</a></li>
+            <li><a href="institution-explorer.html" class="nav-link">Institution</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance</a></li>
         </ul>
 
         <div class="nav-actions">
-            <a href="index.html#apply" class="portal-login-link">Portal Login</a>
-            <a href="index.html#apply" class="nav-cta">Apply Now</a>
+            <a href="admissions.html" class="portal-login-link">Portal Login</a>
+            <a href="admissions.html" class="nav-cta">Apply Now</a>
         </div>
 
         <!-- Mobile Hamburger Button Pinned to Right -->
@@ -722,13 +783,14 @@
     <header class="cinematic-hero" id="landingHero">
         <div class="hero-content">
             <div class="hero-badge-tag">🎬 Campus Explorer™ Digital Tour</div>
+            <div class="hero-descriptor">Virtual Campus Tour &amp; Campus Life</div>
             <h1>Experience Campus Before You Visit</h1>
             <p>Walk through our classrooms, green spaces, innovation labs, and student communities through an immersive digital journey.</p>
             <div class="hero-buttons">
                 <button class="hero-btn-play" onclick="startCampusTour()">
                     ▶ Start Campus Tour
                 </button>
-                <a href="index.html#apply" class="hero-btn-info">
+                <a href="admissions.html" class="hero-btn-info">
                     📅 Schedule Campus Visit
                 </a>
             </div>
@@ -746,7 +808,7 @@
         <section class="choose-experience-section" id="chooseTourSection" style="padding-top: 0;">
             <div class="experience-cards-grid">
                 <div class="experience-card" onclick="selectTour('campus')">
-                    <img src="images/1-Campus/hero-campus-aerial-evening.png" alt="Explore Our Campus" loading="lazy">
+                    <img src="images/1-Campus/hero-campus-aerial-evening.png" alt="Explore Our Campus at Sachin Shiksha Mandal" loading="lazy">
                     <div class="exp-card-gradient"></div>
                     <div class="exp-card-content">
                         <h3>🏛 Explore Our Campus</h3>
@@ -756,7 +818,7 @@
                 </div>
 
                 <div class="experience-card" onclick="selectTour('academics')">
-                    <img src="images/3-Academics/smart-classroom-interactive.png" alt="Academic Experience" loading="lazy">
+                    <img src="images/3-Academics/smart-classroom-interactive.png" alt="Academic Experience at Sachin Shiksha Mandal" loading="lazy">
                     <div class="exp-card-gradient"></div>
                     <div class="exp-card-content">
                         <h3>🎓 Academic Experience</h3>
@@ -766,7 +828,7 @@
                 </div>
 
                 <div class="experience-card" onclick="selectTour('studentlife')">
-                    <img src="images/2-Student Life/students-walking-campus.png" alt="Student Life" loading="lazy">
+                    <img src="images/2-Student Life/students-walking-campus.png" alt="Student Life at Sachin Shiksha Mandal" loading="lazy">
                     <div class="exp-card-gradient"></div>
                     <div class="exp-card-content">
                         <h3>☕ Student Life</h3>
@@ -776,7 +838,7 @@
                 </div>
 
                 <div class="experience-card" onclick="selectTour('events')">
-                    <img src="images/4-Events/cultural-festival-stage.png" alt="Events & Culture" loading="lazy">
+                    <img src="images/4-Events/cultural-festival-stage.png" alt="Events & Culture at Sachin Shiksha Mandal" loading="lazy">
                     <div class="exp-card-gradient"></div>
                     <div class="exp-card-content">
                         <h3>🎭 Events & Culture</h3>
@@ -786,7 +848,7 @@
                 </div>
 
                 <div class="experience-card" onclick="selectTour('innovation')">
-                    <img src="images/5-Innovation/hackathon-students-coding.png" alt="Innovation & Research" loading="lazy">
+                    <img src="images/5-Innovation/hackathon-students-coding.png" alt="Innovation & Research at Sachin Shiksha Mandal" loading="lazy">
                     <div class="exp-card-gradient"></div>
                     <div class="exp-card-content">
                         <h3>💡 Innovation & Research</h3>
@@ -796,7 +858,7 @@
                 </div>
 
                 <div class="experience-card" onclick="selectTour('career')">
-                    <img src="images/5-Innovation/placement-drive-waiting.png" alt="Career & Industry" loading="lazy">
+                    <img src="images/5-Innovation/placement-drive-waiting.png" alt="Career & Industry at Sachin Shiksha Mandal" loading="lazy">
                     <div class="exp-card-gradient"></div>
                     <div class="exp-card-content">
                         <h3>🏆 Career & Industry</h3>
@@ -816,7 +878,7 @@
 
             <div class="apple-split-card">
                 <div class="apple-split-img-side" onclick="openCurrentStopModal()">
-                    <img id="stopImg" src="" alt="Campus Stop" loading="lazy">
+                    <img id="stopImg" src="" alt="Campus Stop at Sachin Shiksha Mandal" loading="lazy">
                 </div>
 
                 <div class="apple-split-info-side">
@@ -840,17 +902,38 @@
         </div>
     </main>
 
+    <!-- Campus Life & Campus Tour FAQs Section -->
+    <section class="campus-faq-section">
+        <div class="faq-container">
+            <h3>Campus Life &amp; Tour FAQs</h3>
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <h4>How do I schedule an in-person campus visit?</h4>
+                    <p>Prospective students and families can book a guided physical tour by scheduling through our <a href="admissions.html">Admissions Portal</a>.</p>
+                </div>
+                <div class="faq-card">
+                    <h4>What student clubs and organizations are active on campus?</h4>
+                    <p>Sachin Shiksha Mandal hosts over 25 student-run societies spanning cultural arts, technology hackathons, sports leagues, and literary forums.</p>
+                </div>
+                <div class="faq-card">
+                    <h4>Where can I learn more about professional placements?</h4>
+                    <p>Detailed statistics regarding recruiter partnerships, salary packages, and career outcomes are available on our dedicated <a href="career-services.html">Placements page</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Apple Photos-Inspired Immersive Modal -->
     <div class="apple-modal-overlay" id="appleModal">
         <div class="apple-modal-container">
-            <button class="modal-close-btn" onclick="closeModal()">✕</button>
-            <img id="modalImg" src="" alt="Modal Hero" class="modal-hero-img">
+            <button class="modal-close-btn" aria-label="Close modal window" onclick="closeModal()">✕</button>
+            <img id="modalImg" src="" alt="Modal Hero at Sachin Shiksha Mandal" class="modal-hero-img">
             <div class="modal-body">
                 <h2 id="modalTitle"></h2>
                 <div id="modalFact" class="modal-fact-highlight"></div>
                 <p id="modalDesc"></p>
                 <div class="modal-action-row">
-                    <a href="index.html#apply" class="nav-cta" style="padding: 10px 20px;">📅 Book Campus Visit</a>
+                    <a href="admissions.html" class="nav-cta" style="padding: 10px 20px;">📅 Book Campus Visit</a>
                     <a href="index.html" class="back-to-exp-btn" style="text-decoration: none; display: inline-flex; align-items: center; color: var(--text);">🏠 Return to Home</a>
                 </div>
             </div>
@@ -858,7 +941,7 @@
     </div>
 
     <footer class="campus-os-footer">
-        <p>© 2026 Akbar Peerbhoy College. Immersive Campus Tour Platform Powered by Campus OS. | <a href="index.html" style="color: var(--secondary-light); text-decoration: none;">Return to Home</a></p>
+        <p>© 2026 Sachin Shiksha Mandal. Immersive Campus Tour Platform Powered by CampusOS. | <a href="index.html" style="color: var(--secondary-light); text-decoration: none;">Return to Home</a></p>
     </footer>
 
     <script>
@@ -868,7 +951,7 @@
                 titleTag: 'Explore Our Campus',
                 stops: [
                     { title: 'Evening Aerial View', img: 'images/1-Campus/hero-campus-aerial-evening.png', fact: 'Built across a sprawling urban campus in the heart of Mumbai.', desc: 'Panoramic evening perspective of our central campus infrastructure highlighting architectural elegance and open-air courtyards.' },
-                    { title: 'Main Building Entrance', img: 'images/1-Campus/campus-building-entrance-day.png', fact: 'Built in 1969 with 5,000+ daily footfall.', desc: 'The iconic facade welcoming thousands of scholars daily and housing administration and the central auditorium.' },
+                    { title: 'Main Building Entrance', img: 'images/1-Campus/campus-building-entrance-day.png', fact: 'Established academic block with modern administrative facilities.', desc: 'The iconic facade welcoming thousands of scholars daily and housing administration and the central auditorium.' },
                     { title: 'Central Courtyard', img: 'images/1-Campus/campus-quad-overhead.png', fact: 'The central green quad for student gatherings.', desc: 'The beating heart of campus student exchanges, cultural gatherings, and open-air discussions.' },
                     { title: 'Twilight Blue Hour', img: 'images/1-Campus/campus-twilight-blue-hour.png', fact: 'Serene ambient study environment.', desc: 'Quiet study corners under evening ambient lighting during the tranquil twilight transition hours.' }
                 ]
@@ -877,10 +960,10 @@
                 name: 'Academics',
                 titleTag: 'Academic Experience',
                 stops: [
-                    { title: 'Smart Classroom', img: 'images/3-Academics/smart-classroom-interactive.png', fact: '100% of classrooms feature hybrid AV streaming.', desc: 'Interactive learning spaces equipped with modern AV technology and high-speed collaboration boards.' },
+                    { title: 'Smart Classroom', img: 'images/3-Academics/smart-classroom-interactive.png', fact: 'Modern classrooms feature hybrid AV streaming.', desc: 'Interactive learning spaces equipped with modern AV technology and high-speed collaboration boards.' },
                     { title: 'Science Laboratory', img: 'images/3-Academics/science-lab-experiment.png', fact: 'Rigorous safety and research compliance.', desc: 'Fully equipped laboratories fostering technical exploration, experiments, and scientific inquiry.' },
                     { title: 'Modern Computer Lab', img: 'images/3-Academics/computer-lab-modern.png', fact: 'High-end developer workstations.', desc: 'High-end developer workstations for coding, AI machine learning models, and data analytics.' },
-                    { title: 'Library Interior', img: 'images/3-Academics/library-interior-wide.png', fact: 'Thousands of physical & digital volumes.', desc: 'Extensive digital and physical archives providing silent reading halls and collaborative study zones.' }
+                    { title: 'Library Interior', img: 'images/3-Academics/library-interior-wide.png', fact: 'Extensive physical & digital volumes.', desc: 'Extensive digital and physical archives providing silent reading halls and collaborative study zones.' }
                 ]
             },
             'studentlife': {
@@ -897,7 +980,7 @@
                 name: 'Events',
                 titleTag: 'Events & Culture',
                 stops: [
-                    { title: 'Cultural Festival Stage', img: 'images/4-Events/cultural-festival-stage.png', fact: 'Annual fest "Melange" draws 15,000+ attendees.', desc: 'High-energy performances, dance battles, and legendary college fests showcasing student talent.' },
+                    { title: 'Cultural Festival Stage', img: 'images/4-Events/cultural-festival-stage.png', fact: 'Annual fests draw major student participation.', desc: 'High-energy performances, dance battles, and legendary college fests showcasing student talent.' },
                     { title: 'Sports Arena Action', img: 'images/4-Events/sports-arena-action.png', fact: 'Inter-collegiate tournament headquarters.', desc: 'Competitive athletics, tournaments, and team championship triumphs across multiple sports.' },
                     { title: 'Convocation Celebration', img: 'images/4-Events/convocation-celebration.png', fact: 'Celebrating graduating leaders worldwide.', desc: 'The proud culmination of academic transformation and professional readiness.' }
                 ]
@@ -906,15 +989,15 @@
                 name: 'Innovation',
                 titleTag: 'Innovation & Research',
                 stops: [
-                    { title: 'Hackathon Coding', img: 'images/5-Innovation/hackathon-students-coding.png', fact: 'Over ₹5 Lakhs awarded annually in seed grants.', desc: 'Intensive 24-hour problem-solving, rapid software prototyping, and AI development sprints.' },
-                    { title: 'Student Startup Pitch', img: 'images/5-Innovation/student-startup-pitch.png', fact: 'On-campus incubation cell funding support.', desc: 'Ventures launched and nurtured through our business incubation cell and alumni mentoring.' }
+                    { title: 'Hackathon Coding', img: 'images/5-Innovation/hackathon-students-coding.png', fact: 'Demo figures feature periodic seed grants (demo values).', desc: 'Intensive 24-hour problem-solving, rapid software prototyping, and AI development sprints.' },
+                    { title: 'Student Startup Pitch', img: 'images/5-Innovation/student-startup-pitch.png', fact: 'On-campus incubation cell support.', desc: 'Ventures launched and nurtured through our business incubation cell and alumni mentoring.' }
                 ]
             },
             'career': {
                 name: 'Career',
                 titleTag: 'Career & Industry',
                 stops: [
-                    { title: 'Placement Drive Waiting', img: 'images/5-Innovation/placement-drive-waiting.png', fact: '220+ recruiters and 96% placement rate.', desc: 'Confident candidates stepping into multinational interviews with top consulting, tech, and BFSI partners.' }
+                    { title: 'Placement Drive Waiting', img: 'images/5-Innovation/placement-drive-waiting.png', fact: 'Supported by robust corporate partnerships (refer to Placements page).', desc: 'Confident candidates stepping into multinational interviews with top consulting, tech, and BFSI partners.' }
                 ]
             }
         };
@@ -964,7 +1047,9 @@
             });
 
             document.getElementById('stopProgressChip').textContent = `Stop ${currentStopIndex + 1} of ${tourData.stops.length}`;
-            document.getElementById('stopImg').src = stop.img;
+            const stopImgEl = document.getElementById('stopImg');
+            stopImgEl.src = stop.img;
+            stopImgEl.alt = `${stop.title} at Sachin Shiksha Mandal`;
             document.getElementById('stopCategoryTag').textContent = tourData.titleTag;
             document.getElementById('stopTitle').textContent = stop.title;
             document.getElementById('stopDesc').textContent = stop.desc;
@@ -1001,7 +1086,9 @@
             const tourData = tourCatalogs[currentTourKey];
             const stop = tourData.stops[currentStopIndex];
             document.getElementById('modalTitle').textContent = stop.title;
-            document.getElementById('modalImg').src = stop.img;
+            const modalImgEl = document.getElementById('modalImg');
+            modalImgEl.src = stop.img;
+            modalImgEl.alt = `${stop.title} at Sachin Shiksha Mandal`;
             document.getElementById('modalFact').textContent = `💡 Fact: ${stop.fact}`;
             document.getElementById('modalDesc').textContent = stop.desc;
             document.getElementById('appleModal').classList.add('active');
