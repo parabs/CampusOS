@@ -3,15 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Program Details — Academic Explorer | Akbar Peerbhoy College</title>
+    
+    <!-- Primary SEO & Canonical URL (Standardized for Sachin Shiksha Mandal) -->
+    <title id="pageTitle">Program Details — Sachin Shiksha Mandal</title>
+    <link rel="canonical" href="https://parabs.github.io/CampusOS/program-detail.html">
+    <meta name="description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon & PWA Manifest Suite -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.webp">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Complete OpenGraph & Twitter Meta Tags -->
+    <meta property="og:title" content="Program Details — Sachin Shiksha Mandal">
+    <meta property="og:description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parabs.github.io/CampusOS/program-detail.html">
+    <meta property="og:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
+    <meta property="og:site_name" content="Sachin Shiksha Mandal">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Program Details | Sachin Shiksha Mandal">
+    <meta name="twitter:description" content="Explore detailed curriculum, fee structure, and admission workflow at Sachin Shiksha Mandal.">
+    <meta name="twitter:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
+
+    <!-- Advanced Schema.org JSON-LD (Unified Platform AEO/SEO Standard) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["EducationalOrganization", "CollegeOrUniversity"],
+          "@id": "https://parabs.github.io/CampusOS/#organization",
+          "name": "Sachin Shiksha Mandal (SSM)",
+          "alternateName": "SSM Institutions",
+          "url": "https://parabs.github.io/CampusOS/",
+          "logo": "https://parabs.github.io/CampusOS/images/logo.webp",
+          "image": "https://parabs.github.io/CampusOS/images/logo.webp"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://parabs.github.io/CampusOS/#website",
+          "url": "https://parabs.github.io/CampusOS/",
+          "name": "Sachin Shiksha Mandal",
+          "description": "Sachin Shiksha Mandal official institutional portal powered by CampusOS",
+          "publisher": {
+            "@id": "https://parabs.github.io/CampusOS/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://parabs.github.io/CampusOS/program-detail.html#webpage",
+          "url": "https://parabs.github.io/CampusOS/program-detail.html",
+          "name": "Program Details — Sachin Shiksha Mandal",
+          "isPartOf": {
+            "@id": "https://parabs.github.io/CampusOS/#website"
+          },
+          "about": {
+            "@id": "https://parabs.github.io/CampusOS/#organization"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://parabs.github.io/CampusOS/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Programs",
+              "item": "https://parabs.github.io/CampusOS/programs.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Program Detail",
+              "item": "https://parabs.github.io/CampusOS/program-detail.html"
+            }
+          ]
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "name": ["Programs", "Admissions", "Campus Life", "Placements", "Institution", "Compliance", "Student Portal", "Apply Now"],
+          "url": [
+            "https://parabs.github.io/CampusOS/programs.html",
+            "https://parabs.github.io/CampusOS/admissions.html",
+            "https://parabs.github.io/CampusOS/campus-tour.html",
+            "https://parabs.github.io/CampusOS/career-services.html",
+            "https://parabs.github.io/CampusOS/institution-explorer.html",
+            "https://parabs.github.io/CampusOS/compliance.html",
+            "https://parabs.github.io/CampusOS/student-portal.html",
+            "https://parabs.github.io/CampusOS/admissions.html"
+          ]
+        }
+      ]
+    }
+    </script>
 
     <style>
         :root {
             --primary: #0F172A;
             --primary-dark: #020617;
+            --primary-light: #1E293B;
             --secondary: #2563EB;
             --secondary-dark: #1D4ED8;
             --secondary-light: #60A5FA;
@@ -22,42 +125,54 @@
             --border-color: #E2E8F0;
             --text: #1E293B;
             --text-light: #64748B;
+            --text-white: #FFFFFF;
+            --card-bg: #FFFFFF;
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
             --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.1);
             --radius-card: 24px;
             --radius-btn: 9999px;
+            --top-banner-height: 37px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--background); color: var(--text); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        /* Slim Product Badge Banner */
+        /* Slim Admissions Banner */
         .campus-os-banner {
-            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
-            color: white; font-size: 13px; padding: 8px 5%;
+            background: var(--primary-dark);
+            color: var(--text-white); font-size: 13px; padding: 8px 5%;
             display: flex; justify-content: space-between; align-items: center;
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1200; height: var(--top-banner-height);
+            letter-spacing: 0.03em;
         }
-        .campus-os-banner a { color: var(--accent); font-weight: 700; text-decoration: none; }
+        .campus-os-banner .banner-link { color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s; }
+        .campus-os-banner .banner-link:hover { opacity: 0.8; }
 
-        /* Navigation */
+        /* Standardized Global Navigation Bar (Identical to index.html and programs.html) */
         .navbar {
-            position: fixed; top: 37px; left: 0; right: 0; z-index: 1000;
+            position: fixed; top: var(--top-banner-height); left: 0; right: 0; z-index: 1100;
             padding: 16px 5%; display: flex; align-items: center; justify-content: space-between;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color); gap: 20px; transition: all 0.3s ease;
         }
         .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-        .college-crest { width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 18px; }
-        .logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px; color: var(--primary); display: flex; flex-direction: column; white-space: nowrap; }
-        .logo-text span { font-size: 10px; font-weight: 600; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.1em; }
+        .college-crest { width: 42px; height: 42px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 18px; }
+        .logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px; color: var(--primary); display: flex; flex-direction: column; letter-spacing: -0.02em; white-space: nowrap; }
+        .logo-text span { font-size: 10px; font-weight: 600; color: var(--secondary); letter-spacing: 0.05em; text-transform: uppercase; }
         
-        .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; margin-left: 60px; margin-right: auto; }
-        .nav-link { color: var(--text); font-weight: 500; text-decoration: none; font-size: 14px; white-space: nowrap; }
-        .nav-link:hover, .nav-link.active { color: var(--secondary); font-weight: 700; }
-        .nav-cta { background: var(--secondary); color: white !important; padding: 10px 24px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 600; font-size: 15px; flex-shrink: 0; }
+        .nav-links { display: flex; gap: 20px; align-items: center; list-style: none; margin-left: 25px; margin-right: auto; }
+        .nav-link { color: var(--text); font-weight: 500; text-decoration: none; padding: 6px 0; font-size: 14px; transition: color 0.2s ease; white-space: nowrap; }
+        .nav-link:hover, .nav-link.active { color: var(--secondary); }
+        
+        .nav-actions { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+        .search-portal-group { display: flex; align-items: center; background: var(--surface-gray); border-radius: var(--radius-btn); padding: 4px; border: 1px solid var(--border-color); }
+        .search-btn-grouped { background: transparent; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 15px; color: var(--primary); transition: background 0.2s; }
+        .search-btn-grouped:hover { background: #E2E8F0; }
+        .portal-login-link { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 13px; padding: 0 12px 0 4px; display: flex; align-items: center; gap: 4px; }
+        .portal-login-link:hover { color: var(--secondary); }
+        .nav-cta { background: var(--secondary); color: white !important; padding: 10px 24px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s ease; }
+        .nav-cta:hover { background: var(--secondary-dark); }
 
         /* Hamburger Toggle Button */
         .hamburger { 
@@ -81,7 +196,7 @@
         }
 
         /* Breadcrumb Bar */
-        .breadcrumb-bar { max-width: 1380px; margin: 110px auto 16px; padding: 0 24px; font-size: 13px; font-weight: 600; color: var(--text-light); display: flex; gap: 8px; }
+        .breadcrumb-bar { max-width: 1380px; margin: 130px auto 16px; padding: 0 24px; font-size: 13px; font-weight: 600; color: var(--text-light); display: flex; gap: 8px; }
         .breadcrumb-bar a { color: var(--secondary); text-decoration: none; }
 
         /* Program Hero Banner */
@@ -100,7 +215,7 @@
         .hero-action-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
         .btn-apply-hero { background: var(--secondary); color: white; padding: 12px 22px; border-radius: var(--radius-btn); font-weight: 700; text-decoration: none; box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s; display: inline-block; text-align: center; font-size: 14px; }
         .btn-apply-hero:hover { transform: translateY(-2px); background: var(--secondary-dark); }
-        .btn-hero-sec { background: rgba(255,255,255,0.1); color: white; padding: 12px 20px; border-radius: var(--radius-btn); font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px); font-size: 14px; transition: background 0.2s; }
+        .btn-hero-sec { background: rgba(255,255,255,0.1); color: white; padding: 12px 20px; border-radius: var(--radius-btn); font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px); font-size: 14px; transition: background 0.2s; display: inline-block; text-align: center; }
         .btn-hero-sec:hover { background: rgba(255,255,255,0.2); }
 
         .hero-quick-stats { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
@@ -154,8 +269,17 @@
         .ai-chip:hover { background: rgba(37, 99, 235, 0.3); color: white; }
         .ai-response-box { background: #020617; border-radius: 10px; padding: 10px; font-size: 12px; color: #E2E8F0; margin-top: 10px; display: none; }
 
-        footer { background: var(--primary-dark); color: white; padding: 60px 20px 40px; text-align: center; margin-top: 60px; }
-        footer p { font-size: 14px; color: var(--text-light); }
+        /* Standardized Global Footer (Matching index.html & programs.html) */
+        footer { background: var(--primary-dark); color: white; padding: 80px 20px 50px; margin-top: 80px; }
+        .footer-grid { max-width: 1320px; margin: 0 auto 50px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; text-align: left; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; color: white; font-weight: 700; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-light); text-decoration: none; transition: color 0.3s ease; font-size: 14.5px; }
+        .footer-col ul li a:hover { color: white; }
+        .footer-badges { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        .footer-badge { background: rgba(255, 255, 255, 0.06); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #94A3B8; border: 1px solid rgba(255,255,255,0.08); }
+        .footer-bottom { max-width: 1320px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; color: var(--text-light); font-size: 14.5px; flex-wrap: wrap; gap: 20px; text-align: left; }
 
         /* Responsive Breakpoints & Mobile Navigation Drawer */
         @media(max-width: 992px) {
@@ -164,7 +288,7 @@
             
             .nav-links {
                 position: fixed;
-                top: 85px;
+                top: calc(var(--top-banner-height) + 64px);
                 right: -100%;
                 left: auto;
                 width: 280px;
@@ -190,44 +314,48 @@
                 font-weight: 600;
                 width: 100%;
                 padding-bottom: 8px;
-                border-bottom: 1px solid #F1F5F9;
-                color: var(--text);
+                border-bottom: 1px solid var(--border-color);
             }
 
             .program-hero-card { grid-template-columns: 1fr; }
             .workspace-layout { grid-template-columns: 1fr; }
             .sidebar-panel { position: static; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Slim Product Banner -->
+    <!-- Slim Admissions Banner -->
     <header class="campus-os-banner">
-        <div>🚀 <strong>Campus OS Academic Decision Platform</strong> — Dynamic Program Detail Workspace</div>
-        <div><a href="programs.html">&larr; Back to Academic Explorer</a></div>
+        <div>🎓 <strong>Admissions Open 2026–27</strong> — Explore our undergraduate & postgraduate programmes</div>
+        <div><a href="admissions.html" class="banner-link">Apply Online &rarr;</a></div>
     </header>
 
-    <!-- Global Navigation -->
+    <!-- Standardized Global Navigation Bar (Identical to index.html & programs.html) -->
     <nav class="navbar">
         <a href="index.html" class="logo-area">
-            <div class="college-crest">AP</div>
-            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+            <div class="college-crest">SS</div>
+            <div class="logo-text">Sachin Shiksha Mandal <span>Higher Education • Powered by CampusOS</span></div>
         </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="programs.html" class="nav-link active">Programs</a></li>
+            <li><a href="programs.html" class="nav-link">Programs</a></li>
             <li><a href="admissions.html" class="nav-link">Admissions</a></li>
-            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
-            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
-            <li><a href="institution-explorer.html" class="nav-link">Institution Explorer</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Life</a></li>
+            <li><a href="career-services.html" class="nav-link">Placements</a></li>
+            <li><a href="institution-explorer.html" class="nav-link">Institution</a></li>
             <li><a href="compliance.html" class="nav-link">Compliance</a></li>
         </ul>
         <div class="nav-actions">
+            <div class="search-portal-group">
+                <button class="search-btn-grouped" onclick="alert('Use the live search bar on the programs page to screen courses instantly.')" aria-label="Search">🔍</button>
+                <a href="student-portal.html" class="portal-login-link">Student Portal</a>
+            </div>
             <a href="admissions.html" class="nav-cta">Apply Now</a>
         </div>
 
-        <!-- Mobile Hamburger Button Pinned to Right -->
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
@@ -236,7 +364,7 @@
 
     <!-- Breadcrumb Bar -->
     <div class="breadcrumb-bar">
-        <a href="index.html">Home</a> &gt; <a href="programs.html">Academic Explorer</a> &gt; <span id="breadcrumbTitle">Program Detail</span>
+        <a href="index.html">Home</a> &gt; <a href="programs.html">Programs</a> &gt; <span id="breadcrumbTitle">Program Detail</span>
     </div>
 
     <!-- Program Hero Banner -->
@@ -249,8 +377,7 @@
                 <div class="hero-action-buttons">
                     <a href="admissions.html" class="btn-apply-hero">Start Admission</a>
                     <a href="#admissions" class="btn-hero-sec">View Fees</a>
-                    <a href="#" class="btn-hero-sec" onclick="alert('Downloading Program Brochure PDF...')">Download Brochure</a>
-                    <a href="admissions.html#apply" class="btn-hero-sec">Talk to Counselor</a>
+                    <a href="javascript:void(0);" class="btn-hero-sec" onclick="talkToCounselor()">Talk to Counselor</a>
                 </div>
             </div>
             <div class="hero-quick-stats" id="heroQuickStats"></div>
@@ -306,7 +433,7 @@
 
             <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
                 <a href="admissions.html" class="btn-apply-hero" style="text-align:center;">Start Application</a>
-                <a href="#" class="btn-hero-sec" style="color:var(--primary); border:1px solid var(--border-color); text-align:center;" onclick="alert('Downloading Program Brochure PDF...')">📥 Download Brochure PDF</a>
+                <a href="javascript:void(0);" class="btn-hero-sec" style="color:var(--primary); border:1px solid var(--border-color); text-align:center;" onclick="talkToCounselor()">💬 Talk to Counselor</a>
             </div>
 
             <!-- Program-Specific AI Counselor Chat -->
@@ -323,16 +450,74 @@
 
     </div>
 
-    <!-- Footer -->
+    <!-- Standardized Global Footer (Matching index.html & programs.html) -->
     <footer>
-        <p>© 2026 Akbar Peerbhoy College. Program Detail Workspace Powered by Campus OS.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Sachin Shiksha Mandal</h4>
+                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 16px; line-height: 1.6;">SSM Knowledge Campus, Main Boulevard, Mumbai 400001.</p>
+                <div class="footer-badges">
+                    <span class="footer-badge">NAAC Accredited</span>
+                    <span class="footer-badge">UGC Approved</span>
+                    <span class="footer-badge">Est. 1969</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Academic Programs</h4>
+                <ul>
+                    <li><a href="programs.html">B.Com (Commerce)</a></li>
+                    <li><a href="programs.html">BMS (Management)</a></li>
+                    <li><a href="programs.html">BSc Information Technology</a></li>
+                    <li><a href="programs.html">M.Com Postgrad</a></li>
+                    <li><a href="programs.html">PhD Research Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Departments & Faculty</h4>
+                <ul>
+                    <li><a href="institution-explorer.html#commerce">Department of Commerce</a></li>
+                    <li><a href="institution-explorer.html#management">Department of Management</a></li>
+                    <li><a href="institution-explorer.html#it">Department of Computer Science</a></li>
+                    <li><a href="institution-explorer.html#leadership">Leadership & Administration</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Services</h4>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal Login</a></li>
+                    <li><a href="campus-tour.html#library">Digital Library</a></li>
+                    <li><a href="student-portal.html#exams">Examinations & Results</a></li>
+                    <li><a href="admissions.html#fees">Fee Structure & Payments</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance & Contact</h4>
+                <ul>
+                    <li><a href="compliance.html">NAAC & NBA Disclosures</a></li>
+                    <li><a href="compliance.html#iqac">IQAC Cell</a></li>
+                    <li><a href="compliance.html#aishe">AISHE Reports</a></li>
+                    <li><a href="ai-counsellor.html">Admissions Enquiry</a></li>
+                </ul>
+                <p style="color: var(--text-light); font-size: 13px; margin-top: 12px; display: flex; flex-direction: column; gap: 4px;">
+                    <span>📞 <a href="tel:+912255501470" style="color: inherit; text-decoration: none;">022-55501470</a></span>
+                    <span>✉️ <a href="mailto:admissions@sachinshikshamandal.edu.in" style="color: inherit; text-decoration: none;">admissions@sachinshikshamandal.edu.in</a></span>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Sachin Shiksha Mandal (SSM). All Rights Reserved.</p>
+            <p style="font-size: 14.5px; color: var(--text-light);">Digital campus powered by <a href="ai-counsellor.html" style="color: var(--secondary-light); text-decoration: none;">CampusOS</a></p>
+        </div>
     </footer>
 
-    <!-- Dynamic XML Fetching Script -->
+    <!-- Dynamic XML Fetching & Interactive Script -->
     <script>
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('active');
-        });
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        document.getElementById('hamburger').addEventListener('click', toggleMobileMenu);
 
         async function loadProgramFromXML() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -356,14 +541,13 @@
                 const getVal = (tag) => programNode.querySelector(tag)?.textContent || '';
 
                 // Populate UI
-                document.getElementById('pageTitle').textContent = `${getVal('title')} — Academic Explorer | Akbar Peerbhoy College`;
+                document.getElementById('pageTitle').textContent = `${getVal('title')} — Sachin Shiksha Mandal`;
                 document.getElementById('breadcrumbTitle').textContent = getVal('title');
                 document.getElementById('heroTitle').textContent = getVal('title');
                 document.getElementById('heroDesc').textContent = getVal('description');
 
                 document.getElementById('heroBadges').innerHTML = `
                     <span class="prog-tag">${getVal('level')}</span>
-                    <span class="prog-tag" style="background: rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); color: #FCD34D;">${getVal('rating')}</span>
                     <span class="prog-tag" style="background: rgba(16, 185, 129, 0.2); border-color: rgba(52, 211, 153, 0.4); color: #34D399;">${getVal('nep')}</span>
                 `;
 
@@ -381,7 +565,7 @@
                     <div class="fee-breakdown-row"><span>Annual Tuition Fee</span><span>${getVal('tuitionFee')}</span></div>
                     <div class="fee-breakdown-row"><span>Development & Lab Fee</span><span>${getVal('devFee')}</span></div>
                     <div class="fee-breakdown-row"><span>Library & Exam Fee</span><span>${getVal('libFee')}</span></div>
-                    <div class="fee-breakdown-row" style="border-bottom:none; font-weight:800; font-size:15px; color:var(--secondary);"><span>Total Annual Investment</span><span>${getVal('totalFee')}</span></div>
+                    <div class="fee-breakdown-row" style="border-bottom:none; font-weight:800; font-size:15px; color:var(--secondary);"><span>Total Annual Fee</span><span>${getVal('totalFee')}</span></div>
                 `;
 
                 window.currentProgramTitle = getVal('title');
@@ -393,13 +577,20 @@
             }
         }
 
+        function talkToCounselor() {
+            const program = window.currentProgramTitle || 'this program';
+            const message = `Hello, I am interested in the ${program} program. I would like to know more about eligibility, fees and admission.`;
+            const counselorNumber = "919999999999"; // Replace with official counselor number
+            window.open(`https://wa.me/${counselorNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
         function askAICounselor(q) {
             const box = document.getElementById('aiResponseBox');
             box.style.display = 'block';
             if (q.includes('fees')) {
-                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> The total annual investment for ${window.currentProgramTitle || 'this program'} is ${window.currentProgramFee || 'As per fee schedule'}.`;
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> The total annual fee for ${window.currentProgramTitle || 'this program'} is ${window.currentProgramFee || 'As per fee schedule'}.`;
             } else {
-                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> Eligibility criteria and admission guidelines are fully updated for the 2026-27 academic intake cycle.`;
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> Undergraduate admissions require fulfilling the minimum eligibility criteria specified for the 2026-27 academic session.`;
             }
         }
 
