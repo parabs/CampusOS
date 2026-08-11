@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Primary SEO & Canonical URL (Dynamically updated via JS or defaults) -->
+    <!-- Primary SEO & Canonical URL (Dynamically hydrated) -->
     <title id="pageTitle">Program Details — Sachin Shiksha Mandal</title>
-    <link rel="canonical" href="https://parabs.github.io/CampusOS/program-detail.html">
+    <link id="canonicalLink" rel="canonical" href="https://parabs.github.io/CampusOS/program-detail.html">
     <meta id="metaDesc" name="description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
 
     <!-- Google Fonts Preconnect -->
@@ -20,11 +20,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.webp">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Complete OpenGraph & Twitter Meta Tags (Dynamic IDs for real-time hydration) -->
+    <!-- Complete OpenGraph & Twitter Meta Tags -->
     <meta id="ogTitle" property="og:title" content="Program Details — Sachin Shiksha Mandal">
     <meta id="ogDesc" property="og:description" content="Explore detailed curriculum, fee structure, admission workflow, and career outcomes for academic programs at Sachin Shiksha Mandal in Mumbai.">
+    <meta id="ogUrl" property="og:url" content="https://parabs.github.io/CampusOS/program-detail.html">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://parabs.github.io/CampusOS/program-detail.html">
     <meta property="og:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
     <meta property="og:site_name" content="Sachin Shiksha Mandal">
 
@@ -33,7 +33,7 @@
     <meta id="twitterDesc" name="twitter:description" content="Explore detailed curriculum, fee structure, and admission workflow at Sachin Shiksha Mandal.">
     <meta name="twitter:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
 
-    <!-- Advanced Schema.org JSON-LD (Unified Platform + Dynamic Course Schema container) -->
+    <!-- Advanced Schema.org JSON-LD (Unified Platform + Restored SiteNavigationElement + Numeric Course Schema) -->
     <script type="application/ld+json" id="schemaJSON">
     {
       "@context": "https://schema.org",
@@ -127,10 +127,14 @@
             --text-light: #64748B;
             --text-white: #FFFFFF;
             --card-bg: #FFFFFF;
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.1);
-            --radius-card: 24px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.06);
+            
+            --radius-hero: 24px;
+            --radius-card: 20px;
             --radius-btn: 9999px;
+            --radius-stats: 16px;
+            --radius-img: 20px;
             --top-banner-height: 37px;
             --global-nav-height: 75px;
         }
@@ -235,8 +239,8 @@
         .section-nav-link { color: var(--text-light); text-decoration: none; font-size: 13px; font-weight: 700; padding: 14px 0; border-bottom: 3px solid transparent; transition: all 0.2s; }
         .section-nav-link:hover, .section-nav-link.active { color: var(--secondary); border-color: var(--secondary); }
 
-        /* Workspace Layout (70% - 30%) */
-        .workspace-layout { max-width: 1380px; margin: 0 auto 80px; padding: 0 24px; display: grid; grid-template-columns: 7fr 3fr; gap: 30px; align-items: start; }
+        /* Workspace Layout (70% - 30%) with tightened bottom spacing */
+        .workspace-layout { max-width: 1380px; margin: 0 auto 60px; padding: 0 24px; display: grid; grid-template-columns: 7fr 3fr; gap: 30px; align-items: start; }
         
         .content-card { background: white; border-radius: var(--radius-card); padding: 36px; border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-bottom: 30px; scroll-margin-top: 150px; }
         .content-card h3 { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
@@ -278,8 +282,8 @@
         .ai-chip:hover { background: rgba(37, 99, 235, 0.3); color: white; }
         .ai-response-box { background: #020617; border-radius: 10px; padding: 10px; font-size: 12px; color: #E2E8F0; margin-top: 10px; display: none; }
 
-        /* Standardized Global Footer */
-        footer { background: var(--primary-dark); color: white; padding: 80px 20px 50px; margin-top: 80px; }
+        /* Standardized Global Footer with 0 top margin to clear cleanly */
+        footer { background: var(--primary-dark); color: white; padding: 80px 20px 50px; margin-top: 0; }
         .footer-grid { max-width: 1320px; margin: 0 auto 50px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; text-align: left; }
         .footer-col h4 { font-size: 16px; margin-bottom: 20px; color: white; font-weight: 700; }
         .footer-col ul { list-style: none; }
@@ -376,7 +380,7 @@
         <a href="index.html">Home</a> &gt; <a href="programs.html">Programs</a> &gt; <span id="breadcrumbTitle">Program Detail</span>
     </div>
 
-    <!-- Program Hero Banner (View Fees removed per review) -->
+    <!-- Program Hero Banner -->
     <section class="program-hero">
         <div class="program-hero-card">
             <div>
@@ -514,7 +518,7 @@
         </div>
         <div class="footer-bottom">
             <p>© 2026 Sachin Shiksha Mandal (SSM). All Rights Reserved.</p>
-            <p style="font-size: 14.5px; color: var(--text-light);">Digital campus powered by <a href="ai-counsellor.html" style="color: var(--secondary-light); text-decoration: none;">CampusOS</a></p>
+            <p style="font-size: 14.5px; color: var(--text-light);">Digital campus powered by CampusOS</p>
         </div>
     </footer>
 
@@ -528,6 +532,11 @@
         async function loadProgramFromXML() {
             const urlParams = new URLSearchParams(window.location.search);
             const courseKey = urlParams.get('course') || 'bms';
+
+            // Dynamic Canonical & OpenGraph URL generation
+            const currentCanonicalUrl = `${window.location.origin}${window.location.pathname}?course=${encodeURIComponent(courseKey)}`;
+            document.getElementById('canonicalLink').setAttribute('href', currentCanonicalUrl);
+            document.getElementById('ogUrl').setAttribute('content', currentCanonicalUrl);
 
             try {
                 const response = await fetch('data/programs.xml');
@@ -549,21 +558,26 @@
                 const progTitle = getVal('title');
                 const progDesc = getVal('description');
                 const progLevel = getVal('level');
-                const progDuration = getVal('duration') || '3 Years';
+                const progDurationISO = getVal('durationISO') || 'P3Y';
                 const progTuition = getVal('tuitionFee');
                 const progTotalFee = getVal('totalFee');
                 const progEligibility = getVal('eligibility');
 
+                // Clean numeric fee for schema Offer object
+                const numericFee = Number(progTotalFee.replace(/[₹,\s]/g, '')) || 0;
+
                 // Dynamic SEO, OpenGraph, and Twitter Meta Tag Hydration
                 const fullPageTitle = `${progTitle} — Sachin Shiksha Mandal`;
+                const enhancedMetaDesc = `${progTitle} — ${progDesc} Learn about eligibility, fee structure, duration, and admission workflow.`;
+                
                 document.getElementById('pageTitle').textContent = fullPageTitle;
-                document.getElementById('metaDesc').setAttribute('content', progDesc);
+                document.getElementById('metaDesc').setAttribute('content', enhancedMetaDesc);
                 document.getElementById('ogTitle').setAttribute('content', fullPageTitle);
-                document.getElementById('ogDesc').setAttribute('content', progDesc);
+                document.getElementById('ogDesc').setAttribute('content', enhancedMetaDesc);
                 document.getElementById('twitterTitle').setAttribute('content', fullPageTitle);
-                document.getElementById('twitterDesc').setAttribute('content', progDesc);
+                document.getElementById('twitterDesc').setAttribute('content', enhancedMetaDesc);
 
-                // Dynamic Breadcrumb Schema & Course Schema Injection
+                // Dynamic Breadcrumb Schema, Course Schema & Restored SiteNavigationElement Graph
                 const dynamicSchema = {
                   "@context": "https://schema.org",
                   "@graph": [
@@ -586,8 +600,8 @@
                     },
                     {
                       "@type": "WebPage",
-                      "@id": `https://parabs.github.io/CampusOS/program-detail.html?course=${courseKey}#webpage`,
-                      "url": window.location.href,
+                      "@id": `${currentCanonicalUrl}#webpage`,
+                      "url": currentCanonicalUrl,
                       "name": fullPageTitle,
                       "isPartOf": { "@id": "https://parabs.github.io/CampusOS/#website" },
                       "about": { "@id": "https://parabs.github.io/CampusOS/#organization" }
@@ -597,7 +611,21 @@
                       "itemListElement": [
                         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://parabs.github.io/CampusOS/" },
                         { "@type": "ListItem", "position": 2, "name": "Programs", "item": "https://parabs.github.io/CampusOS/programs.html" },
-                        { "@type": "ListItem", "position": 3, "name": progTitle, "item": window.location.href }
+                        { "@type": "ListItem", "position": 3, "name": progTitle, "item": currentCanonicalUrl }
+                      ]
+                    },
+                    {
+                      "@type": "SiteNavigationElement",
+                      "name": ["Programs", "Admissions", "Campus Life", "Placements", "Institution", "Compliance", "Student Portal", "Apply Now"],
+                      "url": [
+                        "https://parabs.github.io/CampusOS/programs.html",
+                        "https://parabs.github.io/CampusOS/admissions.html",
+                        "https://parabs.github.io/CampusOS/campus-tour.html",
+                        "https://parabs.github.io/CampusOS/career-services.html",
+                        "https://parabs.github.io/CampusOS/institution-explorer.html",
+                        "https://parabs.github.io/CampusOS/compliance.html",
+                        "https://parabs.github.io/CampusOS/student-portal.html",
+                        "https://parabs.github.io/CampusOS/admissions.html"
                       ]
                     },
                     {
@@ -606,10 +634,10 @@
                       "description": progDesc,
                       "provider": { "@id": "https://parabs.github.io/CampusOS/#organization" },
                       "educationalLevel": progLevel,
-                      "timeRequired": progDuration,
+                      "timeRequired": progDurationISO,
                       "offers": {
                         "@type": "Offer",
-                        "price": progTotalFee,
+                        "price": numericFee,
                         "priceCurrency": "INR"
                       }
                     }
@@ -618,7 +646,7 @@
                 
                 document.getElementById('schemaJSON').textContent = JSON.stringify(dynamicSchema, null, 2);
 
-                // Populate UI
+                // Populate UI Elements
                 document.getElementById('breadcrumbTitle').textContent = progTitle;
                 document.getElementById('heroTitle').textContent = progTitle;
                 document.getElementById('heroDesc').textContent = progDesc;
@@ -658,7 +686,7 @@
         function talkToCounselor() {
             const program = window.currentProgramTitle || 'this program';
             const message = `Hello, I am interested in the ${program} program. I would like to know more about eligibility, fees and admission.`;
-            const counselorNumber = "919999999999"; // Official admissions helpline WhatsApp number
+            const counselorNumber = "919999999999"; // Replace with official institutional WhatsApp helpline number before deployment
             window.open(`https://wa.me/${counselorNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
