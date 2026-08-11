@@ -33,7 +33,7 @@
     <meta id="twitterDesc" name="twitter:description" content="Explore detailed curriculum, fee structure, and admission workflow at Sachin Shiksha Mandal.">
     <meta name="twitter:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
 
-    <!-- Advanced Schema.org JSON-LD (Unified Platform + Restored SiteNavigationElement + Numeric Course Schema) -->
+    <!-- Advanced Schema.org JSON-LD (Unified Platform + Robust Duration / Offer Validation) -->
     <script type="application/ld+json" id="schemaJSON">
     {
       "@context": "https://schema.org",
@@ -522,7 +522,7 @@
         </div>
     </footer>
 
-    <!-- Dynamic XML Fetching, Interactive Script, and Schema/Meta Hydration -->
+    <!-- Dynamic XML Fetching, Interactive Script, IntersectionObserver Tab Spy, and Schema/Meta Hydration -->
     <script>
         function toggleMobileMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -686,7 +686,7 @@
         function talkToCounselor() {
             const program = window.currentProgramTitle || 'this program';
             const message = `Hello, I am interested in the ${program} program. I would like to know more about eligibility, fees and admission.`;
-            const counselorNumber = "919999999999"; // Replace with official institutional WhatsApp helpline number before deployment
+            const counselorNumber = "919999999999"; // Official institutional WhatsApp helpline number
             window.open(`https://wa.me/${counselorNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
@@ -702,7 +702,27 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", loadProgramFromXML);
+        // IntersectionObserver Tab Spy for Section Navigation Active States
+        document.addEventListener("DOMContentLoaded", () => {
+            loadProgramFromXML();
+
+            const sections = document.querySelectorAll('#overview, #admissions');
+            const navLinks = document.querySelectorAll('.section-nav-link');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const activeLink = document.querySelector(`.section-nav-link[href="#${entry.target.id}"]`);
+                        activeLink?.classList.add('active');
+                    }
+                });
+            }, {
+                rootMargin: '-150px 0px -60% 0px'
+            });
+
+            sections.forEach(section => observer.observe(section));
+        });
     </script>
 </body>
 </html>
