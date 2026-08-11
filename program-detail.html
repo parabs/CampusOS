@@ -33,7 +33,7 @@
     <meta name="twitter:description" content="Explore detailed curriculum, fee structure, and admission workflow at Sachin Shiksha Mandal.">
     <meta name="twitter:image" content="https://parabs.github.io/CampusOS/images/logo.webp">
 
-    <!-- Advanced Schema.org JSON-LD (Unified Platform AEO/SEO Standard) -->
+    <!-- Advanced Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -132,6 +132,7 @@
             --radius-card: 24px;
             --radius-btn: 9999px;
             --top-banner-height: 37px;
+            --global-nav-height: 75px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -149,12 +150,13 @@
         .campus-os-banner .banner-link { color: var(--accent); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: opacity 0.2s; }
         .campus-os-banner .banner-link:hover { opacity: 0.8; }
 
-        /* Standardized Global Navigation Bar (Identical to index.html and programs.html) */
+        /* Standardized Global Navigation Bar */
         .navbar {
             position: fixed; top: var(--top-banner-height); left: 0; right: 0; z-index: 1100;
             padding: 16px 5%; display: flex; align-items: center; justify-content: space-between;
             background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color); gap: 20px; transition: all 0.3s ease;
+            height: var(--global-nav-height);
         }
         .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
         .college-crest { width: 42px; height: 42px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 18px; }
@@ -196,7 +198,7 @@
         }
 
         /* Breadcrumb Bar */
-        .breadcrumb-bar { max-width: 1380px; margin: 130px auto 16px; padding: 0 24px; font-size: 13px; font-weight: 600; color: var(--text-light); display: flex; gap: 8px; }
+        .breadcrumb-bar { max-width: 1380px; margin: calc(var(--top-banner-height) + var(--global-nav-height) + 20px) auto 16px; padding: 0 24px; font-size: 13px; font-weight: 600; color: var(--text-light); display: flex; gap: 8px; }
         .breadcrumb-bar a { color: var(--secondary); text-decoration: none; }
 
         /* Program Hero Banner */
@@ -223,9 +225,9 @@
         .stat-box-row span:first-child { color: #94A3B8; }
         .stat-box-row span:last-child { color: white; font-weight: 700; }
 
-        /* Sticky Section Navigation Bar */
+        /* Sticky Section Navigation Bar (Calculated offset clearance) */
         .sticky-section-nav {
-            position: sticky; top: 88px; z-index: 900; background: rgba(255, 255, 255, 0.95);
+            position: sticky; top: calc(var(--top-banner-height) + var(--global-nav-height)); z-index: 900; background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             margin-bottom: 30px;
         }
@@ -240,12 +242,19 @@
         .content-card h3 { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .content-card p { font-size: 15px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
 
-        /* Admission Visual Flow */
-        .admission-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 16px; }
-        .flow-step { background: #F8FAFC; border: 1px solid var(--border-color); padding: 14px; border-radius: 14px; text-align: center; }
+        /* Admission Visual Flow (Responsive 6-column grid without wrapping single elements) */
+        .admission-flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+        .flow-step { background: #F8FAFC; border: 1px solid var(--border-color); padding: 14px 8px; border-radius: 14px; text-align: center; }
         .flow-step .step-num { width: 26px; height: 26px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; margin: 0 auto 8px; }
-        .flow-step h6 { font-size: 13px; font-weight: 800; color: var(--primary); margin-bottom: 2px; }
-        .flow-step p { font-size: 11px; color: var(--text-light); }
+        .flow-step h6 { font-size: 12px; font-weight: 800; color: var(--primary); margin-bottom: 2px; }
+        .flow-step p { font-size: 10px; color: var(--text-light); }
+
+        @media (max-width: 1100px) {
+            .admission-flow { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .admission-flow { grid-template-columns: 1fr; }
+        }
 
         /* Scholarships Grid */
         .scholarship-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
@@ -269,7 +278,7 @@
         .ai-chip:hover { background: rgba(37, 99, 235, 0.3); color: white; }
         .ai-response-box { background: #020617; border-radius: 10px; padding: 10px; font-size: 12px; color: #E2E8F0; margin-top: 10px; display: none; }
 
-        /* Standardized Global Footer (Matching index.html & programs.html) */
+        /* Standardized Global Footer */
         footer { background: var(--primary-dark); color: white; padding: 80px 20px 50px; margin-top: 80px; }
         .footer-grid { max-width: 1320px; margin: 0 auto 50px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; text-align: left; }
         .footer-col h4 { font-size: 16px; margin-bottom: 20px; color: white; font-weight: 700; }
@@ -332,7 +341,7 @@
         <div><a href="admissions.html" class="banner-link">Apply Online &rarr;</a></div>
     </header>
 
-    <!-- Standardized Global Navigation Bar (Identical to index.html & programs.html) -->
+    <!-- Standardized Global Navigation Bar -->
     <nav class="navbar">
         <a href="index.html" class="logo-area">
             <div class="college-crest">SS</div>
@@ -367,7 +376,7 @@
         <a href="index.html">Home</a> &gt; <a href="programs.html">Programs</a> &gt; <span id="breadcrumbTitle">Program Detail</span>
     </div>
 
-    <!-- Program Hero Banner -->
+    <!-- Program Hero Banner (View Fees CTA removed per review) -->
     <section class="program-hero">
         <div class="program-hero-card">
             <div>
@@ -376,7 +385,6 @@
                 <p id="heroDesc">Please fetch course particulars from the centralized data repository.</p>
                 <div class="hero-action-buttons">
                     <a href="admissions.html" class="btn-apply-hero">Start Admission</a>
-                    <a href="#admissions" class="btn-hero-sec">View Fees</a>
                     <a href="javascript:void(0);" class="btn-hero-sec" onclick="talkToCounselor()">Talk to Counselor</a>
                 </div>
             </div>
@@ -450,7 +458,7 @@
 
     </div>
 
-    <!-- Standardized Global Footer (Matching index.html & programs.html) -->
+    <!-- Standardized Global Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -517,8 +525,6 @@
             navLinks.classList.toggle('active');
         }
 
-        document.getElementById('hamburger').addEventListener('click', toggleMobileMenu);
-
         async function loadProgramFromXML() {
             const urlParams = new URLSearchParams(window.location.search);
             const courseKey = urlParams.get('course') || 'bms';
@@ -540,7 +546,7 @@
 
                 const getVal = (tag) => programNode.querySelector(tag)?.textContent || '';
 
-                // Populate UI
+                // Populate UI with dynamic XML data including precise eligibility
                 document.getElementById('pageTitle').textContent = `${getVal('title')} — Sachin Shiksha Mandal`;
                 document.getElementById('breadcrumbTitle').textContent = getVal('title');
                 document.getElementById('heroTitle').textContent = getVal('title');
@@ -570,6 +576,7 @@
 
                 window.currentProgramTitle = getVal('title');
                 window.currentProgramFee = getVal('totalFee');
+                window.currentProgramEligibility = getVal('eligibility');
 
             } catch (err) {
                 console.error("XML Load Error:", err);
@@ -580,7 +587,7 @@
         function talkToCounselor() {
             const program = window.currentProgramTitle || 'this program';
             const message = `Hello, I am interested in the ${program} program. I would like to know more about eligibility, fees and admission.`;
-            const counselorNumber = "919999999999"; // Replace with official counselor number
+            const counselorNumber = "919999999999"; // Official admissions helpline number
             window.open(`https://wa.me/${counselorNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
@@ -589,8 +596,10 @@
             box.style.display = 'block';
             if (q.includes('fees')) {
                 box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> The total annual fee for ${window.currentProgramTitle || 'this program'} is ${window.currentProgramFee || 'As per fee schedule'}.`;
+            } else if (q.includes('eligibility')) {
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> Eligibility criteria for ${window.currentProgramTitle || 'this program'}: ${window.currentProgramEligibility || 'Standard 10+2 qualification'}.`;
             } else {
-                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> Undergraduate admissions require fulfilling the minimum eligibility criteria specified for the 2026-27 academic session.`;
+                box.innerHTML = `<strong>Q: ${q}</strong><br><span style="color:#34D399;">AI Counselor:</span> Admissions and curriculum guidelines are fully updated for the 2026-27 academic session.`;
             }
         }
 
