@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Institution Explorer — Akbar Peerbhoy College | Powered by Campus OS</title>
+    <title>Institution Overview | Sachin Shiksha Mandal | CampusOS</title>
+
+    <!-- SEO Foundation & Metadata -->
+    <meta name="description" content="Explore Sachin Shiksha Mandal's institution overview, history, governing leadership, academic profile, faculty directory, administration units, and student services.">
+    <link rel="canonical" href="https://parabs.github.io/CampusOS/institution-explorer.html">
+    <meta property="og:title" content="Institution Overview | Sachin Shiksha Mandal | CampusOS">
+    <meta property="og:description" content="Explore Sachin Shiksha Mandal's institution overview, history, governing leadership, academic profile, faculty directory, administration units, and student services.">
+    <meta property="og:type" content="website">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -167,6 +174,7 @@
             text-decoration: none;
             font-size: 13px;
             padding: 0 12px;
+            cursor: pointer;
         }
         .nav-cta {
             background: var(--secondary);
@@ -886,7 +894,7 @@
         }
 
         /* Footer */
-        <footer>
+        footer {
             background: var(--primary-dark);
             color: white;
             padding: 60px 20px 40px;
@@ -940,29 +948,29 @@
 
     <!-- Slim Product Banner -->
     <header class="campus-os-banner">
-        <div>🚀 <strong>Campus OS Demo Showcase</strong> — Institution Explorer</div>
+        <div>🚀 <strong>CampusOS Demo Showcase</strong> — Institution Overview</div>
         <div><a href="index.html" class="banner-link">Return to Home &rarr;</a></div>
     </header>
 
     <!-- Standard College Navigation Bar -->
     <nav class="navbar" id="navbar">
         <a href="index.html" class="logo-area">
-            <div class="college-crest">AP</div>
-            <div class="logo-text">Akbar Peerbhoy College <span>Est. 1969 | NAAC A+</span></div>
+            <div class="college-crest">SS</div>
+            <div class="logo-text">Sachin Shiksha Mandal <span>Higher Education • Powered by CampusOS</span></div>
         </a>
 
         <ul class="nav-links" id="navLinks">
             <li><a href="programs.html" class="nav-link">Programs</a></li>
             <li><a href="admissions.html" class="nav-link">Admissions</a></li>
-            <li><a href="career-services.html" class="nav-link">Career Success</a></li>
-            <li><a href="campus-tour.html" class="nav-link">Campus Tour</a></li>
-            <li><a href="institution-explorer.html" class="nav-link active">Institution Explorer</a></li>
-            <li><a href="compliance.html" class="nav-link">Compliance & Regulatory</a></li>
+            <li><a href="campus-tour.html" class="nav-link">Campus Life</a></li>
+            <li><a href="career-services.html" class="nav-link">Placements</a></li>
+            <li><a href="institution-explorer.html" class="nav-link active">Institution</a></li>
+            <li><a href="compliance.html" class="nav-link">Compliance</a></li>
         </ul>
 
         <div class="nav-actions">
-            <a href="index.html#apply" class="portal-login-link">Portal Login</a>
-            <a href="index.html#apply" class="nav-cta">Apply Now</a>
+            <a href="admissions.html" class="portal-login-link">Portal Login</a>
+            <a href="admissions.html" class="nav-cta">Apply Now</a>
         </div>
 
         <!-- Mobile Hamburger Button Pinned to Right -->
@@ -975,14 +983,14 @@
 
     <!-- Breadcrumb Bar -->
     <div class="breadcrumb-bar" id="breadcrumbBar">
-        <a href="index.html">Akbar Peerbhoy College</a> &gt; <span>Institution Explorer</span>
+        <a href="index.html">Sachin Shiksha Mandal</a> &gt; <span>Institution</span>
     </div>
 
     <!-- Page Title Header Section -->
     <header class="page-title-section">
         <div class="page-title-card">
-            <h1>Institution Explorer</h1>
-            <p>Explore the people, legacy, achievements, governance, academic excellence, and institutional ecosystem that define our college.</p>
+            <h1>Institution Overview</h1>
+            <p>Explore the people, legacy, achievements, governance, academic excellence, and institutional ecosystem that define Sachin Shiksha Mandal.</p>
         </div>
     </header>
 
@@ -999,15 +1007,15 @@
 
         <!-- Sticky Left Settings Navigation Bar -->
         <aside class="settings-sidebar">
-            <button class="settings-nav-item active" onclick="switchTab('overview')"><span>🏛 Institution Overview</span></button>
-            <button class="settings-nav-item" onclick="switchTab('leadership')"><span>👑 Leadership</span></button>
-            <button class="settings-nav-item" onclick="switchTab('legacy')"><span>🏆 Legacy & Achievements</span></button>
-            <button class="settings-nav-item" onclick="switchTab('academics')"><span>🎓 Academic Excellence</span></button>
-            <button class="settings-nav-item" onclick="switchTab('faculty')"><span>👨‍🏫 Faculty Directory</span></button>
-            <button class="settings-nav-item" onclick="switchTab('admin')"><span>🏢 Administration</span></button>
-            <button class="settings-nav-item" onclick="switchTab('services')"><span>❤️ Student Service Offices</span></button>
-            <button class="settings-nav-item" onclick="switchTab('community')"><span>🌍 Community Impact</span></button>
-            <button class="settings-nav-item" onclick="switchTab('halloffame')"><span>⭐ Hall of Fame</span></button>
+            <button class="settings-nav-item active" onclick="switchTab('overview', event)"><span>🏛 Institution Overview</span></button>
+            <button class="settings-nav-item" onclick="switchTab('leadership', event)"><span>👑 Leadership</span></button>
+            <button class="settings-nav-item" onclick="switchTab('legacy', event)"><span>🏆 Legacy & Achievements</span></button>
+            <button class="settings-nav-item" onclick="switchTab('academics', event)"><span>🎓 Academic Excellence</span></button>
+            <button class="settings-nav-item" onclick="switchTab('faculty', event)"><span>👨‍🏫 Faculty Directory</span></button>
+            <button class="settings-nav-item" onclick="switchTab('admin', event)"><span>🏢 Administration</span></button>
+            <button class="settings-nav-item" onclick="switchTab('services', event)"><span>❤️ Student Service Offices</span></button>
+            <button class="settings-nav-item" onclick="switchTab('community', event)"><span>🌍 Community Impact</span></button>
+            <button class="settings-nav-item" onclick="switchTab('halloffame', event)"><span>⭐ Hall of Fame</span></button>
         </aside>
 
         <!-- Right Content Active Panel -->
@@ -1018,8 +1026,13 @@
                 <div class="panel-header-row">
                     <div>
                         <h3 class="panel-header-title">Institution Overview</h3>
-                        <p class="panel-header-sub">The executive summary and institutional footprint establishing trust and credibility.</p>
+                        <p class="panel-header-sub">The authoritative facts summary and institutional footprint establishing trust and credibility.</p>
                     </div>
+                </div>
+
+                <!-- Crawlable Semantic Content for AEO -->
+                <div style="margin-bottom: 24px; font-size: 15px; color: var(--text); line-height: 1.6;">
+                    <p>Sachin Shiksha Mandal is a premier higher education institution dedicated to academic rigor, comprehensive professional development, and community impact. Operating with institutional autonomy, our campus fosters multidisciplinary learning across commerce, management, and technology.</p>
                 </div>
 
                 <div class="dashboard-metrics-grid">
@@ -1042,10 +1055,12 @@
                     <div class="dash-metric-card">
                         <span class="lbl">Programs Offered</span>
                         <span class="val">42</span>
+                        <a href="programs.html" style="font-size: 11px; color: var(--secondary); text-decoration: none; margin-top: 4px; font-weight: 700;">View Programs &rarr;</a>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Accreditation</span>
                         <span class="val" style="color: var(--secondary-light);">NAAC A+</span>
+                        <a href="compliance.html" style="font-size: 11px; color: var(--secondary); text-decoration: none; margin-top: 4px; font-weight: 700;">View Compliance &rarr;</a>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Corporate Recruiters</span>
@@ -1054,6 +1069,7 @@
                     <div class="dash-metric-card">
                         <span class="lbl">Placement Rate</span>
                         <span class="val" style="color: #10B981;">96%</span>
+                        <a href="career-services.html" style="font-size: 11px; color: var(--secondary); text-decoration: none; margin-top: 4px; font-weight: 700;">View Placements &rarr;</a>
                     </div>
                     <div class="dash-metric-card">
                         <span class="lbl">Scholarships Disbursed</span>
@@ -1078,7 +1094,7 @@
             <div id="tab-leadership" class="tab-panel-block" style="display: none;">
                 <div class="panel-header-row">
                     <div>
-                        <h3 class="panel-header-title">Leadership & Governance</h3>
+                        <h3 class="panel-header-title">Leadership &amp; Governance</h3>
                         <p class="panel-header-sub">Founder, Trust, Governing Board, and Academic Council.</p>
                     </div>
                 </div>
@@ -1099,7 +1115,7 @@
                             </ul>
                             <p class="card-message-snippet">"Empowering students through academic rigor, research mentorship, and digital leadership."</p>
                         </div>
-                        <button class="btn-view-profile" onclick="openDrawer('Dr. Shaikh Mehmood Hasan', 'Principal', 'images/4-Faculty & Leadership/principal-portrait.png', 'Ph.D. in Financial Economics with 24 years of teaching and administrative guidance. Holds a permanent seat on the University Senate and has published 42 peer-reviewed papers.', 'principal@apcollege.edu', 'Principal Cabin', 'Best Educator Award 2024')">View Profile</button>
+                        <button class="btn-view-profile" onclick="openDrawer('Dr. Shaikh Mehmood Hasan', 'Principal', 'images/4-Faculty & Leadership/principal-portrait.png', 'Ph.D. in Financial Economics with 24 years of teaching and administrative guidance. Holds a permanent seat on the University Senate and has published 42 peer-reviewed papers.', 'principal@ssm.edu.in', 'Principal Cabin', 'Best Educator Award 2024')">View Profile</button>
                     </div>
 
                     <div class="card-profile-executive">
@@ -1108,16 +1124,16 @@
                                 <img src="images/4-Faculty & Leadership/professor-teaching-class.png" alt="Vice Principal">
                             </div>
                             <h4>Prof. M. H. Lakdawala</h4>
-                            <div class="card-designation">Vice Principal & IQAC Head</div>
+                            <div class="card-designation">Vice Principal &amp; IQAC Head</div>
                             <ul class="leadership-meta-list">
                                 <li><strong>🎓 Qualification:</strong> M.Com, M.Phil</li>
                                 <li><strong>⏳ Experience:</strong> 20 Years</li>
                                 <li><strong>📄 Research:</strong> 15 Published Papers</li>
                                 <li><strong>🏛 Member:</strong> Academic Council</li>
                             </ul>
-                            <p class="card-message-snippet">"Spearheading NAAC Grade A+ quality audits and digital campus OS implementation."</p>
+                            <p class="card-message-snippet">"Spearheading NAAC Grade A+ quality audits and digital CampusOS implementation."</p>
                         </div>
-                        <button class="btn-view-profile" onclick="openDrawer('Prof. M. H. Lakdawala', 'Vice Principal', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Specializes in Commerce governance and IQAC compliance. Driving force behind our recent NAAC A+ accreditation.', 'lakdawala@apcollege.edu', 'Administrative Block', 'NAAC Accreditation Lead')">View Profile</button>
+                        <button class="btn-view-profile" onclick="openDrawer('Prof. M. H. Lakdawala', 'Vice Principal', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Specializes in Commerce governance and IQAC compliance. Driving force behind our recent NAAC A+ accreditation.', 'lakdawala@ssm.edu.in', 'Administrative Block', 'NAAC Accreditation Lead')">View Profile</button>
                     </div>
                 </div>
             </div>
@@ -1126,7 +1142,7 @@
             <div id="tab-legacy" class="tab-panel-block" style="display: none;">
                 <div class="panel-header-row">
                     <div>
-                        <h3 class="panel-header-title">Legacy & Achievements</h3>
+                        <h3 class="panel-header-title">Legacy &amp; Achievements</h3>
                         <p class="panel-header-sub">Historical milestones and institutional growth.</p>
                     </div>
                 </div>
@@ -1134,8 +1150,8 @@
                 <div class="legacy-timeline">
                     <div class="timeline-node">
                         <div class="timeline-year">1969</div>
-                        <div class="timeline-title">College Established</div>
-                        <p style="font-size: 14px; color: var(--text-light);">Founded by Barrister Akbar Peerbhoy under Anjuman-i-Islam.</p>
+                        <div class="timeline-title">Institution Established</div>
+                        <p style="font-size: 14px; color: var(--text-light);">Founded under Sachin Shiksha Mandal trust to provide accessible higher education.</p>
                     </div>
                     <div class="timeline-node">
                         <div class="timeline-year">1984</div>
@@ -1164,7 +1180,7 @@
                     </div>
                     <div class="timeline-node">
                         <div class="timeline-year">2026</div>
-                        <div class="timeline-title">Campus OS Implemented</div>
+                        <div class="timeline-title">CampusOS Implemented</div>
                         <p style="font-size: 14px; color: var(--text-light);">Complete digital transformation of the institutional ecosystem.</p>
                     </div>
                 </div>
@@ -1200,7 +1216,7 @@
                     </div>
                     <div class="card-profile-executive">
                         <div>
-                            <h4>Incubation & Innovation Center</h4>
+                            <h4>Incubation &amp; Innovation Center</h4>
                             <div class="card-designation">Entrepreneurship Hub</div>
                             <p class="card-message-snippet">Providing seed funding, legal advisory, and prototyping workstations for student startups.</p>
                         </div>
@@ -1271,7 +1287,7 @@
                                 <li><strong>📚 Subject:</strong> Financial Accounting</li>
                             </ul>
                         </div>
-                        <button class="btn-view-profile" onclick="openDrawer('Prof. Rajesh Sharma', 'Professor', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Handles Financial Accounting for B.Com cohorts. Former corporate auditor.', 'sharma.r@apcollege.edu', 'Commerce Staff Room', 'Top Rated Educator (4.9/5)')">View Profile</button>
+                        <button class="btn-view-profile" onclick="openDrawer('Prof. Rajesh Sharma', 'Professor', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Handles Financial Accounting for B.Com cohorts. Former corporate auditor.', 'sharma.r@ssm.edu.in', 'Commerce Staff Room', 'Top Rated Educator (4.9/5)')">View Profile</button>
                     </div>
                 </div>
             </div>
@@ -1313,7 +1329,7 @@
                                 </div>
                             </div>
                             <button class="btn-view-team" onclick="openAdminTeam('admissions')">
-                                View Team & Staff Directory →
+                                View Team &amp; Staff Directory →
                             </button>
                         </div>
 
@@ -1321,7 +1337,7 @@
                         <div class="admin-unit-card">
                             <div>
                                 <div class="unit-card-header">
-                                    <h4>Accounts & Finance</h4>
+                                    <h4>Accounts &amp; Finance</h4>
                                     <span class="unit-staff-badge">👥 6 Staff</span>
                                 </div>
                                 <div style="margin: 12px 0;">
@@ -1340,7 +1356,7 @@
                                 </div>
                             </div>
                             <button class="btn-view-team" onclick="openAdminTeam('accounts')">
-                                View Team & Staff Directory →
+                                View Team &amp; Staff Directory →
                             </button>
                         </div>
 
@@ -1366,7 +1382,7 @@
                                 </div>
                             </div>
                             <button class="btn-view-team" onclick="openAdminTeam('examination')">
-                                View Team & Staff Directory →
+                                View Team &amp; Staff Directory →
                             </button>
                         </div>
 
@@ -1378,7 +1394,7 @@
                                     <span class="unit-staff-badge">👥 12 Staff</span>
                                 </div>
                                 <div style="margin: 12px 0;">
-                                    <div class="unit-meta-row">📍 Library Building (Wings A & B)</div>
+                                    <div class="unit-meta-row">📍 Library Building (Wings A &amp; B)</div>
                                     <div class="unit-meta-row">🕘 8:00 AM – 8:00 PM</div>
                                 </div>
                                 <div class="unit-services-wrap">
@@ -1392,7 +1408,7 @@
                                 </div>
                             </div>
                             <button class="btn-view-team" onclick="openAdminTeam('library')">
-                                View Team & Staff Directory →
+                                View Team &amp; Staff Directory →
                             </button>
                         </div>
 
@@ -1400,7 +1416,7 @@
                         <div class="admin-unit-card">
                             <div>
                                 <div class="unit-card-header">
-                                    <h4>Placement & Training Cell</h4>
+                                    <h4>Placement &amp; Training Cell</h4>
                                     <span class="unit-staff-badge">👥 7 Staff</span>
                                 </div>
                                 <div style="margin: 12px 0;">
@@ -1418,7 +1434,7 @@
                                 </div>
                             </div>
                             <button class="btn-view-team" onclick="openAdminTeam('placement')">
-                                View Team & Staff Directory →
+                                View Team &amp; Staff Directory →
                             </button>
                         </div>
 
@@ -1432,7 +1448,7 @@
                     <div class="panel-header-row" style="margin-bottom: 16px;">
                         <div>
                             <h3 class="panel-header-title" id="detailOfficeTitle">Admissions Office Team</h3>
-                            <p class="panel-header-sub" id="detailOfficeMeta">Location & Timings</p>
+                            <p class="panel-header-sub" id="detailOfficeMeta">Location &amp; Timings</p>
                         </div>
                     </div>
 
@@ -1471,7 +1487,7 @@
                                 <p>Coordinator: Prof. Rajesh Sharma<br>3 Active Programs</p>
                             </div>
                         </div>
-                        <button class="tile-link-action" onclick="openDrawer('Career Cell', 'Prof. Rajesh Sharma', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Dedicated to placements, internships, and corporate mock interviews.', 'careers@apcollege.edu', 'Placement Office', '97% Placement Rate')">View Details →</button>
+                        <button class="tile-link-action" onclick="openDrawer('Career Cell', 'Prof. Rajesh Sharma', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Dedicated to placements, internships, and corporate mock interviews.', 'careers@ssm.edu.in', 'Placement Office', '97% Placement Rate')">View Details →</button>
                     </div>
 
                     <div class="support-action-tile">
@@ -1479,7 +1495,7 @@
                             <div class="tile-icon-header">📚</div>
                             <div class="tile-info">
                                 <h4>Library Services</h4>
-                                <p>Librarian: Mr. Anil Gupta<br>Digital & Print Archives</p>
+                                <p>Librarian: Mr. Anil Gupta<br>Digital &amp; Print Archives</p>
                             </div>
                         </div>
                         <button class="tile-link-action" onclick="alert('Opening Library Details...')">View Details →</button>
@@ -1535,7 +1551,7 @@
             <div id="tab-community" class="tab-panel-block" style="display: none;">
                 <div class="panel-header-row">
                     <div>
-                        <h3 class="panel-header-title">Community & Social Impact</h3>
+                        <h3 class="panel-header-title">Community &amp; Social Impact</h3>
                         <p class="panel-header-sub">Corporate social responsibility, village adoption, and outreach metrics.</p>
                     </div>
                 </div>
@@ -1607,7 +1623,7 @@
                 </div>
                 <div class="drawer-profile-info">
                     <h3 id="drawerName">Dr. Ayesha Khan</h3>
-                    <p id="drawerRole">Dean of Commerce & Finance</p>
+                    <p id="drawerRole">Dean of Commerce &amp; Finance</p>
                 </div>
 
                 <div class="drawer-section-block">
@@ -1615,12 +1631,12 @@
                     <p id="drawerBio">Ph.D. in Corporate Economics with over 18 years of academic teaching, advisory, and corporate auditing experience.</p>
                 </div>
                 <div class="drawer-section-block">
-                    <h5>Office & Availability</h5>
+                    <h5>Office &amp; Availability</h5>
                     <p id="drawerOffice">📍 Commerce Staff Room • Mon–Sat (10 AM - 1 PM)</p>
                 </div>
                 <div class="drawer-section-block">
                     <h5>Email Contact</h5>
-                    <p id="drawerEmail">✉️ ayesha.khan@apcollege.edu</p>
+                    <p id="drawerEmail">✉️ ayesha.khan@ssm.edu.in</p>
                 </div>
                 <div class="drawer-section-block">
                     <h5>Key Details / Achievements</h5>
@@ -1628,14 +1644,14 @@
                 </div>
             </div>
 
-            <button class="cinematic-btn-primary" style="width: 100%; justify-content: center; margin-top: 20px; border: none; cursor: pointer;" onclick="alert('Opening communication gateway...')">Contact / Send Message</button>
+            <button class="cinematic-btn-primary" style="width: 100%; justify-content: center; margin-top: 20px; border: none; cursor: pointer; background: var(--secondary); color: white; padding: 12px; border-radius: var(--radius-btn); font-weight: 700;" onclick="alert('Opening communication gateway...')">Contact / Send Message</button>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-bottom">
-            <p>© 2026 Akbar Peerbhoy College of Commerce & Economics. All rights reserved. | <a href="index.html" style="color: var(--secondary-light); text-decoration: none;">Return to College Home</a></p>
+            <p>© 2026 Sachin Shiksha Mandal. All rights reserved. | <a href="index.html" style="color: var(--secondary-light); text-decoration: none;">Return to Home</a></p>
         </div>
     </footer>
 
@@ -1775,7 +1791,7 @@
                     </div>
                     <div style="display:flex; align-items:center; gap:12px;">
                         <span class="staff-type-pill">${member.type}</span>
-                        <button class="btn-view-profile" style="padding:6px 14px; font-size:12px;" onclick="openDrawer('${member.name}', '${member.role}', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Operational team member contributing to ${office.name}.', 'staff@apcollege.edu', '${office.name}', 'Verified Department Staff')">View Profile</button>
+                        <button class="btn-view-profile" style="padding:6px 14px; font-size:12px;" onclick="openDrawer('${member.name}', '${member.role}', 'images/4-Faculty & Leadership/professor-teaching-class.png', 'Operational team member contributing to ${office.name}.', 'staff@ssm.edu.in', '${office.name}', 'Verified Department Staff')">View Profile</button>
                     </div>
                 `;
                 container.appendChild(item);
@@ -1793,8 +1809,8 @@
             document.getElementById('navLinks').classList.toggle('active');
         });
 
-        // Tab Switching Logic with vertical strip active indicator
-        function switchTab(tabId) {
+        // Tab Switching Logic with vertical strip active indicator (Explicit event handling)
+        function switchTab(tabId, event) {
             const panels = document.querySelectorAll('.tab-panel-block');
             panels.forEach(p => p.style.display = 'none');
 
@@ -1804,13 +1820,15 @@
             const activePanel = document.getElementById(`tab-${tabId}`);
             if (activePanel) activePanel.style.display = 'block';
 
-            event.currentTarget.classList.add('active');
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
 
             // Update Breadcrumb
-            let tabName = event.currentTarget.textContent.replace('→', '').trim();
+            let tabName = event && event.currentTarget ? event.currentTarget.textContent.replace('→', '').trim() : 'Overview';
             tabName = tabName.substring(tabName.indexOf(' ') + 1);
             
-            document.getElementById('breadcrumbBar').innerHTML = `<a href="index.html">Akbar Peerbhoy College</a> &gt; <a href="institution-explorer.html">Institution Explorer</a> &gt; <span>${tabName}</span>`;
+            document.getElementById('breadcrumbBar').innerHTML = `<a href="index.html">Sachin Shiksha Mandal</a> &gt; <a href="institution-explorer.html">Institution</a> &gt; <span>${tabName}</span>`;
 
             window.scrollTo({ top: 120, behavior: 'smooth' });
         }
@@ -1830,7 +1848,7 @@
                     }
                 });
             } else {
-                switchTab('overview');
+                switchTab('overview', null);
                 document.querySelectorAll('.card-profile-executive, .admin-unit-card, .support-action-tile, .dash-metric-card, .timeline-node').forEach(card => {
                     card.style.display = '';
                 });
